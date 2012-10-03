@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block header %}
+<p>
+<br>
+<a class="bootstrap-logo" href='{{ url_for("index") }}' title="Home">
+<img src="/static/apple-touch-icon-144-precomposed.png" alt="Twitter Bootstrap">
+</a>
+
+	<strong>The Mutation Selection Blog</strong><br>
+	My Static Blog on Mathematics, Biology and the Science of the Mutation-Selection Balance		
+	
+</p>
+
+{% endblock header %}
+
+{% block content %}
+
+    {% with pages=pages  %}
+        {% include "_list.html" %}
+    {% endwith %}
+	
+{% endblock content %}

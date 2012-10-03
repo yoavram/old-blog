@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{% block title %}Mutation Selection Blog{% endblock title %}</title>
+<!-- Bootstrap -->
+<link href="/static/theme.css" rel="stylesheet">
+<link href="/static/jekyll.css" rel="stylesheet">
+<link href="/static/bootstrap.min.css" rel="stylesheet">
+<link href="/static/bootstrap-responsive.min.css" rel="stylesheet">
+<style type="text/css">
+[class^="icon-"] { background-image: url("/static/glyphicons-halflings.png"); } 
+[class*="icon-white"] { background-image: url("/static/glyphicons-halflings-white.png"); } 
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="row-fluid">
+    <header class="masthead">
+	  <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href='{{ url_for("index") }}'>The Mutation Selection Blog</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class=""><a href='{{ url_for("index") }}'>Home</a></li>
+              <li class=""><a href="#">About</a></li>
+              <li class=""><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+	  </div>
+	  {% block header %}
+	  {% endblock header %}
+	</header>
+</div>
+	
+<div class="row-fluid">
+	<div class="span8 offset2">
+		{% block content %}
+			<p>Default content to be displayed</p>
+		{% endblock content %}
+	</div>
+	<!--div class="span2">
+		{% block sidebar %}
+			<p>Default sidebar to be displayed</p>
+		{% endblock sidebar %}
+	</div-->
+	
+</div>
+
+<footer class="colophon">
+  <ul class="quick-links">
+	<li>Links</li>
+    <li><a href="http://www.yoavram.com">yoavram.com</a></li>
+    <li><a href="https://bitbucket.com/yoavram/">Code - Bitbucket</a></li>
+	<li class="follow-btn">
+      <a href="https://twitter.com/yoavram" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @yoavram</a>
+    </li>
+    <!--li class="tweet-btn">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mas.yoavram.com/" data-count="horizontal" data-via="yoavram">Tweet</a>
+    </li-->
+  </ul>
+  <ul class="quick-links">
+	<li>Powered by</li>
+	<li><a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a></li>
+	<li><a href="http://python.org/">Python</a></li>
+	<li><a href="http://flask.pocoo.org/">Flask</a></li>
+  </ul>
+  <ul class="quick-links">
+	<li> 
+		<!--a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+		<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
+		</a-->
+		<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">The Mutation Selection Blog</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www,yoavram.com" property="cc:attributionName" rel="cc:attributionURL">Yoav Ram</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+	</li>
+	</ul>
+  <!--&copy; 2012 Yoav Ram-->
+
+</footer>
+
+
+<script src="/static/jquery-1.7.2.min.js"></script>
+<script src="/static/bootstrap.min.js"></script>
+<script src="/static/bootstrap-transition.js"></script>
+<script src="/static/bootstrap-collapse.js"></script>
+</body>
+</html>

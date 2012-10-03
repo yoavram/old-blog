@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} {{ page.title }} {% endblock title %}
+{% block content %}
+<div class="post">
+
+	<h1>{{ page.title }}</h1>
+	<span class="post-date">{{ page.date }}</span>
+	<div class="tweet-button">
+	  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="horizontal" data-via="yoavram" data-url='{{ url_for("page", path=page.path) }}'>Tweet</a>
+	</div>
+    {{ page.html|safe }}
+</div>
+<!--
+	<div class="related">
+	<h2>Related Posts</h2>
+	{% with pages=pages  %}
+        {% include "_list.html" %}
+    {% endwith %}
+	</div>
+-->
+<!-- 
+	Comments
+-->
+{% endblock content %}
