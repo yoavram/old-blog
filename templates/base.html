@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>{% block title %}Mutation Selection Blog{% endblock title %}</title>
-<!-- Bootstrap -->
+<link rel="stylesheet" href="{{ url_for('pygments_css') }}">
 <link href="/static/theme.css" rel="stylesheet">
 <link href="/static/jekyll.css" rel="stylesheet">
+<!-- Bootstrap -->
 <link href="/static/bootstrap.min.css" rel="stylesheet">
 <link href="/static/bootstrap-responsive.min.css" rel="stylesheet">
 <style type="text/css">
@@ -13,6 +14,19 @@
 [class*="icon-white"] { background-image: url("/static/glyphicons-halflings-white.png"); } 
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+            "tex2jax": { inlineMath: [ [ '$', '$' ] ] },
+			"HTML-CSS": { availableFonts: ["STIX", "TeX"] }
+  });
+ <!--"HTML-CSS": { availableFonts: ["STIX", "TeX"] }-->
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+{% block head %}
+{% endblock head %}
 </head>
 <body>
 
