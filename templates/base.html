@@ -3,17 +3,21 @@
 <head>
 <meta charset="utf-8">
 <title>{% block title %}Mutation Selection Blog{% endblock title %}</title>
-<link rel="stylesheet" href="{{ url_for('pygments_css') }}">
 <link href="/static/theme.css" rel="stylesheet">
 <link href="/static/jekyll.css" rel="stylesheet">
 <!-- Bootstrap -->
 <link href="/static/bootstrap.min.css" rel="stylesheet">
 <link href="/static/bootstrap-responsive.min.css" rel="stylesheet">
+<!--link href="/static/bt_docs.css" rel="stylesheet"-->
 <style type="text/css">
 [class^="icon-"] { background-image: url("/static/glyphicons-halflings.png"); } 
 [class*="icon-white"] { background-image: url("/static/glyphicons-halflings-white.png"); } 
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap-transition.js"></script>
+<script type="text/javascript" src="/static/bootstrap-collapse.js"></script>
 <!-- MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -25,10 +29,13 @@
 <script type="text/javascript"
   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
 </script>
+<!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
+<link href="/static/prettify_bt.css" rel="stylesheet">
+<script type="text/javascript" src="/static/prettify.js"></script>
 {% block head %}
 {% endblock head %}
 </head>
-<body>
+<body onload="prettyPrint()">
 
 <div class="row-fluid">
     <header class="masthead">
@@ -99,11 +106,5 @@
   <!--&copy; 2012 Yoav Ram-->
 
 </footer>
-
-
-<script src="/static/jquery-1.7.2.min.js"></script>
-<script src="/static/bootstrap.min.js"></script>
-<script src="/static/bootstrap-transition.js"></script>
-<script src="/static/bootstrap-collapse.js"></script>
 </body>
 </html>
