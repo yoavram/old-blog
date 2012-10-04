@@ -10,8 +10,10 @@ import markdown
 def pygmented_markdown(text):
     """
     Added extensions to the default `FlatPages` renderer.
+    `mathjax` makes sure markdown doesn't ruin latex so that mathjax.js can render it.
     
     .. _FlatPages: http://packages.python.org/Flask-FlatPages/#flask_flatpages.pygmented_markdown
+    .. _mathjax: https://github.com/mayoff/python-markdown-mathjax
     """
     try:
         import pygments
