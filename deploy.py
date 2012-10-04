@@ -18,7 +18,7 @@ def run_and_print(cmd):
         fin.close()
 
 import sitebuilder
-sitebuilder.start_and_freeze()
+sitebuilder.freeze()
 
 os.chdir(DEPLOY_FOLDER)
 print "cd",os.getcwd()
