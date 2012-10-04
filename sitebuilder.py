@@ -14,13 +14,10 @@ def pygmented_markdown(text):
     
     .. _FlatPages: http://packages.python.org/Flask-FlatPages/#flask_flatpages.pygmented_markdown
     .. _mathjax: https://github.com/mayoff/python-markdown-mathjax
+    .. _abbr: http://freewisdom.org/projects/python-markdown/Abbreviations
+    .. _footnotes: http://freewisdom.org/projects/python-markdown/Footnotes
     """
-    try:
-        import pygments
-    except ImportError:
-        extensions = []
-    else:
-        extensions = ['codehilite', 'mathjax']
+    extensions = ['mathjax', 'footnotes', 'abbr']
     return markdown.markdown(text, extensions)
 
 

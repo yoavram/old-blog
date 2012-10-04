@@ -10,28 +10,6 @@ a:hover {
 
 /* Masthead
 -------------------------------------------------- */
-.bootstrap-logo {
-  position: relative;
-  margin: 0 auto 20px;
-}
-.bootstrap-logo img {
-  display: block;
-  margin: 0 auto;
-  -webkit-border-radius: 26px;
-     -moz-border-radius: 26px;
-          border-radius: 26px;
-  -webkit-box-shadow: 0 2px 8px rgba(109,51,83,.15);
-     -moz-box-shadow: 0 2px 8px rgba(109,51,83,.15);
-          box-shadow: 0 2px 8px rgba(109,51,83,.15);
-  -webkit-transition: all 0.1s ease-in-out;
-     -moz-transition: all 0.1s ease-in-out;
-          transition: all 0.1s ease-in-out;
-}
-.bootstrap-logo:hover img {
-  -webkit-box-shadow: 0 2px 15px rgba(109,51,83,.75);
-     -moz-box-shadow: 0 2px 15px rgba(109,51,83,.75);
-          box-shadow: 0 2px 15px rgba(109,51,83,.75);
-}
 
 .msb-logo {
   position: relative;

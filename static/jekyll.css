@@ -79,9 +79,9 @@ strong {
 }
 
 abbr {
-  background-color: #eee;
-  display: inline-block;
-  padding: 3px;
+  #background-color: #eee;
+  #display: inline-block;
+  #padding: 3px;
   font-size: 13px;
   font-weight: bold;
   color: #555;
@@ -191,11 +191,11 @@ a:hover {
   background-color: #eee;
 }
 .masthead {
-  margin-bottom: 84px;
+  margin-bottom: 20px;
 }
 
 .masthead p {
-  padding-bottom: 28px;
+  padding-bottom: 0px;
   color: #999999;
   text-align: center;
 }
@@ -213,7 +213,15 @@ a:hover {
 
 
 
+/* Sidebar
+------------------------------------------ */
 
+.sidebar{
+	margin: 15px auto 15px;
+	text-align: left;
+	font-size: 14px;
+	word-wrap: break-word;
+}
 
 /* Footer
 -------------------------------------------------- */
@@ -257,7 +265,7 @@ a:hover {
 /* List of posts
 ------------------------- */
 .posts {
-  margin-bottom: 80px;
+  margin-bottom: 20px;
 }
 .posts h3 {
   margin: 0;
@@ -288,7 +296,8 @@ a:hover {
 ------------------------- */
 .post {
   position: relative;
-  margin-bottom: 84px;
+  margin-bottom: 0px;
+  margin-top: 24px;
 }
 .post:after {
   display: block;
@@ -297,7 +306,7 @@ a:hover {
   height: 1px;
   margin: 20px auto;
   background-color: #eee;
-  margin-top: 84px;
+  margin-top: 0px;
 }
 .post img {
   max-width: 100%;

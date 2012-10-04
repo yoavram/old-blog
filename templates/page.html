@@ -1,14 +1,57 @@
 {% extends "base.html" %}
 {% block title %} {{ page.title }} {% endblock title %}
+
+{% block head %}
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "ur-fbcd7053-76f9-85c3-b29f-848f5f75e2af"});</script>
+{% endblock head %}
+
 {% block content %}
 <div class="post">
 
 	<h1>{{ page.title }}</h1>
 	<span class="post-date">{{ page.date }}</span>
-	<div class="tweet-button">
+	
+	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
+	<p>
+	<span class='st_email' ></span>
+	<span class='st_twitter' ></span>
+	<span class='st_facebook' ></span>
+	<span class='st_googleplus' ></span>
+	<span class='st_reddit' ></span>
+	<span class='st_linkedin' ></span>
+	<span class='st_stumbleupon' ></span>
+	<span class='st_delicious' ></span>
+	<span class='st_citeulike' ></span>
+	<span class='st_connotea' ></span>
+	</p>
+	<!-- end of sharethis -->
+	
+	<!--div class="tweet-btn">
 	  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="horizontal" data-via="yoavram" data-url='{{ url_for("page", path=page.path) }}'>Tweet</a>
-	</div>
+	</div-->
+	
     {{ page.html|safe }}
+	
+	<ul class="pager">
+	  <li class="previous">
+		<a href="#">&larr; Older</a>
+	  </li>
+	  
+	  <li class="next">
+		<a href="#">Newer &rarr;</a>
+	  </li>
+	  
+	</ul>
+	<ul class="pager">
+	  <li class="previous">
+		<a href='{{ url_for("index") }}'>&larr; Back to posts</a>
+	  </li>
+	  <li class="next">
+		<a href="#">Back to top &uarr;</a>
+	  </li>
+	</ul>
 </div>
 <!--
 	<div class="related">
@@ -22,3 +65,10 @@
 	Comments
 -->
 {% endblock content %}
+
+{% block sidebar %}
+<div class="well">
+<strong>Please cite this article as:</strong><br>
+Ram, Yoav ({{ page.date.year }}) {{ page.title }}. <em>The Mutation Selection Blog</em>. <a href='http://yoavram.bitbucket.org/{{ page.path }}'>http://yoavram.bitbucket.org/{{ page.path }}</a>
+</div>
+{% endblock sidebar %}
