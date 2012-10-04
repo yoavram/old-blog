@@ -33,7 +33,7 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
-
+    
 @app.route('/')
 def index():
     return render_template('index.html', pages=pages)
@@ -48,9 +48,32 @@ def tag(tag):
     tagged = [p for p in pages if tag in p.meta.get('tags', [])]
     return render_template('tag.html', pages=tagged, tag=tag)
 
+def freeze():
+    freezer.freeze()
+
+def serve_static():
+    import os
+    os.chdir("build")
+    import SimpleHTTPServer, SocketServer
+    PORT = 8000
+    Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
+    httpd = SocketServer.TCPServer(("", PORT), Handler)
+    print "Serving static content from ",os.getcwd(),"at port", PORT
+    print "Press Ctrl+C to interrupt"
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print "Server shutdown"
+    
+def serve_dynamic():
+    app.run(port=8000)
+
 if __name__ == '__main__':
-    if len(sys.argv) > 1 and sys.argv[1] == "build":
-        freezer.freeze()
-        # go to build folder and run "> python -m SimpleHTTPServer"
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "build":
+            freeze()
+        if sys.argv[1] == "static":
+            freeze()
+            serve_static()
     else:
-        app.run(port=8000)
+        serve_dynamic()
