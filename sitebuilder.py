@@ -36,7 +36,12 @@ freezer = Freezer(app)
     
 @app.route('/')
 def index():
-    return render_template('index.html', pages=pages)
+    # Articles are pages with a publication date
+    articles = (p for p in pages if 'date' in p.meta)
+    # Show the 10 most recent articles, most recent first.
+    articles = sorted(articles, reverse=True,
+                    key=lambda p: p.meta['date'])
+    return render_template('index.html', pages=articles)
 
 @app.route('/<path:path>/')
 def page(path):
@@ -75,5 +80,5 @@ if __name__ == '__main__':
         if sys.argv[1] == "static":
             freeze()
             serve_static()
-    else:
-        serve_dynamic()
+        if sys.argv[1] == "serve":
+            serve_dynamic()
