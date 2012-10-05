@@ -43,7 +43,7 @@ def make_external(url):
 
 @app.route('/recent.atom')
 def recent_feed():
-    articles = recent_pages(15)
+    articles = pages_by_date(15)
     feed = AtomFeed(u'Recent Articles',
                     feed_url=request.url,
                     url=request.url_root,
@@ -62,23 +62,42 @@ def recent_feed():
 
 ## End of ATOM feed
 
-def recent_pages(limit=10, latest_first=True):
+def pages_by_date(limit=0, latest_first=True):
     # Articles are pages with a publication date
     articles = (p for p in pages if 'date' in p.meta)
     # Show the 10 most recent articles, most recent first.
     articles = sorted(articles, reverse=latest_first,
                     key=lambda p: p.meta['date'])
-    return articles[:limit]
+    if limit:
+        return articles[:limit]
+    else:
+        return articles
+
+def prev_page(for_page):
+    articles = pages_by_date()
+    for p in articles:
+        if p == for_page: continue
+        if p.meta['date'] < for_page.meta['date']: return p
+    return None
+
+def next_page(for_page):
+    articles = pages_by_date()
+    for p in articles:
+        if p == for_page: continue
+        if p.meta['date'] > for_page.meta['date']: return p
+    return None
 
 @app.route('/')
 def index():
-    articles = recent_pages()
+    articles = pages_by_date(10)
     return render_template('index.html', pages=articles)
 
 @app.route('/<path:path>/')
 def page(path):
     page = pages.get_or_404(path)
-    return render_template('page.html', page=page)
+    prev_p = prev_page(page)
+    next_p = next_page(page)
+    return render_template('page.html', page=page, prev_page=prev_p, next_page=next_p)
 
 @app.route('/tag/<string:tag>/')
 def tag(tag):

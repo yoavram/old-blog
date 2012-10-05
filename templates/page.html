@@ -35,12 +35,23 @@
     {{ page.html|safe }}
 	
 	<ul class="pager">
-	  <li class="previous">
+	  {% if prev_page == None %}
+	  <li class="previous disabled">
 		<a href="#">&larr; Older</a>
+	  {% else %}
+	  <li class="previous">
+		<a href='/{{ prev_page.path }}'>&larr; Older</a>
+	  {% endif %}
 	  </li>
 	  
-	  <li class="next">
-		<a href="#">Newer &rarr;</a>
+	  
+	   {% if next_page == None %}
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   {% else %}
+	   <li class="next">
+		<a href='/{{ next_page.path }}'>Newer &rarr;</a>
+		{% endif %}
 	  </li>
 	  
 	</ul>
