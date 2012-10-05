@@ -30,14 +30,49 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
+
+## Generating ATOM feed
+# http://flask.pocoo.org/snippets/10/
+# http://werkzeug.pocoo.org/docs/contrib/atom/
+from urlparse import urljoin
+from flask import request
+from werkzeug.contrib.atom import AtomFeed
+
+def make_external(url):
+    return urljoin(request.url_root, url)
+
+@app.route('/recent.atom')
+def recent_feed():
+    articles = recent_pages(15)
+    feed = AtomFeed(u'Recent Articles',
+                    feed_url=request.url,
+                    url=request.url_root,
+                    author={'name':'Yoav Ram','uri':'http://www.yoavram.com/','email':'yoavram@gmail.com'},
+                    rights='CC BY-SA 3.0',
+                    updated=articles[0].date)
     
-@app.route('/')
-def index():
+    for article in articles:
+        feed.add(article.meta['title'],
+                 unicode(article.html),
+                 content_type='html',                 
+                 url=make_external(article.path),
+                 updated=article.meta['date'])
+                 
+    return feed.get_response()
+
+## End of ATOM feed
+
+def recent_pages(limit=10, latest_first=True):
     # Articles are pages with a publication date
     articles = (p for p in pages if 'date' in p.meta)
     # Show the 10 most recent articles, most recent first.
-    articles = sorted(articles, reverse=True,
+    articles = sorted(articles, reverse=latest_first,
                     key=lambda p: p.meta['date'])
+    return articles[:limit]
+
+@app.route('/')
+def index():
+    articles = recent_pages()
     return render_template('index.html', pages=articles)
 
 @app.route('/<path:path>/')

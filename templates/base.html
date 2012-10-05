@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <link rel="icon" type="image/ico" href="/static/favicon.ico">
+<link href="{{ url_for('recent_feed') }}" rel="alternate" title="Recent Articles" type="application/atom+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% block title %}Mutation Selection Blog{% endblock title %}</title>
 <!-- Le style -->
@@ -54,10 +55,10 @@
       <!-- Everything you want hidden at 940px or less, place within here -->
       <div class="nav-collapse">
         <ul class="nav">
-			<li><a href="#">Posts</a></li>
+			<li><a href="{{ url_for('index') }}">Posts</a></li>
 			<li><a href="#">About</a></li>
 			<li><a href="#">Contact</a></li>
-			<li><a href="#">RSS</a></li>
+			<li><a href="{{ url_for('recent_feed') }}">RSS</a></li>
 
 			</ul>
       </div>
