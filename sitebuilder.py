@@ -49,7 +49,7 @@ def recent_feed():
                     url=request.url_root,
                     author={'name':'Yoav Ram','uri':'http://www.yoavram.com/','email':'yoavram@gmail.com'},
                     rights='CC BY-SA 3.0',
-                    updated=articles[0].date)
+                    updated=articles[0].meta['date'])
     
     for article in articles:
         feed.add(article.meta['title'],
