@@ -16,8 +16,9 @@ def pygmented_markdown(text):
     .. _mathjax: https://github.com/mayoff/python-markdown-mathjax
     .. _abbr: http://freewisdom.org/projects/python-markdown/Abbreviations
     .. _footnotes: http://freewisdom.org/projects/python-markdown/Footnotes
+    .. _toc: http://freewisdom.org/projects/python-markdown/Table_of_Contents
     """
-    extensions = ['mathjax', 'footnotes', 'abbr']
+    extensions = ['mathjax', 'footnotes', 'abbr', 'toc']
     return markdown.markdown(text, extensions)
 
 
