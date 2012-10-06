@@ -44,53 +44,53 @@ def make_external(url):
 
 @app.route('/recent.atom')
 def recent_feed():
-    articles = pages_by_date(15)
+    articles = pages_by_datetime(15)
     feed = AtomFeed(u'Recent Articles',
                     feed_url=request.url,
                     url=request.url_root,
                     author={'name':'Yoav Ram','uri':'http://www.yoavram.com/','email':'yoavram@gmail.com'},
                     rights='CC BY-SA 3.0',
-                    updated=articles[0].meta['date'])
+                    updated=articles[0].meta['datetime'])
     
     for article in articles:
         feed.add(article.meta['title'],
                  unicode(article.html),
                  content_type='html',                 
                  url=make_external(article.path),
-                 updated=article.meta['date'])
+                 updated=article.meta['datetime'])
                  
     return feed.get_response()
 
 ## End of ATOM feed
 
-def pages_by_date(limit=0, latest_first=True):
+def pages_by_datetime(limit=0, latest_first=True):
     # Articles are pages with a publication date
-    articles = (p for p in pages if 'date' in p.meta)
+    articles = (p for p in pages if 'datetime' in p.meta)
     # Show the 10 most recent articles, most recent first.
     articles = sorted(articles, reverse=latest_first,
-                    key=lambda p: p.meta['date'])
+                    key=lambda p: p.meta['datetime'])
     if limit:
         return articles[:limit]
     else:
         return articles
 
 def prev_page(for_page):
-    articles = pages_by_date()
+    articles = pages_by_datetime()
     for p in articles:
         if p == for_page: continue
-        if p.meta['date'] < for_page.meta['date']: return p
+        if p.meta['datetime'] < for_page.meta['datetime']: return p
     return None
 
 def next_page(for_page):
-    articles = pages_by_date()
+    articles = pages_by_datetime()
     for p in articles:
         if p == for_page: continue
-        if p.meta['date'] > for_page.meta['date']: return p
+        if p.meta['datetime'] > for_page.meta['datetime']: return p
     return None
 
 @app.route('/')
 def index():
-    articles = pages_by_date(10)
+    articles = pages_by_datetime(10)
     return render_template('index.html', pages=articles)
 
 @app.route('/<path:path>/')

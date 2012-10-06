@@ -13,7 +13,7 @@
 <div class="post">
 
 	<h1>{{ page.title }}</h1>
-	<span class="post-date">{{ page.date }} UTC</span>
+	<span class="post-date">{{ page.datetime }} UTC</span>
 	
 	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
 	<p>
@@ -105,7 +105,7 @@
 {% if page.cite %}
 <div class="well">
 <strong>Please cite this article as:</strong><br>
-Ram, Yoav ({{ page.date.year }}) {{ page.title }}. <em>The Mutation Selection Blog</em>. <a href='http://yoavram.bitbucket.org/{{ page.path }}'>http://yoavram.bitbucket.org/{{ page.path }}</a>
+Ram, Yoav ({{ page.datetime.year }}) {{ page.title }}. <em>The Mutation Selection Blog</em>. <a href='http://yoavram.bitbucket.org/{{ page.path }}'>http://yoavram.bitbucket.org/{{ page.path }}</a>
 </div>
 {% endif %}
 {% endblock sidebar %}
