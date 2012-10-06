@@ -2,12 +2,15 @@ import os.path
 import os
 from distutils import dir_util
 import getpass
+import sitebuilder
 
 USERNAME = "yoavram"
+BLOG_REPO = "msb"
 BUILD_FOLDER = "/workspace/msb/build/"
 DEPLOY_FOLDER = "/workspace/"+USERNAME+".bitbucket.org"
 COMMIT_MESSAGE = "update"
 DEBUG = False
+PASSWORD = getpass.getpass("Bitbucket password:")
 
 def run_and_print(cmd):
     if DEBUG:
@@ -17,16 +20,20 @@ def run_and_print(cmd):
         print fin.read()
         fin.close()
 
-import sitebuilder
-sitebuilder.freeze()
+# push commits of the blog builder (no commiting!)
+run_and_print("hg push https://"+USERNAME+":"+PASSWORD+"@bitbucket.org/"+USERNAME+"/"+BLOG_REPO)
 
+# build the static blog
+sitebuilder.freeze()
+# TODO check for errors
+
+# add, commit, push the static blog
 os.chdir(DEPLOY_FOLDER)
 print "cd",os.getcwd()
-run_and_print("hg pull")
+run_and_print("hg pull") # this is only done for the right cycle, it doesnt matter at all, so no update.
 copied_files = dir_util.copy_tree(BUILD_FOLDER,".")
 print "Copied",len(copied_files),"files"
 # hg merge?
 run_and_print('hg add *')
 run_and_print('hg commit -m "'+COMMIT_MESSAGE+'"')
-passwd = getpass.getpass()
-run_and_print("hg push https://"+USERNAME+":"+passwd+"@bitbucket.org/"+USERNAME+"/"+USERNAME+".bitbucket.org")
+run_and_print("hg push https://"+USERNAME+":"+PASSWORD+"@bitbucket.org/"+USERNAME+"/"+USERNAME+".bitbucket.org")
