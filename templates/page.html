@@ -2,9 +2,11 @@
 {% block title %} {{ page.title }} {% endblock title %}
 
 {% block head %}
+<!-- ShareThis JS -->
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "ur-fbcd7053-76f9-85c3-b29f-848f5f75e2af"});</script>
+<!-- ShareThis JS -->
 {% endblock head %}
 
 {% block content %}
@@ -34,6 +36,7 @@
 	
     {{ page.html|safe }}
 	
+	<!-- pagination -->
 	<ul class="pager">
 	  {% if prev_page == None %}
 	  <li class="previous disabled">
@@ -63,7 +66,10 @@
 		<a href="#">Back to top &uarr;</a>
 	  </li>
 	</ul>
+	<!-- end of pagination -->
+	
 </div>
+
 <!--
 	<div class="related">
 	<h2>Related Posts</h2>
@@ -72,6 +78,7 @@
     {% endwith %}
 	</div>
 -->
+
 <!-- Comments -->
 <div id="disqus_thread"></div>
 <script type="text/javascript">
