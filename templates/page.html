@@ -77,7 +77,9 @@
 <script type="text/javascript">
 	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 	var disqus_shortname = 'yoavram'; // required: replace example with your forum shortname
-
+	{% if config.DEBUG %}
+	var disqus_developer = 1; // 1 - DEBUG mode. comment out to production mode.
+	{% endif %}
 	/* * * DON'T EDIT BELOW THIS LINE * * */
 	(function() {
 		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
