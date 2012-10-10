@@ -5,7 +5,7 @@
 <link rel="icon" type="image/ico" href="/static/favicon.ico">
 <link href="{{ url_for('recent_feed') }}" rel="alternate" title="Recent Articles" type="application/atom+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% block title %}Mutation Selection Blog{% endblock title %}</title>
+<title>{% block title %} {{ config.BLOG_NAME }} {% endblock title %}</title>
 <!-- Le style -->
 <link href="/static/theme.css" rel="stylesheet">
 <link href="/static/jekyll.css" rel="stylesheet">
@@ -15,7 +15,7 @@
 [class^="icon-"] { background-image: url("/static/glyphicons-halflings.png"); } 
 [class*="icon-white"] { background-image: url("/static/glyphicons-halflings-white.png"); } 
 </style>
-<link href="/static/prettify_bt.css" rel="stylesheet">
+<link href="/static/prettify.css" rel="stylesheet">
 <!-- Le JS -->
 <script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="/static/bootstrap.min.js"></script>
@@ -44,7 +44,7 @@
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-3865698-10']);
+  _gaq.push(['_setAccount', '{{ config.GOOGLE_ANALYTICS }}']);
   _gaq.push(['_trackPageview']);
 
   (function() {
@@ -72,7 +72,7 @@
       </a>
  
       <!-- Be sure to leave the brand out there if you want it shown -->
-      <a class="brand" href='{{ url_for("index") }}'>The Mutation Selection Blog</a>
+      <a class="brand" href='{{ url_for("index") }}'>{{ config.BLOG_NAME }}</a>
  
       <!-- Everything you want hidden at 940px or less, place within here -->
       <div class="nav-collapse">
@@ -149,7 +149,7 @@
 		<!--a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
 		<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
 		</a-->
-		<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">The Mutation Selection Blog</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www,yoavram.com" property="cc:attributionName" rel="cc:attributionURL">Yoav Ram</a>
+		<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">{{ config.BLOG_NAME }}</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="{{ config.AUTHOR_WEBSITE }}" property="cc:attributionName" rel="cc:attributionURL">{{ config.AUTHOR_FIRSTNAME }} {{ config.AUTHOR_LASTNAME }}</a>
 		is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>		
 	</li>
   </ul>

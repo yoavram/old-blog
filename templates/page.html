@@ -5,7 +5,7 @@
 <!-- ShareThis JS -->
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "ur-fbcd7053-76f9-85c3-b29f-848f5f75e2af"});</script>
+<script type="text/javascript">stLight.options({publisher: "{{ config.SHARETHIS_PUBLISHER}}"});</script>
 <!-- ShareThis JS -->
 {% endblock head %}
 
@@ -13,7 +13,7 @@
 <div class="post">
 
 	<h1>{{ page.title }}</h1>
-	<span class="post-date">{{ page.datetime }} UTC</span>
+	<span class="post-date">{{ page.datetime }} UTC - <a href='{{ config.WEBSITE_ADDRESS }}{{ page.path }}'>Permalink</a></span>
 	
 	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
 	<p>
@@ -31,7 +31,7 @@
 	<!-- end of sharethis -->
 	
 	<!--div class="tweet-btn">
-	  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="horizontal" data-via="yoavram" data-url='{{ url_for("page", path=page.path) }}'>Tweet</a>
+	  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="horizontal" data-via="{{ config.TWITTER_USERNAME }}" data-url='{{ url_for("page", path=page.path) }}'>Tweet</a>
 	</div-->
 	
     {{ page.html|safe }}
@@ -86,7 +86,7 @@
 
 	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
-	var disqus_shortname = 'yoavram'; // required: replace example with your forum shortname
+	var disqus_shortname = '{{ config.DISQUS_SHORTNAME }}'; // required: replace example with your forum shortname
 	var disqus_identifier = '{{ page.path }}';
 	{% if config.DEBUG %}
 	var disqus_developer = 1; // 1 - DEBUG mode. comment out to production mode.
@@ -107,7 +107,7 @@
 {% if page.cite %}
 <div class="well">
 <strong>Please cite this article as:</strong><br>
-Ram, Yoav ({{ page.datetime.year }}) {{ page.title }}. <em>The Mutation Selection Blog</em>. <a href='http://yoavram.bitbucket.org/{{ page.path }}'>http://yoavram.bitbucket.org/{{ page.path }}</a>
+{{ config.AUTHOR_LASTNAME }}, {{ config.AUTHOR_FIRSTNAME }} ({{ page.datetime.year }}) {{ page.title }}. <em>{{ config.BLOG_NAME }}</em>. <a href='{{ config.WEBSITE_ADDRESS }}{{ page.path }}'>{{ config.WEBSITE_ADDRESS }}{{ page.path }}</a>
 </div>
 {% endif %}
 {% endblock sidebar %}

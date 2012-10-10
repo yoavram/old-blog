@@ -23,6 +23,20 @@ def pygmented_markdown(text):
 
 
 DEBUG = True
+WEBSITE_ADDRESS = r"http://yoavram.bitbucket.org/"
+SHARETHIS_PUBLISHER = "ur-fbcd7053-76f9-85c3-b29f-848f5f75e2af"
+DISQUS_SHORTNAME = "yoavram"
+AUTHOR_LASTNAME = "Ram"
+AUTHOR_FIRSTNAME = "Yoav"
+BLOG_NAME = "The Mutation-Selection Blog"
+BLOG_MOTTO = "Math, Science, Biology and the Mutation Selection Balance"
+GOOGLE_ANALYTICS = "UA-3865698-10"
+AUTHOR_WEBSITE = r"http://www.yoavram.com"
+PUBMED_RSS = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=1RukBFKPvabUOwpqbC3ttHi8F4FuasZqQqkc1ePwc-qWGdC1Y8"
+# https://twitter.com/settings/widgets/{{ config.TWITTER_WIDGET_ID }}/edit
+TWITTER_USERNAME = "yoavram"
+TWITTER_WIDGET_ID = "253957912479793152"
+
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_HTML_RENDERER = pygmented_markdown

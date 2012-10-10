@@ -11,11 +11,11 @@ a:hover {
 /* Masthead
 -------------------------------------------------- */
 
-.msb-logo {
+.site-logo {
   position: relative;
   margin: 0 auto 20px;
 }
-.msb-logo img {
+.site-logo img {
   display: block;
   margin: 0 auto;
    -webkit-transition: all 0.1s ease-in-out;

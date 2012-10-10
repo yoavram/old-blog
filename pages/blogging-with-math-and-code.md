@@ -87,14 +87,10 @@ The confguration parameters are as follows:
   - <code>availableFonts</code> tells it to prefer using the [STIX](http://www.stixfonts.org/) font if it is available.
   - <code>linebreaks</code> tells it to automatically break (wrap) long equations.
   
-Now you can write:
-
-<pre>
-$LaTeX$ is cool:
+Now you can write: <code>$LaTeX$ is cool:
 $$
 p' = p + (1-p)(1-s)\mu
-$$
-</pre>
+$$</code>
 to get the following result:
 
 $LaTeX$ is cool:
@@ -112,7 +108,10 @@ It is then highlighted in the browser using [Google code prettifier](http://goog
 
 See the [README](http://google-code-prettify.googlecode.com/svn/trunk/README.html) for detailed instructions. 
 It's very easy to use and is the highligher used by [Google Code](http://code.google.com) and [stackoverflow.com](http://stackoverflow.com/).
-If you have problems displaying HTML or XML I suggest trying to replace <code>&lt;</code> with <code>&amp;lt;</code>[^html-escaping-tool].
+
+If you have problems displaying HTML or XML source I suggest trying to replace <code>&lt;</code> with <code>&amp;lt;</code>[^html-escaping-tool].
+
+For a nice example of different styles you can use (by replacing the default <code>prettify.css</code> file), see [Stanley Ng's website](http://demo.stanleyhlng.com/prettify-js/?id=sons-of-obsidian-dark).
 
 
 [^latex]: [Online LaTeX editor](http://texify.com/)

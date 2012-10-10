@@ -223,6 +223,25 @@ a:hover {
 	word-wrap: break-word;
 }
 
+.sidebar ul, .sidebar p {
+  text-align: left;
+  font-size: 14px;
+  line-height: 20px;
+  color: #999999;
+  margin-bottom: 40px;
+}
+.sidebar ul {
+  margin-left: 0;
+}
+.sidebar ul li {
+  display: inline;
+  padding: 0 0;
+}
+.sidebar h3 {
+  margin: 0;
+  font-size: 14px;
+}
+
 /* Footer
 -------------------------------------------------- */
 
