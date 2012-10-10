@@ -80,12 +80,14 @@
 -->
 
 <!-- Comments -->
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
+
 	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
 	var disqus_shortname = 'yoavram'; // required: replace example with your forum shortname
-	var disqus_identifier = {{ page.path }};
+	var disqus_identifier = '{{ page.path }}';
 	{% if config.DEBUG %}
 	var disqus_developer = 1; // 1 - DEBUG mode. comment out to production mode.
 	{% endif %}

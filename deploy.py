@@ -24,7 +24,7 @@ def run_and_print(cmd):
 run_and_print("hg push https://"+USERNAME+":"+PASSWORD+"@bitbucket.org/"+USERNAME+"/"+BLOG_REPO)
 
 # build the static blog
-sitebuilder.freeze()
+sitebuilder.freeze(False)
 # TODO check for errors
 
 # add, commit, push the static blog
@@ -36,4 +36,4 @@ print "Copied",len(copied_files),"files"
 # hg merge?
 run_and_print('hg add *') # FIX: this doesn't add folders? somehow doesn't work
 run_and_print('hg commit -m "'+COMMIT_MESSAGE+'"')
-run_and_print("hg push https://"+USERNAME+":"+PASSWORD+"@bitbucket.org/"+USERNAME+"/"+USERNAME+".bitbucket.org")
+run_and_print("hg push https://"+USERNAME+":"+PASSWORD+"@bitbucket.org/"+USERNAME+"/"+USERNAME+".bitbucket.org --force")

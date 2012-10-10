@@ -105,8 +105,9 @@ def tag(tag):
     tagged = [p for p in pages if tag in p.meta.get('tags', [])]
     return render_template('tag.html', pages=tagged, tag=tag)
 
-def freeze():
-    freezer.freeze()
+def freeze(debug=True):
+	app.config['DEBUG'] = debug
+	freezer.freeze()
 
 def serve_static():
     import os
@@ -127,9 +128,8 @@ def serve_dynamic():
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        if sys.argv[1] == "build":
-            app.config['DEBUG'] = False
-            freeze()
+        if sys.argv[1] == "build":            
+			freeze(False)
         if sys.argv[1] == "static":
             freeze()
             serve_static()
