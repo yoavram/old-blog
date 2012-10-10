@@ -34,6 +34,6 @@ run_and_print("hg pull") # this is only done for the right cycle, it doesnt matt
 copied_files = dir_util.copy_tree(BUILD_FOLDER,".")
 print "Copied",len(copied_files),"files"
 # hg merge?
-run_and_print('hg add *') # FIX: this doesn't add folders? somehow doesn't work
+run_and_print('hg add .') 
 run_and_print('hg commit -m "'+COMMIT_MESSAGE+'"')
 run_and_print("hg push https://"+USERNAME+":"+PASSWORD+"@bitbucket.org/"+USERNAME+"/"+USERNAME+".bitbucket.org --force")
