@@ -2,3 +2,6 @@ syntax: glob
 build/*
 build
 *.pyc
+static/bootstrap.js
+static/bootstrap.css
+static/bootstrap-responsive.css
