@@ -39,6 +39,7 @@
 <script type="text/javascript" src="/static/prettify.js"></script>
 {% block head %}
 {% endblock head %}
+{% if not config.DEBUG %}
 <!-- Google Analytics www.google.com/analytics/ -->
 <script type="text/javascript">
 
@@ -51,7 +52,7 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
+{% endif %}
 </script>
 <!-- End Analytics -->
 </head>
@@ -119,26 +120,37 @@
 <footer class="colophon">
   <div class="row-fluid">
   <div class="span7 offset2">
-  <ul class="quick-links">
-	<li>Links</li>
-    <li><a href="http://www.yoavram.com/">yoavram.com</a></li>
-    <li><a href="https://bitbucket.org/yoavram/">Code</a></li>
-	<li><a href="http://rtfmed.wordpress.com/">RTFMed</a></li>
-  </ul>
+ 
   <ul class="quick-links">
 	<li>Powered by</li>
 	<li><a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a></li>
 	<li><a href="http://python.org/">Python</a></li>
 	<li><a href="http://flask.pocoo.org/">Flask</a></li>
-	<li><a href="http://flask.pocoo.org/">Flask</a></li>
 	<li><a href="http://bitbucket.org/">Bitbucket</a></li>
+	<li><a href="http://mathjax.org/">MathJax</a></li>
+	<li><a href="http://freewisdom.org/projects/python-markdown/">Markdown</a></li>
+	<li><a href="http://code.google.com/p/google-code-prettify/">Google code prettifier</a></li>
+
   </ul>
+  
+  <ul class="quick-links">
+	<li>Code</li>
+    <li><a href="https://bitbucket.org/yoavram/yoavram.bitbucket.org">Static site</a></li>
+    <li><a href="https://bitbucket.org/yoavram/msb">Site generator</a></li>
+    <li>Logo</li>
+	<li><a href="http://www.idancohen.com/">Idan Cohen</a></li>
+	<li>Fonts</li>
+	<li><a href="http://www.dafont.com/sketch-block.font">Sketch Block</a></li>
+	<li><a href="http://www.dafont.com/positiv-a.font">Positiv-A</a></li>
+  </ul>
+  
   <ul class="quick-links">
 	<li> 
 		<!--a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
 		<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
 		</a-->
-		<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">The Mutation Selection Blog</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www,yoavram.com" property="cc:attributionName" rel="cc:attributionURL">Yoav Ram</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>		
+		<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">The Mutation Selection Blog</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www,yoavram.com" property="cc:attributionName" rel="cc:attributionURL">Yoav Ram</a>
+		is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>		
 	</li>
   </ul>
 	{% if config.DEBUG %}
