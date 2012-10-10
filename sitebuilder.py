@@ -88,19 +88,21 @@ def pages_by_datetime(limit=0, latest_first=True):
     else:
         return articles
 
-def prev_page(for_page):
-    articles = pages_by_datetime()
-    for p in articles:
-        if p == for_page: continue
-        if p.meta['datetime'] < for_page.meta['datetime']: return p
-    return None
+def prev_page(page):
+    sorted_pages = pages_by_datetime(latest_first=False)
+    index = sorted_pages.index(page)
+    if index > 0:
+        return sorted_pages[index - 1]
+    else:
+        return None
 
-def next_page(for_page):
-    articles = pages_by_datetime()
-    for p in articles:
-        if p == for_page: continue
-        if p.meta['datetime'] > for_page.meta['datetime']: return p
-    return None
+def next_page(page):
+    sorted_pages = pages_by_datetime(latest_first=False)
+    index = sorted_pages.index(page)
+    if (index+1) < len(sorted_pages):
+        return sorted_pages[index + 1]
+    else:
+        return None
 
 @app.route('/')
 def index():
@@ -143,7 +145,7 @@ def serve_dynamic():
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         if sys.argv[1] == "build":            
-			freeze(False)
+            freeze(False)
         if sys.argv[1] == "static":
             freeze()
             serve_static()
