@@ -77,9 +77,9 @@
       <!-- Everything you want hidden at 940px or less, place within here -->
       <div class="nav-collapse">
         <ul class="nav">
-			<li><a href="{{ url_for('index') }}">Posts</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><a href="{{ url_for('blog') }}"><i class="icon-home"></i> Blog</a></li>
+			<li><a href="{{ url_for('about') }}"><i class="icon-user"></i> About</a></li>
+			<li><a href="{{ url_for('contact') }}"><i class="icon-comment"></i> Contact</a></li>
 			<li><a href="{{ url_for('recent_feed') }}">RSS</a></li>
 
 			</ul>

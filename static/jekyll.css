@@ -223,7 +223,7 @@ a:hover {
 	word-wrap: break-word;
 }
 
-.sidebar ul, .sidebar p {
+/*.sidebar ul, .sidebar p {
   text-align: left;
   font-size: 14px;
   line-height: 20px;
@@ -236,7 +236,7 @@ a:hover {
 .sidebar ul li {
   display: inline;
   padding: 0 0;
-}
+}*/
 .sidebar h3 {
   margin: 0;
   font-size: 14px;

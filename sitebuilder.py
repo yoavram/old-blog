@@ -1,7 +1,7 @@
 # https://nicolas.perriault.net/code/2012/dead-easy-yet-powerful-static-website-generator-with-flask/
 import sys
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 # http://packages.python.org/Flask-FlatPages
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
@@ -23,18 +23,19 @@ def pygmented_markdown(text):
 
 
 DEBUG = True
-WEBSITE_ADDRESS = r"http://yoavram.bitbucket.org/"
+WEBSITE_ADDRESS = u"http://yoavram.bitbucket.org/"
+BLOG_ADDRESS = WEBSITE_ADDRESS+u"blog"
 SHARETHIS_PUBLISHER = "ur-fbcd7053-76f9-85c3-b29f-848f5f75e2af"
-DISQUS_SHORTNAME = "yoavram"
-AUTHOR_LASTNAME = "Ram"
-AUTHOR_FIRSTNAME = "Yoav"
-BLOG_NAME = "The Mutation-Selection Blog"
-BLOG_MOTTO = "Math, Science, Biology and the Mutation Selection Balance"
+DISQUS_SHORTNAME = u"yoavram"
+AUTHOR_LASTNAME = u"Ram"
+AUTHOR_FIRSTNAME = u"Yoav"
+BLOG_NAME = u"The Mutation-Selection Blog"
+BLOG_MOTTO = u"Math, Science, Biology and the Mutation Selection Balance"
 GOOGLE_ANALYTICS = "UA-3865698-10"
-AUTHOR_WEBSITE = r"http://www.yoavram.com"
-PUBMED_RSS = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=1RukBFKPvabUOwpqbC3ttHi8F4FuasZqQqkc1ePwc-qWGdC1Y8"
+AUTHOR_WEBSITE = u"http://www.yoavram.com/"
+PUBMED_RSS = u"http://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=1RukBFKPvabUOwpqbC3ttHi8F4FuasZqQqkc1ePwc-qWGdC1Y8"
 # https://twitter.com/settings/widgets/{{ config.TWITTER_WIDGET_ID }}/edit
-TWITTER_USERNAME = "yoavram"
+TWITTER_USERNAME = u"yoavram"
 TWITTER_WIDGET_ID = "253957912479793152"
 
 FLATPAGES_AUTO_RELOAD = DEBUG
@@ -106,17 +107,29 @@ def next_page(page):
 
 @app.route('/')
 def index():
+    return redirect(url_for('blog'))
+
+@app.route('/about')
+def about():
+    return redirect(AUTHOR_WEBSITE)
+
+@app.route('/contact')
+def contact():
+    return redirect(AUTHOR_WEBSITE)
+
+@app.route('/blog')
+def blog():
     articles = pages_by_datetime(10)
     return render_template('index.html', pages=articles)
 
-@app.route('/<path:path>/')
+@app.route('/blog/<path:path>/')
 def page(path):
     page = pages.get_or_404(path)
     prev_p = prev_page(page)
     next_p = next_page(page)
     return render_template('page.html', page=page, prev_page=prev_p, next_page=next_p)
 
-@app.route('/tag/<string:tag>/')
+@app.route('/blog/tag/<string:tag>/')
 def tag(tag):
     tagged = [p for p in pages if tag in p.meta.get('tags', [])]
     return render_template('tag.html', pages=tagged, tag=tag)

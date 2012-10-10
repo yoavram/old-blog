@@ -11,12 +11,21 @@
 
 {% block content %}
 <div class="post">
-
 	<h1>{{ page.title }}</h1>
-	<span class="post-date">{{ page.datetime }} UTC - <a href='{{ config.WEBSITE_ADDRESS }}{{ page.path }}'>Permalink</a></span>
+	<ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
+	<li class="active"><i class="icon-time"></i> {{ page.datetime }} UTC</li>
+	
+	<li><span class="divider">/</span><a href='{{ config.BLOG_ADDRESS }}{{ page.path }}'>
+	<i class="icon-star"></i> Permalink </li>
+	{% if page.tags %}
+	{% for tag in page.tags %}
+	<li><span class="divider">/</span><a href="{{ url_for('blog') }}/tag/{{ tag }}">
+		<i class="icon-tag"></i> {{ tag }} </a></li>
+	{% endfor %}
+	{% endif %}
 	
 	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
-	<p>
+	<li><span class="divider">/</span>
 	<span class='st_email' ></span>
 	<span class='st_twitter' ></span>
 	<span class='st_facebook' ></span>
@@ -27,8 +36,11 @@
 	<span class='st_delicious' ></span>
 	<span class='st_citeulike' ></span>
 	<span class='st_connotea' ></span>
-	</p>
+	</li>
+	</ul>
 	<!-- end of sharethis -->
+	
+	
 	
 	<!--div class="tweet-btn">
 	  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="horizontal" data-via="{{ config.TWITTER_USERNAME }}" data-url='{{ url_for("page", path=page.path) }}'>Tweet</a>
@@ -43,7 +55,7 @@
 		<a href="#">&larr; Older</a>
 	  {% else %}
 	  <li class="previous">
-		<a href='/{{ prev_page.path }}'>&larr; Older</a>
+		<a href='{{ url_for("blog") }}/{{ prev_page.path }}'>&larr; Older</a>
 	  {% endif %}
 	  </li>
 	  
@@ -53,14 +65,14 @@
 	   <a href='#'>Newer &rarr;</a>
 	   {% else %}
 	   <li class="next">
-		<a href='/{{ next_page.path }}'>Newer &rarr;</a>
+		<a href='{{ url_for("blog") }}/{{ next_page.path }}'>Newer &rarr;</a>
 		{% endif %}
 	  </li>
 	  
 	</ul>
 	<ul class="pager">
 	  <li class="previous">
-		<a href='{{ url_for("index") }}'>&larr; Back to posts</a>
+		<a href='{{ url_for("blog") }}'>&larr; Back to blog</a>
 	  </li>
 	  <li class="next">
 		<a href="#">Back to top &uarr;</a>
@@ -107,7 +119,7 @@
 {% if page.cite %}
 <div class="well">
 <strong>Please cite this article as:</strong><br>
-{{ config.AUTHOR_LASTNAME }}, {{ config.AUTHOR_FIRSTNAME }} ({{ page.datetime.year }}) {{ page.title }}. <em>{{ config.BLOG_NAME }}</em>. <a href='{{ config.WEBSITE_ADDRESS }}{{ page.path }}'>{{ config.WEBSITE_ADDRESS }}{{ page.path }}</a>
+{{ config.AUTHOR_LASTNAME }}, {{ config.AUTHOR_FIRSTNAME }} ({{ page.datetime.year }}) {{ page.title }}. <em>{{ config.BLOG_NAME }}</em>. <a href='{{ config.BLOG_ADDRESS }}{{ page.path }}'>{{ config.BLOG_ADDRESS }}{{ page.path }}</a>
 </div>
 {% endif %}
 {% endblock sidebar %}
