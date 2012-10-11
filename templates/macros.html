@@ -59,14 +59,14 @@
 
 {% macro pagebar(config, page) %}
 <ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
-	<li class="active"><i class="icon-time"></i> {{ page.datetime }} UTC</li>
+	<li class="active"><i class="icon-time"></i> {{ page.datetime | format_datetime }}</li>
 	
-	<li><span class="divider">/</span><a href='{{ permalink(config, page) }}'>
-	<i class="icon-star"></i> Permalink </li>
+	<li><span class="divider">/</span>
+	<i class="icon-star"></i> <a href='{{ permalink(config, page) }}'>Permalink</a></li>
 	{% if page.tags %}
 	{% for tag in page.tags %}
-	<li><span class="divider">/</span><a href="{{ url_for('blog') }}/tag/{{ tag }}">
-		<i class="icon-tag"></i> {{ tag }} </a></li>
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="{{ url_for('blog') }}/tag/{{ tag }}">{{ tag }}</a></li>
 	{% endfor %}
 	{% endif %}
 	

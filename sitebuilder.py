@@ -21,7 +21,6 @@ def pygmented_markdown(text):
     extensions = ['mathjax', 'footnotes', 'abbr', 'toc']
     return markdown.markdown(text, extensions)
 
-
 DEBUG = True
 WEBSITE_ADDRESS = u"http://yoavram.bitbucket.org/"
 BLOG_ADDRESS = WEBSITE_ADDRESS+u"blog"
@@ -46,6 +45,13 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
+
+# http://jinja.pocoo.org/docs/api/#custom-filters
+def format_datetime(value, format="%B %d, %Y %Z"):
+    return value.strftime(format)
+
+app.jinja_env.filters['format_datetime'] = format_datetime
+
 
 ## Generating ATOM feed
 # http://flask.pocoo.org/snippets/10/
