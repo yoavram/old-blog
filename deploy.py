@@ -20,12 +20,13 @@ def run_and_print(cmd):
         print fin.read()
         fin.close()
 
-# push commits of the blog builder (no commiting!)
-run_and_print("hg push https://"+USERNAME+":"+PASSWORD+"@bitbucket.org/"+USERNAME+"/"+BLOG_REPO)
 
 # build the static blog
 sitebuilder.freeze(False)
 # TODO check for errors
+
+# push commits of the blog builder (no commiting!)
+run_and_print("hg push https://"+USERNAME+":"+PASSWORD+"@bitbucket.org/"+USERNAME+"/"+BLOG_REPO)
 
 # add, commit, push the static blog
 os.chdir(DEPLOY_FOLDER)
