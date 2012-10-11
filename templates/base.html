@@ -131,16 +131,28 @@
 	{% block footer %}
 	{% endblock footer %}
 	<ul class="quick-links">
-	<li>Powered by</li>
+	<li> 
+		<!--a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+		<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
+		</a-->
+		The content on "<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">{{ config.BLOG_NAME }}</span>" by <a xmlns:cc="http://creativecommons.org/ns#" href="{{ config.AUTHOR_WEBSITE }}" property="cc:attributionName" rel="cc:attributionURL">{{ config.AUTHOR_FIRSTNAME }} {{ config.AUTHOR_LASTNAME }}</a>
+		is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>	license.
+		<!-- Creative Commons Attribution-ShareAlike 3.0 Unported License -->
+		Other components of this site are licensed separately:
+	</li>
+	</ul>
+	<ul class="quick-links">
+	<li>Front</li>
 	<li><a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a></li>
+	<li><a href="http://glyphicons.com/">Glyphicons Free</a><li>
+	<li><a href="http://code.google.com/p/google-code-prettify/">Google code prettifier</a></li>
+	<li><a href="http://mathjax.org/">MathJax</a></li>
+	<li>Back</li>
 	<li><a href="http://python.org/">Python</a></li>
 	<li><a href="http://flask.pocoo.org/">Flask</a></li>
 	<li><a href="http://bitbucket.org/">Bitbucket</a></li>
-	<li><a href="http://mercurial.selenic.com/">Mercurial</a></li>
-	<li><a href="http://mathjax.org/">MathJax</a></li>
+	<li><a href="http://mercurial.selenic.com/">Mercurial</a></li>	
 	<li><a href="http://freewisdom.org/projects/python-markdown/">Markdown</a></li>
-	<li><a href="http://code.google.com/p/google-code-prettify/">Google code prettifier</a></li>
-	<li><a href="http://glyphicons.com/">Glyphicons Free</a><li>
 	</ul>
   
 	<ul class="quick-links">
@@ -149,24 +161,11 @@
 	<li><a href="https://bitbucket.org/yoavram/msb">Site generator</a></li>
 	<li>Logo</li>
 	<li><a href="http://www.idancohen.com/">Idan Cohen</a></li>
-	<li>Fonts</li>
 	<li><a href="http://www.dafont.com/sketch-block.font">Sketch Block</a></li>
 	<li><a href="http://www.dafont.com/positiv-a.font">Positiv-A</a></li>
 	</ul>
   
-	<ul class="quick-links">
-	<li> 
-		<!--a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
-		<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
-		</a-->
-		The content on "<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">{{ config.BLOG_NAME }}</span>" by <a xmlns:cc="http://creativecommons.org/ns#" href="{{ config.AUTHOR_WEBSITE }}" property="cc:attributionName" rel="cc:attributionURL">{{ config.AUTHOR_FIRSTNAME }} {{ config.AUTHOR_LASTNAME }}</a>
-		is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>		
-	</li>
-	</ul>
-	<ul class="quick-links">
-	<li>All other components of this site are liscensed separately, see links above</li>
-	</li>
-	</ul>
+	
 	{% if config.DEBUG %}
 	<ul class="quick-links">
 	<li>Debug mode</li>
