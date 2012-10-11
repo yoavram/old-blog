@@ -15,7 +15,7 @@
 <div class="row-fluid">
 	<div class="span8 offset1">
 	<header class="masthead">
-	{{ macros.pagination(prev_page, next_page) }}
+	{{ macros.pagination(prev_page(page), next_page(page)) }}
 	{{ macros.back_and_top(False) }}
 	<h1>{{ page.title }}</h1>
 	{{ macros.pagebar(config, page) }}
@@ -45,4 +45,6 @@
 	{% if page.cite %}
 	{{ macros.citation(config, page) }}
 	{% endif %}
+	
+	{{ macros.show_tag_count(tag_count()) }}
 {% endblock sidebar %}

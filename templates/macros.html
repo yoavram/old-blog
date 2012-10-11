@@ -177,3 +177,11 @@
 <!-- http://figshare.com/widgets -->
 <iframe src="http://figshare.com/badges/4/{{ config.FIGSHARE_ID }}" frameborder="0" width="260" height="25"></iframe>
 {% endmacro %}
+
+{% macro show_tag_count(tags) %}
+<ul class="unstyled">
+{% for tag in tags.keys() %}
+	<li><i class="icon-tag"></i> <a href='{{ url_for("tag", tag=tag) }}'>{{ tag }}</a>: <small>{{ tags[tag] }}</small></li>
+{% endfor %}
+</ul>
+{% endmacro %}

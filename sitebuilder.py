@@ -69,6 +69,34 @@ from werkzeug.contrib.atom import AtomFeed
 def make_external(url):
     return urljoin(request.url_root, url)
 
+def tag_count():
+    tags = {}
+    for p in pages:
+        for t in p.meta.get('tags', []):
+            tags[t] = tags.get(t,0) + 1
+    return tags
+
+def prev_page(page):
+    sorted_pages = pages_by_datetime(latest_first=False)
+    index = sorted_pages.index(page)
+    if index > 0:
+        return sorted_pages[index - 1]
+    else:
+        return None
+
+def next_page(page):
+    sorted_pages = pages_by_datetime(latest_first=False)
+    index = sorted_pages.index(page)
+    if (index+1) < len(sorted_pages):
+        return sorted_pages[index + 1]
+    else:
+        return None
+    
+app.jinja_env.globals['make_external'] = make_external
+app.jinja_env.globals['tag_count'] = tag_count
+app.jinja_env.globals['prev_page'] = prev_page
+app.jinja_env.globals['next_page'] = next_page
+
 @app.route('/recent.atom')
 def recent_feed():
     articles = pages_by_datetime(15)
@@ -101,22 +129,6 @@ def pages_by_datetime(limit=0, latest_first=True):
     else:
         return articles
 
-def prev_page(page):
-    sorted_pages = pages_by_datetime(latest_first=False)
-    index = sorted_pages.index(page)
-    if index > 0:
-        return sorted_pages[index - 1]
-    else:
-        return None
-
-def next_page(page):
-    sorted_pages = pages_by_datetime(latest_first=False)
-    index = sorted_pages.index(page)
-    if (index+1) < len(sorted_pages):
-        return sorted_pages[index + 1]
-    else:
-        return None
-
 @app.route('/')
 def index():
     return redirect(url_for('blog'))
@@ -129,9 +141,7 @@ def blog():
 @app.route('/blog/<path:path>/')
 def page(path):
     page = pages.get_or_404(path)
-    prev_p = prev_page(page)
-    next_p = next_page(page)
-    return render_template('page.html', page=page, prev_page=prev_p, next_page=next_p)
+    return render_template('page.html', page=page)
 
 @app.route('/blog/tag/<string:tag>/')
 def tag(tag):
