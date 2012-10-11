@@ -37,6 +37,11 @@ PUBMED_RSS = u"http://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=1R
 TWITTER_USERNAME = u"yoavram"
 TWITTER_WIDGET_ID = "253957912479793152"
 FIGSHARE_ID = "99206"
+BITBUCKET_USERNAME = u"yoavram"
+MENDELEY_ID = u"yoav-ram"
+GOOGLECODE_USERNAME = u"yoavram@gmail.com"
+LINKEDIN_USERNAME = u"yoavram"
+GOOGLE_SCHOLAR_CITATIONS_USER = u"RIFmJvYAAAAJ"
 
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'

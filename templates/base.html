@@ -61,8 +61,37 @@
         <ul class="nav">
 			<li><a href="{{ url_for('blog') }}">Blog</a></li>
 			<li><a href="{{ config.AUTHOR_WEBSITE }}">About</a></li>
-			<li><a href="{{ config.AUTHOR_WEBSITE }}"></i>Contact</a></li>
 			<li><a href="{{ url_for('recent_feed') }}">RSS</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				  Contact
+				  <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				<!-- http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+					{% if config.AUTHOR_EMAIL %}
+					<li><a href="mailto:{{ config.AUTHOR_EMAIL }}">Email</a></li>
+					{% endif %}
+					{% if config.MENDELEY_ID %}
+					<li><a href="http://www.mendeley.com/profiles/{{ config.MENDELEY_ID }}">Mendeley</a></li>
+					{% endif %}
+					{% if config.GOOGLE_SCHOLAR_CITATIONS_USER %}
+					<li><a href="http://scholar.google.com/citations?user={{ config.GOOGLE_SCHOLAR_CITATIONS_USER }}">Scholar Citations</a></li>
+					{% endif %}
+					{% if config.TWITTER_USERNAME %}
+					<li><a href="http://twitter.com/{{ config.TWITTER_USERNAME }}">Twitter</a></li>
+					{% endif %}
+					{% if config.LINKEDIN_USERNAME %}
+					<li><a href="http://www.linkedin.com/in/{{ config.MENDELEY_ID }}">Linkedin</a></li>
+					{% endif %}
+					{% if config.BITBUCKET_USERNAME %}
+					<li><a href="https://bitbucket.org/{{ config.BITBUCKET_USERNAME }}">Bitbucket</a></li>
+					{% endif %}
+					{% if config.GOOGLECODE_USERNAME %}
+					<li><a href="http://code.google.com/u/{{ config.MENDELEY_ID }}/">Google Code</a></li>
+					{% endif %}					
+				</ul>
+			  </li>
 
 			</ul>
       </div>
@@ -111,7 +140,7 @@
 	<li><a href="http://mathjax.org/">MathJax</a></li>
 	<li><a href="http://freewisdom.org/projects/python-markdown/">Markdown</a></li>
 	<li><a href="http://code.google.com/p/google-code-prettify/">Google code prettifier</a></li>
-
+	<li><a href="http://glyphicons.com/">Glyphicons Free</a><li>
 	</ul>
   
 	<ul class="quick-links">
@@ -130,8 +159,12 @@
 		<!--a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
 		<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
 		</a-->
-		<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">{{ config.BLOG_NAME }}</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="{{ config.AUTHOR_WEBSITE }}" property="cc:attributionName" rel="cc:attributionURL">{{ config.AUTHOR_FIRSTNAME }} {{ config.AUTHOR_LASTNAME }}</a>
+		The content on "<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">{{ config.BLOG_NAME }}</span>" by <a xmlns:cc="http://creativecommons.org/ns#" href="{{ config.AUTHOR_WEBSITE }}" property="cc:attributionName" rel="cc:attributionURL">{{ config.AUTHOR_FIRSTNAME }} {{ config.AUTHOR_LASTNAME }}</a>
 		is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>		
+	</li>
+	</ul>
+	<ul class="quick-links">
+	<li>All other components of this site are liscensed separately, see links above</li>
 	</li>
 	</ul>
 	{% if config.DEBUG %}
