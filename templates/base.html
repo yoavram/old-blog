@@ -13,10 +13,12 @@
 <link href="/static/theme.css" rel="stylesheet">
 <link href="/static/jekyll.css" rel="stylesheet">
 <link href="/static/bootstrap.min.css" rel="stylesheet">
+<link href="/static/glyphicons.css" rel="stylesheet">
 <link href="/static/bootstrap-responsive.min.css" rel="stylesheet">
 <style type="text/css">
 [class^="icon-"] { background-image: url("/static/glyphicons-halflings.png"); } 
 [class*="icon-white"] { background-image: url("/static/glyphicons-halflings-white.png"); } 
+[class^="glyphicon-"] { background-image: url("/static/glyphicons.png"); } 
 </style>
 <link href="/static/prettify.css" rel="stylesheet">
 
@@ -68,8 +70,7 @@
 				<ul class="dropdown-menu">
 				{{ macros.show_tag_count(tag_count()) }}
 				</ul>
-			</li>
-			<li><a href="{{ config.AUTHOR_WEBSITE }}"><i class="icon-question-sign"></i></a></li>
+			</li>			
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				  <!-- Contact -->
@@ -80,8 +81,19 @@
 				<!-- http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
 					{{ macros.contact_list(config) }}				
 				</ul>
-			 </li>
-			<li><a href="{{ url_for('recent_feed') }}">RSS</a></li>
+			</li>
+			<li>
+				<a href="{{ config.AUTHOR_WEBSITE }}" >
+					<i class="icon-question-sign"></i>
+					&nbsp;&nbsp;
+				</a>
+			</li>
+			<li>
+				<a href="{{ url_for('recent_feed') }}">
+					<i class="glyphicon-rss"></i>
+					&nbsp;&nbsp;
+				</a>
+			</li>
 			</ul>
       </div>
  
@@ -133,7 +145,7 @@
 	<ul class="quick-links">
 	<li>Front</li>
 	<li><a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a></li>
-	<li><a href="http://glyphicons.com/">Glyphicons</a><li>
+	<li><a href="http://glyphicons.com/">Glyphicons Free</a> (CC BY-SA 3.0)<li>
 	<li><a href="http://code.google.com/p/google-code-prettify/">Google code prettifier</a></li>
 	<li><a href="http://mathjax.org/">MathJax</a></li>
 	<li>Back</li>
