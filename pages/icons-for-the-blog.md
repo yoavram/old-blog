@@ -74,16 +74,21 @@ Hospital <i class="glyphicon-hospital"></i>
 </pre>
 
   - For a mapping between icon and its name, like the one for *Glyphicons Halflings* on the [Twitter Bootstrap icons documentation], 
-  you can check out [MaximaAL's site].
+  you can check out [MaximaAL's site]. Just change the names from <code>gi-XXX</code> to <code>glyphicon-XXX</code>. It doesn't always work though, so the last resort is to 
+  look at the *css* file.
 
   - Make sure you give proper attribution: the [Glyphicons License] page states that the use of Glyphonics Free is, well, free, 
   but you must include a link to <http://glyphonics.com/> and include the [CC-BY 3.0] license.
 
+  - You might be able to install the icons from this [project](https://bitbucket.org/creat1va/compass-glyphicons), especially if you're a Ruby user. You can also het a *_white* version.
+  
 ### Font Awesome
 
 One last thing. During the search for the solution (15 mins?) I found someone that suggested to use the [Font Awesome] icon set instead of *Glyphicons*, so I tried that.
 First of all, the *Font Awesome* site is... awesome. It took me one minute to understand how I need to do, to follow the instructions, and transition my site to *Font Awesome*.
-The integration with *Twitter Bootstrap* is very easy. The icon set is large, and it looks nice, but... not as nice as *Glyphonics* looks. So I decided I'd stick with *Glyphicons*.
+The integration with *Twitter Bootstrap* is very easy. The icon set is large, and it looks nice, but... not as nice as *Glyphonics* looks. So I decided I'd stick with *Glyphicons*. 
+I will say that *Font Awesome*'s social icons (twitter and company) are nicer, 
+maybe because the *Glyphicons* social icons have a black background and they don't look so good at 14x14 pixels.
 
 You can, of course, decide for yourself. Here are screenshots of the navigation bar with [Glyphonics](http://i.imgur.com/3RFfm.png) and here it is with [Font Awesome](http://i.imgur.com/WLVAM.png).
 If you would like to see the code, here are the commits for [Glyphonics](https://bitbucket.org/yoavram/msb/changeset/48d36660697bc022548e5476e40157c894aa3a99) and for [Font Awesome](https://bitbucket.org/yoavram/msb/changeset/9a7b530667faeda8da08d9ba932e11622d07287b).
