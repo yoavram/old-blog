@@ -2,124 +2,47 @@
 {% block title %} {{ page.title }} {% endblock title %}
 
 {% block head %}
-<!-- ShareThis JS -->
-<script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "{{ config.SHARETHIS_PUBLISHER}}"});</script>
-<!-- ShareThis JS -->
+
+{% if page.math %}
+{{ macros.mathjax() }}
+{% endif %}
+
+{{ macros.sharethis_js('{{ config.SHARETHIS_PUBLISHER }}') }}
+
 {% endblock head %}
 
-{% block content %}
-<div class="post">
+{% block header %}
+<div class="row-fluid">
+	<div class="span8 offset1">
+	<header class="masthead">
+	{{ macros.pagination(prev_page, next_page) }}
+	{{ macros.back_and_top(False) }}
 	<h1>{{ page.title }}</h1>
-	<ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
-	<li class="active"><i class="icon-time"></i> {{ page.datetime }} UTC</li>
-	
-	<li><span class="divider">/</span><a href='{{ config.BLOG_ADDRESS }}{{ page.path }}'>
-	<i class="icon-star"></i> Permalink </li>
-	{% if page.tags %}
-	{% for tag in page.tags %}
-	<li><span class="divider">/</span><a href="{{ url_for('blog') }}/tag/{{ tag }}">
-		<i class="icon-tag"></i> {{ tag }} </a></li>
-	{% endfor %}
-	{% endif %}
-	
-	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
-	<li><span class="divider">/</span>
-	<span class='st_email' ></span>
-	<span class='st_twitter' ></span>
-	<span class='st_facebook' ></span>
-	<span class='st_googleplus' ></span>
-	<span class='st_reddit' ></span>
-	<span class='st_linkedin' ></span>
-	<span class='st_stumbleupon' ></span>
-	<span class='st_delicious' ></span>
-	<span class='st_citeulike' ></span>
-	<span class='st_connotea' ></span>
-	</li>
-	</ul>
-	<!-- end of sharethis -->
-	
-	
-	
-	<!--div class="tweet-btn">
-	  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="horizontal" data-via="{{ config.TWITTER_USERNAME }}" data-url='{{ url_for("page", path=page.path) }}'>Tweet</a>
-	</div-->
+	{{ macros.pagebar(config, page) }}
+	</header>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="post">
 	
     {{ page.html|safe }}
 	
-	<!-- pagination -->
-	<ul class="pager">
-	  {% if prev_page == None %}
-	  <li class="previous disabled">
-		<a href="#">&larr; Older</a>
-	  {% else %}
-	  <li class="previous">
-		<a href='{{ url_for("blog") }}/{{ prev_page.path }}'>&larr; Older</a>
-	  {% endif %}
-	  </li>
-	  
-	  
-	   {% if next_page == None %}
-	   <li class="next disabled">
-	   <a href='#'>Newer &rarr;</a>
-	   {% else %}
-	   <li class="next">
-		<a href='{{ url_for("blog") }}/{{ next_page.path }}'>Newer &rarr;</a>
-		{% endif %}
-	  </li>
-	  
-	</ul>
-	<ul class="pager">
-	  <li class="previous">
-		<a href='{{ url_for("blog") }}'>&larr; Back to blog</a>
-	  </li>
-	  <li class="next">
-		<a href="#">Back to top &uarr;</a>
-	  </li>
-	</ul>
-	<!-- end of pagination -->
+	<a name="bottom"></a>
+	
+	{{ macros.pagination(prev_page, next_page) }}
+	{{ macros.back_and_top() }}
 	
 </div>
 
-<!--
-	<div class="related">
-	<h2>Related Posts</h2>
-	{% with pages=pages  %}
-        {% include "_list.html" %}
-    {% endwith %}
-	</div>
--->
+{{ macros.comments(config, page) }}
 
-<!-- Comments -->
-
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-
-	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
-	var disqus_shortname = '{{ config.DISQUS_SHORTNAME }}'; // required: replace example with your forum shortname
-	var disqus_identifier = '{{ page.path }}';
-	{% if config.DEBUG %}
-	var disqus_developer = 1; // 1 - DEBUG mode. comment out to production mode.
-	{% endif %}
-	/* * * DON'T EDIT BELOW THIS LINE * * */
-	(function() {
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<!-- end of comments -->
 {% endblock content %}
 
 {% block sidebar %}
-{% if page.cite %}
-<div class="well">
-<strong>Please cite this article as:</strong><br>
-{{ config.AUTHOR_LASTNAME }}, {{ config.AUTHOR_FIRSTNAME }} ({{ page.datetime.year }}) {{ page.title }}. <em>{{ config.BLOG_NAME }}</em>. <a href='{{ config.BLOG_ADDRESS }}{{ page.path }}'>{{ config.BLOG_ADDRESS }}{{ page.path }}</a>
-</div>
-{% endif %}
+	{% if page.cite %}
+	{{ macros.citation(config, page) }}
+	{% endif %}
 {% endblock sidebar %}

@@ -17,7 +17,7 @@ function feedLoaded(result) {
     // Check out the result object for a list of properties returned in each entry.
     // http://code.google.com/apis/ajaxfeeds/documentation/reference.html#JSON
 	var ul = document.createElement("ul");
-	ul.className = "quick-links";
+	ul.className = "unstyled";
     for (var i = 0; i < result.feed.entries.length; i++) {
       var entry = result.feed.entries[i];
       var li = document.createElement("li");

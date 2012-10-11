@@ -1,0 +1,170 @@
+{% macro permalink(config, page) %}
+	{{ config.BLOG_ADDRESS }}/{{ page.path }}
+{% endmacro %}
+
+{% macro mathjax() %}
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+<!-- Online Debugger: http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm -->
+<!-- Doc: http://docs.mathjax.org/en/latest/output.html -->`
+  MathJax.Hub.Config({
+            "tex2jax": { inlineMath: [ [ '$', '$' ] ] },
+			"HTML-CSS": { availableFonts: ["STIX", "TeX"], 
+						  linebreaks: { automatic: true }
+			}
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+{% endmacro %}
+
+{% macro analytics(code) %}
+<!-- Google Analytics www.google.com/analytics/ -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{{ code }}']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+{% endmacro %}
+
+{% macro sharethis_js(publisher) %}
+<!-- ShareThis JS -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "{{ publisher }}"});</script>
+<!-- ShareThis JS -->
+{% endmacro %}
+
+{% macro sharethis_btns() %}
+	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
+	<span class='st_email' ></span>
+	<span class='st_twitter' ></span>
+	<span class='st_facebook' ></span>
+	<span class='st_googleplus' ></span>
+	<span class='st_reddit' ></span>
+	<span class='st_linkedin' ></span>
+	<span class='st_stumbleupon' ></span>
+	<span class='st_delicious' ></span>
+	<span class='st_citeulike' ></span>
+	<span class='st_connotea' ></span>
+{% endmacro %}
+
+{% macro pagebar(config, page) %}
+<ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
+	<li class="active"><i class="icon-time"></i> {{ page.datetime }} UTC</li>
+	
+	<li><span class="divider">/</span><a href='{{ permalink(config, page) }}'>
+	<i class="icon-star"></i> Permalink </li>
+	{% if page.tags %}
+	{% for tag in page.tags %}
+	<li><span class="divider">/</span><a href="{{ url_for('blog') }}/tag/{{ tag }}">
+		<i class="icon-tag"></i> {{ tag }} </a></li>
+	{% endfor %}
+	{% endif %}
+	
+	<li><span class="divider">/</span>
+	{{ sharethis_btns() }}
+	</li>
+	</ul>
+{% endmacro %}
+
+{% macro tweet_btn(username, page) %}
+	<div class="tweet-btn">
+	  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="horizontal" data-via="{{ username }}" data-url='{{ url_for("page", path=page.path) }}'>Tweet</a>
+	</div>
+{% endmacro %}
+
+{% macro pagination(prev_page, next_page) %}
+	<ul class="pager">
+	  {% if prev_page == None %}
+	  <li class="previous disabled">
+		<a href="#">&larr; Older</a>
+	  {% else %}
+	  <li class="previous">
+		<a href='{{ url_for("blog") }}/{{ prev_page.path }}'>&larr; Older</a>
+	  {% endif %}
+	  </li>
+	  
+	  
+	   {% if next_page == None %}
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   {% else %}
+	   <li class="next">
+		<a href='{{ url_for("blog") }}/{{ next_page.path }}'>Newer &rarr;</a>
+		{% endif %}
+	  </li>
+	</ul>
+{% endmacro %}
+
+{% macro back_and_top(top=True) %}
+	<ul class="pager">
+	<li class="previous">
+		<a href='{{ url_for("blog") }}'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		{% if top %}
+		<a href="#">To top &uarr;</a>
+		{% else %}
+		<a href="#bottom">To bottom &darr;</a>
+		{% endif %}
+	</li>
+	</ul>
+	<!-- end of pagination -->
+{% endmacro %}
+
+{% macro comments(config, page) %}
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
+	var disqus_shortname = '{{ config.DISQUS_SHORTNAME }}'; // required: replace example with your forum shortname
+	var disqus_identifier = '{{ page.path }}';
+	{% if config.DEBUG %}
+	var disqus_developer = 1; // 1 - DEBUG mode. comment out to production mode.
+	{% endif %}
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+{% endmacro %}
+
+{% macro citation(config, page) %}
+<div class="well-large">
+	<strong>Please cite this article as:</strong>
+	<br>
+	{{ config.AUTHOR_LASTNAME }}, {{ config.AUTHOR_FIRSTNAME }} ({{ page.datetime.year }}) {{ page.title }}. <em>{{ config.BLOG_NAME }}</em>. 
+	<a href='{{ permalink(config, page) }}'>{{ permalink(config, page) }}</a>
+</div>
+{% endmacro %}
+
+{% macro pubmed(config) %}
+	<script src="http://www.google.com/jsapi?key=AIzaSyA5m1Nc8ws2BbmPRwKu5gFradvD_hgq6G0" type="text/javascript"></script>
+	<script src="/static/feed.js"></script>
+	<div class="well-large">
+	<h3><a href="{{ config.PUBMED_RSS }}" class="btn" title="Click for RSS">Publications</a></h3>
+	<div id="pubmed-content">Loading...</div>
+	</div>
+{% endmacro %}
+
+{% macro twitter_widget(config) %}
+<div class="well-large">
+	<!-- Twitter widget https://twitter.com/settings/widgets/{{ config.TWITTER_WIDGET_ID }}/edit-->
+	<a class="twitter-timeline" data-dnt=true href="https://twitter.com/{{ config.TWITTER_USERNAME }}" data-widget-id="{{ config.TWITTER_WIDGET_ID }}">Tweets by @{{ config.TWITTER_USERNAME }}</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+{% endmacro %}

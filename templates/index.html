@@ -1,15 +1,20 @@
 {% extends "base.html" %}
 
 {% block header %}
-<p>
-	<br>
-	<a class="site-logo" href="/" title="{{ config.BLOG_NAME }}" >
-	<img src="/static/logo.png" width="250" alt="{{ config.BLOG_NAME }}">
-	</a>
-	<br>
-	{{ config.BLOG_MOTTO }}	
-</p>
-
+<div class="row-fluid">
+	<div class="span10 offset1">
+		<header class="masthead">
+			<p>
+				<br>
+				<a class="site-logo" href="/" title="{{ config.BLOG_NAME }}" >
+				<img src="/static/logo.png" width="250" alt="{{ config.BLOG_NAME }}">
+				</a>
+				<br>
+				{{ config.BLOG_MOTTO }}	
+			</p>
+		</header>
+	</div>
+</div>
 {% endblock header %}
 
 {% block content %}
@@ -21,15 +26,7 @@
 
 {% block sidebar %}
 
-	<!-- publications list -->
-
-	<script src="http://www.google.com/jsapi?key=AIzaSyA5m1Nc8ws2BbmPRwKu5gFradvD_hgq6G0" type="text/javascript"></script>
-	<script src="/static/feed.js"></script>
-	<h3><a href="{{ config.PUBMED_RSS }}" class="btn" title="Click for RSS">Publications</a></h3>
-	<div id="pubmed-content">Loading...</div>
+	{{ macros.pubmed(config) }}
 	
-	</div>
-	<!-- Twitter widget https://twitter.com/settings/widgets/{{ config.TWITTER_WIDGET_ID }}/edit-->
-	<a class="twitter-timeline" data-dnt=true href="https://twitter.com/{{ config.TWITTER_USERNAME }}" data-widget-id="{{ config.TWITTER_WIDGET_ID }}">Tweets by @{{ config.TWITTER_USERNAME }}</a>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	{{ macros.twitter_widget(config) }}
 {% endblock sidebar %}		

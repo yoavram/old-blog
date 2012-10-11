@@ -1,12 +1,15 @@
+{% import "macros.html" as macros %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>{% block title %} {{ config.BLOG_NAME }} {% endblock title %}</title>
+
 <meta charset="utf-8">
 <link rel="icon" type="image/ico" href="/static/favicon.ico">
 <link href="{{ url_for('recent_feed') }}" rel="alternate" title="Recent Articles" type="application/atom+xml">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% block title %} {{ config.BLOG_NAME }} {% endblock title %}</title>
+
 <!-- Le style -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="/static/theme.css" rel="stylesheet">
 <link href="/static/jekyll.css" rel="stylesheet">
 <link href="/static/bootstrap.min.css" rel="stylesheet">
@@ -16,50 +19,29 @@
 [class*="icon-white"] { background-image: url("/static/glyphicons-halflings-white.png"); } 
 </style>
 <link href="/static/prettify.css" rel="stylesheet">
+
 <!-- Le JS -->
 <script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="/static/bootstrap.min.js"></script>
 <script type="text/javascript" src="/static/bootstrap-transition.js"></script>
 <script type="text/javascript" src="/static/bootstrap-collapse.js"></script>
-<!-- MathJax -->
-<script type="text/x-mathjax-config">
-<!-- Online Debugger: http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm -->
-<!-- Doc: http://docs.mathjax.org/en/latest/output.html -->`
-  MathJax.Hub.Config({
-            "tex2jax": { inlineMath: [ [ '$', '$' ] ] },
-			"HTML-CSS": { availableFonts: ["STIX", "TeX"], 
-						  linebreaks: { automatic: true }
-			}
-  });
-</script>
-<script type="text/javascript"
-  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
-</script>
+
 <!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
 <script type="text/javascript" src="/static/prettify.js"></script>
+
 {% block head %}
 {% endblock head %}
+
 {% if not config.DEBUG %}
-<!-- Google Analytics www.google.com/analytics/ -->
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '{{ config.GOOGLE_ANALYTICS }}']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+{{ macros.analytics('{{ config.GOOGLE_ANALYTICS }}') }}
 {% endif %}
-</script>
-<!-- End Analytics -->
+
 </head>
 
 
 <body onload="prettyPrint()">
 
+<!-- Navbar -->
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
@@ -88,19 +70,15 @@
     </div>
   </div>
 </div>
+<!-- end Navbar -->
     
-<div class="row-fluid">
-	<div class="span10 offset1">
-	<header class="masthead">
-	  {% block header %}
-	  {% endblock header %}
-	</header>
-	</div>
-</div>	
+<!-- HEADER -->
+{% block header %}	
+{% endblock header %}
 
-	
+<!-- BODY -->	
 <div class="row-fluid">
-	<div class="span7 offset2">
+	<div class="span8 offset1">
 
 		{% block content %}
 			<p>Default content to be displayed</p>
@@ -108,7 +86,7 @@
 		
 		
 	</div>
-	<div class="span2">
+	<div class="span3">
 	<div class="sidebar">
 		{% block sidebar %}
 		{% endblock sidebar %}		
@@ -117,11 +95,13 @@
 	
 </div>
 
-<footer class="colophon">
-  <div class="row-fluid">
-  <div class="span7 offset2">
- 
-  <ul class="quick-links">
+<!-- FOOTER -->
+<div class="row-fluid">
+<div class="span10 offset1">
+<footer class="colophon"> 
+	{% block footer %}
+	{% endblock footer %}
+	<ul class="quick-links">
 	<li>Powered by</li>
 	<li><a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a></li>
 	<li><a href="http://python.org/">Python</a></li>
@@ -131,20 +111,20 @@
 	<li><a href="http://freewisdom.org/projects/python-markdown/">Markdown</a></li>
 	<li><a href="http://code.google.com/p/google-code-prettify/">Google code prettifier</a></li>
 
-  </ul>
+	</ul>
   
-  <ul class="quick-links">
+	<ul class="quick-links">
 	<li>Code</li>
-    <li><a href="https://bitbucket.org/yoavram/yoavram.bitbucket.org">Static site</a></li>
-    <li><a href="https://bitbucket.org/yoavram/msb">Site generator</a></li>
-    <li>Logo</li>
+	<li><a href="https://bitbucket.org/yoavram/yoavram.bitbucket.org">Static site</a></li>
+	<li><a href="https://bitbucket.org/yoavram/msb">Site generator</a></li>
+	<li>Logo</li>
 	<li><a href="http://www.idancohen.com/">Idan Cohen</a></li>
 	<li>Fonts</li>
 	<li><a href="http://www.dafont.com/sketch-block.font">Sketch Block</a></li>
 	<li><a href="http://www.dafont.com/positiv-a.font">Positiv-A</a></li>
-  </ul>
+	</ul>
   
-  <ul class="quick-links">
+	<ul class="quick-links">
 	<li> 
 		<!--a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
 		<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
@@ -152,15 +132,15 @@
 		<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">{{ config.BLOG_NAME }}</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="{{ config.AUTHOR_WEBSITE }}" property="cc:attributionName" rel="cc:attributionURL">{{ config.AUTHOR_FIRSTNAME }} {{ config.AUTHOR_LASTNAME }}</a>
 		is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>		
 	</li>
-  </ul>
+	</ul>
 	{% if config.DEBUG %}
 	<ul class="quick-links">
 	<li>Debug mode</li>
 	</ul>
 	{% endif %}
-	</p>
-</div>
-</div>
 </footer>
+</div>
+</div>
+
 </body>
 </html>

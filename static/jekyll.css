@@ -316,7 +316,7 @@ a:hover {
 .post {
   position: relative;
   margin-bottom: 0px;
-  margin-top: 24px;
+  margin-top: 0px;
 }
 .post:after {
   display: block;
