@@ -115,7 +115,7 @@ def next_page(page):
 def index():
     return redirect(url_for('blog'))
 
-@app.route('/blog')
+@app.route('/blog/')
 def blog():
     articles = pages_by_datetime(10)
     return render_template('index.html', pages=articles)
