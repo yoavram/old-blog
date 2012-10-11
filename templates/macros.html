@@ -179,9 +179,31 @@
 {% endmacro %}
 
 {% macro show_tag_count(tags) %}
-<ul class="unstyled">
-{% for tag in tags.keys() %}
-	<li><i class="icon-tag"></i> <a href='{{ url_for("tag", tag=tag) }}'>{{ tag }}</a>: <small>{{ tags[tag] }}</small></li>
+{% for tag in sorted(tags.keys()) %}
+	<li><a href='{{ url_for("tag", tag=tag) }}'>{{ tag }}: <small>{{ tags[tag] }}</small></a></li>
 {% endfor %}
-</ul>
+{% endmacro %}
+
+{% macro contact_list(config) %}
+{% if config.AUTHOR_EMAIL %}
+	<li><a href="mailto:{{ config.AUTHOR_EMAIL }}">Email</a></li>
+	{% endif %}
+	{% if config.MENDELEY_ID %}
+	<li><a href="http://www.mendeley.com/profiles/{{ config.MENDELEY_ID }}">Mendeley</a></li>
+	{% endif %}
+	{% if config.GOOGLE_SCHOLAR_CITATIONS_USER %}
+	<li><a href="http://scholar.google.com/citations?user={{ config.GOOGLE_SCHOLAR_CITATIONS_USER }}">Scholar Citations</a></li>
+	{% endif %}
+	{% if config.TWITTER_USERNAME %}
+	<li><a href="http://twitter.com/{{ config.TWITTER_USERNAME }}">Twitter</a></li>
+	{% endif %}
+	{% if config.LINKEDIN_USERNAME %}
+	<li><a href="http://www.linkedin.com/in/{{ config.MENDELEY_ID }}">Linkedin</a></li>
+	{% endif %}
+	{% if config.BITBUCKET_USERNAME %}
+	<li><a href="https://bitbucket.org/{{ config.BITBUCKET_USERNAME }}">Bitbucket</a></li>
+	{% endif %}
+	{% if config.GOOGLECODE_USERNAME %}
+	<li><a href="http://code.google.com/u/{{ config.MENDELEY_ID }}/">Google Code</a></li>
+	{% endif %}	
 {% endmacro %}

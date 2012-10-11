@@ -96,6 +96,7 @@ app.jinja_env.globals['make_external'] = make_external
 app.jinja_env.globals['tag_count'] = tag_count
 app.jinja_env.globals['prev_page'] = prev_page
 app.jinja_env.globals['next_page'] = next_page
+app.jinja_env.globals['sorted'] = sorted
 
 @app.route('/recent.atom')
 def recent_feed():
