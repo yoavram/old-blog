@@ -36,6 +36,7 @@ PUBMED_RSS = u"http://eutils.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=1R
 # https://twitter.com/settings/widgets/{{ config.TWITTER_WIDGET_ID }}/edit
 TWITTER_USERNAME = u"yoavram"
 TWITTER_WIDGET_ID = "253957912479793152"
+FIGSHARE_ID = "99206"
 
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
