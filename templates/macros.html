@@ -180,7 +180,10 @@
 {% endmacro %}
 
 {% macro contact_list(config) %}
-{% if config.AUTHOR_EMAIL %}
+	{% if config.AUTHOR_WEBSITE %}
+	<li><a href="{{ config.AUTHOR_WEBSITE }}">Home <i class="icon-home"></i></a></li>
+	{% endif %}
+	{% if config.AUTHOR_EMAIL %}
 	<li><a href="mailto:{{ config.AUTHOR_EMAIL }}">Email <i class="icon-envelope"></i></a></li>
 	{% endif %}
 	{% if config.MENDELEY_ID %}
