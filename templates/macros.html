@@ -152,16 +152,11 @@
 </div>
 {% endmacro %}
 
-{% macro pubmed(config) %}
+{% macro feed(config) %}
 	<script src="http://www.google.com/jsapi?key=AIzaSyA5m1Nc8ws2BbmPRwKu5gFradvD_hgq6G0" type="text/javascript"></script>
 	<script src="/static/feed.js"></script>
 	<div class="well-small">
-	<h3><a href="{{ config.PUBMED_RSS }}" class="btn btn-link" title="Click for RSS">Publications</a></h3>
-	<div id="pubmed-content">Loading...</div>
-	</div>
-	<div class="well-small">
-	<h3><a href="https://bitbucket.org/yoavram/" class="btn btn-link">Bitbucket</a></h3>
-	<div id="bitbucket-content">Loading...</div>
+	<div id="feed-content">Loading...</div>
 	</div>
 {% endmacro %}
 

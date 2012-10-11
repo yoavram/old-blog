@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+{% block head %}
+<!-- Dynamic Feed Control and Stylesheet -->
+    <script src="http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.js"
+            type="text/javascript"></script>
+    <style type="text/css">
+      @import url("http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.css");
+    </style>
+{% endblock %}
 {% block header %}
 <div class="row-fluid">
 	<div class="span10 offset1">
@@ -26,9 +34,6 @@
 
 {% block sidebar %}
 
-	{{ macros.pubmed(config) }}
-	
-	{{ macros.figshare(config) }}
-	
+	{{ macros.feed(config) }}	
 
 {% endblock sidebar %}		
