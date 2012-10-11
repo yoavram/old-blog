@@ -4,7 +4,7 @@
 	<h3>
 		<a href='{{ url_for("page", path=page.path) }}'>
 		  {{ page.title }}
-		  <small>{{ page.datetime.date() }}</small>
+		  <small>{{ page.datetime | format_datetime }}</small>
 		</a>
 	</h3>
 	
