@@ -115,14 +115,6 @@ def next_page(page):
 def index():
     return redirect(url_for('blog'))
 
-@app.route('/about')
-def about():
-    return redirect(AUTHOR_WEBSITE)
-
-@app.route('/contact')
-def contact():
-    return redirect(AUTHOR_WEBSITE)
-
 @app.route('/blog')
 def blog():
     articles = pages_by_datetime(10)
