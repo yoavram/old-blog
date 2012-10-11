@@ -1,6 +1,6 @@
 title: Blogging with math and code
 datetime: 2012-10-03 15:05:00 +2
-tags: [blog explained]
+tags: [blog, latex]
 math: true
 
 ## Contents
