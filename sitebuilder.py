@@ -1,25 +1,10 @@
 # https://nicolas.perriault.net/code/2012/dead-easy-yet-powerful-static-website-generator-with-flask/
 import sys
-
+from renderers import pandoc_renderer
 from flask import Flask, render_template, redirect, url_for
 # http://packages.python.org/Flask-FlatPages
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
-import markdown
-
-def pygmented_markdown(text):
-    """
-    Added extensions to the default `FlatPages` renderer.
-    `mathjax` makes sure markdown doesn't ruin latex so that mathjax.js can render it.
-    
-    .. _FlatPages: http://packages.python.org/Flask-FlatPages/#flask_flatpages.pygmented_markdown
-    .. _mathjax: https://github.com/mayoff/python-markdown-mathjax
-    .. _abbr: http://freewisdom.org/projects/python-markdown/Abbreviations
-    .. _footnotes: http://freewisdom.org/projects/python-markdown/Footnotes
-    .. _toc: http://freewisdom.org/projects/python-markdown/Table_of_Contents
-    """
-    extensions = ['mathjax', 'footnotes', 'abbr', 'toc']
-    return markdown.markdown(text, extensions)
 
 DEBUG = True
 WEBSITE_ADDRESS = u"http://yoavram.bitbucket.org/"
@@ -46,7 +31,7 @@ GOOGLE_SCHOLAR_CITATIONS_USER = u"RIFmJvYAAAAJ"
 
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
-FLATPAGES_HTML_RENDERER = pygmented_markdown
+FLATPAGES_HTML_RENDERER = pandoc_renderer()
 
 app = Flask(__name__)
 app.config.from_object(__name__)

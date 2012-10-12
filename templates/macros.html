@@ -89,7 +89,7 @@
 		<a href="#">&larr; Older</a>
 	  {% else %}
 	  <li class="previous">
-		<a href='{{ url_for("blog") }}/{{ prev_page.path }}'>&larr; Older</a>
+		<a href='{{ url_for("blog") }}{{ prev_page.path }}'>&larr; Older</a>
 	  {% endif %}
 	  </li>
 	  
@@ -99,7 +99,7 @@
 	   <a href='#'>Newer &rarr;</a>
 	   {% else %}
 	   <li class="next">
-		<a href='{{ url_for("blog") }}/{{ next_page.path }}'>Newer &rarr;</a>
+		<a href='{{ url_for("blog") }}{{ next_page.path }}'>Newer &rarr;</a>
 		{% endif %}
 	  </li>
 	</ul>
