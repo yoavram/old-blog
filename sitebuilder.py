@@ -29,10 +29,11 @@ GOOGLECODE_USERNAME = u"yoavram@gmail.com"
 LINKEDIN_USERNAME = u"yoavram"
 GOOGLE_SCHOLAR_CITATIONS_USER = u"RIFmJvYAAAAJ"
 BIB_FILE = r'D:\library.bib'
+CSL = "chicago"
 
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
-FLATPAGES_HTML_RENDERER = pandoc_renderer(bib=BIB_FILE)
+FLATPAGES_HTML_RENDERER = pandoc_renderer(bib=BIB_FILE, csl=CSL)
 
 app = Flask(__name__)
 app.config.from_object(__name__)

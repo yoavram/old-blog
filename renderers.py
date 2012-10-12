@@ -1,11 +1,11 @@
 ### MAIN FUNCTION ###
+from os.path import exists
 import re
 citation_pattern = re.compile('@\w+\d\d\d\d')
 
 ''' Finds specified file in sys.path, <cwd>, <cwd>/pandoc, and returns the full path'''
 def find_file_in_path(filename):
     import sys
-    from os.path import exists
     if exists(filename):
         return filename
     paths = ['pandoc','pandoc/csl']
@@ -25,9 +25,12 @@ def pandoc_renderer(source = "markdown", target  = "html", bib = "references", c
     if source == "markdown" and target == "html":
         import pandoc
         bib = ensure_postfix(bib, '.bib')
-        csl = ensure_postfix(csl, '.csl')
+        csl = ensure_postfix(csl, '.csl')        
         bib = find_file_in_path(bib)
         csl = find_file_in_path(csl)
+        abbr = csl[:-4] + ".abbr"
+        if not exists(abbr):
+            abbr = None        
         template = find_file_in_path(template)
         
         def pandoc_markdown_html_renderer(text):      
@@ -37,6 +40,8 @@ def pandoc_renderer(source = "markdown", target  = "html", bib = "references", c
                 # because it takes longer to render due to large size of bib files
                 doc.bib(bib)
                 doc.csl(csl)
+                if abbr:
+                    doc.abbr(abbr)
             if text.startswith('[TOC]'):
                 text = "<a name='TOC'></a>"+text[5:]
                 doc.add_argument('toc')        
