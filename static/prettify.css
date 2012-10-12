@@ -1,85 +1,70 @@
 /* Pretty printing styles. Used with prettify.js.
  *
+ * This version is slight modified based on the original version.
+ *
  * Name:	Stanley Ng
  * Email: 	stanleyhlng@googlegroups.com
  * 
+ * Reference:
+ * http://code.google.com/p/google-code-prettify/source/browse/trunk/src/prettify.css
  */
 .pln {
-  color: #F1F2F3; }
+  color: #bd3613; }
 
 .str {
-  color: #EC7600; }
+  color: #269186; }
 
 .kwd {
-  color: #93C763; }
+  color: #859900; }
 
 .com {
-  color: #555555;
+  color: #586175;
   font-style: italic; }
 
 .typ {
-  color: #678CB1; }
+  color: #b58900; }
 
 .lit {
-  color: #FACD22; }
+  color: #2aa198; }
 
 .pun {
-  color: #F1F2F3; }
+  color: #839496; }
 
 .opn {
-  color: #F1F2F3; }
+  color: #839496; }
 
 .clo {
-  color: #F1F2F3; }
+  color: #839496; }
 
 .tag {
-  color: #8AC763; }
+  color: #268bd2; }
 
 .atn {
-  color: #E0E2E4; }
+  color: #586175; }
 
 .atv {
-  color: #EC7600; }
+  color: #2aa198; }
 
 .dec {
-  color: purple; }
+  color: #268bd2; }
 
 .var {
-  color: #ff9da4; }
+  color: #268bd2; }
 
 .fun {
-  color: #bbdaff; }
+  color: #FF0000; }
 
 /* Put a border around prettyprinted code snippets. */
 pre.prettyprint {
-  background-color: #111111;
+  background-color: #042029;
   padding: 10px;
   border: 1px solid #E1E1E8; }
 
 /* Specify class=linenums on a pre to get line numbering */
 ol.linenums {
-  color: #7285b7;
+  color: #4c666c;
   margin: 0 0 0 40px; }
 
 ol.linenums li {
   line-height: 18px;
   padding-left: 12px; }
-
-ol.linenums li.L0,
-ol.linenums li.L1,
-ol.linenums li.L2,
-ol.linenums li.L3,
-ol.linenums li.L4,
-ol.linenums li.L5,
-ol.linenums li.L6,
-ol.linenums li.L7,
-ol.linenums li.L8,
-ol.linenums li.L9 {
-  color: #555555; }
-
-ol.linenums li.L1,
-ol.linenums li.L3,
-ol.linenums li.L5,
-ol.linenums li.L7,
-ol.linenums li.L9 {
-  background: #111111; }
