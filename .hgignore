@@ -5,3 +5,4 @@ build
 static/bootstrap.js
 static/bootstrap.css
 static/bootstrap-responsive.css
+pandoc/tmp/*
