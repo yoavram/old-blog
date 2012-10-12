@@ -63,7 +63,7 @@
 	<li><span class="divider">/</span>
 	<i class="icon-star"></i> <a href='{{ permalink(config, page) }}'>Permalink</a></li>
 	{% if page.tags %}
-	{% for tag in page.tags %}
+	{% for tag in sorted(page.tags) %}
 	<li><span class="divider">/</span>
 		<i class="icon-tag"></i> <a href="{{ url_for('blog') }}tag/{{ tag }}">{{ tag }}</a></li>
 	{% endfor %}

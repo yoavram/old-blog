@@ -3,7 +3,6 @@ datetime: 2012-10-03 15:05:00 +2
 tags: [blog, latex, markdown]
 math: true
 
-## Contents
 [TOC]
 
 ## Examples

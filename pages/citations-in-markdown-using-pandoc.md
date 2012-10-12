@@ -1,6 +1,6 @@
 title: Citations in Markdown using Pandoc
 datetime: 2012-10-12 15:35:00 +2
-tags: [markdown, markdown, pandoc, citations, python]
+tags: [blog, markdown, pandoc, citations, python]
 
 [TOC]
 
