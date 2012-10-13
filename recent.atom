@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Recent Articles</title>
+  <id>http://localhost/recent.atom</id>
+  <updated>2012-10-12T13:35:00Z</updated>
+  <link href="http://localhost/" />
+  <link href="http://localhost/recent.atom" rel="self" />
+  <author>
+    <name>Yoav Ram</name>
+    <uri>http://www.yoavram.com/</uri>
+    <email>yoavram@gmail.com</email>
+  </author>
+  <rights>CC BY-SA 3.0</rights>
+  <generator>Werkzeug</generator>
+  <entry xml:base="http://localhost/recent.atom">
+    <title type="text">Citations in Markdown using Pandoc</title>
+    <id>http://localhost/citations-in-markdown-using-pandoc</id>
+    <updated>2012-10-12T13:35:00Z</updated>
+    <link href="http://localhost/citations-in-markdown-using-pandoc" />
+    <author>
+      <name></name>
+    </author>
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#problem-1"&gt;Problem 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#solution-1"&gt;Solution 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#problem-2"&gt;Problem 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#solution-2"&gt;Solution 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#problem-3"&gt;Problem 3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#solution-3"&gt;Solution 3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#problem-4"&gt;Problem 4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#solution-4"&gt;Solution 4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#problem-5"&gt;Problem 5&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#examples"&gt;Examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#references"&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a name='TOC'&gt;&lt;/a&gt;
+&lt;h2 id="overview"&gt;&lt;a href="#TOC"&gt;Overview&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://johnmacfarlane.net/pandoc/"&gt;Pandoc&lt;/a&gt; is an amazing tool that can convert one markup language to another. It is very good at parsing &lt;em&gt;Markdown&lt;/em&gt; and it has the ability to parse &lt;a href="http://johnmacfarlane.net/pandoc/README.html#citations"&gt;citations in &lt;em&gt;Markdown&lt;/em&gt;&lt;/a&gt;, which is exactly what I was looking for!&lt;/p&gt;
+&lt;p&gt;But I had some things to solve first.&lt;/p&gt;
+&lt;h2 id="problem-1"&gt;&lt;a href="#TOC"&gt;Problem 1&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Pandoc&lt;/em&gt; didn't work with the &lt;code&gt;--bibliography&lt;/code&gt; option (test using &lt;code&gt;pandoc -s -S --bibliography=references.bib test.md&lt;/code&gt;)&lt;/p&gt;
+&lt;h2 id="solution-1"&gt;&lt;a href="#TOC"&gt;Solution 1&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Change &lt;em&gt;Pandoc&lt;/em&gt; version from &lt;em&gt;1.9.4.2a&lt;/em&gt; to &lt;em&gt;1.9.4.2&lt;/em&gt; (see &lt;a href="http://johnmacfarlane.net/pandoc/installing.html"&gt;Install page&lt;/a&gt; - if you don't see the earlier version change from &lt;em&gt;Current downloads&lt;/em&gt; to &lt;em&gt;All downloads&lt;/em&gt; and hit &lt;em&gt;Search&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id="problem-2"&gt;&lt;a href="#TOC"&gt;Problem 2&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I want to run &lt;em&gt;Pandoc&lt;/em&gt; from my &lt;em&gt;Python&lt;/em&gt; site generator. So I tried &lt;a href="http://pypi.python.org/pypi/pyandoc/"&gt;pyandoc&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Whenever I run the test &lt;em&gt;pyandoc&lt;/em&gt;, though, I got an error that &amp;quot;Windows can't find the specified file&amp;quot;. I filed an &lt;a href="https://github.com/kennethreitz/pyandoc/issues/5"&gt;issue&lt;/a&gt; and then found a solution.&lt;/p&gt;
+&lt;h2 id="solution-2"&gt;&lt;a href="#TOC"&gt;Solution 2&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The path to the pandoc executable doesn't &lt;em&gt;really&lt;/em&gt; change when setting it from &lt;em&gt;Python&lt;/em&gt;, so you got to change it in the original &lt;em&gt;pyandoc&lt;/em&gt; file - &lt;code&gt;C:\Python27\Lib\site-packages\pandoc\core.py&lt;/code&gt;, and the code change is simply setting the &lt;code&gt;PANDOC_PATH&lt;/code&gt; variable to the full path to your &lt;code&gt;pandoc.exe&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="problem-3"&gt;&lt;a href="#TOC"&gt;Problem 3&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;How to use pyandoc to parse my &lt;em&gt;Markdown&lt;/em&gt; files? Well, it looks pretty easy, writing a function that uses &lt;em&gt;pyandoc&lt;/em&gt; and setting it at &lt;code&gt;sitebuilder.py&lt;/code&gt;&lt;sup&gt;&lt;a href="#fn1" class="footnoteRef" id="fnref1"&gt;1&lt;/a&gt;&lt;/sup&gt; for the varialbe &lt;code&gt;FLATPAGES_HTML_RENDERER&lt;/code&gt; that controls the renderer of pages. But &lt;em&gt;pyandoc&lt;/em&gt; doesn't use &lt;code&gt;--bibliography&lt;/code&gt; and &lt;code&gt;--csl&lt;/code&gt;!&lt;/p&gt;
+&lt;h2 id="solution-3"&gt;&lt;a href="#TOC"&gt;Solution 3&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I forked &lt;em&gt;pyandoc&lt;/em&gt; and added support for the &lt;code&gt;--bibliography&lt;/code&gt; and &lt;code&gt;--csl&lt;/code&gt; options. The code is on &lt;a href="https://github.com/yoavram/pyandoc"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Also, I've written a new module for the site generator called &lt;em&gt;renderers&lt;/em&gt; which has a factory function that creates a &lt;em&gt;Pandoc&lt;/em&gt; renderer. The &lt;em&gt;Pandoc&lt;/em&gt; renderer uses my modified &lt;em&gt;pyandoc&lt;/em&gt; to render &lt;em&gt;Markdown&lt;/em&gt; text to &lt;em&gt;HTML&lt;/em&gt;, including citations, math and everything.&lt;/p&gt;
+&lt;p&gt;This &lt;em&gt;Pandoc&lt;/em&gt; renderer can be used as the &lt;code&gt;FLATPAGES_HTML_RENDERER&lt;/code&gt; for &lt;a href="http://packages.python.org/Flask-FlatPages/#flask_flatpages"&gt;Flask-FlatPages&lt;/a&gt; on my &lt;code&gt;sitebuilder.py&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The previous renderer was based on the default &lt;a href="http://freewisdom.org/projects/python-markdown/"&gt;Python-Markdown&lt;/a&gt; with some extensions, so I had to find replacements for these extensions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;MathJax&lt;/em&gt; - just add &lt;code&gt;--mathjax&lt;/code&gt; to the &lt;em&gt;Pandoc&lt;/em&gt; call, using the &lt;code&gt;add_argument&lt;/code&gt; method I added to &lt;code&gt;pyandoc.Document&lt;/code&gt; in [#solution-3].&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Footnotes&lt;/em&gt; - supported out-of-the-box by &lt;em&gt;Pandoc&lt;/em&gt;. Just make sure to have an empty line before and after the footnotes definitions.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Abbreviations&lt;/em&gt; - not that important, so I deserted this feature&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Table of Contents&lt;/em&gt; - a bit tricky. &lt;em&gt;Pandoc&lt;/em&gt; uses the &lt;code&gt;--toc&lt;/code&gt; option to generate a TOC. I needed a way for the renderer to decide if a TOC was really desired. I decided that it will be added to posts that begin with [TOC], because that was sort-of the way the &lt;em&gt;Python-Markdown&lt;/em&gt; TOC extension did it. So my renderer: -- looks for the &lt;code&gt;[TOC]&lt;/code&gt; tag at the beginning of the post -- strips off the tag -- replaces it with an &lt;em&gt;HTML&lt;/em&gt; &lt;code&gt;&amp;lt;a name=&amp;quot;TOC&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;&lt;/code&gt; tag -- adds a &lt;em&gt;toc&lt;/em&gt; argument via the &lt;code&gt;pyandoc.Document&lt;/code&gt; class -- the TOC is inserted by &lt;em&gt;Pandoc&lt;/em&gt; only if the &lt;code&gt;standalone&lt;/code&gt; option is given or a suitable &lt;em&gt;template&lt;/em&gt; is given, so I created a template and gave it to &lt;em&gt;Pandoc&lt;/em&gt; using the &lt;code&gt;add_argument&lt;/code&gt; method:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+    $toc$
+    $body$
+&lt;/pre&gt;
+
+&lt;h2 id="problem-4"&gt;&lt;a href="#TOC"&gt;Problem 4&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;How to get a real &lt;em&gt;bib&lt;/em&gt; file? I use &lt;a href="http://www.mendeley.com/"&gt;Mendeley&lt;/a&gt; to manage my references, so do I need to export the &lt;em&gt;bib&lt;/em&gt; file from &lt;em&gt;Mendeley&lt;/em&gt; each time I add a new document?&lt;/p&gt;
+&lt;h2 id="solution-4"&gt;&lt;a href="#TOC"&gt;Solution 4&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;No, as it happens, &lt;a href="http://blog.mendeley.com/tipstricks/how-to-series-generate-bibtex-files-for-your-collections-for-use-in-latex-part-3-of-12/"&gt;Mendeley can sync to a bib file&lt;/a&gt;. This feature was designed for people writing papers with &lt;em&gt;LaTeX&lt;/em&gt; but it is useful for me as well. So as long as I use &lt;em&gt;Mendeley&lt;/em&gt;, I just need to point the renderer to the &lt;em&gt;bib&lt;/em&gt; file I sync to &lt;em&gt;Mendeley&lt;/em&gt; and that's it - this is done by giving the renderer factory a suitable argument &lt;code&gt;bib=/path/to/library.bib&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;CSL files are easier - just download the ones you want from &lt;a href="http://www.zotero.org/styles"&gt;Zotero Style Repository&lt;/a&gt; and place the in the &lt;code&gt;sys.path&lt;/code&gt; or in the &lt;code&gt;pandoc/csl&lt;/code&gt; folder.&lt;/p&gt;
+&lt;h2 id="problem-5"&gt;&lt;a href="#TOC"&gt;Problem 5&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;As you can see in the &lt;a href="#examples"&gt;examples below&lt;/a&gt;, the references are not linked. But I'll leave that for another day.&lt;/p&gt;
+&lt;h2 id="examples"&gt;&lt;a href="#TOC"&gt;Examples&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;A few exmamples of how I write the &lt;em&gt;Markdown&lt;/em&gt; and how it looks on the blog:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;... in a process called *Muller&amp;#39;s Ratchet* [@Haigh1978].&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;... in a process called &lt;em&gt;Muller's Ratchet&lt;/em&gt; &lt;span class="citation"&gt;(Haigh 1978)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.. as suggested by Drake [-@Drake1991].&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;.. as suggested by Drake &lt;span class="citation"&gt;(1991)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;My model is based on that by @Hadany2003 who showed...&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;My model is based on that by &lt;span class="citation"&gt;Hadany and Beker (2003)&lt;/span&gt; who showed...&lt;/p&gt;
+&lt;h2 id="references"&gt;&lt;a href="#TOC"&gt;References&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Drake, John W. 1991. &amp;#8220;A constant rate of spontaneous mutation in DNA-based microbes.&amp;#8221; &lt;em&gt;Proceedings of the National Academy of Sciences of the United States of America&lt;/em&gt; 88 (aug): 7160&amp;#8211;4. doi:10.1073/pnas.88.16.7160. &lt;a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract"&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hadany, Lilach, and Tuvik Beker. 2003. &amp;#8220;On the evolutionary advantage of fitness-associated recombination.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 165 (dec): 2167&amp;#8211;79. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/14704195" title="http://www.ncbi.nlm.nih.gov/pubmed/14704195"&gt;http://www.ncbi.nlm.nih.gov/pubmed/14704195&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Haigh, John. 1978. &amp;#8220;The accumulation of deleterious genes in a population - Muller&amp;#8217;s Ratchet.&amp;#8221; &lt;em&gt;Theoretical Population Biology&lt;/em&gt; 14 (oct): 251&amp;#8211;267. doi:10.1016/0040-5809(78)90027-8. &lt;a href="http://dx.doi.org/10.1016/0040-5809(78)90027-8 http://linkinghub.elsevier.com/retrieve/pii/0040580978900278" title="http://dx.doi.org/10.1016/0040-5809(78)90027-8 http://linkinghub.elsevier.com/retrieve/pii/0040580978900278"&gt;http://dx.doi.org/10.1016/0040-5809(78)90027-8 http://linkinghub.elsevier.com/retrieve/pii/0040580978900278&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn1"&gt;&lt;p&gt;The main Python module underlying &lt;a href="https://bitbucket.org/yoavram/msb"&gt;my Python static site generator&lt;/a&gt;.&lt;a href="#fnref1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry xml:base="http://localhost/recent.atom">
+    <title type="text">Icons for the blog</title>
+    <id>http://localhost/icons-for-the-blog</id>
+    <updated>2012-10-11T14:59:00Z</updated>
+    <link href="http://localhost/icons-for-the-blog" />
+    <author>
+      <name></name>
+    </author>
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="#the-problem"&gt;The problem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#the-solution"&gt;The solution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#font-awesome"&gt;Font Awesome&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a name='TOC'&gt;&lt;/a&gt;
+&lt;h3 id="the-problem"&gt;&lt;a href="#TOC"&gt;The problem&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;To build this blog I used the wonderful &lt;a href="http://twitter.github.com/bootstrap/index.html"&gt;Twitter Bootstrap&lt;/a&gt; framework. It's hard to define what it is, so I'll leave it for another time. &lt;em&gt;Twitter Bootstrap&lt;/em&gt; comes packed with 120 icons packaged under the name &lt;a href="http://glyphicons.com/"&gt;Glyphicons&lt;/a&gt; &lt;em&gt;Halflings&lt;/em&gt;. These are a subset of the &lt;em&gt;Glyphicons Free&lt;/em&gt; set, and they include most of the little icons you see around the blog, like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the user icon: &lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;the time icon: &lt;i class="icon-time"&gt;&lt;/i&gt;&lt;/li&gt;
+&lt;li&gt;the tag icon: &lt;i class="icon-tag"&gt;&lt;/i&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For a complete list visit either &lt;em&gt;Glyphicons&lt;/em&gt; or &lt;a href="http://twitter.github.com/bootstrap/base-css.html#icons"&gt;Twitter Bootstrap icons documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;But when I built the top navigation bar, I saw that I needed something more - I needed a button for my &lt;a href="http://en.wikipedia.org/wiki/Web_feed"&gt;web feed&lt;/a&gt;. Web feeds (or RSS) have distinctive icons, but the &lt;em&gt;Glyphicons Halflings&lt;/em&gt; set didn't have the feedicon. But there is an RSS icon in &lt;em&gt;Glyphicons Free&lt;/em&gt; - here it is &lt;i class="glyphicon-rss"&gt;&lt;/i&gt;.&lt;/p&gt;
+&lt;p&gt;So how do I add it to my site?&lt;/p&gt;
+&lt;p&gt;The thing to understand is that these icons are not used like any image that you can put using an HTML &lt;code&gt;img&lt;/code&gt; tag. The icons are packed together in a small &lt;em&gt;png&lt;/em&gt; file and are parsed using a special &lt;em&gt;css&lt;/em&gt; file. This is called a &lt;a href="http://en.wikipedia.org/wiki/Sprite_(computer_graphics)#Sprites_by_CSS"&gt;CSS sprite&lt;/a&gt;. The advantage is that the browser only asks for a single &lt;em&gt;png&lt;/em&gt; file and a single &lt;em&gt;css&lt;/em&gt; file for all icons, reducing requests to the server. But these &lt;em&gt;png&lt;/em&gt; and &lt;em&gt;css&lt;/em&gt; were pre-packed in &lt;em&gt;Twitter Bootstrap&lt;/em&gt; - I simply downloaded &lt;em&gt;Twitter Bootstrap&lt;/em&gt; and put it in my &lt;em&gt;static&lt;/em&gt; directory, and from then on I could use icons like this: &lt;code&gt; &amp;lt;i class=&amp;quot;icon-camera&amp;quot;&amp;gt;&amp;lt;/i&amp;gt; &lt;/code&gt; produces this icon - &lt;i class="icon-camera"&gt;&lt;/i&gt;.&lt;/p&gt;
+&lt;p&gt;So how do I use the &lt;em&gt;Glyphicons Free&lt;/em&gt; icon set, that has 400 icons including my desired &lt;i class="glyphicon-rss"&gt;&lt;/i&gt;?&lt;/p&gt;
+&lt;p&gt;At first I downloaded the &lt;em&gt;Glyphicons Free&lt;/em&gt; set from their website. But this download has two problems:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There is no CSS sprite - instead of one &lt;em&gt;png&lt;/em&gt; and one &lt;em&gt;css&lt;/em&gt; I got 400 &lt;em&gt;png&lt;/em&gt;s...&lt;/li&gt;
+&lt;li&gt;The icons are 24x24 pixels, instead of 14x14, like the Halflings...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A quick goole led me to a few sites that offered CSS sprites for &lt;em&gt;Glyphicons Free&lt;/em&gt; (for example &lt;a href="http://supercerebral.com/glyphicons-to-halflings-sprite/"&gt;here&lt;/a&gt;, but each had its own problem. Until I found the right place &lt;a href="http://rnikitin.tumblr.com/post/28834314453/all-glyphicons-as-12px-is-css-sprite-fot-bootstrap"&gt;rnitkin&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="the-solution"&gt;&lt;a href="#TOC"&gt;The solution&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;On this blog post there are both a &lt;a href="/static/glyphicons.png"&gt;glyphicons.png&lt;/a&gt; and a &lt;a href="/static/glyphicons.css"&gt;glyphicons.css&lt;/a&gt;. You can download them and use them. All you need to do, after putting them on some folder of your site:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add the &lt;em&gt;css&lt;/em&gt; file to the &lt;code&gt;head&lt;/code&gt; of any &lt;em&gt;HTML&lt;/em&gt; file that uses the icons - change the &lt;code&gt;href&lt;/code&gt; accordingly:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="prettyprint"&gt;
+&amp;lt;link href="/static/glyphicons.css" rel="stylesheet"&gt;
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Change the URL of the &lt;em&gt;png&lt;/em&gt; file in the &lt;em&gt;css&lt;/em&gt; file to point at where the &lt;em&gt;png&lt;/em&gt; file is:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="prettyprint"&gt;
+background-image: url("images/glyphicons-2.png");
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Alternatively, you can change the URL in the &lt;code&gt;head&lt;/code&gt; of your &lt;em&gt;HTML&lt;/em&gt; file:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="prettyprint"&gt;
+[class^="glyphicon-"] { background-image: url("/static/glyphicons.png"); } 
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now you can use icons from &lt;em&gt;Glyphicons Free&lt;/em&gt; like this:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="prettyprint"&gt;
+Hospital &amp;lt;i class="glyphicon-hospital"&gt;&lt;/i&gt;
+&lt;/pre&gt;
+&lt;pre&gt;
+Hospital &lt;i class="glyphicon-hospital"&gt;&lt;/i&gt;
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;For a mapping between icon and its name, like the one for &lt;em&gt;Glyphicons Halflings&lt;/em&gt; on the &lt;a href="http://twitter.github.com/bootstrap/base-css.html#icons"&gt;Twitter Bootstrap icons documentation&lt;/a&gt;, you can check out &lt;a href="http://maximals.ru/project/sprite/glyphicons/"&gt;MaximaAL's site&lt;/a&gt;. Just change the names from &lt;code&gt;gi-XXX&lt;/code&gt; to &lt;code&gt;glyphicon-XXX&lt;/code&gt;. It doesn't always work though, so the last resort is to look at the &lt;em&gt;css&lt;/em&gt; file.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Make sure you give proper attribution: the &lt;a href="http://glyphicons.com/glyphicons-licenses/"&gt;Glyphicons License&lt;/a&gt; page states that the use of Glyphonics Free is, well, free, but you must include a link to &lt;a href="http://glyphonics.com/"&gt;&lt;code class="url"&gt;http://glyphonics.com/&lt;/code&gt;&lt;/a&gt; and include the &lt;a href="http://creativecommons.org/licenses/by/3.0/"&gt;CC-BY 3.0&lt;/a&gt; license.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You might be able to install the icons from this &lt;a href="https://bitbucket.org/creat1va/compass-glyphicons"&gt;project&lt;/a&gt;, especially if you're a Ruby user. You can also het a &lt;em&gt;_white&lt;/em&gt; version.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="font-awesome"&gt;&lt;a href="#TOC"&gt;Font Awesome&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;One last thing. During the search for the solution (15 mins?) I found someone that suggested to use the &lt;a href="http://fortawesome.github.com/Font-Awesome/"&gt;Font Awesome&lt;/a&gt; icon set instead of &lt;em&gt;Glyphicons&lt;/em&gt;, so I tried that. First of all, the &lt;em&gt;Font Awesome&lt;/em&gt; site is... awesome. It took me one minute to understand how I need to do, to follow the instructions, and transition my site to &lt;em&gt;Font Awesome&lt;/em&gt;. The integration with &lt;em&gt;Twitter Bootstrap&lt;/em&gt; is very easy. The icon set is large, and it looks nice, but... not as nice as &lt;em&gt;Glyphonics&lt;/em&gt; looks. So I decided I'd stick with &lt;em&gt;Glyphicons&lt;/em&gt;. I will say that &lt;em&gt;Font Awesome&lt;/em&gt;'s social icons (twitter and company) are nicer, maybe because the &lt;em&gt;Glyphicons&lt;/em&gt; social icons have a black background and they don't look so good at 14x14 pixels.&lt;/p&gt;
+&lt;p&gt;You can, of course, decide for yourself. Here are screenshots of the navigation bar with &lt;a href="http://i.imgur.com/3RFfm.png"&gt;Glyphonics&lt;/a&gt; and here it is with &lt;a href="http://i.imgur.com/WLVAM.png"&gt;Font Awesome&lt;/a&gt;. If you would like to see the code, here are the commits for &lt;a href="https://bitbucket.org/yoavram/msb/changeset/48d36660697bc022548e5476e40157c894aa3a99"&gt;Glyphonics&lt;/a&gt; and for &lt;a href="https://bitbucket.org/yoavram/msb/changeset/9a7b530667faeda8da08d9ba932e11622d07287b"&gt;Font Awesome&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
+  <entry xml:base="http://localhost/recent.atom">
+    <title type="text">Markdown links and footnotes</title>
+    <id>http://localhost/markdown-links-and-footnotes</id>
+    <updated>2012-10-11T09:21:00Z</updated>
+    <link href="http://localhost/markdown-links-and-footnotes" />
+    <author>
+      <name></name>
+    </author>
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="#links"&gt;Links&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#inline"&gt;Inline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#reference"&gt;Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#automatic"&gt;Automatic&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#footnotes"&gt;Footnotes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a name='TOC'&gt;&lt;/a&gt;
+&lt;p&gt;Following are examples of how to do links and footnotes in &lt;a href="http://daringfireball.net/projects/markdown/"&gt;Markdown&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="links"&gt;&lt;a href="#TOC"&gt;Links&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://daringfireball.net/projects/markdown/syntax#link"&gt;Links&lt;/a&gt; can be written in several ways:&lt;/p&gt;
+&lt;h4 id="inline"&gt;&lt;a href="#TOC"&gt;Inline&lt;/a&gt;&lt;/h4&gt;
+&lt;pre&gt;
+Here is a link to [my website](http://www.yoavram.com).
+&lt;/pre&gt;
+&lt;p&gt;Here is a link to &lt;a href="http://www.yoavram.com"&gt;my website&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id="reference"&gt;&lt;a href="#TOC"&gt;Reference&lt;/a&gt;&lt;/h4&gt;
+&lt;pre&gt;
+Now you can see a link to [somewhere], and another to [neverwhere][1].
+&lt;/pre&gt;
+&lt;p&gt;Now you can see a link to &lt;a href="http://somewhere.com" title="Somewhere"&gt;somewhere&lt;/a&gt;, and another to &lt;a href="http://neverwhere.com/"&gt;neverwhere&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Try the tooltip on &lt;em&gt;somehwere&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Make sure you stick these reference at the bottom, or wherever you want:&lt;/p&gt;
+&lt;pre&gt;
+[somewhere]: http://somewhere.com "Somewhere"
+[1]: http://neverwhere.com/
+&lt;/pre&gt;
+
+&lt;h4 id="automatic"&gt;&lt;a href="#TOC"&gt;Automatic&lt;/a&gt;&lt;/h4&gt;
+&lt;pre&gt;
+There are also automatic links, see &amp;lt;http://daringfireball.net/projects/markdown/syntax#autolink&gt;
+&lt;/pre&gt;
+&lt;p&gt;There are also automatic links, see &lt;a href="http://daringfireball.net/projects/markdown/syntax#autolink"&gt;&lt;code class="url"&gt;http://daringfireball.net/projects/markdown/syntax#autolink&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="footnotes"&gt;&lt;a href="#TOC"&gt;Footnotes&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://freewisdom.org/projects/python-markdown/Footnotes"&gt;Footnotes&lt;/a&gt; are useful:&lt;/p&gt;
+&lt;pre&gt;
+You can see a footnote here[^here].
+&lt;/pre&gt;
+&lt;p&gt;You can see a footnote here&lt;sup&gt;&lt;a href="#fn1" class="footnoteRef" id="fnref1"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Click on the little &lt;em&gt;1&lt;/em&gt; to see the footnote. Again, you'll need to put this somewhere, usually at the bottom:&lt;/p&gt;
+&lt;pre&gt;
+[^here]: This a footnote, it leads to [somewhere] but not much *else*
+&lt;/pre&gt;
+
+
+
+
+
+
+
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn1"&gt;&lt;p&gt;This a footnote, it leads to &lt;a href="http://somewhere.com" title="Somewhere"&gt;somewhere&lt;/a&gt; but not much &lt;em&gt;else&lt;/em&gt;&lt;a href="#fnref1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry xml:base="http://localhost/recent.atom">
+    <title type="text">Blogging with math and code</title>
+    <id>http://localhost/blogging-with-math-and-code</id>
+    <updated>2012-10-03T13:05:00Z</updated>
+    <link href="http://localhost/blogging-with-math-and-code" />
+    <author>
+      <name></name>
+    </author>
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="#examples"&gt;Examples&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#latex"&gt;LaTeX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#source-code"&gt;Source Code&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#java"&gt;Java&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#python"&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#inline-code"&gt;Inline code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#explanations"&gt;Explanations&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#latex-1"&gt;LaTeX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#source-code-1"&gt;Source Code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a name='TOC'&gt;&lt;/a&gt;
+&lt;h2 id="examples"&gt;&lt;a href="#TOC"&gt;Examples&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="latex"&gt;&lt;a href="#TOC"&gt;LaTeX&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are \[
+x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
+\]&lt;/p&gt;
+&lt;h3 id="source-code"&gt;&lt;a href="#TOC"&gt;Source Code&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="java"&gt;&lt;a href="#TOC"&gt;Java&lt;/a&gt;&lt;/h4&gt;
+&lt;pre class="prettyprint"&gt;
+class Voila {
+public:
+  // Voila
+  static const string VOILA = "Voila";
+}
+&lt;/pre&gt;
+
+&lt;h4 id="python"&gt;&lt;a href="#TOC"&gt;Python&lt;/a&gt;&lt;/h4&gt;
+&lt;pre class="prettyprint linenums:1"&gt;
+      #!/usr/bin/python
+      """
+      xml2html: Convert XML to HTML
+
+      *** SUPERSEDED by pyslt ***
+
+      Uses SAX (event-based parsing).
+
+      ***LICENSE***
+      """
+
+      _ID = '$Id: xml2html-1.01-1.py,v 1.1.1.1 2000/01/15 14:37:46 ecoaccess Exp $'
+
+      import sys, copy
+      from xml.sax.drivers.drv_xmlproc_val import *
+
+      class myParser(SAX_XPValParser):
+          """XML parser."""
+
+          psl = None
+
+          def handle_doctype(self, rootname, pub_id, sys_id):
+              self.dtd_handler.doctypeDecl(rootname, pub_id, sys_id, self.psl)
+&lt;/pre&gt;
+
+&lt;h4 id="inline-code"&gt;&lt;a href="#TOC"&gt;Inline code&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Small code elements like &lt;code&gt;print 'Hello World!'&lt;/code&gt; can be put into HTML &lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt; elements.&lt;/p&gt;
+&lt;h2 id="explanations"&gt;&lt;a href="#TOC"&gt;Explanations&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="latex-1"&gt;&lt;a href="#TOC"&gt;LaTeX&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;\(LaTeX\)&lt;sup&gt;&lt;a href="#fn1" class="footnoteRef" id="fnref1"&gt;1&lt;/a&gt;&lt;/sup&gt; is written inside the &lt;a href="http://daringfireball.net/projects/markdown/"&gt;Markdown&lt;/a&gt;&lt;sup&gt;&lt;a href="#fn2" class="footnoteRef" id="fnref2"&gt;2&lt;/a&gt;&lt;/sup&gt; text using &lt;code&gt;$&lt;/code&gt; (once for inline, two for display mode). Markdown identifies this is LaTeX because of the Python-Markdown extension &lt;a href="https://github.com/mayoff/python-markdown-mathjax"&gt;Markdown-MathJax&lt;/a&gt;. The LaTeX is then converted to mathematical notation in the browser using &lt;a href="http://www.mathjax.org"&gt;MathJax&lt;/a&gt; javascript. To use it, you put the following in the &lt;code&gt;&lt;head\&gt;&lt;/code&gt; of your HTML file:&lt;/p&gt;
+&lt;pre class="prettyprint html"&gt;
+    &amp;lt;script type="text/x-mathjax-config"&gt;
+      MathJax.Hub.Config({
+                "tex2jax": { inlineMath: [ [ '$', '$' ] ] },
+                "HTML-CSS": { availableFonts: ["STIX", "TeX"], 
+                              linebreaks: { automatic: true }
+                }
+      });
+    &amp;lt;/script&gt;
+    &amp;lt;script type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"&gt;
+    &amp;lt;/script&gt;
+
+&lt;/pre&gt;
+
+&lt;p&gt;The confguration parameters are as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;inlineMath&lt;/code&gt; tells the MathJax script to use dollar signs for inline math.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;availableFonts&lt;/code&gt; tells it to prefer using the &lt;a href="http://www.stixfonts.org/"&gt;STIX&lt;/a&gt; font if it is available.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;linebreaks&lt;/code&gt; tells it to automatically break (wrap) long equations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now you can write: &lt;code&gt;\(LaTeX\) is cool: \[
+p&amp;#39; = p + (1-p)(1-s)\mu
+\]&lt;/code&gt; to get the following result:&lt;/p&gt;
+&lt;p&gt;\(LaTeX\) is cool: \[
+p&amp;#39; = p + (1-p)(1-s)\mu
+\]&lt;/p&gt;
+&lt;p&gt;For more resources visit the &lt;a href="http://docs.mathjax.org/en/latest/output.html"&gt;documentation&lt;/a&gt; and the &lt;a href="http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm"&gt;online debugger&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="source-code-1"&gt;&lt;a href="#TOC"&gt;Source Code&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Code is writeen in the &lt;a href="http://daringfireball.net/projects/markdown/"&gt;Markdown&lt;/a&gt;&lt;sup&gt;&lt;a href="#fn3" class="footnoteRef" id="fnref3"&gt;3&lt;/a&gt;&lt;/sup&gt; text by wrapping it with &lt;code&gt;&amp;lt;pre class=&amp;quot;prettyprint html&amp;quot;&amp;gt;...&amp;lt;/pre&amp;gt;&lt;/code&gt; element. It is then highlighted in the browser using &lt;a href="http://google-code-prettify.googlecode.com"&gt;Google code prettifier&lt;/a&gt; javascript which automatically identifies the language.&lt;/p&gt;
+&lt;p&gt;See the &lt;a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html"&gt;README&lt;/a&gt; for detailed instructions. It's very easy to use and is the highligher used by &lt;a href="http://code.google.com"&gt;Google Code&lt;/a&gt; and &lt;a href="http://stackoverflow.com/"&gt;stackoverflow.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you have problems displaying HTML or XML source I suggest trying to replace &lt;code&gt;&amp;lt;&lt;/code&gt; with &lt;code&gt;&amp;amp;lt;&lt;/code&gt;&lt;sup&gt;&lt;a href="#fn4" class="footnoteRef" id="fnref4"&gt;4&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;For a nice example of different styles you can use (by replacing the default &lt;code&gt;prettify.css&lt;/code&gt; file), see &lt;a href="http://demo.stanleyhlng.com/prettify-js/?id=sons-of-obsidian-dark"&gt;Stanley Ng's website&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn1"&gt;&lt;p&gt;&lt;a href="http://texify.com/"&gt;Online LaTeX editor&lt;/a&gt;&lt;a href="#fnref1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn2"&gt;&lt;p&gt;&lt;a href="http://www.ctrlshift.net/project/markdowneditor/"&gt;Online Markdown editor&lt;/a&gt;&lt;a href="#fnref2"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn3"&gt;&lt;p&gt;&lt;a href="http://www.ctrlshift.net/project/markdowneditor/"&gt;Online Markdown editor&lt;/a&gt;&lt;a href="#fnref3"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn4"&gt;&lt;p&gt;&lt;a href="http://www.htmlescape.net/htmlescape_tool.html"&gt;Online HTML escaping tool&lt;/a&gt;&lt;a href="#fnref4"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content>
+  </entry>
+</feed>

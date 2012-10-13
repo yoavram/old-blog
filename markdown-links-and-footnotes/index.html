@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> Markdown links and footnotes </title>
+
+<meta charset="utf-8">
+<link rel="icon" type="image/ico" href="/static/favicon.ico">
+<link href="/recent.atom" rel="alternate" title="Recent Articles" type="application/atom+xml">
+
+<!-- Le style -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/static/theme.css" rel="stylesheet">
+<link href="/static/jekyll.css" rel="stylesheet">
+<link href="/static/bootstrap.min.css" rel="stylesheet">
+<link href="/static/glyphicons.css" rel="stylesheet">
+<link href="/static/bootstrap-responsive.min.css" rel="stylesheet">
+<style type="text/css">
+[class^="icon-"] { background-image: url("/static/glyphicons-halflings.png"); } 
+[class*="icon-white"] { background-image: url("/static/glyphicons-halflings-white.png"); } 
+[class^="glyphicon-"] { background-image: url("/static/glyphicons.png"); } 
+</style>
+<link href="/static/prettify.css" rel="stylesheet">
+
+<!-- Le JS -->
+<script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap-transition.js"></script>
+<script type="text/javascript" src="/static/bootstrap-collapse.js"></script>
+
+<!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
+<script type="text/javascript" src="/static/prettify.js"></script>
+
+
+
+
+
+
+<!-- ShareThis JS -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "{{ config.SHARETHIS_PUBLISHER }}"});</script>
+<!-- ShareThis JS -->
+
+
+
+
+
+
+<!-- Google Analytics www.google.com/analytics/ -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{{ config.GOOGLE_ANALYTICS }}']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</head>
+
+
+<body onload="prettyPrint()">
+
+<!-- Navbar -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href='/'>The Mutation-Selection Blog</a>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse">
+        <ul class="nav">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<!--Tags -->
+					<i class="icon-tags"></i>
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				
+
+	<li><a href='/tag/blog/'>blog: <small>4</small></a></li>
+
+	<li><a href='/tag/citations/'>citations: <small>1</small></a></li>
+
+	<li><a href='/tag/latex/'>latex: <small>1</small></a></li>
+
+	<li><a href='/tag/markdown/'>markdown: <small>3</small></a></li>
+
+	<li><a href='/tag/pandoc/'>pandoc: <small>1</small></a></li>
+
+	<li><a href='/tag/python/'>python: <small>1</small></a></li>
+
+
+				</ul>
+			</li>			
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				  <!-- Contact -->
+				  <i class="icon-user"></i>
+				  <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				<!-- http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+					
+	
+	<li><a href="http://www.yoavram.com/">Home <i class="icon-home"></i></a></li>
+	
+	
+	<li><a href="mailto:yoavram@gmail.com">Email <i class="icon-envelope"></i></a></li>
+	
+	
+	<li><a href="http://www.mendeley.com/profiles/yoav-ram">Mendeley</a></li>
+	
+	
+	<li><a href="http://scholar.google.com/citations?user=RIFmJvYAAAAJ">Scholar Citations</a></li>
+	
+	
+	<li><a href="http://twitter.com/yoavram">Twitter <i class="glyphicon-twitter-t"></i></a></li>
+	
+	
+	<li><a href="http://www.linkedin.com/in/yoav-ram">Linkedin <i class="glyphicon-linked-in"></i></a></li>
+	
+	
+	<li><a href="https://github.com/yoavram">GitHub <i class="glyphicon-github"></i></a></li>
+	
+	
+	<li><a href="https://bitbucket.org/yoavram">Bitbucket</a></li>
+	
+	
+	<li><a href="http://code.google.com/u/yoav-ram/">Google Code</a></li>
+		
+				
+				</ul>
+			</li>
+			<li>
+				<a href="http://www.yoavram.com/" >
+					<i class="icon-question-sign"></i>
+					&nbsp;&nbsp;
+				</a>
+			</li>
+			<li>
+				<a href="/recent.atom">
+					<i class="glyphicon-rss"></i>
+					&nbsp;&nbsp;
+				</a>
+			</li>
+			</ul>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+<!-- end Navbar -->
+    
+<!-- HEADER -->
+
+<div class="row-fluid">
+	<div class="span8 offset1">
+	<header class="masthead">
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/blogging-with-math-and-code/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next">
+		<a href='/icons-for-the-blog/'>Newer &rarr;</a>
+		
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#bottom">To bottom &darr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+	<h1>Markdown links and footnotes</h1>
+	
+<ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
+	<li class="active"><i class="icon-time"></i> October 11, 2012 </li>
+	
+	<li><span class="divider">/</span>
+	<i class="icon-star"></i> <a href='/markdown-links-and-footnotes/'>Permalink</a></li>
+	
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/blog/">blog</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/markdown/">markdown</a></li>
+	
+	
+	
+	<li><span class="divider">/</span>
+	
+	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
+	<span class='st_email' ></span>
+	<span class='st_twitter' ></span>
+	<span class='st_facebook' ></span>
+	<span class='st_googleplus' ></span>
+	<span class='st_reddit' ></span>
+	<span class='st_linkedin' ></span>
+	<span class='st_stumbleupon' ></span>
+	<span class='st_delicious' ></span>
+	<span class='st_citeulike' ></span>
+	<span class='st_connotea' ></span>
+
+	</li>
+	</ul>
+
+	</header>
+	</div>
+</div>
+
+
+<!-- BODY -->	
+<div class="row-fluid">
+	<div class="span8 offset1">
+
+		
+
+<div class="post">
+	
+    <ul>
+<li><a href="#links">Links</a><ul>
+<li><a href="#inline">Inline</a></li>
+<li><a href="#reference">Reference</a></li>
+<li><a href="#automatic">Automatic</a></li>
+</ul></li>
+<li><a href="#footnotes">Footnotes</a></li>
+</ul>
+<a name='TOC'></a>
+<p>Following are examples of how to do links and footnotes in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>.</p>
+<h3 id="links"><a href="#TOC">Links</a></h3>
+<p><a href="http://daringfireball.net/projects/markdown/syntax#link">Links</a> can be written in several ways:</p>
+<h4 id="inline"><a href="#TOC">Inline</a></h4>
+<pre>
+Here is a link to [my website](http://www.yoavram.com).
+</pre>
+<p>Here is a link to <a href="http://www.yoavram.com">my website</a>.</p>
+<h4 id="reference"><a href="#TOC">Reference</a></h4>
+<pre>
+Now you can see a link to [somewhere], and another to [neverwhere][1].
+</pre>
+<p>Now you can see a link to <a href="http://somewhere.com" title="Somewhere">somewhere</a>, and another to <a href="http://neverwhere.com/">neverwhere</a>.</p>
+<p>Try the tooltip on <em>somehwere</em>.</p>
+<p>Make sure you stick these reference at the bottom, or wherever you want:</p>
+<pre>
+[somewhere]: http://somewhere.com "Somewhere"
+[1]: http://neverwhere.com/
+</pre>
+
+<h4 id="automatic"><a href="#TOC">Automatic</a></h4>
+<pre>
+There are also automatic links, see &lt;http://daringfireball.net/projects/markdown/syntax#autolink>
+</pre>
+<p>There are also automatic links, see <a href="http://daringfireball.net/projects/markdown/syntax#autolink"><code class="url">http://daringfireball.net/projects/markdown/syntax#autolink</code></a></p>
+<h3 id="footnotes"><a href="#TOC">Footnotes</a></h3>
+<p><a href="http://freewisdom.org/projects/python-markdown/Footnotes">Footnotes</a> are useful:</p>
+<pre>
+You can see a footnote here[^here].
+</pre>
+<p>You can see a footnote here<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup>.</p>
+<p>Click on the little <em>1</em> to see the footnote. Again, you'll need to put this somewhere, usually at the bottom:</p>
+<pre>
+[^here]: This a footnote, it leads to [somewhere] but not much *else*
+</pre>
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This a footnote, it leads to <a href="http://somewhere.com" title="Somewhere">somewhere</a> but not much <em>else</em><a href="#fnref1">&#8617;</a></p></li>
+</ol>
+</div>
+	
+	<a name="bottom"></a>
+	
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/blogging-with-math-and-code/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next">
+		<a href='/icons-for-the-blog/'>Newer &rarr;</a>
+		
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#">To top &uarr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+	
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
+	var disqus_shortname = 'yoavram'; // required: replace example with your forum shortname
+	var disqus_identifier = 'markdown-links-and-footnotes';
+	
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+		
+		
+	</div>
+	<div class="span3">
+	<div class="sidebar">
+		
+	
+		
+		</div>
+	</div>
+	
+</div>
+
+<!-- FOOTER -->
+<div class="row-fluid">
+<div class="span10 offset1">
+<footer class="colophon"> 
+	
+	
+	<ul class="quick-links">
+	<li> 
+		<!--a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+		<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
+		</a-->
+		The content on "<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">The Mutation-Selection Blog</span>" by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.yoavram.com/" property="cc:attributionName" rel="cc:attributionURL">Yoav Ram</a>
+		is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>	license.
+		<!-- Creative Commons Attribution-ShareAlike 3.0 Unported License -->
+		Other components of this site are licensed separately:
+	</li>
+	</ul>
+	<ul class="quick-links">
+	<li>Front</li>
+	<li><a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a></li>
+	<li><a href="http://glyphicons.com/" title="CC BY-SA 3.0">Glyphicons Free</a><li>
+	<li><a href="http://code.google.com/p/google-code-prettify/">Google code prettifier</a></li>
+	<li><a href="http://mathjax.org/">MathJax</a></li>
+	<li><a href="http://ethanschoonover.com/solarized">Solarized</a></li>
+	<li>Back</li>
+	<li><a href="http://python.org/">Python</a></li>
+	<li><a href="http://flask.pocoo.org/">Flask</a></li>
+	<li><a href="http://github.com/">GitHub</a></li>
+	<li><a href="http://freewisdom.org/projects/python-markdown/">Markdown</a></li>
+	</ul>
+  
+	<ul class="quick-links">
+	<li>Code</li>
+	<li><a href="https://github.com/yoavram/yoavram.github.com">Site repository</a></li>
+	<li>Logo</li>
+	<li><a href="http://www.idancohen.com/">Idan Cohen</a></li>
+	<li><a href="http://www.dafont.com/sketch-block.font">Sketch Block</a></li>
+	<li><a href="http://www.dafont.com/positiv-a.font">Positiv-A</a></li>
+	</ul>
+  
+	
+	
+</footer>
+</div>
+</div>
+
+</body>
+</html>

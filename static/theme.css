@@ -1,0 +1,24 @@
+/* Globals
+-------------------------------------------------- */
+
+a {
+  color: #;
+}
+a:hover {
+  color: #;
+}
+
+/* Masthead
+-------------------------------------------------- */
+
+.site-logo {
+  position: relative;
+  margin: 0 auto 20px;
+}
+.site-logo img {
+  display: block;
+  margin: 0 auto;
+   -webkit-transition: all 0.1s ease-in-out;
+     -moz-transition: all 0.1s ease-in-out;
+          transition: all 0.1s ease-in-out;
+}

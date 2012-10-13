@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> Citations in Markdown using Pandoc </title>
+
+<meta charset="utf-8">
+<link rel="icon" type="image/ico" href="/static/favicon.ico">
+<link href="/recent.atom" rel="alternate" title="Recent Articles" type="application/atom+xml">
+
+<!-- Le style -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/static/theme.css" rel="stylesheet">
+<link href="/static/jekyll.css" rel="stylesheet">
+<link href="/static/bootstrap.min.css" rel="stylesheet">
+<link href="/static/glyphicons.css" rel="stylesheet">
+<link href="/static/bootstrap-responsive.min.css" rel="stylesheet">
+<style type="text/css">
+[class^="icon-"] { background-image: url("/static/glyphicons-halflings.png"); } 
+[class*="icon-white"] { background-image: url("/static/glyphicons-halflings-white.png"); } 
+[class^="glyphicon-"] { background-image: url("/static/glyphicons.png"); } 
+</style>
+<link href="/static/prettify.css" rel="stylesheet">
+
+<!-- Le JS -->
+<script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap-transition.js"></script>
+<script type="text/javascript" src="/static/bootstrap-collapse.js"></script>
+
+<!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
+<script type="text/javascript" src="/static/prettify.js"></script>
+
+
+
+
+
+
+<!-- ShareThis JS -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "{{ config.SHARETHIS_PUBLISHER }}"});</script>
+<!-- ShareThis JS -->
+
+
+
+
+
+
+<!-- Google Analytics www.google.com/analytics/ -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{{ config.GOOGLE_ANALYTICS }}']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</head>
+
+
+<body onload="prettyPrint()">
+
+<!-- Navbar -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href='/'>The Mutation-Selection Blog</a>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse">
+        <ul class="nav">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<!--Tags -->
+					<i class="icon-tags"></i>
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				
+
+	<li><a href='/tag/blog/'>blog: <small>4</small></a></li>
+
+	<li><a href='/tag/citations/'>citations: <small>1</small></a></li>
+
+	<li><a href='/tag/latex/'>latex: <small>1</small></a></li>
+
+	<li><a href='/tag/markdown/'>markdown: <small>3</small></a></li>
+
+	<li><a href='/tag/pandoc/'>pandoc: <small>1</small></a></li>
+
+	<li><a href='/tag/python/'>python: <small>1</small></a></li>
+
+
+				</ul>
+			</li>			
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				  <!-- Contact -->
+				  <i class="icon-user"></i>
+				  <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				<!-- http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+					
+	
+	<li><a href="http://www.yoavram.com/">Home <i class="icon-home"></i></a></li>
+	
+	
+	<li><a href="mailto:yoavram@gmail.com">Email <i class="icon-envelope"></i></a></li>
+	
+	
+	<li><a href="http://www.mendeley.com/profiles/yoav-ram">Mendeley</a></li>
+	
+	
+	<li><a href="http://scholar.google.com/citations?user=RIFmJvYAAAAJ">Scholar Citations</a></li>
+	
+	
+	<li><a href="http://twitter.com/yoavram">Twitter <i class="glyphicon-twitter-t"></i></a></li>
+	
+	
+	<li><a href="http://www.linkedin.com/in/yoav-ram">Linkedin <i class="glyphicon-linked-in"></i></a></li>
+	
+	
+	<li><a href="https://github.com/yoavram">GitHub <i class="glyphicon-github"></i></a></li>
+	
+	
+	<li><a href="https://bitbucket.org/yoavram">Bitbucket</a></li>
+	
+	
+	<li><a href="http://code.google.com/u/yoav-ram/">Google Code</a></li>
+		
+				
+				</ul>
+			</li>
+			<li>
+				<a href="http://www.yoavram.com/" >
+					<i class="icon-question-sign"></i>
+					&nbsp;&nbsp;
+				</a>
+			</li>
+			<li>
+				<a href="/recent.atom">
+					<i class="glyphicon-rss"></i>
+					&nbsp;&nbsp;
+				</a>
+			</li>
+			</ul>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+<!-- end Navbar -->
+    
+<!-- HEADER -->
+
+<div class="row-fluid">
+	<div class="span8 offset1">
+	<header class="masthead">
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/icons-for-the-blog/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#bottom">To bottom &darr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+	<h1>Citations in Markdown using Pandoc</h1>
+	
+<ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
+	<li class="active"><i class="icon-time"></i> October 12, 2012 </li>
+	
+	<li><span class="divider">/</span>
+	<i class="icon-star"></i> <a href='/citations-in-markdown-using-pandoc/'>Permalink</a></li>
+	
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/blog/">blog</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/citations/">citations</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/markdown/">markdown</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/pandoc/">pandoc</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/python/">python</a></li>
+	
+	
+	
+	<li><span class="divider">/</span>
+	
+	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
+	<span class='st_email' ></span>
+	<span class='st_twitter' ></span>
+	<span class='st_facebook' ></span>
+	<span class='st_googleplus' ></span>
+	<span class='st_reddit' ></span>
+	<span class='st_linkedin' ></span>
+	<span class='st_stumbleupon' ></span>
+	<span class='st_delicious' ></span>
+	<span class='st_citeulike' ></span>
+	<span class='st_connotea' ></span>
+
+	</li>
+	</ul>
+
+	</header>
+	</div>
+</div>
+
+
+<!-- BODY -->	
+<div class="row-fluid">
+	<div class="span8 offset1">
+
+		
+
+<div class="post">
+	
+    <ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#problem-1">Problem 1</a></li>
+<li><a href="#solution-1">Solution 1</a></li>
+<li><a href="#problem-2">Problem 2</a></li>
+<li><a href="#solution-2">Solution 2</a></li>
+<li><a href="#problem-3">Problem 3</a></li>
+<li><a href="#solution-3">Solution 3</a></li>
+<li><a href="#problem-4">Problem 4</a></li>
+<li><a href="#solution-4">Solution 4</a></li>
+<li><a href="#problem-5">Problem 5</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<a name='TOC'></a>
+<h2 id="overview"><a href="#TOC">Overview</a></h2>
+<p><a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> is an amazing tool that can convert one markup language to another. It is very good at parsing <em>Markdown</em> and it has the ability to parse <a href="http://johnmacfarlane.net/pandoc/README.html#citations">citations in <em>Markdown</em></a>, which is exactly what I was looking for!</p>
+<p>But I had some things to solve first.</p>
+<h2 id="problem-1"><a href="#TOC">Problem 1</a></h2>
+<p><em>Pandoc</em> didn't work with the <code>--bibliography</code> option (test using <code>pandoc -s -S --bibliography=references.bib test.md</code>)</p>
+<h2 id="solution-1"><a href="#TOC">Solution 1</a></h2>
+<p>Change <em>Pandoc</em> version from <em>1.9.4.2a</em> to <em>1.9.4.2</em> (see <a href="http://johnmacfarlane.net/pandoc/installing.html">Install page</a> - if you don't see the earlier version change from <em>Current downloads</em> to <em>All downloads</em> and hit <em>Search</em>.</p>
+<h2 id="problem-2"><a href="#TOC">Problem 2</a></h2>
+<p>I want to run <em>Pandoc</em> from my <em>Python</em> site generator. So I tried <a href="http://pypi.python.org/pypi/pyandoc/">pyandoc</a>.</p>
+<p>Whenever I run the test <em>pyandoc</em>, though, I got an error that &quot;Windows can't find the specified file&quot;. I filed an <a href="https://github.com/kennethreitz/pyandoc/issues/5">issue</a> and then found a solution.</p>
+<h2 id="solution-2"><a href="#TOC">Solution 2</a></h2>
+<p>The path to the pandoc executable doesn't <em>really</em> change when setting it from <em>Python</em>, so you got to change it in the original <em>pyandoc</em> file - <code>C:\Python27\Lib\site-packages\pandoc\core.py</code>, and the code change is simply setting the <code>PANDOC_PATH</code> variable to the full path to your <code>pandoc.exe</code>.</p>
+<h2 id="problem-3"><a href="#TOC">Problem 3</a></h2>
+<p>How to use pyandoc to parse my <em>Markdown</em> files? Well, it looks pretty easy, writing a function that uses <em>pyandoc</em> and setting it at <code>sitebuilder.py</code><sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> for the varialbe <code>FLATPAGES_HTML_RENDERER</code> that controls the renderer of pages. But <em>pyandoc</em> doesn't use <code>--bibliography</code> and <code>--csl</code>!</p>
+<h2 id="solution-3"><a href="#TOC">Solution 3</a></h2>
+<p>I forked <em>pyandoc</em> and added support for the <code>--bibliography</code> and <code>--csl</code> options. The code is on <a href="https://github.com/yoavram/pyandoc">GitHub</a>.</p>
+<p>Also, I've written a new module for the site generator called <em>renderers</em> which has a factory function that creates a <em>Pandoc</em> renderer. The <em>Pandoc</em> renderer uses my modified <em>pyandoc</em> to render <em>Markdown</em> text to <em>HTML</em>, including citations, math and everything.</p>
+<p>This <em>Pandoc</em> renderer can be used as the <code>FLATPAGES_HTML_RENDERER</code> for <a href="http://packages.python.org/Flask-FlatPages/#flask_flatpages">Flask-FlatPages</a> on my <code>sitebuilder.py</code>.</p>
+<p>The previous renderer was based on the default <a href="http://freewisdom.org/projects/python-markdown/">Python-Markdown</a> with some extensions, so I had to find replacements for these extensions:</p>
+<ul>
+<li><em>MathJax</em> - just add <code>--mathjax</code> to the <em>Pandoc</em> call, using the <code>add_argument</code> method I added to <code>pyandoc.Document</code> in [#solution-3].</li>
+<li><em>Footnotes</em> - supported out-of-the-box by <em>Pandoc</em>. Just make sure to have an empty line before and after the footnotes definitions.</li>
+<li><em>Abbreviations</em> - not that important, so I deserted this feature</li>
+<li><em>Table of Contents</em> - a bit tricky. <em>Pandoc</em> uses the <code>--toc</code> option to generate a TOC. I needed a way for the renderer to decide if a TOC was really desired. I decided that it will be added to posts that begin with [TOC], because that was sort-of the way the <em>Python-Markdown</em> TOC extension did it. So my renderer: -- looks for the <code>[TOC]</code> tag at the beginning of the post -- strips off the tag -- replaces it with an <em>HTML</em> <code>&lt;a name=&quot;TOC&quot;&gt;&lt;/a&gt;</code> tag -- adds a <em>toc</em> argument via the <code>pyandoc.Document</code> class -- the TOC is inserted by <em>Pandoc</em> only if the <code>standalone</code> option is given or a suitable <em>template</em> is given, so I created a template and gave it to <em>Pandoc</em> using the <code>add_argument</code> method:</li>
+</ul>
+<pre>
+    $toc$
+    $body$
+</pre>
+
+<h2 id="problem-4"><a href="#TOC">Problem 4</a></h2>
+<p>How to get a real <em>bib</em> file? I use <a href="http://www.mendeley.com/">Mendeley</a> to manage my references, so do I need to export the <em>bib</em> file from <em>Mendeley</em> each time I add a new document?</p>
+<h2 id="solution-4"><a href="#TOC">Solution 4</a></h2>
+<p>No, as it happens, <a href="http://blog.mendeley.com/tipstricks/how-to-series-generate-bibtex-files-for-your-collections-for-use-in-latex-part-3-of-12/">Mendeley can sync to a bib file</a>. This feature was designed for people writing papers with <em>LaTeX</em> but it is useful for me as well. So as long as I use <em>Mendeley</em>, I just need to point the renderer to the <em>bib</em> file I sync to <em>Mendeley</em> and that's it - this is done by giving the renderer factory a suitable argument <code>bib=/path/to/library.bib</code>.</p>
+<p>CSL files are easier - just download the ones you want from <a href="http://www.zotero.org/styles">Zotero Style Repository</a> and place the in the <code>sys.path</code> or in the <code>pandoc/csl</code> folder.</p>
+<h2 id="problem-5"><a href="#TOC">Problem 5</a></h2>
+<p>As you can see in the <a href="#examples">examples below</a>, the references are not linked. But I'll leave that for another day.</p>
+<h2 id="examples"><a href="#TOC">Examples</a></h2>
+<p>A few exmamples of how I write the <em>Markdown</em> and how it looks on the blog:</p>
+<pre><code>... in a process called *Muller&#39;s Ratchet* [@Haigh1978].</code></pre>
+<p>... in a process called <em>Muller's Ratchet</em> <span class="citation">(Haigh 1978)</span>.</p>
+<pre><code>.. as suggested by Drake [-@Drake1991].</code></pre>
+<p>.. as suggested by Drake <span class="citation">(1991)</span>.</p>
+<pre><code>My model is based on that by @Hadany2003 who showed...</code></pre>
+<p>My model is based on that by <span class="citation">Hadany and Beker (2003)</span> who showed...</p>
+<h2 id="references"><a href="#TOC">References</a></h2>
+<p>Drake, John W. 1991. &#8220;A constant rate of spontaneous mutation in DNA-based microbes.&#8221; <em>Proceedings of the National Academy of Sciences of the United States of America</em> 88 (aug): 7160&#8211;4. doi:10.1073/pnas.88.16.7160. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;tool=pmcentrez\&amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;tool=pmcentrez\&amp;rendertype=abstract">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;tool=pmcentrez\&amp;rendertype=abstract</a>.</p>
+<p>Hadany, Lilach, and Tuvik Beker. 2003. &#8220;On the evolutionary advantage of fitness-associated recombination.&#8221; <em>Genetics</em> 165 (dec): 2167&#8211;79. <a href="http://www.ncbi.nlm.nih.gov/pubmed/14704195" title="http://www.ncbi.nlm.nih.gov/pubmed/14704195">http://www.ncbi.nlm.nih.gov/pubmed/14704195</a>.</p>
+<p>Haigh, John. 1978. &#8220;The accumulation of deleterious genes in a population - Muller&#8217;s Ratchet.&#8221; <em>Theoretical Population Biology</em> 14 (oct): 251&#8211;267. doi:10.1016/0040-5809(78)90027-8. <a href="http://dx.doi.org/10.1016/0040-5809(78)90027-8 http://linkinghub.elsevier.com/retrieve/pii/0040580978900278" title="http://dx.doi.org/10.1016/0040-5809(78)90027-8 http://linkinghub.elsevier.com/retrieve/pii/0040580978900278">http://dx.doi.org/10.1016/0040-5809(78)90027-8 http://linkinghub.elsevier.com/retrieve/pii/0040580978900278</a>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The main Python module underlying <a href="https://bitbucket.org/yoavram/msb">my Python static site generator</a>.<a href="#fnref1">&#8617;</a></p></li>
+</ol>
+</div>
+	
+	<a name="bottom"></a>
+	
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/icons-for-the-blog/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#">To top &uarr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+	
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
+	var disqus_shortname = 'yoavram'; // required: replace example with your forum shortname
+	var disqus_identifier = 'citations-in-markdown-using-pandoc';
+	
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+		
+		
+	</div>
+	<div class="span3">
+	<div class="sidebar">
+		
+	
+		
+		</div>
+	</div>
+	
+</div>
+
+<!-- FOOTER -->
+<div class="row-fluid">
+<div class="span10 offset1">
+<footer class="colophon"> 
+	
+	
+	<ul class="quick-links">
+	<li> 
+		<!--a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+		<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
+		</a-->
+		The content on "<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">The Mutation-Selection Blog</span>" by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.yoavram.com/" property="cc:attributionName" rel="cc:attributionURL">Yoav Ram</a>
+		is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>	license.
+		<!-- Creative Commons Attribution-ShareAlike 3.0 Unported License -->
+		Other components of this site are licensed separately:
+	</li>
+	</ul>
+	<ul class="quick-links">
+	<li>Front</li>
+	<li><a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a></li>
+	<li><a href="http://glyphicons.com/" title="CC BY-SA 3.0">Glyphicons Free</a><li>
+	<li><a href="http://code.google.com/p/google-code-prettify/">Google code prettifier</a></li>
+	<li><a href="http://mathjax.org/">MathJax</a></li>
+	<li><a href="http://ethanschoonover.com/solarized">Solarized</a></li>
+	<li>Back</li>
+	<li><a href="http://python.org/">Python</a></li>
+	<li><a href="http://flask.pocoo.org/">Flask</a></li>
+	<li><a href="http://github.com/">GitHub</a></li>
+	<li><a href="http://freewisdom.org/projects/python-markdown/">Markdown</a></li>
+	</ul>
+  
+	<ul class="quick-links">
+	<li>Code</li>
+	<li><a href="https://github.com/yoavram/yoavram.github.com">Site repository</a></li>
+	<li>Logo</li>
+	<li><a href="http://www.idancohen.com/">Idan Cohen</a></li>
+	<li><a href="http://www.dafont.com/sketch-block.font">Sketch Block</a></li>
+	<li><a href="http://www.dafont.com/positiv-a.font">Positiv-A</a></li>
+	</ul>
+  
+	
+	
+</footer>
+</div>
+</div>
+
+</body>
+</html>
