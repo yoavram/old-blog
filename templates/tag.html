@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="row-fluid">
+	<div class="span8 offset1">
+	<header class="masthead">
+	<br>
+	<h1>List of posts tagged <em>{{ tag }}</em></h2>
+	</header>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+    
+    {% with pages=pages  %}
+        {% include "_list.html" %}
+    {% endwith %}
+	
+{% endblock content %}

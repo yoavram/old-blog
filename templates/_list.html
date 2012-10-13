@@ -1,0 +1,13 @@
+<div class="posts">
+{% for page in pages %}
+
+	<h3>
+		<a href='{{ url_for("page", path=page.path) }}'>
+		  {{ page.title }}
+		  <small>{{ page.datetime | format_datetime }}</small>
+		</a>
+	</h3>
+	
+{% endfor %}
+
+</div>

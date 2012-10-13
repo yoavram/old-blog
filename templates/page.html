@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %} {{ page.title }} {% endblock title %}
+
+{% block head %}
+
+{% if page.math %}
+{{ macros.mathjax() }}
+{% endif %}
+
+{{ macros.sharethis_js('{{ config.SHARETHIS_PUBLISHER }}') }}
+
+{% endblock head %}
+
+{% block header %}
+<div class="row-fluid">
+	<div class="span8 offset1">
+	<header class="masthead">
+	{{ macros.pagination(prev_page(page), next_page(page)) }}
+	{{ macros.back_and_top(False) }}
+	<h1>{{ page.title }}</h1>
+	{{ macros.pagebar(config, page) }}
+	</header>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="post">
+	
+    {{ page.html|safe }}
+	
+	<a name="bottom"></a>
+	
+	{{ macros.pagination(prev_page, next_page) }}
+	{{ macros.back_and_top() }}
+	
+</div>
+
+{{ macros.comments(config, page) }}
+
+{% endblock content %}
+
+{% block sidebar %}
+	{% if page.cite %}
+	{{ macros.citation(config, page) }}
+	{% endif %}
+{% endblock sidebar %}
