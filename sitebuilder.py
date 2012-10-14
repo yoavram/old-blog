@@ -117,6 +117,8 @@ def recent_feed():
 def pages_by_datetime(limit=0, latest_first=True):
     # Articles are pages with a publication date
     articles = (p for p in pages if 'datetime' in p.meta)
+    if not app.config['DEBUG']:
+        articles = (a for a in articles if not 'draft' in a.meta)
     # Show the 10 most recent articles, most recent first.
     articles = sorted(articles, reverse=latest_first,
                     key=lambda p: p.meta['datetime'])
