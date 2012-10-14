@@ -99,6 +99,8 @@
 
 	<li><a href='/tag/citations/'>citations: <small>1</small></a></li>
 
+	<li><a href='/tag/draft/'>draft: <small>1</small></a></li>
+
 	<li><a href='/tag/latex/'>latex: <small>1</small></a></li>
 
 	<li><a href='/tag/markdown/'>markdown: <small>3</small></a></li>
@@ -136,9 +138,6 @@
 	
 	
 	<li><a href="http://www.linkedin.com/in/yoav-ram">Linkedin <i class="glyphicon-linked-in"></i></a></li>
-	
-	
-	<li><a href="https://github.com/yoavram">GitHub <i class="glyphicon-github"></i></a></li>
 	
 	
 	<li><a href="https://bitbucket.org/yoavram">Bitbucket</a></li>
@@ -184,9 +183,9 @@
 	  
 	  
 	   
-	   <li class="next disabled">
-	   <a href='#'>Newer &rarr;</a>
-	   
+	   <li class="next">
+		<a href='/tenaillon-et-al-2000/'>Newer &rarr;</a>
+		
 	  </li>
 	</ul>
 
@@ -206,7 +205,7 @@
 	<h1>Citations in Markdown using Pandoc</h1>
 	
 <ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
-	<li class="active"><i class="icon-time"></i> October 12, 2012 </li>
+	<li class="active"><i class="icon-time"></i> 12 October 2012 at 13:35</li>
 	
 	<li><span class="divider">/</span>
 	<i class="icon-star"></i> <a href='/citations-in-markdown-using-pandoc/'>Permalink</a></li>
@@ -275,7 +274,7 @@
 </ul>
 <a name='TOC'></a>
 <h2 id="overview"><a href="#TOC">Overview</a></h2>
-<p><a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> is an amazing tool that can convert one markup language to another. It is very good at parsing <em>Markdown</em> and it has the ability to parse <a href="http://johnmacfarlane.net/pandoc/README.html#citations">citations in <em>Markdown</em></a>, which is exactly what I was looking for!</p>
+<p><a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> is an amazing tool that can convert one markup language to another. It is very goot at parsing <em>Markdown</em> and it has the ability to parse <a href="http://johnmacfarlane.net/pandoc/README.html#citations">citations in <em>Markdown</em></a>, which is exactly what I was looking for!</p>
 <p>But I had some things to solve first.</p>
 <h2 id="problem-1"><a href="#TOC">Problem 1</a></h2>
 <p><em>Pandoc</em> didn't work with the <code>--bibliography</code> option (test using <code>pandoc -s -S --bibliography=references.bib test.md</code>)</p>
@@ -310,7 +309,8 @@
 <p>No, as it happens, <a href="http://blog.mendeley.com/tipstricks/how-to-series-generate-bibtex-files-for-your-collections-for-use-in-latex-part-3-of-12/">Mendeley can sync to a bib file</a>. This feature was designed for people writing papers with <em>LaTeX</em> but it is useful for me as well. So as long as I use <em>Mendeley</em>, I just need to point the renderer to the <em>bib</em> file I sync to <em>Mendeley</em> and that's it - this is done by giving the renderer factory a suitable argument <code>bib=/path/to/library.bib</code>.</p>
 <p>CSL files are easier - just download the ones you want from <a href="http://www.zotero.org/styles">Zotero Style Repository</a> and place the in the <code>sys.path</code> or in the <code>pandoc/csl</code> folder.</p>
 <h2 id="problem-5"><a href="#TOC">Problem 5</a></h2>
-<p>As you can see in the <a href="#examples">examples below</a>, the references are not linked. But I'll leave that for another day.</p>
+<p>As you can see in the <a href="#examples">examples below</a>, the references are not linked. Also it would be nice to create ciations by specifing a DOI and without a <em>bib</em> file, like it is down using <a href="http://www.carlboettiger.info/2012/05/30/knitcitations.html">knitcitations in R</a>.</p>
+<p>But I'll leave that for another day.</p>
 <h2 id="examples"><a href="#TOC">Examples</a></h2>
 <p>A few exmamples of how I write the <em>Markdown</em> and how it looks on the blog:</p>
 <pre><code>... in a process called *Muller&#39;s Ratchet* [@Haigh1978].</code></pre>
@@ -342,9 +342,9 @@
 	  
 	  
 	   
-	   <li class="next disabled">
-	   <a href='#'>Newer &rarr;</a>
-	   
+	   <li class="next">
+		<a href='/tenaillon-et-al-2000/'>Newer &rarr;</a>
+		
 	  </li>
 	</ul>
 
@@ -419,25 +419,30 @@
 	<li>Front</li>
 	<li><a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a></li>
 	<li><a href="http://glyphicons.com/" title="CC BY-SA 3.0">Glyphicons Free</a><li>
-	<li><a href="http://code.google.com/p/google-code-prettify/">Google code prettifier</a></li>
-	<li><a href="http://mathjax.org/">MathJax</a></li>
+	<li><a href="http://code.google.com/p/google-code-prettify/">Google Code Prettifier</a></li>
 	<li><a href="http://ethanschoonover.com/solarized">Solarized</a></li>
+	<li><a href="http://mathjax.org/">MathJax</a></li>
 	<li>Back</li>
 	<li><a href="http://python.org/">Python</a></li>
 	<li><a href="http://flask.pocoo.org/">Flask</a></li>
-	<li><a href="http://github.com/">GitHub</a></li>
-	<li><a href="http://freewisdom.org/projects/python-markdown/">Markdown</a></li>
+	<li><a href="http://pages.github.com/">GitHub Pages</a></li>	
+	<li><a href="http://daringfireball.net/projects/markdown/">Markdown</a></li>
+	<li><a href="http://johnmacfarlane.net/pandoc">Pandoc</a></li>
 	</ul>
   
 	<ul class="quick-links">
 	<li>Code</li>
-	<li><a href="https://github.com/yoavram/yoavram.github.com">Site repository</a></li>
+	<li><a href="https://github.com/yoavram/yoavram.github.com">Static site</a></li>
+	<li><a href="https://github.com/yoavram/yoavram.github.com/tree/source">Site generator</a></li>
 	<li>Logo</li>
 	<li><a href="http://www.idancohen.com/">Idan Cohen</a></li>
 	<li><a href="http://www.dafont.com/sketch-block.font">Sketch Block</a></li>
 	<li><a href="http://www.dafont.com/positiv-a.font">Positiv-A</a></li>
 	</ul>
-  
+	
+	<ul class="quick-links">
+	<li>This page was last modified on 14 October 2012 at 13:55.</li>
+	</ul>
 	
 	
 </footer>
