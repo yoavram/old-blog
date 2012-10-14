@@ -8,8 +8,6 @@ from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
 DEBUG = True
-WEBSITE_ADDRESS = u"http://yoavram.bitbucket.org/"
-BLOG_ADDRESS = WEBSITE_ADDRESS+u"blog"
 SHARETHIS_PUBLISHER = "ur-fbcd7053-76f9-85c3-b29f-848f5f75e2af"
 DISQUS_SHORTNAME = u"yoavram"
 AUTHOR_LASTNAME = u"Ram"
@@ -62,6 +60,9 @@ from werkzeug.contrib.atom import AtomFeed
 def make_external(url):
     return urljoin(request.url_root, url)
 
+def permalink(page):
+    return url_for("page", path=page.path)
+
 def tag_count():
     tags = {}
     for p in pages:
@@ -84,7 +85,8 @@ def next_page(page):
         return sorted_pages[index + 1]
     else:
         return None
-    
+
+app.jinja_env.globals['permalink'] = permalink    
 app.jinja_env.globals['make_external'] = make_external
 app.jinja_env.globals['tag_count'] = tag_count
 app.jinja_env.globals['prev_page'] = prev_page
@@ -125,19 +127,15 @@ def pages_by_datetime(limit=0, latest_first=True):
 
 @app.route('/')
 def index():
-    return redirect(url_for('blog'))
-
-@app.route('/blog/')
-def blog():
     articles = pages_by_datetime(10)
     return render_template('index.html', pages=articles)
 
-@app.route('/blog/<path:path>/')
+@app.route('/<path:path>/')
 def page(path):
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
 
-@app.route('/blog/tag/<string:tag>/')
+@app.route('/tag/<string:tag>/')
 def tag(tag):
     tagged = [p for p in pages if tag in p.meta.get('tags', [])]
     return render_template('tag.html', pages=tagged, tag=tag)
