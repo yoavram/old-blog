@@ -36,7 +36,7 @@
 &lt;/ul&gt;
 &lt;a name='TOC'&gt;&lt;/a&gt;
 &lt;h2 id="overview"&gt;&lt;a href="#TOC"&gt;Overview&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href="http://johnmacfarlane.net/pandoc/"&gt;Pandoc&lt;/a&gt; is an amazing tool that can convert one markup language to another. It is very good at parsing &lt;em&gt;Markdown&lt;/em&gt; and it has the ability to parse &lt;a href="http://johnmacfarlane.net/pandoc/README.html#citations"&gt;citations in &lt;em&gt;Markdown&lt;/em&gt;&lt;/a&gt;, which is exactly what I was looking for!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://johnmacfarlane.net/pandoc/"&gt;Pandoc&lt;/a&gt; is an amazing tool that can convert one markup language to another. It is very goot at parsing &lt;em&gt;Markdown&lt;/em&gt; and it has the ability to parse &lt;a href="http://johnmacfarlane.net/pandoc/README.html#citations"&gt;citations in &lt;em&gt;Markdown&lt;/em&gt;&lt;/a&gt;, which is exactly what I was looking for!&lt;/p&gt;
 &lt;p&gt;But I had some things to solve first.&lt;/p&gt;
 &lt;h2 id="problem-1"&gt;&lt;a href="#TOC"&gt;Problem 1&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;Pandoc&lt;/em&gt; didn't work with the &lt;code&gt;--bibliography&lt;/code&gt; option (test using &lt;code&gt;pandoc -s -S --bibliography=references.bib test.md&lt;/code&gt;)&lt;/p&gt;
@@ -71,7 +71,8 @@
 &lt;p&gt;No, as it happens, &lt;a href="http://blog.mendeley.com/tipstricks/how-to-series-generate-bibtex-files-for-your-collections-for-use-in-latex-part-3-of-12/"&gt;Mendeley can sync to a bib file&lt;/a&gt;. This feature was designed for people writing papers with &lt;em&gt;LaTeX&lt;/em&gt; but it is useful for me as well. So as long as I use &lt;em&gt;Mendeley&lt;/em&gt;, I just need to point the renderer to the &lt;em&gt;bib&lt;/em&gt; file I sync to &lt;em&gt;Mendeley&lt;/em&gt; and that's it - this is done by giving the renderer factory a suitable argument &lt;code&gt;bib=/path/to/library.bib&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;CSL files are easier - just download the ones you want from &lt;a href="http://www.zotero.org/styles"&gt;Zotero Style Repository&lt;/a&gt; and place the in the &lt;code&gt;sys.path&lt;/code&gt; or in the &lt;code&gt;pandoc/csl&lt;/code&gt; folder.&lt;/p&gt;
 &lt;h2 id="problem-5"&gt;&lt;a href="#TOC"&gt;Problem 5&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;As you can see in the &lt;a href="#examples"&gt;examples below&lt;/a&gt;, the references are not linked. But I'll leave that for another day.&lt;/p&gt;
+&lt;p&gt;As you can see in the &lt;a href="#examples"&gt;examples below&lt;/a&gt;, the references are not linked. Also it would be nice to create ciations by specifing a DOI and without a &lt;em&gt;bib&lt;/em&gt; file, like it is down using &lt;a href="http://www.carlboettiger.info/2012/05/30/knitcitations.html"&gt;knitcitations in R&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;But I'll leave that for another day.&lt;/p&gt;
 &lt;h2 id="examples"&gt;&lt;a href="#TOC"&gt;Examples&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;A few exmamples of how I write the &lt;em&gt;Markdown&lt;/em&gt; and how it looks on the blog:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;... in a process called *Muller&amp;#39;s Ratchet* [@Haigh1978].&lt;/code&gt;&lt;/pre&gt;
