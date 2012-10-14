@@ -89,15 +89,18 @@ CSL files are easier - just download the ones you want from [Zotero Style Reposi
 ## Problem 5
 
 As you can see in the [examples below](#examples), the references are not linked. 
+Also it would be nice to create ciations by specifing a DOI and without a *bib* file, 
+like it is down using [knitcitations in R](http://www.carlboettiger.info/2012/05/30/knitcitations.html).
+
 But I'll leave that for another day.
 
 ## Examples
 
 A few exmamples of how I write the *Markdown* and how it looks on the blog:
 
-    ... in a process called *Muller's Ratchet* [@Haigh1978].
+    ... in a process called *Muller's Ratchet* [@Muller1964; @Haigh1978].
 	
-... in a process called *Muller's Ratchet* [@Haigh1978].
+... in a process called *Muller's Ratchet* [@Muller1964; @Haigh1978].
 
 
     .. as suggested by Drake [-@Drake1991].
