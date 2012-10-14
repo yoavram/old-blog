@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Recent Articles</title>
   <id>http://localhost/recent.atom</id>
-  <updated>2012-10-12T13:35:00Z</updated>
+  <updated>2012-10-14T14:45:00Z</updated>
   <link href="http://localhost/" />
   <link href="http://localhost/recent.atom" rel="self" />
   <author>
@@ -12,6 +12,116 @@
   </author>
   <rights>CC BY-SA 3.0</rights>
   <generator>Werkzeug</generator>
+  <entry xml:base="http://localhost/recent.atom">
+    <title type="text">Mean fitness at the mutation-selection balance</title>
+    <id>http://localhost/mean-fitness-at-the-mutation-selection-balance</id>
+    <updated>2012-10-14T14:45:00Z</updated>
+    <link href="http://localhost/mean-fitness-at-the-mutation-selection-balance" />
+    <author>
+      <name></name>
+    </author>
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#simple-approximation"&gt;Simple approximation&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#single-locus"&gt;Single locus&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#multiple-locus"&gt;Multiple locus&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#matrix-theory-the-perron-frobenius-theorem"&gt;Matrix Theory: the Perron-Frobenius theorem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#references"&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a name='TOC'&gt;&lt;/a&gt;
+&lt;h2 id="overview"&gt;&lt;a href="#TOC"&gt;Overview&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The first post on the &lt;a href="http://blog.yoavram.com"&gt;Mutation-Selection Blog&lt;/a&gt; must be about the &lt;strong&gt;mutation-selection balance&lt;/strong&gt;, right?&lt;/p&gt;
+&lt;p&gt;So what is the mutation-selection balance?&lt;/p&gt;
+&lt;p&gt;A formal mathematical answer would be that it is the equilibrium value of the mean fitness of a population.&lt;/p&gt;
+&lt;p&gt;Denote the fitness of individual &lt;em&gt;i&lt;/em&gt; at generation &lt;em&gt;n&lt;/em&gt; by \(\omega_{i,n}\), and define the (population) mean fitness at generation &lt;em&gt;n&lt;/em&gt; by \(\bar{\omega}_n = E_i[\omega_{i,n}]\).&lt;/p&gt;
+&lt;p&gt;Then at the mutation-selection balance the mean fitness is at an equilibrium: \[
+\bar{\omega}_{n+1} = \bar{\omega}_n
+\] and it is bounded by definition \(0&amp;lt;\omega_{i,n}&amp;lt;1\), it reaches a limit: \[
+\bar{\omega}^* = lim_{n \to \infty} \bar{\omega}_n
+\]&lt;/p&gt;
+&lt;p&gt;A more phenomenological answer could be that it the stage of the evolutionary dynamics in which the forces of selection and mutation achieve a balance, that is, reach a state in which their effects on the system are equal in amplitude but opposite in direction.&lt;/p&gt;
+&lt;p&gt;A classical result by &lt;span class="citation"&gt;(Kimura and Maruyama 1966)&lt;/span&gt; involves a system in which an infinite population is undergoing selection and mutation. Mutation is unidirectional and deleterious, selection is constant and uniform, the enivronment is constant, and there is no drift, sex, recombination or migration. The elegant result is that the mean fitness of a population is not dependent on selection strength and is exponentialy decreasing in the strength of mutation: \[
+\bar{\omega}^* = e^{-U}
+\] where &lt;em&gt;U&lt;/em&gt; is the rate of mutation.&lt;/p&gt;
+&lt;h2 id="simple-approximation"&gt;&lt;a href="#TOC"&gt;Simple approximation&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="single-locus"&gt;&lt;a href="#TOC"&gt;Single locus&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In this formulation I roughly follow the route of &lt;span class="citation"&gt;(Gillespie 2004)&lt;/span&gt;. To reach this formula in a simple way (all you need is a 1&lt;sup&gt;st&lt;/sup&gt; course in &lt;em&gt;Calculus&lt;/em&gt;), we start by looking at a single locus with two alleles, &lt;em&gt;A&lt;/em&gt; and &lt;em&gt;a&lt;/em&gt;, which have fitness of &lt;em&gt;1&lt;/em&gt; and &lt;em&gt;1-s&lt;/em&gt;, respectively, with &lt;em&gt;s&lt;/em&gt; playing the part of the &lt;em&gt;selection coefficient&lt;/em&gt; which defines the deleterious multiplicative effect a deleterious mutation has on the relative fitness of an individual.&lt;/p&gt;
+&lt;p&gt;Define &lt;em&gt;p&lt;/em&gt; and &lt;em&gt;q&lt;/em&gt; to be the frequencies of &lt;em&gt;A&lt;/em&gt; and &lt;em&gt;a&lt;/em&gt; so that &lt;em&gt;p+q=1&lt;/em&gt;, and denote the frequency of &lt;em&gt;A&lt;/em&gt; after one generation by: \[
+p&amp;#39; = \frac{p(1-\mu)}{\bar{\omega}}
+\] with the population mean fitness \(\bar{\omega} = p + q(1-s)\).&lt;/p&gt;
+&lt;p&gt;Note that mutation is unidirectional - from wild-type &lt;em&gt;A&lt;/em&gt; to mutant &lt;em&gt;a&lt;/em&gt; - and that \(\mu\) is the mutation rate per locus per generation.&lt;/p&gt;
+&lt;p&gt;To find the equilibirum value of &lt;em&gt;p&lt;/em&gt;, one must subtitute \(p&amp;#39;=p\) and \(q=1-p\): \[
+p = \frac{p(1-\mu)}{p + (1-p)(1-s)} \Rightarrow \\
+p(p+(1-p)(1-s)) = p(1-\mu) \Rightarrow
+\] we assume \(p\ne 0\) because we are not interested in a population of mutants: \[
+p+(1-p)(1-s) = 1-\mu \Rightarrow \\
+p+1-s-p+ps = 1-\mu \Rightarrow \\
+-s+ps = -\mu \Rightarrow \\ 
+ps = s-\mu \Rightarrow \\
+p = 1-\frac{\mu}{s} 
+\] So \(p^*=1-\frac{\mu}{s}\), that is \(q^*=\frac{\mu}{s}\), which makes sense - the mutant allele is produced by a rate \(\mu\) and eliminated at a rate \(s\).&lt;/p&gt;
+&lt;p&gt;The mean fitness is therefore: \[
+\bar{\omega}^* = p^* + (1-p^*)(1-s) = 1-\frac{\mu}{s} + \frac{\mu}{s} (1-s) =
+1-\frac{\mu}{s} + \frac{\mu}{s} - s \frac{\mu}{s} \Rightarrow \\
+\bar{\omega}^* = 1 - \mu 
+\]&lt;/p&gt;
+&lt;h3 id="multiple-locus"&gt;&lt;a href="#TOC"&gt;Multiple locus&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Moving on to a multiple locus model, we define the mutation rate at locus &lt;em&gt;j&lt;/em&gt; as \(\mu_j\), so the mean fitness at the mutation-selection balance in locus &lt;em&gt;j&lt;/em&gt; is \(\bar{\omega}^*_j = 1 - \mu_j\), and because fitness is multiplicative: \[
+\bar{\omega}^* = \prod_{j}{\bar{\omega}_j^*} = \prod_{j}{1-\mu_j} \Rightarrow \\
+ln{(\bar{\omega}^*)} = \sum_{j}{1-\mu_j} 
+\] This can be approximated, because when \(x\) is small \(ln{(1-x)}\approx -x\), and \(\mu\) is probably at most \(\approx 10^{-2}\) or even lower: \[
+ln{(\bar{\omega}^*)}  \approx \sum_{j}{-\mu_j} = -U
+\] as &lt;em&gt;U&lt;/em&gt; is the mutation rate per genome per generation.&lt;/p&gt;
+&lt;p&gt;So This is how we can derive an approximation of the mean fitness at the mutation-selection balance: \[
+\bar{\omega}^* = e^{-U}
+\]&lt;/p&gt;
+&lt;p&gt;You can find this derivation at the begining of a &lt;a href="http://dx.doi.org/10.6084/m9.figshare.95940"&gt;presentation&lt;/a&gt; I gave at the &lt;a href="http://biomathsjctau.wordpress.com"&gt;BioMath Student Journal Club at Tel-Aviv University&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="matrix-theory-the-perron-frobenius-theorem"&gt;&lt;a href="#TOC"&gt;Matrix Theory: the Perron-Frobenius theorem&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We can produce the same result without approximations using a bit heavier mathematics, but not much heavier - these are still things I learned in a 2&lt;sup&gt;nd&lt;/sup&gt; &lt;em&gt;Linear Algebra&lt;/em&gt; course.&lt;/p&gt;
+&lt;p&gt;This time we start with the multiple locus model right away. Instead of following allele frequencies, though, we monitor the frequency of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles, or &lt;em&gt;i&lt;/em&gt; deleterious mutations, which we denote by p&lt;sub&gt;i&lt;/sub&gt;.&lt;/p&gt;
+&lt;p&gt;We assume that the number of mutations per generation is &lt;em&gt;Poisson&lt;/em&gt; distributed with the mutation rate as the parameter of the distribution, so that the probability that &lt;em&gt;k&lt;/em&gt; mutations will occur in an individual with a mutaiton rate of &lt;em&gt;U&lt;/em&gt; is \[
+\varphi_U(k) = \frac{U^k e^U}{k!}
+\] The equation system describing the change in the freuqnecy of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles is: \[
+p&amp;#39;_{i} = \sum_{ k=0 }^{i}{ p_{k} \frac{ \omega_{k} } {\bar{\omega}} \varphi_{U} (i-k)}, \; \; \forall i \ge 0
+\]&lt;/p&gt;
+&lt;p&gt;The above equation system can be written in matrix form: \[
+\bar{\omega}p&amp;#39; = Mp
+\] where \(p=(p_0,p_1,p_2,...)\) and, by subituting \(\omega_{i} = (1-s)^i\): \[
+M = \left(\begin{array}{cccc}
+\varphi_U(0)   &amp;amp; 0                    &amp;amp; 0                       &amp;amp;  ...\\
+\varphi_U(1)   &amp;amp; (1-s) \varphi_U(0)   &amp;amp; 0                       &amp;amp;  ...\\
+\varphi_U(2)   &amp;amp; (1-s) \varphi_U(1)   &amp;amp; (1-s)^2 \varphi_U(0)    &amp;amp;  ...\\ 
+...            &amp;amp; ...                  &amp;amp; ...                     &amp;amp;  ...
+\end{array}\right)
+\] This matrix is called a &lt;a href="http://en.wikipedia.org/wiki/Stochastic_matrix"&gt;transition matrix&lt;/a&gt; because its entries \(M_{i,j}\) are the transition probabilities from state &lt;em&gt;j&lt;/em&gt; to state &lt;em&gt;i&lt;/em&gt; - the state is the number of mutant alleles.&lt;/p&gt;
+&lt;p&gt;Now if we set \(p^*=p&amp;#39;=p\) we get \(\bar{\omega}^*p^*=Mp^*\), so if there is \(\bar{\omega}^*\) and \(p^*\) such that \(p^*_i \ge 0 \; \sum_{i}{p^*_i}=1\) that solve this equation, then \(p^*\) is an &lt;strong&gt;eigenvector&lt;/strong&gt; of &lt;em&gt;M&lt;/em&gt; and \(\bar{\omega}^*\) is an &lt;strong&gt;eigenvalue&lt;/strong&gt; of M.&lt;/p&gt;
+&lt;p&gt;From the &lt;a href="http://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem"&gt;Perron-Frobenius theorem&lt;/a&gt; we know that this matrix always has a unique non-negative eigenvector, so \(p^*\) exists and it is unique. Furthermore, from the same theorem we know that \(\bar{\omega}^*\) also exists and that it is the leading (largest positive) eigenvalue of &lt;em&gt;M&lt;/em&gt; &lt;span class="citation"&gt;(Otto and Day 2007, 709)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Since this is a triangular matrix, the eigenvalues are simply the elements on the diagonal&lt;sup&gt;&lt;a href="#fn1" class="footnoteRef" id="fnref1"&gt;1&lt;/a&gt;&lt;/sup&gt;. Therefore, the largest eigenvalue must be the largest element on the diagonal, which is the element \[
+\bar{\omega}^* = M_{0,0} = 
+\varphi_U(0) = \frac{U^0 e^{-U}}{0!} = 
+e^{-U}
+\]&lt;/p&gt;
+&lt;p&gt;Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to derive the eigenvalue so easily, because the matrix would not be triagonal. However, it would still agree with the conditions of the Perron-Frobenius theorem and the mean fitness at the mutation-selection balance would still be the leading eigenvalue of the matrix, and would exist. I've used this fact in my paper &lt;em&gt;The Evolution of Stress-Induced Hypermutation in Asexual Populations&lt;/em&gt; &lt;span class="citation"&gt;(Ram and Hadany 2012)&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id="summary"&gt;&lt;a href="#TOC"&gt;Summary&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We've seen how to derive the mean fitness at the mutation-selection balance \(\bar{\omega} = e^{-U}\) both via a simple calculus approximation and via a more hardcore linear algerba route.&lt;/p&gt;
+&lt;p&gt;What's left?&lt;/p&gt;
+&lt;p&gt;The next step - in the next post - will be to derive a formula for the mean fitness at each generation. This is important because we need to understand how &lt;em&gt;rapidly&lt;/em&gt; the mean fitness converges towards the equilibrium value. Can we really assume that the evolutionary process has reached the mutation-selection balance in calculations we perform?&lt;/p&gt;
+&lt;p&gt;One article that presents an analysis on this subject is &lt;span class="citation"&gt;(Gordo and Dionisio 2005)&lt;/span&gt;, which shows how to derive the mean fitness of a population at genearation &lt;em&gt;n&lt;/em&gt;. This is still a simple asexual population with directional selection and unidirectional deleterious mutations, but it is still very interesting, and I'll try to post a comprehensive explanation on how it can be done.&lt;/p&gt;
+&lt;h2 id="references"&gt;&lt;a href="#TOC"&gt;References&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Gillespie, John H. 2004. &lt;em&gt;Population Genetics: a Concise Guide&lt;/em&gt;. Johns Hopkins University Press. &lt;a href="http://www.google.com/books?id=KAcAfiyHpcoC" title="http://www.google.com/books?id=KAcAfiyHpcoC"&gt;http://www.google.com/books?id=KAcAfiyHpcoC&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Gordo, Isabel, and Francisco Dionisio. 2005. &amp;#8220;Nonequilibrium model for estimating parameters of deleterious mutations.&amp;#8221; &lt;em&gt;Physical Review E&lt;/em&gt; 71 (mar): 18&amp;#8211;21. doi:10.1103/PhysRevE.71.031907. &lt;a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907" title="http://link.aps.org/doi/10.1103/PhysRevE.71.031907"&gt;http://link.aps.org/doi/10.1103/PhysRevE.71.031907&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Kimura, Motoo, and Takeo Maruyama. 1966. &amp;#8220;The mutational load with epistatic gene interactions in fitness.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 54 (dec): 1337&amp;#8211;51. &lt;a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract"&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Otto, Sarah P., and Troy Day. 2007. &lt;em&gt;A Biologist&amp;#8217;s Guide To Mathematical Modeling in Ecology and Evolution, Volume 13&lt;/em&gt;. Princeton University Press. &lt;a href="http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;amp;pgis=1" title="http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;amp;pgis=1"&gt;http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;amp;pgis=1&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ram, Yoav, and Lilach Hadany. 2012. &amp;#8220;The evolution of stress-induced hypermutation in asexual populations.&amp;#8221; &lt;em&gt;Evolution; International Journal of Organic Evolution&lt;/em&gt; 66 (jul): 2315&amp;#8211;28. doi:10.1111/j.1558-5646.2012.01576.x. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/22759304" title="http://www.ncbi.nlm.nih.gov/pubmed/22759304"&gt;http://www.ncbi.nlm.nih.gov/pubmed/22759304&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn1"&gt;&lt;p&gt;To prove this, one must notice that the determinant of a triangular matrix is the trace of the matrix, and therefore the characteristic polynomial is the trace of the matrix \(I\lambda - M\), and the eigenvalues are the solutions of this polynomial - see [Paul's online math notes](http://tutorial.math.lamar.edu/Classes/LinAlg/EVals_Evects.aspx#EV_EvalEvec_Thm1.&lt;a href="#fnref1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry xml:base="http://localhost/recent.atom">
     <title type="text">Citations in Markdown using Pandoc</title>
     <id>http://localhost/citations-in-markdown-using-pandoc</id>
@@ -75,8 +185,8 @@
 &lt;p&gt;But I'll leave that for another day.&lt;/p&gt;
 &lt;h2 id="examples"&gt;&lt;a href="#TOC"&gt;Examples&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;A few exmamples of how I write the &lt;em&gt;Markdown&lt;/em&gt; and how it looks on the blog:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;... in a process called *Muller&amp;#39;s Ratchet* [@Haigh1978].&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;... in a process called &lt;em&gt;Muller's Ratchet&lt;/em&gt; &lt;span class="citation"&gt;(Haigh 1978)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;... in a process called *Muller&amp;#39;s Ratchet* [@Muller1964; @Haigh1978].&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;... in a process called &lt;em&gt;Muller's Ratchet&lt;/em&gt; &lt;span class="citation"&gt;(Muller 1964; Haigh 1978)&lt;/span&gt;.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;.. as suggested by Drake [-@Drake1991].&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;.. as suggested by Drake &lt;span class="citation"&gt;(1991)&lt;/span&gt;.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;My model is based on that by @Hadany2003 who showed...&lt;/code&gt;&lt;/pre&gt;
@@ -85,6 +195,7 @@
 &lt;p&gt;Drake, John W. 1991. &amp;#8220;A constant rate of spontaneous mutation in DNA-based microbes.&amp;#8221; &lt;em&gt;Proceedings of the National Academy of Sciences of the United States of America&lt;/em&gt; 88 (aug): 7160&amp;#8211;4. doi:10.1073/pnas.88.16.7160. &lt;a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract"&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Hadany, Lilach, and Tuvik Beker. 2003. &amp;#8220;On the evolutionary advantage of fitness-associated recombination.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 165 (dec): 2167&amp;#8211;79. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/14704195" title="http://www.ncbi.nlm.nih.gov/pubmed/14704195"&gt;http://www.ncbi.nlm.nih.gov/pubmed/14704195&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Haigh, John. 1978. &amp;#8220;The accumulation of deleterious genes in a population - Muller&amp;#8217;s Ratchet.&amp;#8221; &lt;em&gt;Theoretical Population Biology&lt;/em&gt; 14 (oct): 251&amp;#8211;267. doi:10.1016/0040-5809(78)90027-8. &lt;a href="http://dx.doi.org/10.1016/0040-5809(78)90027-8 http://linkinghub.elsevier.com/retrieve/pii/0040580978900278" title="http://dx.doi.org/10.1016/0040-5809(78)90027-8 http://linkinghub.elsevier.com/retrieve/pii/0040580978900278"&gt;http://dx.doi.org/10.1016/0040-5809(78)90027-8 http://linkinghub.elsevier.com/retrieve/pii/0040580978900278&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Muller, Herman J. 1964. &amp;#8220;The relation of recombination to mutational advance.&amp;#8221; &lt;em&gt;Mutation Research/Fundamental and Molecular Mechanisms of Mutagenesis&lt;/em&gt; 1 (may): 2&amp;#8211;9. doi:10.1016/0027-5107(64)90047-8. &lt;a href="http://dx.doi.org/10.1016/0027-5107(64)90047-8" title="http://dx.doi.org/10.1016/0027-5107(64)90047-8"&gt;http://dx.doi.org/10.1016/0027-5107(64)90047-8&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="footnotes"&gt;
 &lt;hr /&gt;
 &lt;ol&gt;

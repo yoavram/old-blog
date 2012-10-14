@@ -1,0 +1,512 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> Mean fitness at the mutation-selection balance </title>
+
+<meta charset="utf-8">
+<link rel="icon" type="image/ico" href="/static/favicon.ico">
+<link href="/recent.atom" rel="alternate" title="Recent Articles" type="application/atom+xml">
+
+<!-- Le style -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/static/theme.css" rel="stylesheet">
+<link href="/static/jekyll.css" rel="stylesheet">
+<link href="/static/bootstrap.min.css" rel="stylesheet">
+<link href="/static/glyphicons.css" rel="stylesheet">
+<link href="/static/bootstrap-responsive.min.css" rel="stylesheet">
+<style type="text/css">
+[class^="icon-"] { background-image: url("/static/glyphicons-halflings.png"); } 
+[class*="icon-white"] { background-image: url("/static/glyphicons-halflings-white.png"); } 
+[class^="glyphicon-"] { background-image: url("/static/glyphicons.png"); } 
+</style>
+<link href="/static/prettify.css" rel="stylesheet">
+
+<!-- Le JS -->
+<script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap-transition.js"></script>
+<script type="text/javascript" src="/static/bootstrap-collapse.js"></script>
+
+<!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
+<script type="text/javascript" src="/static/prettify.js"></script>
+
+
+
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+<!-- Online Debugger: http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm -->
+<!-- Doc: http://docs.mathjax.org/en/latest/output.html -->`
+  MathJax.Hub.Config({            
+			"HTML-CSS": { availableFonts: ["STIX", "TeX"], 
+						  linebreaks: { automatic: true }
+			}
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+
+
+
+
+<!-- ShareThis JS -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "{{ config.SHARETHIS_PUBLISHER }}"});</script>
+<!-- ShareThis JS -->
+
+
+
+
+
+
+<!-- Google Analytics www.google.com/analytics/ -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{{ config.GOOGLE_ANALYTICS }}']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</head>
+
+
+<body onload="prettyPrint()">
+
+<!-- Navbar -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href='/'>The Mutation-Selection Blog</a>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse">
+        <ul class="nav">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<!--Tags -->
+					<i class="icon-tags"></i>
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				
+
+	<li><a href='/tag/asexual%20populatins/'>asexual populatins: <small>1</small></a></li>
+
+	<li><a href='/tag/blog/'>blog: <small>4</small></a></li>
+
+	<li><a href='/tag/citations/'>citations: <small>1</small></a></li>
+
+	<li><a href='/tag/deleterious%20mutations/'>deleterious mutations: <small>1</small></a></li>
+
+	<li><a href='/tag/latex/'>latex: <small>1</small></a></li>
+
+	<li><a href='/tag/markdown/'>markdown: <small>3</small></a></li>
+
+	<li><a href='/tag/math/'>math: <small>1</small></a></li>
+
+	<li><a href='/tag/mean%20fitness/'>mean fitness: <small>1</small></a></li>
+
+	<li><a href='/tag/mutation-selection%20balance/'>mutation-selection balance: <small>1</small></a></li>
+
+	<li><a href='/tag/pandoc/'>pandoc: <small>1</small></a></li>
+
+	<li><a href='/tag/perron-forbenius%20theorem/'>perron-forbenius theorem: <small>1</small></a></li>
+
+	<li><a href='/tag/python/'>python: <small>1</small></a></li>
+
+
+				</ul>
+			</li>			
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				  <!-- Contact -->
+				  <i class="icon-user"></i>
+				  <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				<!-- http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+					
+	
+	<li><a href="http://www.yoavram.com/">Home <i class="icon-home"></i></a></li>
+	
+	
+	<li><a href="mailto:yoavram@gmail.com">Email <i class="icon-envelope"></i></a></li>
+	
+	
+	<li><a href="http://www.mendeley.com/profiles/yoav-ram">Mendeley</a></li>
+	
+	
+	<li><a href="http://scholar.google.com/citations?user=RIFmJvYAAAAJ">Scholar Citations</a></li>
+	
+	
+	<li><a href="http://twitter.com/yoavram">Twitter <i class="glyphicon-twitter-t"></i></a></li>
+	
+	
+	<li><a href="http://www.linkedin.com/in/yoav-ram">Linkedin <i class="glyphicon-linked-in"></i></a></li>
+	
+	
+	<li><a href="https://bitbucket.org/yoavram">Bitbucket</a></li>
+	
+	
+	<li><a href="http://code.google.com/u/yoav-ram/">Google Code</a></li>
+		
+				
+				</ul>
+			</li>
+			<li>
+				<a href="http://www.yoavram.com/" >
+					<i class="icon-question-sign"></i>
+					&nbsp;&nbsp;
+				</a>
+			</li>
+			<li>
+				<a href="/recent.atom">
+					<i class="glyphicon-rss"></i>
+					&nbsp;&nbsp;
+				</a>
+			</li>
+			</ul>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+<!-- end Navbar -->
+    
+<!-- HEADER -->
+
+<div class="row-fluid">
+	<div class="span8 offset1">
+	<header class="masthead">
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/citations-in-markdown-using-pandoc/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#bottom">To bottom &darr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+	<h1>Mean fitness at the mutation-selection balance</h1>
+	
+<ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
+	<li class="active"><i class="icon-time"></i> 14 October 2012 at 14:45</li>
+	
+	<li><span class="divider">/</span>
+	<i class="icon-star"></i> <a href='/mean-fitness-at-the-mutation-selection-balance/'>Permalink</a></li>
+	
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/asexual%20populatins/">asexual populatins</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/deleterious%20mutations/">deleterious mutations</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/math/">math</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/mean%20fitness/">mean fitness</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/mutation-selection%20balance/">mutation-selection balance</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/perron-forbenius%20theorem/">perron-forbenius theorem</a></li>
+	
+	
+	
+	<li><span class="divider">/</span>
+	
+	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
+	<span class='st_email' ></span>
+	<span class='st_twitter' ></span>
+	<span class='st_facebook' ></span>
+	<span class='st_googleplus' ></span>
+	<span class='st_reddit' ></span>
+	<span class='st_linkedin' ></span>
+	<span class='st_stumbleupon' ></span>
+	<span class='st_delicious' ></span>
+	<span class='st_citeulike' ></span>
+	<span class='st_connotea' ></span>
+
+	</li>
+	</ul>
+
+	</header>
+	</div>
+</div>
+
+
+<!-- BODY -->	
+<div class="row-fluid">
+	<div class="span8 offset1">
+
+		
+
+<div class="post">
+	
+    <ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#simple-approximation">Simple approximation</a><ul>
+<li><a href="#single-locus">Single locus</a></li>
+<li><a href="#multiple-locus">Multiple locus</a></li>
+</ul></li>
+<li><a href="#matrix-theory-the-perron-frobenius-theorem">Matrix Theory: the Perron-Frobenius theorem</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<a name='TOC'></a>
+<h2 id="overview"><a href="#TOC">Overview</a></h2>
+<p>The first post on the <a href="http://blog.yoavram.com">Mutation-Selection Blog</a> must be about the <strong>mutation-selection balance</strong>, right?</p>
+<p>So what is the mutation-selection balance?</p>
+<p>A formal mathematical answer would be that it is the equilibrium value of the mean fitness of a population.</p>
+<p>Denote the fitness of individual <em>i</em> at generation <em>n</em> by \(\omega_{i,n}\), and define the (population) mean fitness at generation <em>n</em> by \(\bar{\omega}_n = E_i[\omega_{i,n}]\).</p>
+<p>Then at the mutation-selection balance the mean fitness is at an equilibrium: \[
+\bar{\omega}_{n+1} = \bar{\omega}_n
+\] and it is bounded by definition \(0&lt;\omega_{i,n}&lt;1\), it reaches a limit: \[
+\bar{\omega}^* = lim_{n \to \infty} \bar{\omega}_n
+\]</p>
+<p>A more phenomenological answer could be that it the stage of the evolutionary dynamics in which the forces of selection and mutation achieve a balance, that is, reach a state in which their effects on the system are equal in amplitude but opposite in direction.</p>
+<p>A classical result by <span class="citation">(Kimura and Maruyama 1966)</span> involves a system in which an infinite population is undergoing selection and mutation. Mutation is unidirectional and deleterious, selection is constant and uniform, the enivronment is constant, and there is no drift, sex, recombination or migration. The elegant result is that the mean fitness of a population is not dependent on selection strength and is exponentialy decreasing in the strength of mutation: \[
+\bar{\omega}^* = e^{-U}
+\] where <em>U</em> is the rate of mutation.</p>
+<h2 id="simple-approximation"><a href="#TOC">Simple approximation</a></h2>
+<h3 id="single-locus"><a href="#TOC">Single locus</a></h3>
+<p>In this formulation I roughly follow the route of <span class="citation">(Gillespie 2004)</span>. To reach this formula in a simple way (all you need is a 1<sup>st</sup> course in <em>Calculus</em>), we start by looking at a single locus with two alleles, <em>A</em> and <em>a</em>, which have fitness of <em>1</em> and <em>1-s</em>, respectively, with <em>s</em> playing the part of the <em>selection coefficient</em> which defines the deleterious multiplicative effect a deleterious mutation has on the relative fitness of an individual.</p>
+<p>Define <em>p</em> and <em>q</em> to be the frequencies of <em>A</em> and <em>a</em> so that <em>p+q=1</em>, and denote the frequency of <em>A</em> after one generation by: \[
+p&#39; = \frac{p(1-\mu)}{\bar{\omega}}
+\] with the population mean fitness \(\bar{\omega} = p + q(1-s)\).</p>
+<p>Note that mutation is unidirectional - from wild-type <em>A</em> to mutant <em>a</em> - and that \(\mu\) is the mutation rate per locus per generation.</p>
+<p>To find the equilibirum value of <em>p</em>, one must subtitute \(p&#39;=p\) and \(q=1-p\): \[
+p = \frac{p(1-\mu)}{p + (1-p)(1-s)} \Rightarrow \\
+p(p+(1-p)(1-s)) = p(1-\mu) \Rightarrow
+\] we assume \(p\ne 0\) because we are not interested in a population of mutants: \[
+p+(1-p)(1-s) = 1-\mu \Rightarrow \\
+p+1-s-p+ps = 1-\mu \Rightarrow \\
+-s+ps = -\mu \Rightarrow \\ 
+ps = s-\mu \Rightarrow \\
+p = 1-\frac{\mu}{s} 
+\] So \(p^*=1-\frac{\mu}{s}\), that is \(q^*=\frac{\mu}{s}\), which makes sense - the mutant allele is produced by a rate \(\mu\) and eliminated at a rate \(s\).</p>
+<p>The mean fitness is therefore: \[
+\bar{\omega}^* = p^* + (1-p^*)(1-s) = 1-\frac{\mu}{s} + \frac{\mu}{s} (1-s) =
+1-\frac{\mu}{s} + \frac{\mu}{s} - s \frac{\mu}{s} \Rightarrow \\
+\bar{\omega}^* = 1 - \mu 
+\]</p>
+<h3 id="multiple-locus"><a href="#TOC">Multiple locus</a></h3>
+<p>Moving on to a multiple locus model, we define the mutation rate at locus <em>j</em> as \(\mu_j\), so the mean fitness at the mutation-selection balance in locus <em>j</em> is \(\bar{\omega}^*_j = 1 - \mu_j\), and because fitness is multiplicative: \[
+\bar{\omega}^* = \prod_{j}{\bar{\omega}_j^*} = \prod_{j}{1-\mu_j} \Rightarrow \\
+ln{(\bar{\omega}^*)} = \sum_{j}{1-\mu_j} 
+\] This can be approximated, because when \(x\) is small \(ln{(1-x)}\approx -x\), and \(\mu\) is probably at most \(\approx 10^{-2}\) or even lower: \[
+ln{(\bar{\omega}^*)}  \approx \sum_{j}{-\mu_j} = -U
+\] as <em>U</em> is the mutation rate per genome per generation.</p>
+<p>So This is how we can derive an approximation of the mean fitness at the mutation-selection balance: \[
+\bar{\omega}^* = e^{-U}
+\]</p>
+<p>You can find this derivation at the begining of a <a href="http://dx.doi.org/10.6084/m9.figshare.95940">presentation</a> I gave at the <a href="http://biomathsjctau.wordpress.com">BioMath Student Journal Club at Tel-Aviv University</a>.</p>
+<h2 id="matrix-theory-the-perron-frobenius-theorem"><a href="#TOC">Matrix Theory: the Perron-Frobenius theorem</a></h2>
+<p>We can produce the same result without approximations using a bit heavier mathematics, but not much heavier - these are still things I learned in a 2<sup>nd</sup> <em>Linear Algebra</em> course.</p>
+<p>This time we start with the multiple locus model right away. Instead of following allele frequencies, though, we monitor the frequency of individuals with <em>i</em> mutant alleles, or <em>i</em> deleterious mutations, which we denote by p<sub>i</sub>.</p>
+<p>We assume that the number of mutations per generation is <em>Poisson</em> distributed with the mutation rate as the parameter of the distribution, so that the probability that <em>k</em> mutations will occur in an individual with a mutaiton rate of <em>U</em> is \[
+\varphi_U(k) = \frac{U^k e^U}{k!}
+\] The equation system describing the change in the freuqnecy of individuals with <em>i</em> mutant alleles is: \[
+p&#39;_{i} = \sum_{ k=0 }^{i}{ p_{k} \frac{ \omega_{k} } {\bar{\omega}} \varphi_{U} (i-k)}, \; \; \forall i \ge 0
+\]</p>
+<p>The above equation system can be written in matrix form: \[
+\bar{\omega}p&#39; = Mp
+\] where \(p=(p_0,p_1,p_2,...)\) and, by subituting \(\omega_{i} = (1-s)^i\): \[
+M = \left(\begin{array}{cccc}
+\varphi_U(0)   &amp; 0                    &amp; 0                       &amp;  ...\\
+\varphi_U(1)   &amp; (1-s) \varphi_U(0)   &amp; 0                       &amp;  ...\\
+\varphi_U(2)   &amp; (1-s) \varphi_U(1)   &amp; (1-s)^2 \varphi_U(0)    &amp;  ...\\ 
+...            &amp; ...                  &amp; ...                     &amp;  ...
+\end{array}\right)
+\] This matrix is called a <a href="http://en.wikipedia.org/wiki/Stochastic_matrix">transition matrix</a> because its entries \(M_{i,j}\) are the transition probabilities from state <em>j</em> to state <em>i</em> - the state is the number of mutant alleles.</p>
+<p>Now if we set \(p^*=p&#39;=p\) we get \(\bar{\omega}^*p^*=Mp^*\), so if there is \(\bar{\omega}^*\) and \(p^*\) such that \(p^*_i \ge 0 \; \sum_{i}{p^*_i}=1\) that solve this equation, then \(p^*\) is an <strong>eigenvector</strong> of <em>M</em> and \(\bar{\omega}^*\) is an <strong>eigenvalue</strong> of M.</p>
+<p>From the <a href="http://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a> we know that this matrix always has a unique non-negative eigenvector, so \(p^*\) exists and it is unique. Furthermore, from the same theorem we know that \(\bar{\omega}^*\) also exists and that it is the leading (largest positive) eigenvalue of <em>M</em> <span class="citation">(Otto and Day 2007, 709)</span>.</p>
+<p>Since this is a triangular matrix, the eigenvalues are simply the elements on the diagonal<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup>. Therefore, the largest eigenvalue must be the largest element on the diagonal, which is the element \[
+\bar{\omega}^* = M_{0,0} = 
+\varphi_U(0) = \frac{U^0 e^{-U}}{0!} = 
+e^{-U}
+\]</p>
+<p>Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to derive the eigenvalue so easily, because the matrix would not be triagonal. However, it would still agree with the conditions of the Perron-Frobenius theorem and the mean fitness at the mutation-selection balance would still be the leading eigenvalue of the matrix, and would exist. I've used this fact in my paper <em>The Evolution of Stress-Induced Hypermutation in Asexual Populations</em> <span class="citation">(Ram and Hadany 2012)</span>.</p>
+<h2 id="summary"><a href="#TOC">Summary</a></h2>
+<p>We've seen how to derive the mean fitness at the mutation-selection balance \(\bar{\omega} = e^{-U}\) both via a simple calculus approximation and via a more hardcore linear algerba route.</p>
+<p>What's left?</p>
+<p>The next step - in the next post - will be to derive a formula for the mean fitness at each generation. This is important because we need to understand how <em>rapidly</em> the mean fitness converges towards the equilibrium value. Can we really assume that the evolutionary process has reached the mutation-selection balance in calculations we perform?</p>
+<p>One article that presents an analysis on this subject is <span class="citation">(Gordo and Dionisio 2005)</span>, which shows how to derive the mean fitness of a population at genearation <em>n</em>. This is still a simple asexual population with directional selection and unidirectional deleterious mutations, but it is still very interesting, and I'll try to post a comprehensive explanation on how it can be done.</p>
+<h2 id="references"><a href="#TOC">References</a></h2>
+<p>Gillespie, John H. 2004. <em>Population Genetics: a Concise Guide</em>. Johns Hopkins University Press. <a href="http://www.google.com/books?id=KAcAfiyHpcoC" title="http://www.google.com/books?id=KAcAfiyHpcoC">http://www.google.com/books?id=KAcAfiyHpcoC</a>.</p>
+<p>Gordo, Isabel, and Francisco Dionisio. 2005. &#8220;Nonequilibrium model for estimating parameters of deleterious mutations.&#8221; <em>Physical Review E</em> 71 (mar): 18&#8211;21. doi:10.1103/PhysRevE.71.031907. <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907" title="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">http://link.aps.org/doi/10.1103/PhysRevE.71.031907</a>.</p>
+<p>Kimura, Motoo, and Takeo Maruyama. 1966. &#8220;The mutational load with epistatic gene interactions in fitness.&#8221; <em>Genetics</em> 54 (dec): 1337&#8211;51. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299\&amp;tool=pmcentrez\&amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299\&amp;tool=pmcentrez\&amp;rendertype=abstract">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299\&amp;tool=pmcentrez\&amp;rendertype=abstract</a>.</p>
+<p>Otto, Sarah P., and Troy Day. 2007. <em>A Biologist&#8217;s Guide To Mathematical Modeling in Ecology and Evolution, Volume 13</em>. Princeton University Press. <a href="http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;pgis=1" title="http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;pgis=1">http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;pgis=1</a>.</p>
+<p>Ram, Yoav, and Lilach Hadany. 2012. &#8220;The evolution of stress-induced hypermutation in asexual populations.&#8221; <em>Evolution; International Journal of Organic Evolution</em> 66 (jul): 2315&#8211;28. doi:10.1111/j.1558-5646.2012.01576.x. <a href="http://www.ncbi.nlm.nih.gov/pubmed/22759304" title="http://www.ncbi.nlm.nih.gov/pubmed/22759304">http://www.ncbi.nlm.nih.gov/pubmed/22759304</a>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>To prove this, one must notice that the determinant of a triangular matrix is the trace of the matrix, and therefore the characteristic polynomial is the trace of the matrix \(I\lambda - M\), and the eigenvalues are the solutions of this polynomial - see [Paul's online math notes](http://tutorial.math.lamar.edu/Classes/LinAlg/EVals_Evects.aspx#EV_EvalEvec_Thm1.<a href="#fnref1">&#8617;</a></p></li>
+</ol>
+</div>
+	
+	<a name="bottom"></a>
+	
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/citations-in-markdown-using-pandoc/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#">To top &uarr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+	
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
+	var disqus_shortname = 'yoavram'; // required: replace example with your forum shortname
+	var disqus_identifier = 'mean-fitness-at-the-mutation-selection-balance';
+	
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+		
+		
+	</div>
+	<div class="span3">
+	<div class="sidebar">
+		
+	
+		
+		</div>
+	</div>
+	
+</div>
+
+<!-- FOOTER -->
+<div class="row-fluid">
+<div class="span10 offset1">
+<footer class="colophon"> 
+	
+	
+	<ul class="quick-links">
+	<li> 
+		<!--a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+		<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
+		</a-->
+		The content on "<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">The Mutation-Selection Blog</span>" by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.yoavram.com/" property="cc:attributionName" rel="cc:attributionURL">Yoav Ram</a>
+		is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>	license.
+		<!-- Creative Commons Attribution-ShareAlike 3.0 Unported License -->
+		Other components of this site are licensed separately:
+	</li>
+	</ul>
+	<ul class="quick-links">
+	<li>Front</li>
+	<li><a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a></li>
+	<li><a href="http://glyphicons.com/" title="CC BY-SA 3.0">Glyphicons Free</a><li>
+	<li><a href="http://code.google.com/p/google-code-prettify/">Google Code Prettifier</a></li>
+	<li><a href="http://ethanschoonover.com/solarized">Solarized</a></li>
+	<li><a href="http://mathjax.org/">MathJax</a></li>
+	<li>Back</li>
+	<li><a href="http://python.org/">Python</a></li>
+	<li><a href="http://flask.pocoo.org/">Flask</a></li>
+	<li><a href="http://pages.github.com/">GitHub Pages</a></li>	
+	<li><a href="http://daringfireball.net/projects/markdown/">Markdown</a></li>
+	<li><a href="http://johnmacfarlane.net/pandoc">Pandoc</a></li>
+	</ul>
+  
+	<ul class="quick-links">
+	<li>Code</li>
+	<li><a href="https://github.com/yoavram/yoavram.github.com">Static site</a></li>
+	<li><a href="https://github.com/yoavram/yoavram.github.com/tree/source">Site generator</a></li>
+	<li>Logo</li>
+	<li><a href="http://www.idancohen.com/">Idan Cohen</a></li>
+	<li><a href="http://www.dafont.com/sketch-block.font">Sketch Block</a></li>
+	<li><a href="http://www.dafont.com/positiv-a.font">Positiv-A</a></li>
+	</ul>
+	
+	<ul class="quick-links">
+	<li>This page was last modified on 14 October 2012 at 20:26.</li>
+	</ul>
+	
+	
+</footer>
+</div>
+</div>
+
+</body>
+</html>
