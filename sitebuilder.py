@@ -1,5 +1,6 @@
 # https://nicolas.perriault.net/code/2012/dead-easy-yet-powerful-static-website-generator-with-flask/
 import sys
+import datetime
 from renderers import pandoc_renderer
 from flask import Flask, render_template, redirect, url_for
 # http://packages.python.org/Flask-FlatPages
@@ -30,6 +31,7 @@ LINKEDIN_USERNAME = u"yoavram"
 GOOGLE_SCHOLAR_CITATIONS_USER = u"RIFmJvYAAAAJ"
 BIB_FILE = r'D:\library.bib'
 CSL = "chicago"
+LAST_MODIFICATION = datetime.datetime.now()
 
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
@@ -41,7 +43,10 @@ pages = FlatPages(app)
 freezer = Freezer(app)
 
 # http://jinja.pocoo.org/docs/api/#custom-filters
-def format_datetime(value, format="%B %d, %Y %Z"):
+def format_date(value, format="%B %d, %Y"):
+    return value.strftime(format)
+
+def format_datetime(value, format="%d %B %Y at %H:%M"):
     return value.strftime(format)
 
 app.jinja_env.filters['format_datetime'] = format_datetime
