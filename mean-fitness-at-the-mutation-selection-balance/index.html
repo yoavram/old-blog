@@ -160,6 +160,9 @@
 	<li><a href="http://scholar.google.com/citations?user=RIFmJvYAAAAJ">Scholar Citations</a></li>
 	
 	
+	<li><a href="http://figshare.com/authors/Yoav_Ram/99206">FigShare</a></li>
+	
+	
 	<li><a href="http://twitter.com/yoavram">Twitter <i class="glyphicon-twitter-t"></i></a></li>
 	
 	
@@ -355,24 +358,28 @@ p&#39;_{i} = \sum_{ k=0 }^{i}{ p_{k} \frac{ \omega_{k} } {\bar{\omega}} \varphi_
 \]</p>
 <p>The above equation system can be written in matrix form: \[
 \bar{\omega}p&#39; = Mp
-\] where \(p=(p_0,p_1,p_2,...)\) and, by subituting \(\omega_{i} = (1-s)^i\): \[
+\] where \(p=(p_0,p_1,p_2,...)\) and <em>M</em> is: \[
 M = \left(\begin{array}{cccc}
-\varphi_U(0)   &amp; 0                    &amp; 0                       &amp;  ...\\
-\varphi_U(1)   &amp; (1-s) \varphi_U(0)   &amp; 0                       &amp;  ...\\
-\varphi_U(2)   &amp; (1-s) \varphi_U(1)   &amp; (1-s)^2 \varphi_U(0)    &amp;  ...\\ 
-...            &amp; ...                  &amp; ...                     &amp;  ...
+\omega_0 \varphi_U(0)   &amp; 0                         &amp; 0                         &amp;  ...\\
+\omega_0 \varphi_U(1)   &amp; \omega_1 \varphi_U(0)     &amp; 0                         &amp;  ...\\
+\omega_0 \varphi_U(2)   &amp; \omega_1 \varphi_U(1)     &amp; \omega_2 \varphi_U(0)     &amp;  ...\\ 
+...                     &amp; ...                       &amp; ...                       &amp;  ...
 \end{array}\right)
 \] This matrix is called a <a href="http://en.wikipedia.org/wiki/Stochastic_matrix">transition matrix</a> because its entries \(M_{i,j}\) are the transition probabilities from state <em>j</em> to state <em>i</em> - the state is the number of mutant alleles.</p>
 <p>Now if we set \(p^*=p&#39;=p\) we get \(\bar{\omega}^*p^*=Mp^*\), so if there is \(\bar{\omega}^*\) and \(p^*\) such that \(p^*_i \ge 0 \; \sum_{i}{p^*_i}=1\) that solve this equation, then \(p^*\) is an <strong>eigenvector</strong> of <em>M</em> and \(\bar{\omega}^*\) is an <strong>eigenvalue</strong> of M.</p>
 <p>From the <a href="http://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a> we know that this matrix always has a unique non-negative eigenvector, so \(p^*\) exists and it is unique. Furthermore, from the same theorem we know that \(\bar{\omega}^*\) also exists and that it is the leading (largest positive) eigenvalue of <em>M</em> <span class="citation">(Otto and Day 2007, 709)</span>.</p>
 <p>Since this is a triangular matrix, the eigenvalues are simply the elements on the diagonal<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup>. Therefore, the largest eigenvalue must be the largest element on the diagonal, which is the element \[
 \bar{\omega}^* = M_{0,0} = 
-\varphi_U(0) = \frac{U^0 e^{-U}}{0!} = 
+\omega_0 \varphi_U(0) = (1-s)^0 \frac{U^0 e^{-U}}{0!} = 
 e^{-U}
 \]</p>
 <p>Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to derive the eigenvalue so easily, because the matrix would not be triagonal. However, it would still agree with the conditions of the Perron-Frobenius theorem and the mean fitness at the mutation-selection balance would still be the leading eigenvalue of the matrix, and would exist. I've used this fact in my paper <em>The Evolution of Stress-Induced Hypermutation in Asexual Populations</em> <span class="citation">(Ram and Hadany 2012)</span>.</p>
 <h2 id="summary"><a href="#TOC">Summary</a></h2>
-<p>We've seen how to derive the mean fitness at the mutation-selection balance \(\bar{\omega} = e^{-U}\) both via a simple calculus approximation and via a more hardcore linear algerba route.</p>
+<p>We've seen how to derive the mean fitness at the mutation-selection balance \(\bar{\omega} = e^{-U}\) both via a simple calculus approximation and via a more &quot;hardcore&quot; linear algerba method.</p>
+<p>The nice thing about deriving the mean fitness in the &quot;hardcore&quot; method is that we get some idea of <em>why</em> it is equal to e<sup>-U</sup>. We found that the mean fitness at the mutation-selection balance equals to the leading eigenvalue of the transition matrix, which is the relative probability that individuals from the least loaded class (the class of fittest individuals) survive to the next generation without mutating. By definition the fitness of the least loaded individuals is 1, and we assumed the mutations are <em>Poisson</em> distributed, and therefore we got e<sup>-U</sup>, but if we change these assumptions the general result will still hold:</p>
+<blockquote>
+<p>The mean fitness of an asexual population at the mutation-selection balance, in the absence of beneficial mutations, is the product of the fitness of the least loaded class and the probability that no mutations occur.</p>
+</blockquote>
 <p>What's left?</p>
 <p>The next step - in the next post - will be to derive a formula for the mean fitness at each generation. This is important because we need to understand how <em>rapidly</em> the mean fitness converges towards the equilibrium value. Can we really assume that the evolutionary process has reached the mutation-selection balance in calculations we perform?</p>
 <p>One article that presents an analysis on this subject is <span class="citation">(Gordo and Dionisio 2005)</span>, which shows how to derive the mean fitness of a population at genearation <em>n</em>. This is still a simple asexual population with directional selection and unidirectional deleterious mutations, but it is still very interesting, and I'll try to post a comprehensive explanation on how it can be done.</p>
@@ -385,7 +392,7 @@ e^{-U}
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>To prove this, one must notice that the determinant of a triangular matrix is the trace of the matrix, and therefore the characteristic polynomial is the trace of the matrix \(I\lambda - M\), and the eigenvalues are the solutions of this polynomial - see [Paul's online math notes](http://tutorial.math.lamar.edu/Classes/LinAlg/EVals_Evects.aspx#EV_EvalEvec_Thm1.<a href="#fnref1">&#8617;</a></p></li>
+<li id="fn1"><p>To prove this, one must notice that the determinant of a triangular matrix is the trace of the matrix, and therefore the characteristic polynomial is the trace of the matrix \(I\lambda - M\), and the eigenvalues are the solutions of this polynomial - see <a href="http://tutorial.math.lamar.edu/Classes/LinAlg/EVals_Evects.aspx#EV_EvalEvec_Thm1">Paul's online math notes</a>.<a href="#fnref1">&#8617;</a></p></li>
 </ol>
 </div>
 	
@@ -509,7 +516,7 @@ e^{-U}
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 14 October 2012 at 20:43.</li>
+	<li>This page was last modified on 15 October 2012 at 10:00.</li>
 	</ul>
 	
 	
