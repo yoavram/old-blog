@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Recent Articles</title>
-  <id>http://localhost/recent.atom</id>
+  <id>http://blog.yoavram.com/recent.atom</id>
   <updated>2012-10-14T14:45:00Z</updated>
-  <link href="http://localhost/" />
-  <link href="http://localhost/recent.atom" rel="self" />
+  <link href="http://blog.yoavram.com" />
+  <link href="http://blog.yoavram.com/recent.atom" rel="self" />
   <author>
     <name>Yoav Ram</name>
     <uri>http://www.yoavram.com/</uri>
@@ -12,11 +12,11 @@
   </author>
   <rights>CC BY-SA 3.0</rights>
   <generator>Werkzeug</generator>
-  <entry xml:base="http://localhost/recent.atom">
+  <entry xml:base="http://blog.yoavram.com/recent.atom">
     <title type="text">Mean fitness at the mutation-selection balance</title>
-    <id>http://localhost/mean-fitness-at-the-mutation-selection-balance</id>
+    <id>http://blog.yoavram.com/mean-fitness-at-the-mutation-selection-balance/</id>
     <updated>2012-10-14T14:45:00Z</updated>
-    <link href="http://localhost/mean-fitness-at-the-mutation-selection-balance" />
+    <link href="http://blog.yoavram.com/mean-fitness-at-the-mutation-selection-balance/" />
     <author>
       <name></name>
     </author>
@@ -85,7 +85,7 @@ ln{(\bar{\omega}^*)}  \approx \sum_{j}{-\mu_j} = -U
 \varphi_U(k) = \frac{U^k e^U}{k!}
 \] The equation system describing the change in the freuqnecy of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles is: \[
 p&amp;#39;_{i} = \sum_{ k=0 }^{i}{ p_{k} \frac{ \omega_{k} } {\bar{\omega}} \varphi_{U} (i-k)}, \; \; \forall i \ge 0
-\]&lt;/p&gt;
+\] where \(\omega_i\) is the fitness of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles.&lt;/p&gt;
 &lt;p&gt;The above equation system can be written in matrix form: \[
 \bar{\omega}p&amp;#39; = Mp
 \] where \(p=(p_0,p_1,p_2,...)\) and &lt;em&gt;M&lt;/em&gt; is: \[
@@ -126,11 +126,11 @@ e^{-U}
 &lt;/ol&gt;
 &lt;/div&gt;</content>
   </entry>
-  <entry xml:base="http://localhost/recent.atom">
+  <entry xml:base="http://blog.yoavram.com/recent.atom">
     <title type="text">Citations in Markdown using Pandoc</title>
-    <id>http://localhost/citations-in-markdown-using-pandoc</id>
+    <id>http://blog.yoavram.com/citations-in-markdown-using-pandoc/</id>
     <updated>2012-10-12T13:35:00Z</updated>
-    <link href="http://localhost/citations-in-markdown-using-pandoc" />
+    <link href="http://blog.yoavram.com/citations-in-markdown-using-pandoc/" />
     <author>
       <name></name>
     </author>
@@ -203,15 +203,15 @@ e^{-U}
 &lt;div class="footnotes"&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
-&lt;li id="fn1"&gt;&lt;p&gt;The main Python module underlying &lt;a href="https://bitbucket.org/yoavram/msb"&gt;my Python static site generator&lt;/a&gt;.&lt;a href="#fnref1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn1"&gt;&lt;p&gt;The main Python module underlying my &lt;a href="https://github.com/yoavram/yoavram.github.com/tree/source"&gt;Python static site generator&lt;/a&gt;.&lt;a href="#fnref1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</content>
   </entry>
-  <entry xml:base="http://localhost/recent.atom">
+  <entry xml:base="http://blog.yoavram.com/recent.atom">
     <title type="text">Icons for the blog</title>
-    <id>http://localhost/icons-for-the-blog</id>
+    <id>http://blog.yoavram.com/icons-for-the-blog/</id>
     <updated>2012-10-11T14:59:00Z</updated>
-    <link href="http://localhost/icons-for-the-blog" />
+    <link href="http://blog.yoavram.com/icons-for-the-blog/" />
     <author>
       <name></name>
     </author>
@@ -281,11 +281,11 @@ Hospital &lt;i class="glyphicon-hospital"&gt;&lt;/i&gt;
 &lt;p&gt;One last thing. During the search for the solution (15 mins?) I found someone that suggested to use the &lt;a href="http://fortawesome.github.com/Font-Awesome/"&gt;Font Awesome&lt;/a&gt; icon set instead of &lt;em&gt;Glyphicons&lt;/em&gt;, so I tried that. First of all, the &lt;em&gt;Font Awesome&lt;/em&gt; site is... awesome. It took me one minute to understand how I need to do, to follow the instructions, and transition my site to &lt;em&gt;Font Awesome&lt;/em&gt;. The integration with &lt;em&gt;Twitter Bootstrap&lt;/em&gt; is very easy. The icon set is large, and it looks nice, but... not as nice as &lt;em&gt;Glyphonics&lt;/em&gt; looks. So I decided I'd stick with &lt;em&gt;Glyphicons&lt;/em&gt;. I will say that &lt;em&gt;Font Awesome&lt;/em&gt;'s social icons (twitter and company) are nicer, maybe because the &lt;em&gt;Glyphicons&lt;/em&gt; social icons have a black background and they don't look so good at 14x14 pixels.&lt;/p&gt;
 &lt;p&gt;You can, of course, decide for yourself. Here are screenshots of the navigation bar with &lt;a href="http://i.imgur.com/3RFfm.png"&gt;Glyphonics&lt;/a&gt; and here it is with &lt;a href="http://i.imgur.com/WLVAM.png"&gt;Font Awesome&lt;/a&gt;. If you would like to see the code, here are the commits for &lt;a href="https://bitbucket.org/yoavram/msb/changeset/48d36660697bc022548e5476e40157c894aa3a99"&gt;Glyphonics&lt;/a&gt; and for &lt;a href="https://bitbucket.org/yoavram/msb/changeset/9a7b530667faeda8da08d9ba932e11622d07287b"&gt;Font Awesome&lt;/a&gt;.&lt;/p&gt;</content>
   </entry>
-  <entry xml:base="http://localhost/recent.atom">
+  <entry xml:base="http://blog.yoavram.com/recent.atom">
     <title type="text">Markdown links and footnotes</title>
-    <id>http://localhost/markdown-links-and-footnotes</id>
+    <id>http://blog.yoavram.com/markdown-links-and-footnotes/</id>
     <updated>2012-10-11T09:21:00Z</updated>
-    <link href="http://localhost/markdown-links-and-footnotes" />
+    <link href="http://blog.yoavram.com/markdown-links-and-footnotes/" />
     <author>
       <name></name>
     </author>
@@ -347,11 +347,11 @@ You can see a footnote here[^here].
 &lt;/ol&gt;
 &lt;/div&gt;</content>
   </entry>
-  <entry xml:base="http://localhost/recent.atom">
+  <entry xml:base="http://blog.yoavram.com/recent.atom">
     <title type="text">Blogging with math and code</title>
-    <id>http://localhost/blogging-with-math-and-code</id>
+    <id>http://blog.yoavram.com/blogging-with-math-and-code/</id>
     <updated>2012-10-03T13:05:00Z</updated>
-    <link href="http://localhost/blogging-with-math-and-code" />
+    <link href="http://blog.yoavram.com/blogging-with-math-and-code/" />
     <author>
       <name></name>
     </author>
