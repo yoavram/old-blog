@@ -127,13 +127,13 @@ The above equation system can be written in matrix form:
 $$
 \bar{\omega}p' = Mp
 $$
-where $p=(p_0,p_1,p_2,...)$ and, by subituting $\omega_{i} = (1-s)^i$:
+where $p=(p_0,p_1,p_2,...)$ and *M* is:
 $$
 M = \left(\begin{array}{cccc}
-\varphi_U(0)   & 0            	      & 0                		&  ...\\
-\varphi_U(1)   & (1-s) \varphi_U(0)   & 0                		&  ...\\
-\varphi_U(2)   & (1-s) \varphi_U(1)   & (1-s)^2 \varphi_U(0)    &  ...\\ 
-...   		   & ...          		  & ...		                &  ...
+\omega_0 \varphi_U(0)   & 0            	      		& 0         	       		&  ...\\
+\omega_0 \varphi_U(1)   & \omega_1 \varphi_U(0)   	& 0      	          		&  ...\\
+\omega_0 \varphi_U(2)   & \omega_1 \varphi_U(1)   	& \omega_2 \varphi_U(0)	    &  ...\\ 
+...   		   			& ...          		  		& ...		                &  ...
 \end{array}\right)
 $$
 This matrix is called a [transition matrix](http://en.wikipedia.org/wiki/Stochastic_matrix) 
@@ -151,7 +151,7 @@ Since this is a triangular matrix, the eigenvalues are simply the elements on th
 Therefore, the largest eigenvalue must be the largest element on the diagonal, which is the element 
 $$
 \bar{\omega}^* = M_{0,0} = 
-\varphi_U(0) = \frac{U^0 e^{-U}}{0!} = 
+\omega_0 \varphi_U(0) = (1-s)^0 \frac{U^0 e^{-U}}{0!} = 
 e^{-U}
 $$
 
@@ -163,7 +163,16 @@ at the mutation-selection balance would still be the leading eigenvalue of the m
 ## Summary
 
 We've seen how to derive the mean fitness at the mutation-selection balance $\bar{\omega} = e^{-U}$ 
-both via a simple calculus approximation and via a more hardcore linear algerba route.
+both via a simple calculus approximation and via a more "hardcore" linear algerba method.
+
+The nice thing about deriving the mean fitness in the "hardcore" method is that we get some idea of *why* it is equal to e^-U^.
+We found that the mean fitness at the mutation-selection balance equals to the leading eigenvalue of the transition matrix,
+which is the relative probability that individuals from the least loaded class (the class of fittest individuals) survive to the next generation without mutating.
+By definition the fitness of the least loaded individuals is 1, and we assumed the mutations are *Poisson* distributed, 
+and therefore we got e^-U^, but if we change these assumptions the general result will still hold:
+
+> The mean fitness of an asexual population at the mutation-selection balance, in the absence of beneficial mutations,
+> is the product of the fitness of the least loaded class and the probability that no mutations occur.
 
 What's left?
 
@@ -181,4 +190,4 @@ but it is still very interesting, and I'll try to post a comprehensive explanati
 one must notice that the determinant of a triangular matrix is the trace of the matrix, 
 and therefore the characteristic polynomial is the trace of the matrix $I\lambda - M$, 
 and the eigenvalues are the solutions of this polynomial - 
-see [Paul's online math notes](http://tutorial.math.lamar.edu/Classes/LinAlg/EVals_Evects.aspx#EV_EvalEvec_Thm1.
+see [Paul's online math notes](http://tutorial.math.lamar.edu/Classes/LinAlg/EVals_Evects.aspx#EV_EvalEvec_Thm1).
