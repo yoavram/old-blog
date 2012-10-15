@@ -31,8 +31,4 @@ To work with the new *GitHub* setup.
 
 ## Larger link to CV from /
 
-## .gitignore
-
-Copy *.hgignore*?
-
 ## Editor
