@@ -31,8 +31,8 @@ To work with the new *GitHub* setup.
 
 ## Larger link to CV from /
 
-## FigShare panel somewhere
-
 ## .gitignore
 
 Copy *.hgignore*?
+
+## Editor

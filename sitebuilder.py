@@ -8,6 +8,7 @@ from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 
 DEBUG = True
+WEBSITE_ADDRESS = "http://blog.yoavram.com"
 SHARETHIS_PUBLISHER = "ur-fbcd7053-76f9-85c3-b29f-848f5f75e2af"
 DISQUS_SHORTNAME = u"yoavram"
 AUTHOR_LASTNAME = u"Ram"
@@ -30,6 +31,8 @@ GOOGLE_SCHOLAR_CITATIONS_USER = u"RIFmJvYAAAAJ"
 BIB_FILE = r'D:\library.bib'
 CSL = "chicago"
 LAST_MODIFICATION = datetime.datetime.now()
+FIGSHARE_AUTHOR = "Yoav_Ram"
+FIGSHARE_ID = "99206"
 
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
@@ -61,7 +64,7 @@ def make_external(url):
     return urljoin(request.url_root, url)
 
 def permalink(page):
-    return url_for("page", path=page.path)
+    return app.config['WEBSITE_ADDRESS'] + url_for("page", path=page.path)
 
 def tag_count():
     tags = {}

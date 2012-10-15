@@ -99,11 +99,11 @@ p' = p + (1-p)(1-s)\mu
 $$
 
 
-For more resources visit the [documentation](http://docs.mathjax.org/en/latest/output.html) and the [online debugger](http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm).
+For more information visit the [documentation](http://docs.mathjax.org/en/latest/output.html)[^mathjax-debug].
 
 ### Source Code 
 
-Code is writeen in the [Markdown](http://daringfireball.net/projects/markdown/)[^markdown] text by wrapping it with <code>&lt;pre class="prettyprint html">...&lt;/pre></code> element.
+Code is writeen in the [Markdown](http://daringfireball.net/projects/markdown/) text by wrapping it with <code>&lt;pre class="prettyprint html">...&lt;/pre></code> element.
 It is then highlighted in the browser using [Google code prettifier](http://google-code-prettify.googlecode.com) javascript which automatically identifies the language. 
 
 See the [README](http://google-code-prettify.googlecode.com/svn/trunk/README.html) for detailed instructions. 
@@ -117,3 +117,4 @@ For a nice example of different styles you can use (by replacing the default <co
 [^latex]: [Online LaTeX editor](http://texify.com/)
 [^markdown]: [Online Markdown editor](http://www.ctrlshift.net/project/markdowneditor/)
 [^html-escaping-tool]: [Online HTML escaping tool](http://www.htmlescape.net/htmlescape_tool.html)
+[^mathjax-debug]: [Online MathJax debugger](http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm).
