@@ -114,4 +114,4 @@ My model is based on that by @Hadany2003 who showed...
 
 ## References
 
-[^1]: The main Python module underlying [my Python static site generator](https://bitbucket.org/yoavram/msb)
+[^1]: The main Python module underlying my [Python static site generator](https://github.com/yoavram/yoavram.github.com/tree/source)

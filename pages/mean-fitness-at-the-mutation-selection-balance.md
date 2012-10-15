@@ -122,6 +122,7 @@ The equation system describing the change in the freuqnecy of individuals with *
 $$
 p'_{i} = \sum_{ k=0 }^{i}{ p_{k} \frac{ \omega_{k} } {\bar{\omega}} \varphi_{U} (i-k)}, \; \; \forall i \ge 0
 $$
+where $\omega_i$ is the fitness of individuals with *i* mutant alleles.
 
 The above equation system can be written in matrix form:
 $$

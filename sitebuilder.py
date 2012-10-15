@@ -61,10 +61,10 @@ from flask import request
 from werkzeug.contrib.atom import AtomFeed
 
 def make_external(url):
-    return urljoin(request.url_root, url)
+    return urljoin(app.config['WEBSITE_ADDRESS'], url)
 
 def permalink(page):
-    return app.config['WEBSITE_ADDRESS'] + url_for("page", path=page.path)
+    return make_external(url_for("page", path=page.path))
 
 def tag_count():
     tags = {}
@@ -100,8 +100,8 @@ app.jinja_env.globals['sorted'] = sorted
 def recent_feed():
     articles = pages_by_datetime(15)
     feed = AtomFeed(u'Recent Articles',
-                    feed_url=request.url,
-                    url=request.url_root,
+                    feed_url=make_external(url_for("recent_feed")),
+                    url=make_external(""),
                     author={'name':'Yoav Ram','uri':'http://www.yoavram.com/','email':'yoavram@gmail.com'},
                     rights='CC BY-SA 3.0',
                     updated=articles[0].meta['datetime'])
@@ -110,7 +110,7 @@ def recent_feed():
         feed.add(article.meta['title'],
                  unicode(article.html),
                  content_type='html',                 
-                 url=make_external(article.path),
+                 url=permalink(article),
                  updated=article.meta['datetime'])
                  
     return feed.get_response()
