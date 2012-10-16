@@ -1,5 +1,9 @@
 # TODO
 
+## Join ResearchBlog.org
+
+http://www.researchblogging.org/static/index/page/help
+
 ## Citations 
 
 Problem 5 in [Citations in Markdown using Pandoc].
