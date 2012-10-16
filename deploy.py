@@ -4,7 +4,7 @@ from distutils import dir_util
 import getpass
 import sitebuilder
 
-DEBUG = True
+DEBUG = False
 
 REPO = "yoavram.github.com"
 USERNAME = "yoavram"
