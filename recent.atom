@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Recent Articles</title>
   <id>http://blog.yoavram.com/recent.atom</id>
-  <updated>2012-10-14T14:45:00Z</updated>
+  <updated>2012-10-16T13:22:00Z</updated>
   <link href="http://blog.yoavram.com" />
   <link href="http://blog.yoavram.com/recent.atom" rel="self" />
   <author>
@@ -12,6 +12,180 @@
   </author>
   <rights>CC BY-SA 3.0</rights>
   <generator>Werkzeug</generator>
+  <entry xml:base="http://blog.yoavram.com/recent.atom">
+    <title type="text">Summary: "Mutators and sex in bacteria: Conflict between adaptive strategies" (Tenaillon et al. 2000)</title>
+    <id>http://blog.yoavram.com/tenaillon-et-al-2000/</id>
+    <updated>2012-10-16T13:22:00Z</updated>
+    <link href="http://blog.yoavram.com/tenaillon-et-al-2000/" />
+    <author>
+      <name></name>
+    </author>
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#model"&gt;Model&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#genome"&gt;Genome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#recombination"&gt;Recombination&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#parameters"&gt;Parameters&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#stats"&gt;Stats&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#results"&gt;Results&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#recombination-reduces-mutator-fixation"&gt;Recombination reduces mutator fixation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#recombination-barriers"&gt;Recombination barriers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#invasion-to-a-moderate-mutator-background"&gt;Invasion to a moderate mutator background&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#recombination-accelarates-adaptation"&gt;Recombination accelarates adaptation&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#population-size"&gt;Population size&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#beneficial-mutation-rate"&gt;Beneficial mutation rate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#selection-coefficient-of-beneficial-mutations"&gt;Selection coefficient of beneficial mutations&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#discussion"&gt;Discussion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#references"&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a name='TOC'&gt;&lt;/a&gt;
+&lt;h2 id="overview"&gt;&lt;a href="#TOC"&gt;Overview&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This post is mostly a technical summary of the paper by &lt;strong&gt;Tenaillon, Le Nagard, Godelle and Taddei &lt;a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/"&gt;&lt;span class="citation"&gt;Tenaillon et al. (2000)&lt;/span&gt;&lt;/a&gt;&lt;/strong&gt;. I wrote the summary because I use it as a baseline for my own research, which involves the evolution of stress-induced mutators &lt;span class="citation"&gt;(Ram and Hadany 2012)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;The hypothesis the paper deals with is:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;The existence of genetic exchanges could modify the dynamics of adaptation and limits the success of mutator alleles&lt;sup&gt;&lt;a href="#fn1" class="footnoteRef" id="fnref1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It is stated that previous models &lt;span class="citation"&gt;(Leigh 1973; Johnson 1999)&lt;/span&gt; have considered mutators in a sexual population, but didn't consider the case of adaptation with &lt;strong&gt;multiple beneficial mutations&lt;/strong&gt; - which can involve different &lt;em&gt;Hill-Robertosn effects&lt;/em&gt; &lt;span class="citation"&gt;(Hill and Robertson 1966)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;This hypothesis was tested using simulations. The main conclusion, in comparison to a previous work in which the authors studies the evolution of mutators &lt;span class="citation"&gt;(Tenaillon et al. 1999)&lt;/span&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Rare genetic exchanges have a dramatic (i.e. negative) effect on the fixation of mutators.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In addition, the paper presents some evidence on &lt;em&gt;why&lt;/em&gt; genetic exchanges (recombination) have such an effect of the evolution of mutators.&lt;/p&gt;
+&lt;h2 id="model"&gt;&lt;a href="#TOC"&gt;Model&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The model is an extension of the density-based model&lt;sup&gt;&lt;a href="#fn2" class="footnoteRef" id="fnref2"&gt;2&lt;/a&gt;&lt;/sup&gt; used in &lt;span class="citation"&gt;(Tenaillon et al. 1999)&lt;/span&gt;. The extension is the addition of genetic exchanges (&amp;quot;bacterial recombination&amp;quot;). Both &lt;strong&gt;conjugation&lt;/strong&gt; and &lt;strong&gt;transformation&lt;/strong&gt; were used, but only the results of transformation are shown.&lt;/p&gt;
+&lt;p&gt;The model is built using:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Finite populations - genetic drift, clonal interference&lt;/li&gt;
+&lt;li&gt;Directional selection - no epistasis, no changing environments&lt;/li&gt;
+&lt;li&gt;Several mutations with various fitness effects&lt;/li&gt;
+&lt;li&gt;Colonization of a new environment by a single cell - adaptive evolution scenario&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="genome"&gt;&lt;a href="#TOC"&gt;Genome&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The basic model of the genome (in parentheses are the values used in my own work for comparison):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 mutator locus (1)&lt;/li&gt;
+&lt;li&gt;6 loci for beneficial mutations (4+)
+&lt;ul&gt;
+&lt;li&gt;with additive effect on fitness: 0.06, 0.04, 0.04, 0.03, 0.03, 0.03 - mean 0.03833 (0.1)&lt;/li&gt;
+&lt;li&gt;all loci treated independently, only one locus will be involved in the process at one time (?)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;1,000 loci for deleterious mutations (+-1,000)
+&lt;ul&gt;
+&lt;li&gt;with additive effect on fitness: 0.05 (0.1)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="recombination"&gt;&lt;a href="#TOC"&gt;Recombination&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Drawing the number of recieved genes from a &lt;em&gt;Poisson&lt;/em&gt; distribution&lt;/li&gt;
+&lt;li&gt;Randomly choose the sites, according to the number of sites drawn&lt;/li&gt;
+&lt;li&gt;Choosing a random allele for each site based on the allele frequency in the population&lt;/li&gt;
+&lt;li&gt;Constant gene transfer rate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="parameters"&gt;&lt;a href="#TOC"&gt;Parameters&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Rates are modified from the original to units of &lt;em&gt;events per genome per generation&lt;/em&gt;. (in parentheses are the rates used in my own work for comparison):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mutators increase rates: 100-fold (2-10)&lt;/li&gt;
+&lt;li&gt;Beneficial mutations: 6x10&lt;sup&gt;-8&lt;/sup&gt; based on 10&lt;sup&gt;-8&lt;/sup&gt; per mutation (1.2x10&lt;sup&gt;-5&lt;/sup&gt; - 3x10&lt;sup&gt;-5&lt;/sup&gt; - x200)&lt;/li&gt;
+&lt;li&gt;Deleterious mutations: 10&lt;sup&gt;-4&lt;/sup&gt; &lt;span class="citation"&gt;(Kibota and Lynch 1996)&lt;/span&gt; (3x10&lt;sup&gt;-3&lt;/sup&gt; - 2.97x10&lt;sup&gt;-3&lt;/sup&gt; &lt;span class="citation"&gt;(Drake 1991)&lt;/span&gt;- x30)&lt;/li&gt;
+&lt;li&gt;Lethal mutations: 10&lt;sup&gt;-5&lt;/sup&gt; (0)&lt;/li&gt;
+&lt;li&gt;Non-mutator to mutator: 5x10&lt;sup&gt;-6&lt;/sup&gt; (0)&lt;/li&gt;
+&lt;li&gt;Mutator to non-mutator: 100x5x10&lt;sup&gt;-10&lt;/sup&gt; = 5x10&lt;sup&gt;-8&lt;/sup&gt; (0)&lt;/li&gt;
+&lt;li&gt;Genetic exchanges: 0, 0.00001, 0.0001, 0.001, 0.01 and 0.1 (0, 0.015 or 0.75)
+&lt;ul&gt;
+&lt;li&gt;For comparison, &lt;em&gt;E. coli&lt;/em&gt; do ~5x10&lt;sup&gt;-5&lt;/sup&gt; and &lt;em&gt;H. pylori&lt;/em&gt; ~3x10&lt;sup&gt;-3&lt;/sup&gt; &lt;span class="citation"&gt;(Milkman and Bridges 1990; Falush et al. 2001)&lt;/span&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Population size: mostly 10&lt;sup&gt;9&lt;/sup&gt;, also checked 10&lt;sup&gt;5&lt;/sup&gt;-10&lt;sup&gt;10&lt;/sup&gt; (10&lt;sup&gt;5&lt;/sup&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="stats"&gt;&lt;a href="#TOC"&gt;Stats&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Time of adaptation: no. generations for 95% of population to carry all beneficial mutations&lt;/li&gt;
+&lt;li&gt;Mutator frequency: mean frequency at end of adaptation process over 1,000 replicates&lt;/li&gt;
+&lt;li&gt;Mutator contribution: when mutator frequency &amp;lt; 50% but at least one mutation that appeared in a mutator is present in &amp;gt;50% of population&lt;/li&gt;
+&lt;li&gt;Mutator fixation: frequency &amp;gt;50%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="results"&gt;&lt;a href="#TOC"&gt;Results&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="recombination-reduces-mutator-fixation"&gt;&lt;a href="#TOC"&gt;Recombination reduces mutator fixation&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;When the rate of genetic exchanges increases, the fixation probability of mutators decreases. &lt;em&gt;Figure 1A&lt;/em&gt; shows this very clearly for a 100-fold mutator:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/figure/F1/"&gt;&lt;img src="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/bin/pq1800633001.jpg" alt="Figure 1" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Figure 1 from &lt;span class="citation"&gt;Tenaillon et al. (2000)&lt;/span&gt;. A) Fixation probability of a 100-fold fold mutator, population size 10^-9. B) Adaptation times of populations with: circle - low mutation rate, square - high mutation rate, triangle - mixed populations.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;However, the &lt;em&gt;B panel&lt;/em&gt; shows that the adaptation time of a mutator population is still shorter than that of a non-mutator population, even when mutators are loosing. This is due to the contribution of mutators to adaptation - in a recombining population mutators are &lt;strong&gt;&amp;quot;altruistic&amp;quot;&lt;/strong&gt; alleles because they give away the beneficial mutations they generate. This causes them to lose their adaptive advantage and therefore their fixation probability drops, but it still increases the ability of the whole population to adapt.&lt;/p&gt;
+&lt;p&gt;Note that the rates of recombination in the figure are &lt;em&gt;per gene&lt;/em&gt;. Converted to &lt;em&gt;per genome&lt;/em&gt; they would be: 0, 10&lt;sup&gt;-5&lt;/sup&gt;, 10&lt;sup&gt;-4&lt;/sup&gt;, 10&lt;sup&gt;-3&lt;/sup&gt;, 10&lt;sup&gt;-2&lt;/sup&gt;, 10&lt;sup&gt;-1&lt;/sup&gt;, or in decimal representation: 0, 0.00001, 0.0001, 0.001, 0.01, 0.1. Another useful presentation is the &lt;em&gt;ratio of recombination to mutation&lt;/em&gt;, using the highest genomic mutation rate (10&lt;sup&gt;-4&lt;/sup&gt;): 0, 0.1, 1, 10, 100, 1000, or compared to the 100-fold mutator: 0, 0.001, 0.01, 0.1, 1, 10.&lt;/p&gt;
+&lt;p&gt;So we see that as soon as the &lt;em&gt;recombination to mutation ratio&lt;/em&gt; is 0.1 or lower (4&lt;sup&gt;th&lt;/sup&gt; column from the left in &lt;em&gt;Fig. 1A&lt;/em&gt;, if we consider the 100-fold increae), the fixation probability of mutators is ~50% or more. The conclusion here could be that mutators can evolve in a recombining population as long as recombination in not more than 10-fold stronger than mutation&lt;/p&gt;
+&lt;p&gt;Of course this &lt;em&gt;10-fold&lt;/em&gt; estimate is highly dependent on the other paramters: the population size, the selection coefficients, the beneficial mutation rate, not to mention parameters that are not dealt with here such as epistasis.&lt;/p&gt;
+&lt;h3 id="recombination-barriers"&gt;&lt;a href="#TOC"&gt;Recombination barriers&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A recombination barrier, in the context of these simulations, prevents recombination between mutator and non-mutator individuals, limiting recombination events to within the sub-populations.&lt;/p&gt;
+&lt;p&gt;This is useful here because it allows to test if the source of the effect of recombination on the fixation of mutators is: &lt;strong&gt;1) breaking the linkage&lt;/strong&gt; of the mutator with the beneficial mutations it generates, or &lt;strong&gt;2) competing adaptive strategy&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The 1&lt;sup&gt;st&lt;/sup&gt; effect is usually called the &lt;strong&gt;hitch-hiking effect&lt;/strong&gt;, or &lt;strong&gt;selective sweeps&lt;/strong&gt; &lt;span class="citation"&gt;(Charlesworth 2007)&lt;/span&gt;: mutators can &amp;quot;hitch-hike&amp;quot; with the beneficial mutations they generate to high frequencies as long as the LD (linkage disequilibrium) between them is intact. recombination tends to break this LD, robbing the mutators from their precious beneficial mutations. Even worse, recombination doesn't only take away the beneifical mutations, it even gives them to the mutators' &amp;quot;rivals&amp;quot; - the competing non-mutator alleles.&lt;/p&gt;
+&lt;p&gt;The 2&lt;sup&gt;nd&lt;/sup&gt; effect is general - &lt;em&gt;competing adadptive strategy&lt;/em&gt;. How is recombination an &lt;em&gt;adaptive strategy&lt;/em&gt;?&lt;/p&gt;
+&lt;p&gt;Asexual populations are limited by &lt;strong&gt;clonal interference&lt;/strong&gt; &lt;span class="citation"&gt;(Gerrish and Lenski 1998; Martens and Hallatschek 2011)&lt;/span&gt;. The following figure illustrates the idea:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Clonal_interference"&gt;&lt;img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Evolsex-dia2a.svg/500px-Evolsex-dia2a.svg.png" alt="Clonal Interference" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Clonal interference diagram from &lt;a href="http://en.wikipedia.org/wiki/File:Evolsex-dia2a.svg"&gt;Wikipedia&lt;/a&gt;. This diagram illustrates how sex might create novel genotypes more rapidly. Two beneficial mutations A and B occur at random. The two mutations are recombined rapidly in a sexual population (top), but in an asexual population (bottom) the two mutations must independently arise because of clonal interference. The effect of recombination and sex on the adaptation rate via the reduction of &lt;em&gt;clonal interference&lt;/em&gt; is also called the &lt;em&gt;Fisher-Muller effect&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If the reduction in fixation probability is due to the 1&lt;sup&gt;st&lt;/sup&gt; effect - separation of the mutators from the beneficial mutations they generate - then &lt;em&gt;recombination barriers&lt;/em&gt; are expected to revert the outcome, at least partially, to that of asexual populations.&lt;/p&gt;
+&lt;p&gt;However, the results showed that &lt;em&gt;recombination barriers&lt;/em&gt; didn't recover the fixation probability of mutators to their levels without recombination. No figure presents the data, but the text provides some information: 7% fixation instead of 60% with beneficial mutation rate 10&lt;sup&gt;-8&lt;/sup&gt; and 0.3% instead of 16% with a rate of 10&lt;sup&gt;-9&lt;/sup&gt;. The conclusion is therefore that the 1&lt;sup&gt;st&lt;/sup&gt; effect is not enough to explain the reduction in the mutators adaptive advantage in the presence of recombination.&lt;/p&gt;
+&lt;h3 id="invasion-to-a-moderate-mutator-background"&gt;&lt;a href="#TOC"&gt;Invasion to a moderate mutator background&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;To check that the 2&lt;sup&gt;nd&lt;/sup&gt; effect is the determining effect, a 100-fold mutator invaded another mutator (instead of a non-mutator). The results are in &lt;a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/figure/F2/"&gt;Figure 2&lt;/a&gt; - in general the fixation probability of a 100-fold mutator drops rapidly when competing with a 10-fold mutator and even a 5-fold mutator.&lt;/p&gt;
+&lt;p&gt;This illustrates that competing adaptive strategies can reduce the fixation of mutators, and therefore that is is plausible that this is why recombination reduces the fixation of mutators.&lt;/p&gt;
+&lt;h3 id="recombination-accelarates-adaptation"&gt;&lt;a href="#TOC"&gt;Recombination accelarates adaptation&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Setting the recombination rate at 10&lt;sup&gt;-4&lt;/sup&gt; gene conversions per individual per generations, the effect of other parameters was investigated:&lt;/p&gt;
+&lt;h4 id="population-size"&gt;&lt;a href="#TOC"&gt;Population size&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;In asexuals, increasing the population size increases the fixation rate of mutators &lt;span class="citation"&gt;(Tenaillon et al. 1999)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;In recombining populations, this is not the case. &lt;a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/figure/F3/"&gt;Figure 3A&lt;/a&gt; shows that for a population size &amp;lt;10&lt;sup&gt;6&lt;/sup&gt;, recombination has a very small effect on the fixation of a 100-fold mutator. However, the trends of the fixation probability are completely different for population size &amp;gt;10&lt;sup&gt;-6&lt;/sup&gt;. In asexual populations it increases (rapidly after 10&lt;sup&gt;7&lt;/sup&gt;), but in recombining populations it decreases and then increases a bit again at 10&lt;sup&gt;9&lt;/sup&gt;, but not much, never surprassing 0.2.&lt;/p&gt;
+&lt;h4 id="beneficial-mutation-rate"&gt;&lt;a href="#TOC"&gt;Beneficial mutation rate&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;The lower the beneficial mutation rate, the lower the fixation probability of mutators. &lt;a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/figure/F4/"&gt;Figure 4&lt;/a&gt; shows that the fixation probability of mutators starts to increase at a beneficial mutation rate of 10&lt;sup&gt;-9&lt;/sup&gt; for asexual populations, but only at 10&lt;sup&gt;-8&lt;/sup&gt; for sexual populations.&lt;/p&gt;
+&lt;h4 id="selection-coefficient-of-beneficial-mutations"&gt;&lt;a href="#TOC"&gt;Selection coefficient of beneficial mutations&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/figure/F5/"&gt;Figure 5&lt;/a&gt; shows that the negative effect of recombination of the fixation of mutators decreases when the selection coefficient of beneficial mutations increases.&lt;/p&gt;
+&lt;p&gt;For a selection coefficient of 0.01 &lt;span class="citation"&gt;(Kibota and Lynch 1996)&lt;/span&gt; recombination reduced the fixation probability of mutators 17-fold.&lt;/p&gt;
+&lt;p&gt;A selection coefficient of 0.1, used in my own work &lt;span class="citation"&gt;(Ram and Hadany 2012)&lt;/span&gt;, falls between the two right most points of &lt;a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/figure/F5/"&gt;Figure 5&lt;/a&gt; - 2.5 and 3 - and the fixation probability of a 100-fold mutator allele drops ~10-fold due to recombination at a rate of 10&lt;sup&gt;-4&lt;/sup&gt; per gene per generation in a population with size 10&lt;sup&gt;9&lt;/sup&gt;.&lt;/p&gt;
+&lt;h2 id="discussion"&gt;&lt;a href="#TOC"&gt;Discussion&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This paper is &lt;em&gt;packed&lt;/em&gt; with interesting results. The effect of recombination on mutator evolution has not recieved alot of treatment using simulation (but see &lt;span class="citation"&gt;Levin and Cornejo (2009)&lt;/span&gt; and &lt;span class="citation"&gt;Sloan and Panjeti (2010)&lt;/span&gt; on which I hope to write some other time). So this is really interesting to someone interesed in the evolution of the mutation rate, even 12 years later.&lt;/p&gt;
+&lt;p&gt;This work shows that indeed recombination has an effect on mutator evolution, and that this effect is highly sensitive - it is (I'm concentrating on when the effect is weak because that's when mutators are still going to evolve):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Weak in small populations (&amp;lt;10&lt;sup&gt;7&lt;/sup&gt;-10&lt;sup&gt;8&lt;/sup&gt;)&lt;/li&gt;
+&lt;li&gt;Weak for high beneficial mutation rates (&amp;gt;10&lt;sup&gt;-8&lt;/sup&gt;-10&lt;sup&gt;-7&lt;/sup&gt;)&lt;/li&gt;
+&lt;li&gt;Weaker for strong/intermediate selection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It seems that in general the effect of recombination on mutator evolution (that is, on the evolution of high mutation rates) is weak when the adaptation rate of the population is low. In turn, the adaptation rate is a function of the &lt;strong&gt;supply of beneficial mutations&lt;/strong&gt; which is a function of population size and beneficial mutation rate, and of &lt;strong&gt;fixation time of beneficial mutations&lt;/strong&gt; which is a function of population size and selection strength.&lt;/p&gt;
+&lt;p&gt;Selection of mutators is &lt;strong&gt;second-order selection&lt;/strong&gt;, in the sense that it indirectly affecting mutators. Because their results imply that second-order selection of mutators is very sensitive to the system parameters, &lt;em&gt;Tenaillon et al.&lt;/em&gt; propose that it may be unable to optimize the rates of mutation - in the sense that mutators will not be selected even when increasing the mutation rate will be beneficial to the population, in terms of fitness and adaptation rate. This can be resolved by &lt;strong&gt;transient hypermutation&lt;/strong&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sex would therefore help bacteria approach an optimized mutation rate strategy composed of shifts towards high mutation rates in phases of adaptation under strong selective pressure and rapid recovery of low mutation rate once adaptation is achieved.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This view was also proposed by Ninio &lt;span class="citation"&gt;(1991)&lt;/span&gt; and expanded in a review from the same lab with the attractive title &lt;em&gt;The Rise and Fall of Mutator Bacteria&lt;/em&gt; &lt;span class="citation"&gt;(Giraud et al. 2001)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;I'm not sure if and how these results would change if a weaker mutator (10-fold mutation rate increase?) was used instead of the strong mutator (100-fold). For example, a paper from the same lab &lt;span class="citation"&gt;(Taddei et al. 1997)&lt;/span&gt; showed that a 10-fold mutator is more successful in invading finite populations (see &lt;a href="http://www.nature.com/nature/journal/v387/n6634/fig_tab/387700a0_F3.html"&gt;Figure 3A&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;I learned alot from this paper (and it predecessors &lt;span class="citation"&gt;(Taddei et al. 1997; Tenaillon et al. 1999)&lt;/span&gt;) about how to think of evolutionary simulations. And of course the science itself - the diverse network of interactions and effects between selection, drift, mutation and recombination.&lt;/p&gt;
+&lt;h2 id="references"&gt;&lt;a href="#TOC"&gt;References&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Charlesworth, Brian. 2007. &amp;#8220;A hitch-hiking guide to the genome: a commentary on &amp;#8217;The hitch-hiking effect of a favourable gene&amp;#8217; by John Maynard Smith and John Haigh.&amp;#8221; &lt;em&gt;Genetical Research&lt;/em&gt; 89 (dec): 389&amp;#8211;90. doi:10.1017/S0016672308009580. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/18976526" title="http://www.ncbi.nlm.nih.gov/pubmed/18976526"&gt;http://www.ncbi.nlm.nih.gov/pubmed/18976526&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Drake, John W. 1991. &amp;#8220;A constant rate of spontaneous mutation in DNA-based microbes.&amp;#8221; &lt;em&gt;Proceedings of the National Academy of Sciences of the United States of America&lt;/em&gt; 88 (aug): 7160&amp;#8211;4. doi:10.1073/pnas.88.16.7160. &lt;a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract"&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Falush, Daniel, Christian Kraft, Nancy S. Taylor, Pelayo Correa, James G. Fox, Mark Achtman, and Sebastian Suerbaum. 2001. &amp;#8220;Recombination and mutation during long-term gastric colonization by Helicobacter pylori: estimates of clock rates, recombination size, and minimal age.&amp;#8221; &lt;em&gt;Proceedings of the National Academy of Sciences of the United States of America&lt;/em&gt; 98 (dec): 15056&amp;#8211;61. doi:10.1073/pnas.251396098. &lt;a href="http://www.pnas.org/cgi/content/abstract/98/26/15056 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=64982\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract" title="http://www.pnas.org/cgi/content/abstract/98/26/15056 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=64982\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract"&gt;http://www.pnas.org/cgi/content/abstract/98/26/15056 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=64982\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Gerrish, Philip J., and Richard E. Lenski. 1998. &amp;#8220;The fate of competing beneficial mutations in an asexual population.&amp;#8221; &lt;em&gt;Genetica&lt;/em&gt; 102-103: 127&amp;#8211;144. doi:10.1023/A:1017067816551. &lt;a href="http://www.springerlink.com/content/np187h5878166310/" title="http://www.springerlink.com/content/np187h5878166310/"&gt;http://www.springerlink.com/content/np187h5878166310/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Giraud, Antoine, Ivan Matic, Olivier Tenaillon, Antonio Clara, Miroslav Radman, Michel Fons, and Fran&amp;#231;ois Taddei. 2001. &amp;#8220;Costs and benefits of high mutation rates: adaptive evolution of bacteria in the mouse gut.&amp;#8221; &lt;em&gt;Science&lt;/em&gt; 291 (mar): 2606&amp;#8211;8. doi:10.1126/science.1056421. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/11283373" title="http://www.ncbi.nlm.nih.gov/pubmed/11283373"&gt;http://www.ncbi.nlm.nih.gov/pubmed/11283373&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hill, W. G., and Alan Robertson. 1966. &amp;#8220;The effect of linkage on limits to artificial selection.&amp;#8221; &lt;em&gt;Genetical Research&lt;/em&gt; 8 (dec): 269&amp;#8211;94. doi:10.1017/S0016672300010156. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/5980116 http://www.journals.cambridge.org/abstract\_S0016672300010156" title="http://www.ncbi.nlm.nih.gov/pubmed/5980116 http://www.journals.cambridge.org/abstract\_S0016672300010156"&gt;http://www.ncbi.nlm.nih.gov/pubmed/5980116 http://www.journals.cambridge.org/abstract\_S0016672300010156&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Johnson, Toby. 1999. &amp;#8220;Beneficial mutations, hitchhiking and the evolution of mutation rates in sexual populations.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 151 (apr): 1621&amp;#8211;31. &lt;a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1460574\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1460574\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract"&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1460574\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Kibota, Travis T., and Michael Lynch. 1996. &amp;#8220;Estimate of the genomic mutation rate deleterious to overall fitness in E. coli.&amp;#8221; &lt;em&gt;Nature&lt;/em&gt; 381 (jun): 694&amp;#8211;6. doi:10.1038/381694a0. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/8649513" title="http://www.ncbi.nlm.nih.gov/pubmed/8649513"&gt;http://www.ncbi.nlm.nih.gov/pubmed/8649513&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Leigh, Egbert Giles Jr. 1973. &amp;#8220;The evolution of mutation rates.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 73 (apr): 73. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/4711556" title="http://www.ncbi.nlm.nih.gov/pubmed/4711556"&gt;http://www.ncbi.nlm.nih.gov/pubmed/4711556&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Levin, Bruce R., and Omar E. Cornejo. 2009. &amp;#8220;The population and evolutionary dynamics of homologous gene recombination in bacterial populations.&amp;#8221; &lt;em&gt;PLoS Genetics&lt;/em&gt; 5 (aug): 1000601. doi:10.1371/journal.pgen.1000601. &lt;a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2717328\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2717328\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract"&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2717328\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Martens, Erik A., and Oskar Hallatschek. 2011. &amp;#8220;Interfering Waves of Adaptation Promote Spatial Mixing.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 189 (sep): 1045&amp;#8211;1060. doi:10.1534/genetics.111.130112. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/21900264" title="http://www.ncbi.nlm.nih.gov/pubmed/21900264"&gt;http://www.ncbi.nlm.nih.gov/pubmed/21900264&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Milkman, Roger, and Mellissa McKane Bridges. 1990. &amp;#8220;Molecular evolution of the Escherichia coli chromosome. III. Clonal frames.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 126 (nov): 505&amp;#8211;17. &lt;a href="http://mutage.oxfordjournals.org/cgi/doi/10.1093/mutage/2.2.147 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204208\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract" title="http://mutage.oxfordjournals.org/cgi/doi/10.1093/mutage/2.2.147 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204208\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract"&gt;http://mutage.oxfordjournals.org/cgi/doi/10.1093/mutage/2.2.147 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204208\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ninio, Jacques. 1991. &amp;#8220;Transient mutators: a semiquantitative analysis of the influence of translation and transcription errors on mutation rates.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 129 (nov): 957&amp;#8211;62. &lt;a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204761\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204761\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract"&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204761\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ram, Yoav, and Lilach Hadany. 2012. &amp;#8220;The evolution of stress-induced hypermutation in asexual populations.&amp;#8221; &lt;em&gt;Evolution; International Journal of Organic Evolution&lt;/em&gt; 66 (jul): 2315&amp;#8211;28. doi:10.1111/j.1558-5646.2012.01576.x. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/22759304" title="http://www.ncbi.nlm.nih.gov/pubmed/22759304"&gt;http://www.ncbi.nlm.nih.gov/pubmed/22759304&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Sloan, Daniel B., and Vijay G. Panjeti. 2010. &amp;#8220;Evolutionary feedbacks between reproductive mode and mutation rate exacerbate the paradox of sex.&amp;#8221; &lt;em&gt;Evolution&lt;/em&gt; 64 (apr): 1129&amp;#8211;35. doi:10.1111/j.1558-5646.2009.00869.x. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/19863589" title="http://www.ncbi.nlm.nih.gov/pubmed/19863589"&gt;http://www.ncbi.nlm.nih.gov/pubmed/19863589&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Taddei, Fran&amp;#231;ois, Miroslav Radman, John Maynard Smith, Bruno Toupance, Pierre-Henri Gouyon, and Bernard Godelle. 1997. &amp;#8220;Role of mutator alleles in adaptive evolution.&amp;#8221; &lt;em&gt;Nature&lt;/em&gt; 387 (jun): 700&amp;#8211;2. doi:10.1038/42696. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/9192893" title="http://www.ncbi.nlm.nih.gov/pubmed/9192893"&gt;http://www.ncbi.nlm.nih.gov/pubmed/9192893&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Tenaillon, Olivier, Herve Le Nagard, Bernard Godelle, and Fran&amp;#231;ois Taddei. 2000. &amp;#8220;Mutators and sex in bacteria: conflict between adaptive strategies.&amp;#8221; &lt;em&gt;Proceedings of the National Academy of Sciences of the United States of America&lt;/em&gt; 97 (sep): 10465&amp;#8211;70. doi:10.1073/pnas.180063397. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/10973474" title="http://www.ncbi.nlm.nih.gov/pubmed/10973474"&gt;http://www.ncbi.nlm.nih.gov/pubmed/10973474&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Tenaillon, Olivier, Bruno Toupance, Herve Le Nagard, Fran&amp;#231;ois Taddei, and Bernard Godelle. 1999. &amp;#8220;Mutators, Population Size, Adaptive Landscape and the Adaptation of Asexual Populations of Bacteria.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 152: 485&amp;#8211;493. &lt;a href="http://www.genetics.org/cgi/content/abstract/152/2/485" title="http://www.genetics.org/cgi/content/abstract/152/2/485"&gt;http://www.genetics.org/cgi/content/abstract/152/2/485&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="footnotes"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn1"&gt;&lt;p&gt;Alleles that increase the global mutation rate. For example, a mutant allele of the &lt;em&gt;mutS&lt;/em&gt; gene can reduce the efficiency of DNA repair, allowing more mutations to slip though the repair mechanisms.&lt;a href="#fnref1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn2"&gt;&lt;p&gt;A density-based model is one where the &lt;em&gt;number&lt;/em&gt; of individuals in each class is monitored and modified from one generation to the next. This is in contrast to frequency-dependent models in which the frequency of individuals in each class is monitored.&lt;a href="#fnref2"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry xml:base="http://blog.yoavram.com/recent.atom">
     <title type="text">Mean fitness at the mutation-selection balance</title>
     <id>http://blog.yoavram.com/mean-fitness-at-the-mutation-selection-balance/</id>
