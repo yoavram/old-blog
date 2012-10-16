@@ -196,6 +196,9 @@
 	{% if config.LINKEDIN_USERNAME %}
 	<li><a href="http://www.linkedin.com/in/{{ config.MENDELEY_ID }}">Linkedin <i class="glyphicon-linked-in"></i></a></li>
 	{% endif %}
+	{% if config.GITHUB_USERNAME %}
+	<li><a href="https://github.com/{{ config.GITHUB_USERNAME }}">GitHub <i class="glyphicon-github"></i></a></li>
+	{% endif %}
 	{% if config.BITBUCKET_USERNAME %}
 	<li><a href="https://bitbucket.org/{{ config.BITBUCKET_USERNAME }}">Bitbucket</a></li>
 	{% endif %}
