@@ -6,7 +6,7 @@
 
 <meta charset="utf-8">
 <link rel="icon" type="image/ico" href="/static/favicon.ico">
-<link href="/recent.atom" rel="alternate" title="Recent Articles" type="application/atom+xml">
+<link href="http://feeds.feedburner.com/yoavram/msb-recent" rel="alternate" title="Recent Articles" type="application/atom+xml">
 
 <!-- Le style -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,7 +87,8 @@
       <div class="nav-collapse">
         <ul class="nav">
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+				title="Tags">
 					<!--Tags -->
 					<i class="icon-tags"></i>
 					<b class="caret"></b>
@@ -127,7 +128,8 @@
 				</ul>
 			</li>			
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+				title="Online avatars">
 				  <!-- Contact -->
 				  <i class="icon-user"></i>
 				  <b class="caret"></b>
@@ -169,17 +171,25 @@
 				</ul>
 			</li>
 			<li>
-				<a href="http://www.yoavram.com/" >
+				<a href="http://www.yoavram.com/" 
+				title="About me">
 					<i class="icon-question-sign"></i>
 					&nbsp;&nbsp;
 				</a>
 			</li>
 			<li>
-				<a href="/recent.atom">
+				<a href="http://feeds.feedburner.com/yoavram/msb-recent" rel="alternate" type="application/rss+xml"
+				title="Subscribe in a reader">
 					<i class="glyphicon-rss"></i>
-					&nbsp;&nbsp;
+					&nbsp;&nbsp;				
 				</a>
 			</li>
+			<li>
+				<a href="http://feedburner.google.com/fb/a/mailverify?uri=yoavram/msb-recent"
+				title="Subscribe by Email">
+					<i class="icon-envelope"></i>
+					&nbsp;&nbsp;				
+				</a>		
 			</ul>
       </div>
  
@@ -435,10 +445,11 @@ You can see a footnote here[^here].
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 16 October 2012 at 15:41.</li>
+	<li>This page was last modified on 16 October 2012 at 22:16.</li>
 	</ul>
 	
 	
+	<a href="/recent.atom"></a>
 </footer>
 </div>
 </div>
