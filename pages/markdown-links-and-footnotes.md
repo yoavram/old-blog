@@ -1,6 +1,6 @@
 title: Markdown links and footnotes
 datetime: 2012-10-11 11:21:00 +2
-tags: [blog, markdown]
+tags: [markdown]
 
 [TOC]
 
