@@ -1,6 +1,7 @@
 title: Mean fitness at the mutation-selection balance
 datetime: 2012-10-14 16:45:00 +2
-tags: [mutation-selection balance, mean fitness, deleterious mutations, asexual populatins, math, perron-forbenius theorem]
+updated: 2012-10-16 12:56:00 +2
+tags: [mutation-selection balance, mean fitness, asexual populations, mathematical modeling]
 math: true
 cite: true
 
