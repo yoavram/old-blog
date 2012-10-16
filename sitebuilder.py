@@ -34,6 +34,8 @@ CSL = "chicago"
 LAST_MODIFICATION = datetime.datetime.now()
 FIGSHARE_AUTHOR = "Yoav_Ram"
 FIGSHARE_ID = "99206"
+FEED_URL = "http://feeds.feedburner.com/yoavram/msb-recent"
+EMAIL_SUBSCRIPTION_URL = "http://feedburner.google.com/fb/a/mailverify?uri=yoavram/msb-recent"
 
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
@@ -133,7 +135,7 @@ def pages_by_datetime(limit=0, latest_first=True):
 
 @app.route('/')
 def index():
-    articles = pages_by_datetime(10)
+    articles = pages_by_datetime()
     return render_template('index.html', pages=articles)
 
 @app.route('/<path:path>/')
@@ -143,7 +145,8 @@ def page(path):
 
 @app.route('/tag/<string:tag>/')
 def tag(tag):
-    tagged = [p for p in pages if tag in p.meta.get('tags', [])]
+    articles = pages_by_datetime()
+    tagged = [p for p in articles if tag in p.meta.get('tags', [])]
     return render_template('tag.html', pages=tagged, tag=tag)
 
 def freeze(debug=True):
