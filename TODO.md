@@ -25,10 +25,6 @@ Display a "related" box somewhere
  
 Display somewhere
 
-## Fix *deploy.py* 
-
-To work with the new *GitHub* setup.
-
 ## README for source branch
 
 ## Redirect from bitbucket.org/yoavram/msb
