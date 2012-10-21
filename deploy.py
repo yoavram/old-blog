@@ -14,9 +14,9 @@ DEPLOY_FOLDER = r"../site/"
 COMMIT_MESSAGE = "update"
 USERNAME = "yoavram"
 GIT_SERVER = "github.com"
-PASSWORD = getpass.getpass("GitHub password:")
+#PASSWORD = getpass.getpass("GitHub password:")
 
-push_msg = "git push https://%s:%s@%s/%s/%s.git" % (USERNAME,PASSWORD,GIT_SERVER,USERNAME,REPO)
+push_msg = "git push"# https://%s:%s@%s/%s/%s.git" % (USERNAME,PASSWORD,GIT_SERVER,USERNAME,REPO)
 
 
 def run_and_print(cmd):
