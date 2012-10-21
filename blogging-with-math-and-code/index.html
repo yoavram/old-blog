@@ -297,7 +297,7 @@
 	
     <ul>
 <li><a href="#examples">Examples</a><ul>
-<li><a href="#latex">LaTeX</a></li>
+<li><a href="#math">Math</a></li>
 <li><a href="#source-code">Source Code</a><ul>
 <li><a href="#java">Java</a></li>
 <li><a href="#python">Python</a></li>
@@ -305,91 +305,74 @@
 </ul></li>
 </ul></li>
 <li><a href="#explanations">Explanations</a><ul>
-<li><a href="#latex-1">LaTeX</a></li>
+<li><a href="#math-1">Math</a></li>
 <li><a href="#source-code-1">Source Code</a></li>
 </ul></li>
 </ul>
 <a name='TOC'></a>
 <h2 id="examples"><a href="#TOC">Examples</a></h2>
-<h3 id="latex"><a href="#TOC">LaTeX</a></h3>
+<h3 id="math"><a href="#TOC">Math</a></h3>
 <p>When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are \[
 x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
 \]</p>
 <h3 id="source-code"><a href="#TOC">Source Code</a></h3>
 <h4 id="java"><a href="#TOC">Java</a></h4>
-<pre class="prettyprint">
-class Voila {
+<pre class="prettyprint linenums:1"><code>class Blog {
 public:
-  // Voila
-  static const string VOILA = "Voila";
-}
-</pre>
-
+  // Blog
+  static const string BLOG = &quot;Blog&quot;;
+}</code></pre>
 <h4 id="python"><a href="#TOC">Python</a></h4>
-<pre class="prettyprint linenums:1">
-      #!/usr/bin/python
-      """
-      xml2html: Convert XML to HTML
+<pre class="prettyprint linenums:1"><code>#!/usr/bin/python
+def pages_by_datetime(limit=0, latest_first=True):
+    # Articles are pages with a publication date
+    articles = (p for p in pages if &#39;datetime&#39; in p.meta)
 
-      *** SUPERSEDED by pyslt ***
-
-      Uses SAX (event-based parsing).
-
-      ***LICENSE***
-      """
-
-      _ID = '$Id: xml2html-1.01-1.py,v 1.1.1.1 2000/01/15 14:37:46 ecoaccess Exp $'
-
-      import sys, copy
-      from xml.sax.drivers.drv_xmlproc_val import *
-
-      class myParser(SAX_XPValParser):
-          """XML parser."""
-
-          psl = None
-
-          def handle_doctype(self, rootname, pub_id, sys_id):
-              self.dtd_handler.doctypeDecl(rootname, pub_id, sys_id, self.psl)
-</pre>
-
+    # Show the 10 most recent articles, most recent first.
+    articles = sorted(articles, reverse=latest_first, key=lambda p: p.meta[&#39;datetime&#39;])
+    if limit:
+        return articles[:limit]
+    else:
+        return articles</code></pre>
 <h4 id="inline-code"><a href="#TOC">Inline code</a></h4>
 <p>Small code elements like <code>print 'Hello World!'</code> can be put into HTML <code>&lt;code&gt;</code> elements.</p>
 <h2 id="explanations"><a href="#TOC">Explanations</a></h2>
-<h3 id="latex-1"><a href="#TOC">LaTeX</a></h3>
-<p>\(LaTeX\)<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> is written inside the <a href="http://daringfireball.net/projects/markdown/">Markdown</a><sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup> text using <code>$</code> (once for inline, two for display mode). Markdown identifies this is LaTeX because of the Python-Markdown extension <a href="https://github.com/mayoff/python-markdown-mathjax">Markdown-MathJax</a>. The LaTeX is then converted to mathematical notation in the browser using <a href="http://www.mathjax.org">MathJax</a> javascript. To use it, you put the following in the <code><head\></code> of your HTML file:</p>
-<pre class="prettyprint html">
-    &lt;script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-                "tex2jax": { inlineMath: [ [ '$', '$' ] ] },
-                "HTML-CSS": { availableFonts: ["STIX", "TeX"], 
-                              linebreaks: { automatic: true }
-                }
-      });
-    &lt;/script>
-    &lt;script type="text/javascript"
-      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
-    &lt;/script>
-
-</pre>
-
+<h3 id="math-1"><a href="#TOC">Math</a></h3>
+<p>Math is written in \(LaTeX\)<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> is written inside the <a href="http://daringfireball.net/projects/markdown/">Markdown</a><sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup> text using <code>$</code> (once for inline, two for display mode). <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, which is used to convert the <a href="http://daringfireball.net/projects/markdown/">Markdown</a> to HTML, is informed that \(LaTeX\) is to be converted to mathematical notation in the browser using <a href="http://www.mathjax.org/">MathJax</a> javascript by specifing the command line argument <code>--mathjax</code>. <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> then converts <code>$</code> to <code>(</code> or <code>)</code> to start and finish \(LaTeX\) blocks and doesn't parse <a href="http://daringfireball.net/projects/markdown/">Markdown</a> inside these blocks.</p>
+<p>To enable <a href="http://www.mathjax.org/">MathJax</a>, you put the following in the <code><head\></code> of your HTML file:</p>
+<pre class="prettyprint linenums:1"><code>&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
+  MathJax.Hub.Config({
+            &quot;HTML-CSS&quot;: { availableFonts: [&quot;STIX&quot;, &quot;TeX&quot;], 
+                          linebreaks: { automatic: true }
+            }
+  });
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;
+  src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&quot;&gt;
+&lt;/script&gt;</code></pre>
 <p>The confguration parameters are as follows:</p>
 <ul>
-<li><code>inlineMath</code> tells the MathJax script to use dollar signs for inline math.</li>
 <li><code>availableFonts</code> tells it to prefer using the <a href="http://www.stixfonts.org/">STIX</a> font if it is available.</li>
 <li><code>linebreaks</code> tells it to automatically break (wrap) long equations.</li>
 </ul>
-<p>Now you can write: <code>\(LaTeX\) is cool: \[
-p&#39; = p + (1-p)(1-s)\mu
-\]</code> to get the following result:</p>
+Now you can write:
+<pre>
+    $LaTeX$ is cool:
+    $$
+    p' = p + (1-p)(1-s)\mu
+    $$
+</pre>
+
+<p>to get the following result:</p>
 <p>\(LaTeX\) is cool: \[
 p&#39; = p + (1-p)(1-s)\mu
 \]</p>
 <p>For more information visit the <a href="http://docs.mathjax.org/en/latest/output.html">documentation</a><sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup>.</p>
 <h3 id="source-code-1"><a href="#TOC">Source Code</a></h3>
-<p>Code is writeen in the <a href="http://daringfireball.net/projects/markdown/">Markdown</a> text by wrapping it with <code>&lt;pre class=&quot;prettyprint html&quot;&gt;...&lt;/pre&gt;</code> element. It is then highlighted in the browser using <a href="http://google-code-prettify.googlecode.com">Google code prettifier</a> javascript which automatically identifies the language.</p>
-<p>See the <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">README</a> for detailed instructions. It's very easy to use and is the highligher used by <a href="http://code.google.com">Google Code</a> and <a href="http://stackoverflow.com/">stackoverflow.com</a>.</p>
+<p>Code is written inside the <a href="http://daringfireball.net/projects/markdown/">Markdown</a> markup language by indenting it with a tab or four space. The <a href="http://daringfireball.net/projects/markdown/">Markdown</a> is converted to HTML with <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, which recognized these indented lines and wraps them with a <code>&lt;pre&gt;</code> element. The CSS class given to the <code>&lt;pre&gt;</code> element is set to <code>prettyprint</code>, which is then highlighted in the browser using <a href="http://google-code-prettify.googlecode.com/">Google code prettifier</a> javascript which automatically identifies the language. The CSS class is actually <code>prettyprint linenum:1</code> which tells the highlighter to number the lines.</p>
+<p>See the <a href="http://johnmacfarlane.net/pandoc/README.html#indented-code-blocks">Pandoc handbook</a> for instructions on the indented code blocks and the code prettifier <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">README</a> for detailed instructions on the highlighting mechanism. It's very easy to use and is the highligher used by <a href="http://code.google.com">Google Code</a> and <a href="http://stackoverflow.com/">stackoverflow.com</a>.</p>
 <p>If you have problems displaying HTML or XML source I suggest trying to replace <code>&lt;</code> with <code>&amp;lt;</code><sup><a href="#fn4" class="footnoteRef" id="fnref4">4</a></sup>.</p>
-<p>For a nice example of different styles you can use (by replacing the default <code>prettify.css</code> file), see <a href="http://demo.stanleyhlng.com/prettify-js/?id=sons-of-obsidian-dark">Stanley Ng's website</a>.</p>
+<p>For a nice example of different highlighting styles you can use (by replacing the default <code>prettify.css</code> file), see <a href="http://demo.stanleyhlng.com/prettify-js/?id=sons-of-obsidian-dark">Stanley Ng's website</a>.</p>
 <div class="footnotes">
 <hr />
 <ol>
@@ -511,11 +494,11 @@ p&#39; = p + (1-p)(1-s)\mu
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 16 October 2012 at 22:16.</li>
+	<li>This page was last modified on 21 October 2012 at 22:08.</li>
 	</ul>
 	
 	
-	<a href="/recent.atom"></a>
+	<a href="/recent.atom" rel="alternate" title="Recent Articles" type="application/atom+xml"></a>
 </footer>
 </div>
 </div>
