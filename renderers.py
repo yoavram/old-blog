@@ -21,7 +21,7 @@ def ensure_postfix(string, postfix):
     else:
         return string + postfix
 
-def pandoc_renderer(source = "markdown", target  = "html", bib = "references", csl = "chicago", template = "pandoc_template.txt", math = "mathjax"):    
+def pandoc_renderer(source = "markdown", target  = "html", bib = "references", csl = "chicago", template = "pandoc_template.txt", math = "mathjax", indented_code_classes=["prettyprint","linenums:1"]):    
     if source == "markdown" and target == "html":
         import pandoc
         bib = ensure_postfix(bib, '.bib')
@@ -49,6 +49,11 @@ def pandoc_renderer(source = "markdown", target  = "html", bib = "references", c
             if math:
                 doc.add_argument(math)
             doc.add_argument('ascii') # to avoid "non-ascci" output bug
+            if indented_code_classes:
+                if isinstance(indented_code_classes, str):
+                    doc.add_argument("indented-code-classes=%s" % indented_code_classes)
+                elif isinstance(indented_code_classes, list):
+                    doc.add_argument("indented-code-classes=%s" % ','.join(indented_code_classes))
             doc.markdown = text
             html = doc.html
             return unicode(html) # to catch "non-ascci" output bug
