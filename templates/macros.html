@@ -55,7 +55,10 @@
 {% macro pagebar(config, page) %}
 <ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
 	<li class="active"><i class="icon-time"></i> {{ page.datetime | format_datetime }}</li>
-	
+	{% if page.updated %}
+	<li class="active"><span class="divider">/</span>
+	<i class="icon-refresh"></i> {{ page.updated | format_datetime }}</li>
+	{% endif %}
 	<li><span class="divider">/</span>
 	<i class="icon-star"></i> <a href='{{ permalink(page) }}'>Permalink</a></li>
 	{% if page.tags %}
