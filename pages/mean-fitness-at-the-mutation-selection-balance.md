@@ -1,6 +1,6 @@
 title: Mean fitness at the mutation-selection balance
 datetime: 2012-10-14 16:45:00 +2
-updated: 2012-10-16 12:56:00 +2
+updated: 2012-10-22 09:56:00 +2
 tags: [mutation-selection balance, mean fitness, asexual populations, mathematical modeling]
 math: true
 cite: true
@@ -9,54 +9,54 @@ cite: true
 
 ## Overview
 
-The first post on the [Mutation-Selection Blog](http://blog.yoavram.com) must be about the **mutation-selection balance**, right? 
+The first post on the [Mutation-Selection Blog](http://blog.yoavram.com) must be about the *mutation-selection balance*, right? 
 
 So what is the mutation-selection balance?
 
-A formal mathematical answer would be that it is the equilibrium value of 
-the mean fitness of a population.
+In evolutionary biology, selection acts to remove deleterious mutations from the population, while mutation generates new deleterious mutations. 
+When they cancel each other out, the population is at the **mutation-selection balance**.
 
-Denote the fitness of individual *i* at generation *n* by $\omega_{i,n}$, 
+We'll start by defining **fitness**.
+In the following treatment, the fitness of an individual is his reproductive success compared to the reproductive sucess of the 
+most succesful individual in the population. 
+
+More formally, denote the fitness of individual *i* at generation *n* by $\omega_{i,n}$, 
 and define the (population) mean fitness at generation *n* by $\bar{\omega}_n = E_i[\omega_{i,n}]$. 
 
-Then at the mutation-selection balance the mean fitness is at an equilibrium:
+At the mutation-selection balance the mean fitness is at an equilibrium, that is, it doesn't change from one generation to the next:
 $$
 \bar{\omega}_{n+1} = \bar{\omega}_n
 $$
-and it is bounded by definition $0<\omega_{i,n}<1$, it reaches a limit:
-$$
-\bar{\omega}^* = lim_{n \to \infty} \bar{\omega}_n
-$$
+The value of this equilibrium is denoted by $\bar{\omega}^*$.
 
-A more phenomenological answer could be that it the stage of the evolutionary dynamics in which the forces of selection and mutation achieve a balance, that is, 
-reach a state in which their effects on the system are equal in amplitude but opposite in direction. 
-
-A classical result by [@Kimura1966] involves a system in which an infinite population is undergoing selection and mutation.
-Mutation is unidirectional and deleterious, selection is constant and uniform, the enivronment is constant, and there is no drift, sex, recombination or migration.
-The elegant result is that the mean fitness of a population is not dependent on selection strength and is exponentialy decreasing in the strength of mutation:
+A classical result by [@Kimura1966] involves a system in which an infinite population is evolving under *selection* and *mutation*.
+Mutation is unidirectional and deleterious and occurs with a rate *U*, selection is constant and uniform, the enivronment is constant, and there is no drift, sex, recombination or migration.
+This is a simplistic model but one that is able to capture the dynamics of some complex systems.
+The elegant result is that the mean fitness of a population is not dependent on selection strength and is 
+an exponentialy decreasing function of the mutation rate *U*:
 $$
 \bar{\omega}^* = e^{-U}
 $$
-where *U* is the rate of mutation.
 
 ## Simple approximation 
 
 ### Single locus
 
-In this formulation I roughly follow the route of [@Gillespie2004].
-To reach this formula in a simple way (all you need 
-is a 1^st^ course in *Calculus*), we start by looking at a single locus with 
-two alleles, *A* and *a*, which have fitness of *1* and *1-s*, respectively, 
-with *s* playing the part of the *selection coefficient* which defines the deleterious multiplicative effect a deleterious mutation has on the relative fitness of an individual.
+In this section I roughly follow the route of [@Gillespie2004].
+To reach this formula in a simple way (all you need is some straightforward *Calculus* and a little bit of *Genetics*), 
+we start by looking at a single locus[^locus] with 
+two alleles[^allele], denoted by *A* and *a*, which have fitness of *1* and *1-s*, respectively, 
+with *s* playing the part of the *selection coefficient* which defines the deleterious multiplicative effect a deleterious mutation has on the 
+fitness of an individual.
 
-Define *p* and *q* to be the frequencies of *A* and *a* so that *p+q=1*, 
-and denote the frequency of *A* after one generation by:
+Define *p* and *q* to be the frequencies of *A* and *a* so that *p+q=1*.
+Denote the probability that the wild-type allele *A* mutates to allele *a* by $\mu$ 
+(without back-mutations, that is, *a* doesn't mutate back to *A*),
+and denote the frequency of *A* after one generation by *p'*[^pprime]:
 $$
 p' = \frac{p(1-\mu)}{\bar{\omega}}
 $$
 with the population mean fitness $\bar{\omega} = p + q(1-s)$.
-
-Note that mutation is unidirectional - from wild-type *A* to mutant *a* - and that $\mu$ is the mutation rate per locus per generation.
 
 To find the equilibirum value of *p*, one must subtitute $p'=p$ and $q=1-p$:
 $$
@@ -80,10 +80,11 @@ $$
 1-\frac{\mu}{s} + \frac{\mu}{s} - s \frac{\mu}{s} \Rightarrow \\
 \bar{\omega}^* = 1 - \mu 
 $$
+This, however, is the mean fitness due to a single locus, not the entire genome.
 
 ### Multiple locus
 
-Moving on to a multiple locus model, we define the mutation rate at locus *j* as $\mu_j$, 
+Moving on to a multiple locus model with an arbitrary number of loci[^loci], we define the mutation rate at locus *j* as $\mu_j$, 
 so the mean fitness at the mutation-selection balance in locus *j* is $\bar{\omega}^*_j = 1 - \mu_j$,
 and because fitness is multiplicative:
 $$
@@ -107,12 +108,12 @@ I gave at the [BioMath Student Journal Club at Tel-Aviv University](http://bioma
 
 ## Matrix Theory: the Perron-Frobenius theorem
 
-We can produce the same result without approximations using a bit heavier mathematics, but not much heavier - 
-these are still things I learned in a 2^nd^ *Linear Algebra* course.
+We can produce the same result without approximations using a bit heavier mathematics, but not much heavier -
+this is still undergraduate *Linear Algebra*.
 
 This time we start with the multiple locus model right away. 
-Instead of following allele frequencies, though, we monitor the frequency of individuals with *i* mutant alleles,
-or *i* deleterious mutations, which we denote by p~i~.
+Instead of following allele frequencies, though, we follow the frequency of individuals with *i* mutant alleles,
+or *i* deleterious mutations, which we denote by *p~i~*.
 
 We assume that the number of mutations per generation is *Poisson* distributed with the mutation rate as the parameter of the distribution, 
 so that the probability that *k* mutations will occur in an individual with a mutaiton rate of *U* is 
@@ -165,7 +166,7 @@ at the mutation-selection balance would still be the leading eigenvalue of the m
 ## Summary
 
 We've seen how to derive the mean fitness at the mutation-selection balance $\bar{\omega} = e^{-U}$ 
-both via a simple calculus approximation and via a more "hardcore" linear algerba method.
+both via a first-order approximation and via a more "hardcore" linear algerba method.
 
 The nice thing about deriving the mean fitness in the "hardcore" method is that we get some idea of *why* it is equal to e^-U^.
 We found that the mean fitness at the mutation-selection balance equals to the leading eigenvalue of the transition matrix,
@@ -188,6 +189,14 @@ but it is still very interesting, and I'll try to post a comprehensive explanati
 
 ## References
 
+[^locus]: A site on the genome which may be occupied by different alleles. The function of a locus can be diverse - 
+genes, transcription control sequences, etc.
+[^allele]: A specific sequence occupying a locus, with a specific function. One locus can potentially contain different alleles, 
+each with a slightly different sequence and potentially drasticly different effects on function.
+[^pprime]: A note on notation - *p'* here is *not* the derivative of *p* but rather the value of *p* at the next generation.
+The notation is sometimes confusing but is customary in *population genetics*. 
+All equations presented here are *difference equations*, not *differential equations*.
+[^loci]: The plural of *locus*.
 [^diagonal]: To prove this, 
 one must notice that the determinant of a triangular matrix is the trace of the matrix, 
 and therefore the characteristic polynomial is the trace of the matrix $I\lambda - M$, 
