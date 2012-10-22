@@ -206,26 +206,23 @@
 &lt;/ul&gt;
 &lt;a name='TOC'&gt;&lt;/a&gt;
 &lt;h2 id="overview"&gt;&lt;a href="#TOC"&gt;Overview&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The first post on the &lt;a href="http://blog.yoavram.com"&gt;Mutation-Selection Blog&lt;/a&gt; must be about the &lt;strong&gt;mutation-selection balance&lt;/strong&gt;, right?&lt;/p&gt;
+&lt;p&gt;The first post on the &lt;a href="http://blog.yoavram.com"&gt;Mutation-Selection Blog&lt;/a&gt; must be about the &lt;em&gt;mutation-selection balance&lt;/em&gt;, right?&lt;/p&gt;
 &lt;p&gt;So what is the mutation-selection balance?&lt;/p&gt;
-&lt;p&gt;A formal mathematical answer would be that it is the equilibrium value of the mean fitness of a population.&lt;/p&gt;
-&lt;p&gt;Denote the fitness of individual &lt;em&gt;i&lt;/em&gt; at generation &lt;em&gt;n&lt;/em&gt; by \(\omega_{i,n}\), and define the (population) mean fitness at generation &lt;em&gt;n&lt;/em&gt; by \(\bar{\omega}_n = E_i[\omega_{i,n}]\).&lt;/p&gt;
-&lt;p&gt;Then at the mutation-selection balance the mean fitness is at an equilibrium: \[
+&lt;p&gt;In evolutionary biology, selection acts to remove deleterious mutations from the population, while mutation generates new deleterious mutations. When they cancel each other out, the population is at the &lt;strong&gt;mutation-selection balance&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;We'll start by defining &lt;strong&gt;fitness&lt;/strong&gt;. In the following treatment, the fitness of an individual is his reproductive success compared to the reproductive sucess of the most succesful individual in the population.&lt;/p&gt;
+&lt;p&gt;More formally, denote the fitness of individual &lt;em&gt;i&lt;/em&gt; at generation &lt;em&gt;n&lt;/em&gt; by \(\omega_{i,n}\), and define the (population) mean fitness at generation &lt;em&gt;n&lt;/em&gt; by \(\bar{\omega}_n = E_i[\omega_{i,n}]\).&lt;/p&gt;
+&lt;p&gt;At the mutation-selection balance the mean fitness is at an equilibrium, that is, it doesn't change from one generation to the next: \[
 \bar{\omega}_{n+1} = \bar{\omega}_n
-\] and it is bounded by definition \(0&amp;lt;\omega_{i,n}&amp;lt;1\), it reaches a limit: \[
-\bar{\omega}^* = lim_{n \to \infty} \bar{\omega}_n
-\]&lt;/p&gt;
-&lt;p&gt;A more phenomenological answer could be that it the stage of the evolutionary dynamics in which the forces of selection and mutation achieve a balance, that is, reach a state in which their effects on the system are equal in amplitude but opposite in direction.&lt;/p&gt;
-&lt;p&gt;A classical result by &lt;span class="citation"&gt;(Kimura and Maruyama 1966)&lt;/span&gt; involves a system in which an infinite population is undergoing selection and mutation. Mutation is unidirectional and deleterious, selection is constant and uniform, the enivronment is constant, and there is no drift, sex, recombination or migration. The elegant result is that the mean fitness of a population is not dependent on selection strength and is exponentialy decreasing in the strength of mutation: \[
+\] The value of this equilibrium is denoted by \(\bar{\omega}^*\).&lt;/p&gt;
+&lt;p&gt;A classical result by &lt;span class="citation"&gt;(Kimura and Maruyama 1966)&lt;/span&gt; involves a system in which an infinite population is evolving under &lt;em&gt;selection&lt;/em&gt; and &lt;em&gt;mutation&lt;/em&gt;. Mutation is unidirectional and deleterious and occurs with a rate &lt;em&gt;U&lt;/em&gt;, selection is constant and uniform, the enivronment is constant, and there is no drift, sex, recombination or migration. This is a simplistic model but one that is able to capture the dynamics of some complex systems. The elegant result is that the mean fitness of a population is not dependent on selection strength and is an exponentialy decreasing function of the mutation rate &lt;em&gt;U&lt;/em&gt;: \[
 \bar{\omega}^* = e^{-U}
-\] where &lt;em&gt;U&lt;/em&gt; is the rate of mutation.&lt;/p&gt;
+\]&lt;/p&gt;
 &lt;h2 id="simple-approximation"&gt;&lt;a href="#TOC"&gt;Simple approximation&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="single-locus"&gt;&lt;a href="#TOC"&gt;Single locus&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;In this formulation I roughly follow the route of &lt;span class="citation"&gt;(Gillespie 2004)&lt;/span&gt;. To reach this formula in a simple way (all you need is a 1&lt;sup&gt;st&lt;/sup&gt; course in &lt;em&gt;Calculus&lt;/em&gt;), we start by looking at a single locus with two alleles, &lt;em&gt;A&lt;/em&gt; and &lt;em&gt;a&lt;/em&gt;, which have fitness of &lt;em&gt;1&lt;/em&gt; and &lt;em&gt;1-s&lt;/em&gt;, respectively, with &lt;em&gt;s&lt;/em&gt; playing the part of the &lt;em&gt;selection coefficient&lt;/em&gt; which defines the deleterious multiplicative effect a deleterious mutation has on the relative fitness of an individual.&lt;/p&gt;
-&lt;p&gt;Define &lt;em&gt;p&lt;/em&gt; and &lt;em&gt;q&lt;/em&gt; to be the frequencies of &lt;em&gt;A&lt;/em&gt; and &lt;em&gt;a&lt;/em&gt; so that &lt;em&gt;p+q=1&lt;/em&gt;, and denote the frequency of &lt;em&gt;A&lt;/em&gt; after one generation by: \[
+&lt;p&gt;In this section I roughly follow the route of &lt;span class="citation"&gt;(Gillespie 2004)&lt;/span&gt;. To reach this formula in a simple way (all you need is some straightforward &lt;em&gt;Calculus&lt;/em&gt; and a little bit of &lt;em&gt;Genetics&lt;/em&gt;), we start by looking at a single locus&lt;sup&gt;&lt;a href="#fn1" class="footnoteRef" id="fnref1"&gt;1&lt;/a&gt;&lt;/sup&gt; with two alleles&lt;sup&gt;&lt;a href="#fn2" class="footnoteRef" id="fnref2"&gt;2&lt;/a&gt;&lt;/sup&gt;, denoted by &lt;em&gt;A&lt;/em&gt; and &lt;em&gt;a&lt;/em&gt;, which have fitness of &lt;em&gt;1&lt;/em&gt; and &lt;em&gt;1-s&lt;/em&gt;, respectively, with &lt;em&gt;s&lt;/em&gt; playing the part of the &lt;em&gt;selection coefficient&lt;/em&gt; which defines the deleterious multiplicative effect a deleterious mutation has on the fitness of an individual.&lt;/p&gt;
+&lt;p&gt;Define &lt;em&gt;p&lt;/em&gt; and &lt;em&gt;q&lt;/em&gt; to be the frequencies of &lt;em&gt;A&lt;/em&gt; and &lt;em&gt;a&lt;/em&gt; so that &lt;em&gt;p+q=1&lt;/em&gt;. Denote the probability that the wild-type allele &lt;em&gt;A&lt;/em&gt; mutates to allele &lt;em&gt;a&lt;/em&gt; by \(\mu\) (without back-mutations, that is, &lt;em&gt;a&lt;/em&gt; doesn't mutate back to &lt;em&gt;A&lt;/em&gt;), and denote the frequency of &lt;em&gt;A&lt;/em&gt; after one generation by &lt;em&gt;p'&lt;/em&gt;&lt;sup&gt;&lt;a href="#fn3" class="footnoteRef" id="fnref3"&gt;3&lt;/a&gt;&lt;/sup&gt;: \[
 p&amp;#39; = \frac{p(1-\mu)}{\bar{\omega}}
 \] with the population mean fitness \(\bar{\omega} = p + q(1-s)\).&lt;/p&gt;
-&lt;p&gt;Note that mutation is unidirectional - from wild-type &lt;em&gt;A&lt;/em&gt; to mutant &lt;em&gt;a&lt;/em&gt; - and that \(\mu\) is the mutation rate per locus per generation.&lt;/p&gt;
 &lt;p&gt;To find the equilibirum value of &lt;em&gt;p&lt;/em&gt;, one must subtitute \(p&amp;#39;=p\) and \(q=1-p\): \[
 p = \frac{p(1-\mu)}{p + (1-p)(1-s)} \Rightarrow \\
 p(p+(1-p)(1-s)) = p(1-\mu) \Rightarrow
@@ -240,9 +237,9 @@ p = 1-\frac{\mu}{s}
 \bar{\omega}^* = p^* + (1-p^*)(1-s) = 1-\frac{\mu}{s} + \frac{\mu}{s} (1-s) =
 1-\frac{\mu}{s} + \frac{\mu}{s} - s \frac{\mu}{s} \Rightarrow \\
 \bar{\omega}^* = 1 - \mu 
-\]&lt;/p&gt;
+\] This, however, is the mean fitness due to a single locus, not the entire genome.&lt;/p&gt;
 &lt;h3 id="multiple-locus"&gt;&lt;a href="#TOC"&gt;Multiple locus&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Moving on to a multiple locus model, we define the mutation rate at locus &lt;em&gt;j&lt;/em&gt; as \(\mu_j\), so the mean fitness at the mutation-selection balance in locus &lt;em&gt;j&lt;/em&gt; is \(\bar{\omega}^*_j = 1 - \mu_j\), and because fitness is multiplicative: \[
+&lt;p&gt;Moving on to a multiple locus model with an arbitrary number of loci&lt;sup&gt;&lt;a href="#fn4" class="footnoteRef" id="fnref4"&gt;4&lt;/a&gt;&lt;/sup&gt;, we define the mutation rate at locus &lt;em&gt;j&lt;/em&gt; as \(\mu_j\), so the mean fitness at the mutation-selection balance in locus &lt;em&gt;j&lt;/em&gt; is \(\bar{\omega}^*_j = 1 - \mu_j\), and because fitness is multiplicative: \[
 \bar{\omega}^* = \prod_{j}{\bar{\omega}_j^*} = \prod_{j}{1-\mu_j} \Rightarrow \\
 ln{(\bar{\omega}^*)} = \sum_{j}{1-\mu_j} 
 \] This can be approximated, because when \(x\) is small \(ln{(1-x)}\approx -x\), and \(\mu\) is probably at most \(\approx 10^{-2}\) or even lower: \[
@@ -253,8 +250,8 @@ ln{(\bar{\omega}^*)}  \approx \sum_{j}{-\mu_j} = -U
 \]&lt;/p&gt;
 &lt;p&gt;You can find this derivation at the begining of a &lt;a href="http://dx.doi.org/10.6084/m9.figshare.95940"&gt;presentation&lt;/a&gt; I gave at the &lt;a href="http://biomathsjctau.wordpress.com"&gt;BioMath Student Journal Club at Tel-Aviv University&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="matrix-theory-the-perron-frobenius-theorem"&gt;&lt;a href="#TOC"&gt;Matrix Theory: the Perron-Frobenius theorem&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;We can produce the same result without approximations using a bit heavier mathematics, but not much heavier - these are still things I learned in a 2&lt;sup&gt;nd&lt;/sup&gt; &lt;em&gt;Linear Algebra&lt;/em&gt; course.&lt;/p&gt;
-&lt;p&gt;This time we start with the multiple locus model right away. Instead of following allele frequencies, though, we monitor the frequency of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles, or &lt;em&gt;i&lt;/em&gt; deleterious mutations, which we denote by p&lt;sub&gt;i&lt;/sub&gt;.&lt;/p&gt;
+&lt;p&gt;We can produce the same result without approximations using a bit heavier mathematics, but not much heavier - this is still undergraduate &lt;em&gt;Linear Algebra&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;This time we start with the multiple locus model right away. Instead of following allele frequencies, though, we follow the frequency of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles, or &lt;em&gt;i&lt;/em&gt; deleterious mutations, which we denote by &lt;em&gt;p&lt;sub&gt;i&lt;/sub&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;We assume that the number of mutations per generation is &lt;em&gt;Poisson&lt;/em&gt; distributed with the mutation rate as the parameter of the distribution, so that the probability that &lt;em&gt;k&lt;/em&gt; mutations will occur in an individual with a mutaiton rate of &lt;em&gt;U&lt;/em&gt; is \[
 \varphi_U(k) = \frac{U^k e^U}{k!}
 \] The equation system describing the change in the freuqnecy of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles is: \[
@@ -272,14 +269,14 @@ M = \left(\begin{array}{cccc}
 \] This matrix is called a &lt;a href="http://en.wikipedia.org/wiki/Stochastic_matrix"&gt;transition matrix&lt;/a&gt; because its entries \(M_{i,j}\) are the transition probabilities from state &lt;em&gt;j&lt;/em&gt; to state &lt;em&gt;i&lt;/em&gt; - the state is the number of mutant alleles.&lt;/p&gt;
 &lt;p&gt;Now if we set \(p^*=p&amp;#39;=p\) we get \(\bar{\omega}^*p^*=Mp^*\), so if there is \(\bar{\omega}^*\) and \(p^*\) such that \(p^*_i \ge 0 \; \sum_{i}{p^*_i}=1\) that solve this equation, then \(p^*\) is an &lt;strong&gt;eigenvector&lt;/strong&gt; of &lt;em&gt;M&lt;/em&gt; and \(\bar{\omega}^*\) is an &lt;strong&gt;eigenvalue&lt;/strong&gt; of M.&lt;/p&gt;
 &lt;p&gt;From the &lt;a href="http://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem"&gt;Perron-Frobenius theorem&lt;/a&gt; we know that this matrix always has a unique non-negative eigenvector, so \(p^*\) exists and it is unique. Furthermore, from the same theorem we know that \(\bar{\omega}^*\) also exists and that it is the leading (largest positive) eigenvalue of &lt;em&gt;M&lt;/em&gt; &lt;span class="citation"&gt;(Otto and Day 2007, 709)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Since this is a triangular matrix, the eigenvalues are simply the elements on the diagonal&lt;sup&gt;&lt;a href="#fn1" class="footnoteRef" id="fnref1"&gt;1&lt;/a&gt;&lt;/sup&gt;. Therefore, the largest eigenvalue must be the largest element on the diagonal, which is the element \[
+&lt;p&gt;Since this is a triangular matrix, the eigenvalues are simply the elements on the diagonal&lt;sup&gt;&lt;a href="#fn5" class="footnoteRef" id="fnref5"&gt;5&lt;/a&gt;&lt;/sup&gt;. Therefore, the largest eigenvalue must be the largest element on the diagonal, which is the element \[
 \bar{\omega}^* = M_{0,0} = 
 \omega_0 \varphi_U(0) = (1-s)^0 \frac{U^0 e^{-U}}{0!} = 
 e^{-U}
 \]&lt;/p&gt;
 &lt;p&gt;Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to derive the eigenvalue so easily, because the matrix would not be triagonal. However, it would still agree with the conditions of the Perron-Frobenius theorem and the mean fitness at the mutation-selection balance would still be the leading eigenvalue of the matrix, and would exist. I've used this fact in my paper &lt;em&gt;The Evolution of Stress-Induced Hypermutation in Asexual Populations&lt;/em&gt; &lt;span class="citation"&gt;(Ram and Hadany 2012)&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id="summary"&gt;&lt;a href="#TOC"&gt;Summary&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;We've seen how to derive the mean fitness at the mutation-selection balance \(\bar{\omega} = e^{-U}\) both via a simple calculus approximation and via a more &amp;quot;hardcore&amp;quot; linear algerba method.&lt;/p&gt;
+&lt;p&gt;We've seen how to derive the mean fitness at the mutation-selection balance \(\bar{\omega} = e^{-U}\) both via a first-order approximation and via a more &amp;quot;hardcore&amp;quot; linear algerba method.&lt;/p&gt;
 &lt;p&gt;The nice thing about deriving the mean fitness in the &amp;quot;hardcore&amp;quot; method is that we get some idea of &lt;em&gt;why&lt;/em&gt; it is equal to e&lt;sup&gt;-U&lt;/sup&gt;. We found that the mean fitness at the mutation-selection balance equals to the leading eigenvalue of the transition matrix, which is the relative probability that individuals from the least loaded class (the class of fittest individuals) survive to the next generation without mutating. By definition the fitness of the least loaded individuals is 1, and we assumed the mutations are &lt;em&gt;Poisson&lt;/em&gt; distributed, and therefore we got e&lt;sup&gt;-U&lt;/sup&gt;, but if we change these assumptions the general result will still hold:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The mean fitness of an asexual population at the mutation-selection balance, in the absence of beneficial mutations, is the product of the fitness of the least loaded class and the probability that no mutations occur.&lt;/p&gt;
@@ -296,7 +293,11 @@ e^{-U}
 &lt;div class="footnotes"&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
-&lt;li id="fn1"&gt;&lt;p&gt;To prove this, one must notice that the determinant of a triangular matrix is the trace of the matrix, and therefore the characteristic polynomial is the trace of the matrix \(I\lambda - M\), and the eigenvalues are the solutions of this polynomial - see &lt;a href="http://tutorial.math.lamar.edu/Classes/LinAlg/EVals_Evects.aspx#EV_EvalEvec_Thm1"&gt;Paul's online math notes&lt;/a&gt;.&lt;a href="#fnref1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn1"&gt;&lt;p&gt;A site on the genome which may be occupied by different alleles. The function of a locus can be diverse - genes, transcription control sequences, etc.&lt;a href="#fnref1"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn2"&gt;&lt;p&gt;A specific sequence occupying a locus, with a specific function. One locus can potentially contain different alleles, each with a slightly different sequence and potentially drasticly different effects on function.&lt;a href="#fnref2"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn3"&gt;&lt;p&gt;A note on notation - &lt;em&gt;p'&lt;/em&gt; here is &lt;em&gt;not&lt;/em&gt; the derivative of &lt;em&gt;p&lt;/em&gt; but rather the value of &lt;em&gt;p&lt;/em&gt; at the next generation. The notation is sometimes confusing but is customary in &lt;em&gt;population genetics&lt;/em&gt;. All equations presented here are &lt;em&gt;difference equations&lt;/em&gt;, not &lt;em&gt;differential equations&lt;/em&gt;.&lt;a href="#fnref3"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn4"&gt;&lt;p&gt;The plural of &lt;em&gt;locus&lt;/em&gt;.&lt;a href="#fnref4"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id="fn5"&gt;&lt;p&gt;To prove this, one must notice that the determinant of a triangular matrix is the trace of the matrix, and therefore the characteristic polynomial is the trace of the matrix \(I\lambda - M\), and the eigenvalues are the solutions of this polynomial - see &lt;a href="http://tutorial.math.lamar.edu/Classes/LinAlg/EVals_Evects.aspx#EV_EvalEvec_Thm1"&gt;Paul's online math notes&lt;/a&gt;.&lt;a href="#fnref5"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</content>
   </entry>
