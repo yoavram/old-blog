@@ -2,9 +2,9 @@
 import sys
 import datetime
 from renderers import pandoc_renderer
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, url_for
 # http://packages.python.org/Flask-FlatPages
-from flask_flatpages import FlatPages, pygments_style_defs
+from flask_flatpages import FlatPages
 from flask_frozen import Freezer
 
 DEBUG = True
@@ -46,35 +46,46 @@ app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
 
+
 # http://jinja.pocoo.org/docs/api/#custom-filters
 def format_date(value, format="%B %d, %Y"):
     return value.strftime(format)
 
+
 def format_datetime(value, format="%d %B %Y at %H:%M"):
     return value.strftime(format)
 
+
+def format_time(value, format="%H:%M"):
+    return value.strftime(format)
+
 app.jinja_env.filters['format_datetime'] = format_datetime
+app.jinja_env.filters['format_date'] = format_date
+app.jinja_env.filters['format_time'] = format_time
 
 
 ## Generating ATOM feed
 # http://flask.pocoo.org/snippets/10/
 # http://werkzeug.pocoo.org/docs/contrib/atom/
 from urlparse import urljoin
-from flask import request
 from werkzeug.contrib.atom import AtomFeed
+
 
 def make_external(url):
     return urljoin(app.config['WEBSITE_ADDRESS'], url)
 
+
 def permalink(page):
     return make_external(url_for("page", path=page.path))
+
 
 def tag_count():
     tags = {}
     for p in pages:
         for t in p.meta.get('tags', []):
-            tags[t] = tags.get(t,0) + 1
+            tags[t] = tags.get(t, 0) + 1
     return tags
+
 
 def prev_page(page):
     sorted_pages = pages_by_datetime(latest_first=False)
@@ -84,20 +95,22 @@ def prev_page(page):
     else:
         return None
 
+
 def next_page(page):
     sorted_pages = pages_by_datetime(latest_first=False)
     index = sorted_pages.index(page)
-    if (index+1) < len(sorted_pages):
+    if (index + 1) < len(sorted_pages):
         return sorted_pages[index + 1]
     else:
         return None
 
-app.jinja_env.globals['permalink'] = permalink    
+app.jinja_env.globals['permalink'] = permalink
 app.jinja_env.globals['make_external'] = make_external
 app.jinja_env.globals['tag_count'] = tag_count
 app.jinja_env.globals['prev_page'] = prev_page
 app.jinja_env.globals['next_page'] = next_page
 app.jinja_env.globals['sorted'] = sorted
+
 
 @app.route('/recent.atom')
 def recent_feed():
@@ -105,20 +118,21 @@ def recent_feed():
     feed = AtomFeed(u'Recent Articles',
                     feed_url=make_external(url_for("recent_feed")),
                     url=make_external(""),
-                    author={'name':'Yoav Ram','uri':'http://www.yoavram.com/','email':'yoavram@gmail.com'},
+                    author={'name': 'Yoav Ram', 'uri': 'http://www.yoavram.com/', 'email': 'yoavram@gmail.com'},
                     rights='CC BY-SA 3.0',
                     updated=articles[0].meta['datetime'])
-    
+
     for article in articles:
         feed.add(article.meta['title'],
                  unicode(article.html),
-                 content_type='html',                 
+                 content_type='html',
                  url=permalink(article),
                  updated=article.meta['datetime'])
-                 
+
     return feed.get_response()
 
 ## End of ATOM feed
+
 
 def pages_by_datetime(limit=0, latest_first=True):
     # Articles are pages with a publication date
@@ -133,15 +147,18 @@ def pages_by_datetime(limit=0, latest_first=True):
     else:
         return articles
 
+
 @app.route('/')
 def index():
     articles = pages_by_datetime()
     return render_template('index.html', pages=articles)
 
+
 @app.route('/<path:path>/')
 def page(path):
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
+
 
 @app.route('/tag/<string:tag>/')
 def tag(tag):
@@ -149,30 +166,35 @@ def tag(tag):
     tagged = [p for p in articles if tag in p.meta.get('tags', [])]
     return render_template('tag.html', pages=tagged, tag=tag)
 
+
 def freeze(debug=True):
-	app.config['DEBUG'] = debug
-	freezer.freeze()
+    app.config['DEBUG'] = debug
+    freezer.freeze()
+
 
 def serve_static():
     import os
     os.chdir("build")
-    import SimpleHTTPServer, SocketServer
+    import SimpleHTTPServer
+    import SocketServer
     PORT = 8000
     Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
     httpd = SocketServer.TCPServer(("", PORT), Handler)
-    print "Serving static content from ",os.getcwd(),"at port", PORT
+    print "Serving static content from ", os.getcwd(), "at port", PORT
     print "Press Ctrl+C to interrupt"
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
         print "Server shutdown"
-    
+
+
 def serve_dynamic():
     app.run(port=8000)
 
+
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        if sys.argv[1] == "build":            
+        if sys.argv[1] == "build":
             freeze(False)
         if sys.argv[1] == "static":
             freeze()
