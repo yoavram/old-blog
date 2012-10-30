@@ -2,7 +2,7 @@
 import sys
 import datetime
 from renderers import pandoc_renderer
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, send_file
 # http://packages.python.org/Flask-FlatPages
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
@@ -39,7 +39,8 @@ EMAIL_SUBSCRIPTION_URL = "http://feedburner.google.com/fb/a/mailverify?uri=yoavr
 
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
-FLATPAGES_HTML_RENDERER = pandoc_renderer(bib=BIB_FILE, csl=CSL)
+FLATPAGES_HTML_RENDERER = pandoc_renderer(bib=BIB_FILE, csl=CSL, template="pandoc_template.txt", math="mathjax", indented_code_classes=["prettyprint", "linenums:1"])
+FLATPAGES_PDF_RENDERER = pandoc_renderer(target="pdf", bib=BIB_FILE, csl=CSL)
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -154,9 +155,17 @@ def index():
     return render_template('index.html', pages=articles)
 
 
+def pdf_from_page(page):
+    text = page.body
+    pdf = FLATPAGES_PDF_RENDERER(text, page.path)
+    print pdf
+    return send_file(pdf)
+
+
 @app.route('/<path:path>/')
 def page(path):
     page = pages.get_or_404(path)
+    #return pdf_from_page(page)
     return render_template('page.html', page=page)
 
 

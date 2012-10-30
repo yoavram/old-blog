@@ -1,6 +1,7 @@
 ### MAIN FUNCTION ###
 from os.path import exists
 import re
+from tempfile import mkstemp
 
 citation_pattern = re.compile('@\w+\d\d\d\d')
 
@@ -25,30 +26,34 @@ def ensure_postfix(string, postfix):
         return string + postfix
 
 
-def pandoc_renderer(source="markdown", target="html", bib="references", csl="chicago", template="pandoc_template.txt", math="mathjax", indented_code_classes=["prettyprint", "linenums:1"]):
-    if source == "markdown" and target == "html":
+def pandoc_renderer(source="markdown", target="html", bib=None, csl="chicago", template=None, math=None, indented_code_classes=None):
+    if source == "markdown" and target in ["html", "pdf"]:
         import pandoc
-        bib = ensure_postfix(bib, '.bib')
-        csl = ensure_postfix(csl, '.csl')
-        bib = find_file_in_path(bib)
-        csl = find_file_in_path(csl)
-        abbr = csl[:-4] + ".abbr"
-        if not exists(abbr):
-            abbr = None
-        template = find_file_in_path(template)
+        if bib:
+            bib = ensure_postfix(bib, '.bib')
+            csl = ensure_postfix(csl, '.csl')
+            bib = find_file_in_path(bib)
+            csl = find_file_in_path(csl)
+            abbr = csl[:-4] + ".abbr"
+            if not exists(abbr):
+                abbr = None
+        if template:
+            template = find_file_in_path(template)
 
         def pandoc_markdown_html_renderer(text):
             doc = pandoc.Document()
             if citation_pattern.search(text):
                 # only use bib if there are citations,
                 # because it takes longer to render due to large size of bib files
-                doc.bib(bib)
-                doc.csl(csl)
-                if abbr:
-                    doc.abbr(abbr)
+                if bib:
+                    doc.bib(bib)
+                    doc.csl(csl)
+                    if abbr:
+                        doc.abbr(abbr)
             if text.startswith('[TOC]'):
                 text = "<a name='TOC'></a>" + text[5:]
                 doc.add_argument('toc')
+            if template:
                 doc.add_argument('template=%s' % template)
             if math:
                 doc.add_argument(math)
@@ -61,10 +66,37 @@ def pandoc_renderer(source="markdown", target="html", bib="references", csl="chi
             doc.markdown = text
             html = doc.html
             return unicode(html)  # to catch "non-ascci" output bug
-        return pandoc_markdown_html_renderer
+
+        def pandoc_markdown_pdf_renderer(text, path=None):
+            doc = pandoc.Document()
+            if citation_pattern.search(text):
+                # only use bib if there are citations,
+                # because it takes longer to render due to large size of bib files
+                if bib:
+                    doc.bib(bib)
+                    doc.csl(csl)
+                    if abbr:
+                        doc.abbr(abbr)
+            if text.startswith('[TOC]'):
+                text = "<a name='TOC'></a>" + text[5:]
+                doc.add_argument('toc')
+            if template:
+                doc.add_argument('template=%s' % template)
+            doc.add_argument('ascii')  # to avoid "non-ascci" output bug
+            doc.markdown = text
+            if not path:
+                fname = mkstemp(suffix=".pdf")[1] # second element is the name            
+            else:
+                fname = path + ".pdf"
+            pdf = doc.to_pdf(fname)
+            return pdf # returns the file name of the pdf file
+
+        if target=="pdf":
+            return pandoc_markdown_pdf_renderer
+        else: # "html"
+            return pandoc_markdown_html_renderer
     else:
         raise ValueError("No renderer for source %s and target %s" % (source, target))
-
 
 ### TEST CODE ###
 if __name__ == '__main__':
@@ -77,7 +109,7 @@ if __name__ == '__main__':
     from flask_flatpages import FlatPages
     #FLATPAGES_ROOT = "pages/"
     FLATPAGES_EXTENSION = '.md'
-    FLATPAGES_HTML_RENDERER = pandoc_renderer(bib=r'd:\library.bib', csl="plos")
+    FLATPAGES_HTML_RENDERER = pandoc_renderer(bib=r'd:\library.bib', csl="plos", template="pandoc_template.txt")
     app = Flask(__name__)
     app.config.from_object(__name__)
     pages = FlatPages(app)
@@ -88,10 +120,12 @@ if __name__ == '__main__':
     if not os.path.exists(tmp_folder):
         os.mkdir(tmp_folder)
 
-    page_path = "pandoc-test"
+    page_path = "blogging-with-math-and-code"
     p = pages.get(page_path)
     write(p.html, tmp_folder + page_path + ".html")
 
+    pdf_renderer = pandoc_renderer(target="pdf", template=None)
+    fname = pdf_renderer(p.body, p.path)
 ##    page_path = "blogging-with-math-and-code"
 ##    p=pages.get(page_path)
 ##    write(p.html, tmp_folder+page_path+".html")
