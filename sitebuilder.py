@@ -39,8 +39,8 @@ EMAIL_SUBSCRIPTION_URL = "http://feedburner.google.com/fb/a/mailverify?uri=yoavr
 
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
-FLATPAGES_HTML_RENDERER = pandoc_renderer(bib=BIB_FILE, csl=CSL, template="pandoc_template.txt", math="mathjax", indented_code_classes=["prettyprint", "linenums:1"])
-FLATPAGES_PDF_RENDERER = pandoc_renderer(target="pdf", bib=BIB_FILE, csl=CSL)
+FLATPAGES_HTML_RENDERER = pandoc_renderer(bib=BIB_FILE, csl=CSL, math="mathjax", indented_code_classes=["prettyprint", "linenums:1"])
+FLATPAGES_PDF_RENDERER = pandoc_renderer(target="pdf", template=None, bib=BIB_FILE, csl=CSL)
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -155,18 +155,22 @@ def index():
     return render_template('index.html', pages=articles)
 
 
-def pdf_from_page(page):
+def page_to_pdf(page):
     text = page.body
-    pdf = FLATPAGES_PDF_RENDERER(text, page.path)
-    print pdf
+    pdf = FLATPAGES_PDF_RENDERER(text, path=page.path, title=page.meta['title'], author=AUTHOR_FIRSTNAME+" "+AUTHOR_LASTNAME, date=page.meta['datetime'])
     return send_file(pdf)
 
 
 @app.route('/<path:path>/')
 def page(path):
     page = pages.get_or_404(path)
-    #return pdf_from_page(page)
     return render_template('page.html', page=page)
+
+
+@app.route('/pdf/<path:path>/')
+def pdf(path):
+    page = pages.get_or_404(path)
+    return page_to_pdf(page)
 
 
 @app.route('/tag/<string:tag>/')

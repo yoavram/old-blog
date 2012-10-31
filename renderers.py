@@ -1,7 +1,8 @@
-### MAIN FUNCTION ###
 from os.path import exists
 import re
-from tempfile import mkstemp
+import pandoc
+import os
+
 
 citation_pattern = re.compile('@\w+\d\d\d\d')
 
@@ -26,9 +27,8 @@ def ensure_postfix(string, postfix):
         return string + postfix
 
 
-def pandoc_renderer(source="markdown", target="html", bib=None, csl="chicago", template=None, math=None, indented_code_classes=None):
-    if source == "markdown" and target in ["html", "pdf"]:
-        import pandoc
+def pandoc_renderer(source="markdown", target="html", bib=None, csl="chicago", template="pandoc_template.txt", math=None, indented_code_classes=None):
+    if source == "markdown" and target in ["html", "pdf"]:        
         if bib:
             bib = ensure_postfix(bib, '.bib')
             csl = ensure_postfix(csl, '.csl')
@@ -42,14 +42,13 @@ def pandoc_renderer(source="markdown", target="html", bib=None, csl="chicago", t
 
         def pandoc_markdown_html_renderer(text):
             doc = pandoc.Document()
-            if citation_pattern.search(text):
-                # only use bib if there are citations,
-                # because it takes longer to render due to large size of bib files
-                if bib:
-                    doc.bib(bib)
-                    doc.csl(csl)
-                    if abbr:
-                        doc.abbr(abbr)
+            if bib and citation_pattern.search(text):
+            # only use bib if there are citations,
+            # because it takes longer to render due to large size of bib file
+                doc.bib(bib)
+                doc.csl(csl)
+                if abbr:
+                    doc.abbr(abbr)
             if text.startswith('[TOC]'):
                 text = "<a name='TOC'></a>" + text[5:]
                 doc.add_argument('toc')
@@ -67,27 +66,30 @@ def pandoc_renderer(source="markdown", target="html", bib=None, csl="chicago", t
             html = doc.html
             return unicode(html)  # to catch "non-ascci" output bug
 
-        def pandoc_markdown_pdf_renderer(text, path=None):
+        def pandoc_markdown_pdf_renderer(text, path="tmp", title=None, author=None, date=None):
             doc = pandoc.Document()
-            if citation_pattern.search(text):
+            if bib and citation_pattern.search(text):
                 # only use bib if there are citations,
-                # because it takes longer to render due to large size of bib files
-                if bib:
-                    doc.bib(bib)
-                    doc.csl(csl)
-                    if abbr:
-                        doc.abbr(abbr)
+                # because it takes longer to render due to large size of bib files            
+                doc.bib(bib)
+                doc.csl(csl)
+                if abbr:
+                    doc.abbr(abbr)
             if text.startswith('[TOC]'):
                 text = "<a name='TOC'></a>" + text[5:]
                 doc.add_argument('toc')
             if template:
                 doc.add_argument('template=%s' % template)
             doc.add_argument('ascii')  # to avoid "non-ascci" output bug
+            doc.add_argument('standalone')
+            if title:
+                doc.add_argument('variable title="%s"' % title)
+            if author:
+                doc.add_argument('variable author="%s"' % author)
+            if date:
+                doc.add_argument('variable date="%s"' % date)
             doc.markdown = text
-            if not path:
-                fname = mkstemp(suffix=".pdf")[1] # second element is the name            
-            else:
-                fname = path + ".pdf"
+            fname = path + ".pdf"
             pdf = doc.to_pdf(fname)
             return pdf # returns the file name of the pdf file
 

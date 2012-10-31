@@ -9,10 +9,11 @@ math: true
 ## Overview
 
 In an [eariler post]
-I described how the mean fitness of a population at the mutation-selection balance can be derived.
-The model assumed that the population is *asexual*, that only *deleterious mutations* arise,
-that there is no *drift*, and that the selection was *constant*.
-In this post I would like to continue with these assumpions, but instead of simply deriving the mean fitness at the mutation-selection balance,
+I described how the mean fitness of a population at the *mutation-selection balance* can be found.
+I assumed that the population is *asexual*, that only *deleterious mutations* occur,
+that there is no *drift* or *recombination*, and that the selection was *constant*.
+
+In this post I would like to continue with these assumpions, but instead of simply finding the mean fitness at the mutation-selection balance,
 that is at the equilibrium, I will show how one finds a simple formula for the mean fitness after an arbitrary number of generations.
 The formulation ad derivation will follow one of my favorite papers - 
 ["Nonequilibrium model for estimating parameters of deleterious mutations"][gordo2005] by @Gordo2005.
