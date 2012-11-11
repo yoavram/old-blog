@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="row-fluid">
+	<div class="span8 offset1">
+	<header class="masthead">
+	<br>
+	<h1>Category: <em>{{ category }}</em></h1>
+	{% if subcategories %}
+	<h3>Subcategories:	
+	{% for sub in subcategories %}
+		<a href="/category/{{ sub }}/">{{ sub }}</a>
+		{% if not loop.last %}
+		/
+		{% endif %}
+	{% endfor %}
+	</h3>
+	{% endif %}
+	</header>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+    
+    {% with pages=pages  %}
+        {% include "_list.html" %}
+    {% endwith %}
+	
+{% endblock content %}

@@ -1,6 +1,7 @@
 title: Creating PDFs with Pandoc
 datetime: 2012-10-20 10:41:00 +2
 tags: [pdf, markdown]
+category: [hacking,blog]
 draft: true
 
 [TOC]

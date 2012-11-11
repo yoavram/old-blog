@@ -1,6 +1,7 @@
 title: 'Summary: "Mutators and sex in bacteria: Conflict between adaptive strategies" (Tenaillon et al. 2000)'
 datetime: 2012-10-16 15:22:00 +2
 tags: [evolution of the mutation rate, recombination, mutators, simulation, asexual populations]
+category: [research, mutation rate]
 math: true
 cite: true
 

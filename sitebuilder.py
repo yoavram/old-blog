@@ -42,10 +42,17 @@ FLATPAGES_EXTENSION = '.md'
 FLATPAGES_HTML_RENDERER = pandoc_renderer(bib=BIB_FILE, csl=CSL, math="mathjax", indented_code_classes=["prettyprint", "linenums:1"])
 FLATPAGES_PDF_RENDERER = pandoc_renderer(target="pdf", template=None, bib=BIB_FILE, csl=CSL)
 
+CATEGORIES = []
+
 app = Flask(__name__)
 app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
+
+def load_categories(filename="categories.txt"):
+    fin = open(filename)
+    for category in fin:
+        CATEGORIES.append(category)
 
 
 # http://jinja.pocoo.org/docs/api/#custom-filters
@@ -63,7 +70,6 @@ def format_time(value, format="%H:%M"):
 app.jinja_env.filters['format_datetime'] = format_datetime
 app.jinja_env.filters['format_date'] = format_date
 app.jinja_env.filters['format_time'] = format_time
-
 
 ## Generating ATOM feed
 # http://flask.pocoo.org/snippets/10/
@@ -148,6 +154,19 @@ def pages_by_datetime(limit=0, latest_first=True):
     else:
         return articles
 
+def pages_by_category(articles):
+    map = {}
+    for p in articles:
+        cats = p.meta.get('category', [])
+        if len(cats)>0:
+            c = cats[0]
+        else:
+            c = "uncategorized"
+        if c in map:
+            map[c].append(p)
+        else:
+            map[c] = [p]
+    return map
 
 @app.route('/')
 def index():
@@ -179,6 +198,21 @@ def tag(tag):
     tagged = [p for p in articles if tag in p.meta.get('tags', [])]
     return render_template('tag.html', pages=tagged, tag=tag)
 
+
+@app.route('/category/<string:category>/')
+def category(category):
+    articles = pages_by_datetime()
+    categorized = [ p for p in articles if category in p.meta.get('category', [])]
+    categories = [p.meta['category'] for p in categorized]
+    subs = []
+    for c in categories:
+        ind = c.index(category)+1
+        sub_cat = c[ind:]
+        for s in sub_cat:
+            if s not in subs:
+                subs.append(s)
+    subs.sort()
+    return render_template('category.html', pages=categorized, category=category, subcategories=subs)
 
 def freeze(debug=True):
     app.config['DEBUG'] = debug

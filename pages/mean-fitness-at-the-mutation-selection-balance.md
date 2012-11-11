@@ -2,6 +2,7 @@ title: Mean fitness at the mutation-selection balance
 datetime: 2012-10-14 16:45:00 +2
 updated: 2012-10-22 09:56:00 +2
 tags: [mutation-selection balance, mean fitness, asexual populations, mathematical modeling]
+category: [research, mean fitness]
 math: true
 cite: true
 

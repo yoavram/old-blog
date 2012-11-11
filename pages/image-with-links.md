@@ -2,6 +2,7 @@ datetime: 2012-10-16 10:38:00 +2
 title: Image with links in Markdown
 draft: true
 tags: [markdown]
+category: [hacking,blog]
 
 [TOC]
 

@@ -1,6 +1,7 @@
 title: Icons for the blog
 datetime: 2012-10-11 16:59:00 +2
 tags: [twitter bootstrap]
+category: [hacking,blog]
 
 [TOC]
 

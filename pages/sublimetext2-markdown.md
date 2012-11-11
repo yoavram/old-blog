@@ -1,6 +1,7 @@
 title: Writing Markdown with Sublime Text 2
 datetime: 2012-10-29 20:44:00 +2
 tags: [st2, markdown]
+category: [hacking,software]
 draft: true
 
 [TOC]

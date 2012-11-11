@@ -1,6 +1,7 @@
 title: The convergence of mean fitness towards the mutation-selection balance
 datetime: 2012-10-26 11:33:00 +2
-tags: []
+tags: [mutation-selection balance, mean fitness, asexual populations, mathematical modeling]
+category: [research, mean fitness]
 draft: true
 math: true
 
@@ -8,39 +9,33 @@ math: true
 
 ## Overview
 
-In an [eariler post]
-I described how the mean fitness of a population at the *mutation-selection balance* can be found.
-I assumed that the population is *asexual*, that only *deleterious mutations* occur,
-that there is no *drift* or *recombination*, and that the selection was *constant*.
+In an [eariler post] I described how the mean fitness of a population at the *mutation-selection balance* can be analysed.
+I assumed that the population is **asexual**, that only **deleterious mutations** occur,
+that there is **no drift or recombination**, and that **selection is constant**.
 
-In this post I would like to continue with these assumpions, but instead of simply finding the mean fitness at the mutation-selection balance,
-that is at the equilibrium, I will show how one finds a simple formula for the mean fitness after an arbitrary number of generations.
-The formulation ad derivation will follow one of my favorite papers - 
+In this post I would like to continue with these assumpions. I will show how to find a **simple formula for the mean fitness after an arbitrary number of generations**.
+The formulation and derivation will follow one of my favorite papers - 
 ["Nonequilibrium model for estimating parameters of deleterious mutations"][gordo2005] by @Gordo2005.
 
 ## Motivation
 
-But first, why should we want the mean fitness before the mutation-selection balance? 
+But first, why are we interested in the mean fitness of a population that is not at the mutation-selection balance? 
 
-The general answer is that probably some, if not most, populations are *not at the mutation-selection balance*.
+The general answer is that most populations are probably **not** at the mutation-selection balance.
 The mutation-selection balance is a nice idea, but it serves as a reference, as a null hypothesis, 
-not as a general rule. The assumptions at the base of the balance are too thin, 
-especially that *selection is static* - selection is probably not static but fluctuating, both in amplitude and direction.
-This means that at least some of the natural populations we may encounter in the wild are not evolving **at** the mutation-selection balance,
-but rather evolving **towards** the mutation-selection balance, never actually reaching one.
+not as a general rule. The assumption  that selection is constant is not relevant to many populations - selection is probably fluctuating, both in amplitude and direction.
+This means that at least some of the natural populations we encounter in the wild are not evolving around a mutation-selection balance,
+but rather evolving towards a mutation-selection balance, never actually reaching one.
 
-The more specific answer is that even in laboratory conditions which induce a constant sselection regime
-it may take *a long time* for populations to reach the mutation-selection balance, 
+The more specific answer is that even in laboratory conditions which induce a constant selection regime
+it may take a long time for populations to reach the mutation-selection balance, 
 and this time might be longer than what we intuitively expect (or desire).
-This aspect is discussed by @Gordo2005. They wanted to use traditional models for calculating the mutatio rate of bacterial populations at the lab,
-but noticed that these models assume that the populations reach a mutation-selection balance in the calculations they use.
-However, they found that in the timeframe they envisioned for their study their populations will not reach an equilibrium, especially if selection is weak 
-(see Figure 1 in [@Gordo2005]).
+
+This issue is presented by @Gordo2005. They wanted to use traditional models for calculating the mutation rate of bacterial populations in the lab. These models assume that the populations are  at a mutation-selection balance, but Gordo and Dionisio showed that in the timeframe they planned for their study their populations will not reach an equilibrium, especially if selection is weak (see Figure 1 in [@Gordo2005]).
 
 This is interesting, because we saw in the [eariler post] that the mean fitness
 at the mutation-selection balance is *e^-U^*, where *U* is the mutation rate and is independent of *s*, the selection coefficient.
-But Figure 1 in [@Gordo2005] is a clear example that the mean fitness towards the mutation-selection balance is highly dependent on *s*,
-and that *s* sets the pace towards the balance.
+But Figure 1 in [@Gordo2005] shows that the mean fitness before the mutation-selection balance *is dependent* on *s*, and that *s* determines the rate of convergence towards the balance.
 
 ## Model
 
@@ -194,32 +189,33 @@ $$
 
 ## Estimation of mutation rates 
 
-In mutation-accumulation experiments, a population is undergoing a sequence of bottlenecks that cause the accumulation of mutations due to the ineffectivness of selection when the effective population size is small. These experiments usually use measurements of mean and variance population fitness to estimate *s* and *U*. 
+In mutation-accumulation (MA) experiments, a population is undergoing a sequence of bottlenecks that cause the accumulation of deleterious mutations due to the random sampling effect of **genetic drift**. In these experiments the investigators usually measure the mean fitness of the experimental population thorugh time and use these measurements to estimate *s* and *U*. 
 
-This is the idea: denote the mean fitness at bottleneck *B* by $\bar{\omega{B}}$. 
-Than we start with a mutation-free population, and $\bar{\omega_{0}} = 1$. At the first bottleneck, 
-the population is assumed to reach a mutation-selection balance,
-so the mean fitness is now $\bar{\omega_{1}} = e^{-U}$. At the next bottleneck, the mean fitness again was reduced by the same factor,
-so it is now $\bar{\omega_{1}} = e^{-U}e^{-U} = e^{-2U}$. So after *B* bottlenecks, the mean fitness is $\bar{\omega_{B}} = e^{-UB}$.
-So one can take the log of the mean fitness after *B* bottlenecks, $-BU$, and use a linear regression model to estimate *U*.
+Denote the expected mean fitness at bottleneck *B* by $\bar{\omega{B}}$. 
+We start with a mutation-free population, and $\bar{\omega_{0}} = 1$. 
+At the first bottleneck, the population is assumed to reach a mutation-selection balance,
+so the expected mean fitness is now $\bar{\omega_{1}} = e^{-U}$. 
+At the next bottleneck, the expected mean fitness is reduced again by the same factor,
+so it is now $\bar{\omega_{1}} = e^{-U}e^{-U} = e^{-2U}$. 
+After *B* bottlenecks, the mean fitness is $\bar{\omega_{B}} = e^{-UB}$.
+So one can take the log of the measured mean fitness after *B* bottlenecks, $-BU$, and use a linear regression model to estimate *U*. By using a similar linear regression on the ratio of the second moment of fitness and the square of the expected mean fitness, one can estimate *s* (see below).
 
-However, what happens if the populatio doesn't reach a mutation-selection balance?
-In a population of bacteria, for example, the number of generations between bottlenecks may be insufficient for the population to reach a mutation-selection balance. In this case one muse use a non-equilibrium value of the mean fitness, which is $\bar{\omega}_{g} = e^{-\frac{U}{s} (1-(1-s)^{g})}$. This is the subject of @Gordo2005, titled: **Nonequilibrium model for estimating parameters of deleterious mutations**. The paper explores a statistical model based on the above calculations. The statistical model is tested against results of simulations. In another paper, [@Trindade2010][trindade2010], they tested this statistical model on results of a mutation accumulation experiment with *E. coli*.
+**However, what happens if the population doesn't reach a mutation-selection balance?**
+In a population of bacteria, for example, the number of generations between bottlenecks may be insufficient for the population to reach a mutation-selection balance (see Figure 1 in [@Gordo2005]). In this case one must use a the non-equilibrium value of the mean fitness which was derived above - $\bar{\omega}_{g} = e^{-\frac{U}{s} (1-(1-s)^{g})}$. This concept is the subject of the paper by @Gordo2005, titled: **Nonequilibrium model for estimating parameters of deleterious mutations**. The paper explores a statistical model based on the above calculations. The statistical model is tested with simulations. In a later paper, [@Trindade2010][trindade2010], the statistical model was used on results of a mutation-accumulation experiment with *E. coli*.
 
-In the above development, we saw that in the mean fitness after *g* generations is $\bar{\omega}_{g} = e^{-\lambda(g) s}$. 
-If the number of generations between bottlenecks is constant, say *g=24* for a population in which a generation is estimated at 30 minutes, resulting in a bottleneck period of 12 hours, than we can denote $\lambda {:=} \lambda(g)$ and then 
-use $\bar{\omega_{B}} = e^{-\lambda s B}$. Then we can use a linear regression model to estimate $-\lambda s$.
+In the above development, we saw that the expected mean fitness after *g* generations is $\bar{\omega}_{g} = e^{-\lambda(g) s}$. 
+If the number of generations between bottlenecks is constant, say *g=24* (for a population in which a generation is estimated at 30 minutes, resulting in a bottleneck period of 12 hours), then we can denote $\lambda {:=} \lambda(g)$ and use $\bar{\omega_{B}} = e^{-\lambda s B}$. 
+Then we can use a linear regression model to estimate $-\lambda s$.
 
-But how do we proceed? The estimator we found using linear regression, $\lambda s= \lambda(g) s = U(1-(1-s)^{g})$, doesn't directly yield us either *U* or *s*.
-Well, this is why we calculated the second moment. We will not use it directly, but instead define an F-statistic 
-not to be confused with the F-statistic used to desctibe heterozigosity or population structuring):
-$F_{B} = \frac{\bar{\omega^2}}{\bar{\omega}^2}$. This is a little confusing so I'll right it in a probablistic way:
+But how do we proceed? The estimator we found using linear regression, $\lambda s= \lambda(g) s = U(1-(1-s)^{g})$, doesn't directly yield either *U* or *s*.
+Well, this is why we calculated the second moment. We will not use it directly, but instead define an F-statistic (not to be confused with the F-statistic used to describe heterozigosity or population structuring):
+$F_{B} = \frac{\bar{\omega^2}}{\bar{\omega}^2}$. This is a little confusing so I'll write it in a probablistic presentation:
 
 $$
 F_{B} = \frac{E[\omega^2]}{E^2[\omega]}
 $$
 
-This is just the ratio of the second moment to the square of the first moment. What is this ratio? Let's have a look:
+This is the ratio of the second moment to the square of the first moment. What is this ratio? Let's have a look:
 
 $$
 F_{B} = \frac{E[\omega^2]}{E^2[\omega]} = \\
@@ -228,13 +224,13 @@ e^{B( \lambda s^2-2\lambda s+2 \lambda s)} = \\
 e^{B( \lambda s^2)}
 $$
 
-So the log of the *F* statistic is $B \lambda s^2$, and so linear regression can give us $\lamda s^2$. 
+So the log of the *F-statistic* is $B \lambda s^2$, and linear regression can give us $\lamda s^2$. 
 Now have have both $-\lambda s$, $\lambda s^2$, and of course $\lambda = \frac{U}{s}(1-(1-s)^g)$,
-and we can readily estimate both *U* and *s*.
+and we can estimate both *U* and *s*.
 
 ## Technical remarks
 
-I originally wrote this post with [Office 2010](http://en.wikipedia.org/wiki/Microsoft_Office_2010). I converted it TeX using [docx2tex](http://docx2tex.codeplex.com/) and from [TeX](http://en.wikipedia.org/wiki/LaTeX) to [Markdown](http://daringfireball.net/projects/markdown/) using [LaTeX2Markdown](https://github.com/ajtulloch/LaTeX2Markdown), although it can also be sone using [Pandoc](http://johnmacfarlane.net/pandoc/). Then I proof-read it, and several LaTeX bugs were identified and fixed using an online tool for [testing MathJax code](http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm) \([MathJax](http://www.mathjax.org/) is a JavaScript library that displays LaTeX in browsers, see how in [another post](/blogging-with-math-and-code)\).
+I originally wrote this post with [Office 2010](http://en.wikipedia.org/wiki/Microsoft_Office_2010). I converted it TeX using [docx2tex](http://docx2tex.codeplex.com/) and from [TeX](http://en.wikipedia.org/wiki/LaTeX) to [Markdown](http://daringfireball.net/projects/markdown/) using [LaTeX2Markdown](https://github.com/ajtulloch/LaTeX2Markdown), although it can also be sone using [Pandoc](http://johnmacfarlane.net/pandoc/). Then I proof-read it, and several LaTeX bugs were identified and fixed using an online tool for [testing MathJax code](http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm) \([MathJax](http://www.mathjax.org/) is a JavaScript library that displays LaTeX in browsers, see how in [another post](/blogging-with-math-and-code)\). 
 
 ##  References
 

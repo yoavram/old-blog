@@ -1,6 +1,7 @@
 title: Citations in Markdown using Pandoc
 datetime: 2012-10-12 15:35:00 +2
 tags: [markdown, pandoc, citations, python]
+category: [hacking,blog]
 
 [TOC]
 

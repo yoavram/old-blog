@@ -1,6 +1,7 @@
 title: Creating phylogenies of simulated data
 datetime: 2012-11-09 11:54:00 +2
 tags: [R, phylogeny]
+category: [code,R]
 draft: true
 
 [TOC]
@@ -36,7 +37,7 @@ Newick tree seems like a cool way to plot the tree, but how will I construct the
 
 ### Hello Rgraphviz!
 
-Following the[Rgraphiv docs](http://www.bioconductor.org/packages/2.11/bioc/vignettes/Rgraphviz/inst/doc/Rgraphviz.pdf):
+Following the [Rgraphiv docs](http://www.bioconductor.org/packages/2.11/bioc/vignettes/Rgraphviz/inst/doc/Rgraphviz.pdf):
 
 	library(Rgraphviz)
 	V <- letters[1:10]
@@ -49,7 +50,7 @@ which gives this graph:
 
 ## Phylogny tree for *mamba*
 
-The [mamba](https://github.com/yoavram/mamba) project is a *Wright-Fisher* model simulator. To create a phylogeny tree for the populations of the *mamba* project I wrote [*tree.R*](https://github.com/yoavram/mamba/blob/master/tree.R).
+The [mamba](https://github.com/yoavram/mamba) project is a *Wright-Fisher* model simulator. To create a phylogeny tree for the populations of the *mamba* project I wrote [*tree.R*](https://github.com/yoavram/mamba/blob/master/tree.R). The documentation for the functions used is that of the [graph package](http://www.bioconductor.org/packages/release/bioc/html/graph.html).
 
 An example output can be produced by running <code>test.tree()</code> from *tree.R*:
 

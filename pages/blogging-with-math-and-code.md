@@ -1,6 +1,7 @@
 title: Blogging with math and code
 datetime: 2012-10-03 15:05:00 +2
 tags: [latex, markdown]
+category: [hacking, blog]
 math: true
 updated: 2012-10-21 21:50:00 +2
 
