@@ -2,7 +2,6 @@ title: The convergence of mean fitness towards the mutation-selection balance
 datetime: 2012-10-26 11:33:00 +2
 tags: [mutation-selection balance, mean fitness, asexual populations, mathematical modeling]
 category: [research, mean fitness]
-draft: true
 math: true
 
 [TOC]
@@ -220,11 +219,11 @@ This is the ratio of the second moment to the square of the first moment. What i
 $$
 F_{B} = \frac{E[\omega^2]}{E^2[\omega]} = \\
 \frac{e^{\lambda (s^2-2s) B}}{e^{-2 \lambda s B}} =\\
-e^{B( \lambda s^2-2\lambda s+2 \lambda s)} = \\
-e^{B( \lambda s^2)}
+e^{( \lambda s^2-2\lambda s+2 \lambda s)B} = \\
+e^{( \lambda s^2)B}
 $$
 
-So the log of the *F-statistic* is $B \lambda s^2$, and linear regression can give us $\lamda s^2$. 
+So the log of the *F-statistic* is $\lambda s^2 B$, and linear regression can give us $\lambda s^2$. 
 Now have have both $-\lambda s$, $\lambda s^2$, and of course $\lambda = \frac{U}{s}(1-(1-s)^g)$,
 and we can estimate both *U* and *s*.
 
