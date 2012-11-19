@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title> The convergence of mean fitness towards the mutation-selection balance </title>
+<meta name="description" content="Yoav Ram's blog on evolutionary theory and other scientific interests, and especially on the theoretical treatment of the evolution of the mutation rate" />
+<meta name="author" content="Yoav Ram">
+<meta name="keywords" content="evolution,mutation rate,mutation rates,Yoav Ram,yoavram,evolutionary theory,science,theoretical biology,mathematical biology,mathematics">
+<meta charset="UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="icon" type="image/ico" href="/static/favicon.ico">
+<link href="http://feeds.feedburner.com/yoavram/msb-recent" rel="alternate" title="Recent Articles" type="application/atom+xml">
+
+<!-- Le style -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/static/theme.css" rel="stylesheet">
+<link href="/static/jekyll.css" rel="stylesheet">
+<link href="/static/bootstrap.min.css" rel="stylesheet">
+<link href="/static/glyphicons.css" rel="stylesheet">
+<link href="/static/bootstrap-responsive.min.css" rel="stylesheet">
+<style type="text/css">
+[class^="icon-"] { background-image: url("/static/glyphicons-halflings.png"); } 
+[class*="icon-white"] { background-image: url("/static/glyphicons-halflings-white.png"); } 
+[class^="glyphicon-"] { background-image: url("/static/glyphicons.png"); } 
+</style>
+<link href="/static/prettify.css" rel="stylesheet">
+
+<!-- Le JS -->
+<script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap-transition.js"></script>
+<script type="text/javascript" src="/static/bootstrap-collapse.js"></script>
+
+<!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
+<script type="text/javascript" src="/static/prettify.js"></script>
+
+
+
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+<!-- Online Debugger: http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm -->
+<!-- Doc: http://docs.mathjax.org/en/latest/output.html -->`
+  MathJax.Hub.Config({            
+			"HTML-CSS": { availableFonts: ["STIX", "TeX"], 
+						  linebreaks: { automatic: true }
+			}
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+
+
+
+
+<!-- ShareThis JS -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "{{ config.SHARETHIS_PUBLISHER }}"});</script>
+<!-- ShareThis JS -->
+
+
+
+
+
+
+<!-- Google Analytics www.google.com/analytics/ -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{{ config.GOOGLE_ANALYTICS }}']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</head>
+
+
+<body onload="prettyPrint()">
+
+<!-- Navbar -->
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href='/'>The Mutation-Selection Blog</a>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse">
+        <ul class="nav">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+				title="Tags">
+					<!--Tags -->
+					<i class="icon-tags"></i>
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				
+
+	<li><a href='/tag/R/'>R: <small>1</small></a></li>
+
+	<li><a href='/tag/asexual%20populations/'>asexual populations: <small>3</small></a></li>
+
+	<li><a href='/tag/citations/'>citations: <small>1</small></a></li>
+
+	<li><a href='/tag/evolution%20of%20the%20mutation%20rate/'>evolution of the mutation rate: <small>1</small></a></li>
+
+	<li><a href='/tag/latex/'>latex: <small>1</small></a></li>
+
+	<li><a href='/tag/markdown/'>markdown: <small>6</small></a></li>
+
+	<li><a href='/tag/mathematical%20modeling/'>mathematical modeling: <small>2</small></a></li>
+
+	<li><a href='/tag/mean%20fitness/'>mean fitness: <small>2</small></a></li>
+
+	<li><a href='/tag/mutation-selection%20balance/'>mutation-selection balance: <small>2</small></a></li>
+
+	<li><a href='/tag/mutators/'>mutators: <small>1</small></a></li>
+
+	<li><a href='/tag/pandoc/'>pandoc: <small>1</small></a></li>
+
+	<li><a href='/tag/pdf/'>pdf: <small>1</small></a></li>
+
+	<li><a href='/tag/phylogeny/'>phylogeny: <small>1</small></a></li>
+
+	<li><a href='/tag/python/'>python: <small>2</small></a></li>
+
+	<li><a href='/tag/recombination/'>recombination: <small>1</small></a></li>
+
+	<li><a href='/tag/simulation/'>simulation: <small>1</small></a></li>
+
+	<li><a href='/tag/st2/'>st2: <small>1</small></a></li>
+
+	<li><a href='/tag/twitter%20bootstrap/'>twitter bootstrap: <small>1</small></a></li>
+
+
+				</ul>
+			</li>			
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+				title="Online avatars">
+				  <!-- Contact -->
+				  <i class="icon-user"></i>
+				  <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				<!-- http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+					
+	
+	<li><a href="http://www.yoavram.com/">Home <i class="icon-home"></i></a></li>
+	
+	
+	<li><a href="mailto:yoavram@gmail.com">Email <i class="icon-envelope"></i></a></li>
+	
+	
+	<li><a href="http://www.mendeley.com/profiles/yoav-ram">Mendeley</a></li>
+	
+	
+	<li><a href="http://scholar.google.com/citations?user=RIFmJvYAAAAJ">Scholar Citations</a></li>
+	
+	
+	<li><a href="http://figshare.com/authors/Yoav_Ram/99206">FigShare</a></li>
+	
+	
+	<li><a href="http://twitter.com/yoavram">Twitter <i class="glyphicon-twitter-t"></i></a></li>
+	
+	
+	<li><a href="http://www.linkedin.com/in/yoav-ram">Linkedin <i class="glyphicon-linked-in"></i></a></li>
+	
+	
+	<li><a href="https://github.com/yoavram">GitHub <i class="glyphicon-github"></i></a></li>
+	
+	
+	<li><a href="https://bitbucket.org/yoavram">Bitbucket</a></li>
+	
+	
+	<li><a href="http://code.google.com/u/yoav-ram/">Google Code</a></li>
+		
+				
+				</ul>
+			</li>
+			<li>
+				<a href="http://www.yoavram.com/" 
+				title="About me">
+					<i class="icon-question-sign"></i>
+					&nbsp;&nbsp;
+				</a>
+			</li>
+			<li>
+				<a href="http://feeds.feedburner.com/yoavram/msb-recent" rel="alternate" type="application/rss+xml"
+				title="Subscribe in a reader">
+					<i class="glyphicon-rss"></i>
+					&nbsp;&nbsp;				
+				</a>
+			</li>
+			<li>
+				<a href="http://feedburner.google.com/fb/a/mailverify?uri=yoavram/msb-recent"
+				title="Subscribe by Email">
+					<i class="icon-envelope"></i>
+					&nbsp;&nbsp;				
+				</a>		
+			</ul>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+<!-- end Navbar -->
+    
+<!-- HEADER -->
+
+<div class="row-fluid">
+	<div class="span8 offset1">
+	<header class="masthead">
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/tenaillon-et-al-2000/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#bottom">To bottom &darr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+	<h1>The convergence of mean fitness towards the mutation-selection balance</h1>
+	
+<ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
+	<li class="active"><i class="icon-time"></i> 26 October 2012 at 09:33</li>
+	
+	<li><span class="divider">/</span>
+	<i class="icon-star"></i> <a href='http://blog.yoavram.com/convergence-of-mean-fitness/'>Permalink</a></li>
+	
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/asexual%20populations/">asexual populations</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/mathematical%20modeling/">mathematical modeling</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/mean%20fitness/">mean fitness</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/mutation-selection%20balance/">mutation-selection balance</a></li>
+	
+	
+	
+	<li><span class="divider">/</span>
+	
+	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
+	<span class='st_email' ></span>
+	<span class='st_twitter' ></span>
+	<span class='st_facebook' ></span>
+	<span class='st_googleplus' ></span>
+	<span class='st_reddit' ></span>
+	<span class='st_linkedin' ></span>
+	<span class='st_stumbleupon' ></span>
+	<span class='st_delicious' ></span>
+	<span class='st_citeulike' ></span>
+	<span class='st_connotea' ></span>
+
+	</li>
+	</ul>
+
+	</header>
+	</div>
+</div>
+
+
+<!-- BODY -->	
+<div class="row-fluid">
+	<div class="span8 offset1">
+
+		
+
+<div class="post">
+	
+    <ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#model">Model</a><ul>
+<li><a href="#definitions">Definitions</a></li>
+<li><a href="#the-distribution-of-mutant-alleles">The distribution of mutant alleles</a></li>
+</ul></li>
+<li><a href="#the-expected-number-of-mutant-alleles">The expected number of mutant alleles</a></li>
+<li><a href="#the-population-mean-fitness">The population mean fitness</a></li>
+<li><a href="#estimation-of-mutation-rates">Estimation of mutation rates</a></li>
+<li><a href="#technical-remarks">Technical remarks</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<a name='TOC'></a>
+<h2 id="overview"><a href="#TOC">Overview</a></h2>
+<p>In an <a href="http://blog.yoavram.com/mean-fitness-at-the-mutation-selection-balance/">eariler post</a> I described how the mean fitness of a population at the <em>mutation-selection balance</em> can be analysed. I assumed that the population is <strong>asexual</strong>, that only <strong>deleterious mutations</strong> occur, that there is <strong>no drift or recombination</strong>, and that <strong>selection is constant</strong>.</p>
+<p>In this post I would like to continue with these assumpions. I will show how to find a <strong>simple formula for the mean fitness after an arbitrary number of generations</strong>. The formulation and derivation will follow one of my favorite papers - <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">&quot;Nonequilibrium model for estimating parameters of deleterious mutations&quot;</a> by <span class="citation">Gordo and Dionisio (2005)</span>.</p>
+<h2 id="motivation"><a href="#TOC">Motivation</a></h2>
+<p>But first, why are we interested in the mean fitness of a population that is not at the mutation-selection balance?</p>
+<p>The general answer is that most populations are probably <strong>not</strong> at the mutation-selection balance. The mutation-selection balance is a nice idea, but it serves as a reference, as a null hypothesis, not as a general rule. The assumption that selection is constant is not relevant to many populations - selection is probably fluctuating, both in amplitude and direction. This means that at least some of the natural populations we encounter in the wild are not evolving around a mutation-selection balance, but rather evolving towards a mutation-selection balance, never actually reaching one.</p>
+<p>The more specific answer is that even in laboratory conditions which induce a constant selection regime it may take a long time for populations to reach the mutation-selection balance, and this time might be longer than what we intuitively expect (or desire).</p>
+<p>This issue is presented by <span class="citation">Gordo and Dionisio (2005)</span>. They wanted to use traditional models for calculating the mutation rate of bacterial populations in the lab. These models assume that the populations are at a mutation-selection balance, but Gordo and Dionisio showed that in the timeframe they planned for their study their populations will not reach an equilibrium, especially if selection is weak (see Figure 1 in <span class="citation">(Gordo and Dionisio 2005)</span>).</p>
+<p>This is interesting, because we saw in the <a href="http://blog.yoavram.com/mean-fitness-at-the-mutation-selection-balance/">eariler post</a> that the mean fitness at the mutation-selection balance is <em>e<sup>-U</sup></em>, where <em>U</em> is the mutation rate and is independent of <em>s</em>, the selection coefficient. But Figure 1 in <span class="citation">(Gordo and Dionisio 2005)</span> shows that the mean fitness before the mutation-selection balance <em>is dependent</em> on <em>s</em>, and that <em>s</em> determines the rate of convergence towards the balance.</p>
+<h2 id="model"><a href="#TOC">Model</a></h2>
+<p>This follows the model from <span class="citation">(Gordo and Dionisio 2005)</span> but I elaborated and included all the rigouros steps.</p>
+<h3 id="definitions"><a href="#TOC">Definitions</a></h3>
+<p>Denote the pmf (probability mass function) of a Poisson distribution with parameter \(\lambda\): \(\varphi_{\lambda} (x)\) Consider an asexual infinite population evolving in a constant environment. The number of new mutations per individual per generation is Poisson distributed with parameter <em>U</em>, the mutation rate. All mutations are deleterious with a multiplicative effect <em>s</em>, so that an individual with \(i\) mutant allele has a fitness \(\omega_{i}:=(1-s)^{i}\) with selection coefficient \(0&lt;s&lt;1\). The frequency of individuals with <em>i</em> mutant at generation <em>g</em> is denoted \(f_{i}(g)\) and \(\sum_{i}{f_{i}(g)}=1\). From the former two statements it follows that the population mean fitness at generation <em>g</em> is \(\bar{\omega }_{g}=\sum_{i}{f_{i}(g)\omega _{i}}\). Assume that the selection occurs before mutation.</p>
+<h3 id="the-distribution-of-mutant-alleles"><a href="#TOC">The distribution of mutant alleles</a></h3>
+<p>The change in the frequency of individuals with <em>i</em> mutant alleles from generation <em>g</em> to generation <em>g+1</em> is written as:</p>
+<p>\[
+f_{i}(g+1)=\sum_{k=0}^{i}{\frac{ \omega _{k} }{ \bar{\omega}_{g} } f_{k}(g) \varphi_{U} (i-k) }
+\]</p>
+<p>The model starts with a mutation-free population, so the initial condition is \(f_{0}(0)=1, f_{i&gt;0}(0)=0\).</p>
+<p>Let's calculate the frequency of individuals with <em>i</em> mutant alleles after one generation:</p>
+<p>\[
+f_{i}(1)=\sum_{k=0}^{i}{f_{k}(0)\frac{\omega _{k}}{\bar{\omega}_{1}}\cdot \frac{U^{i-k}}{(i-k)!}e^{-U}}
+\] and because \[
+f_{k}(0)=\bigg\{
+\begin{gathered}
+1, k=0 \\
+0, otherwise \\
+\end{gathered}
+\] we get \[
+f_{i}(1) = f_{0}(0)\frac{\omega _{0}}{\bar{\omega }_{1}} \cdot \frac{U^{i}}{i!}e^{-U} = \frac{U^{i}}{i!}e^{-U}
+\] so the frequency of individuals with <em>i</em> mutant alleles after one generation is Poisson distributed with parameter <em>U</em>.</p>
+<p>To verify this - the expected number of mutations after one generation is \[
+\sum_{i\ge 0}{i\cdot f_{i}(1)} = \sum_{i\ge 1}{i\cdot \frac{U^{i}}{i!}e^{-U}} =\\ 
+e^{-U}U\sum_{i\ge 1}{\frac{U^{i-1}}{(i-1)!}} = \\ 
+e^{-U}U\sum_{i\ge 0}{\frac{U^{i}}{i!}} = \\ 
+Ue^{-U}e^{U} = U
+\] as expected.</p>
+<p>To go on the next step, we will find the frequency of individuals with <em>i</em> mutant alleles at the second generation, after selection but <em>before</em> mutations - this is marked by \(f_{i}^{s}(2)\): \[
+f_{i}^{s}(2) = \frac{\omega _{i}}{\bar{\omega}_{1}}f_{i}(1) = \\
+\frac{(1-s)^{i}}{\sum_{k=0}^{\infty }{f_{k}(1)\omega_{k}}}\frac{U^{i}}{i!}e^{-U} = \\
+\frac{(1-s)^{i}}{\sum_{k=0}^{\infty}{\frac{U^{k}}{k!}e^{-U}(1-s)^{k}}}\frac{U^{i}}{i!}e^{-U} = \\
+\frac{(U(1-s))^{i}}{i!\sum_{k=0}^{\infty}{\frac{(U(1-s))^{k}}{k!}}} = \\
+\frac{(U(1-s))^{i}}{i!}e^{-U(1-s)}
+\]</p>
+<p>So, \(f_{i}^{s}(2)\) is Poisson distributed with parameter \(U(1-s)\), and the frequency <em>after</em> mutation will be: \[
+f_{i}(2) = \sum_{k=0}^{i}{f_{k}^{s}(2)\frac{U^{i-k}}{(i-k)!}e^{-U}} = \\
+\sum_{k=0}^{i}{\frac{(U(1-s))^{k}}{k!}e^{-U(1-s)}\frac{U^{i-k}}{(i-k)!}e^{-U}} = \\
+e^{-U(1-s)-U}\sum_{k=0}^{i}{\frac{U^{i-k}(U(1-s))^{k}}{k! \cdot (i-k)!}} = \\
+\frac{U^{i}}{e^{U(1-s) + U}} \sum_{k=0}^{i}{\frac{(U(1-s))^{k}}{U^{k} \cdot k! \cdot (i-k)!}} = \\
+\frac{U^{i}}{e^{U(1-s) + U}} \sum_{k=0}^{i}{\frac{(1-s)^{k}}{k! \cdot (i-k)!}}
+\]</p>
+<p>Note that \(\sum_{k=0}^{i}{\frac{q^{k}}{k!\cdot (i-k)! }} = \frac{(q+1)^{i}}{i!}\) And \(\sum_{k=1}^{i}{\frac{q^{k}}{k!\cdot (i-k)! }}=\frac{(q+1)^{i}-1}{i!}\), and therefore:</p>
+<p>\[
+f_{i}(2) = \frac{U^{i}}{e^{U(1-s)+U}}\cdot \frac{(2-s)^{i}}{i!} = \\
+\frac{(U(1-s)+U)^{i}}{i!}e^{-(U(1-s)+U)} = \\
+\phi(i | U(1-s)+U)
+\]</p>
+<p>Similar to the former expansion and because the Poisson process is <em>memoryless</em>, the frequency of individuals with <em>i</em> mutant alleles after mutation at generation 2 will be Poisson distributed with parameter \(U(1-s)+U\).</p>
+<p>The same argument makes it clear that the distribution of mutant alleles at any generation <em>g</em> is Poisson distributed, but let's see a rigrouros formulation of this.</p>
+<h2 id="the-expected-number-of-mutant-alleles"><a href="#TOC">The expected number of mutant alleles</a></h2>
+<p>After seeing how the distribution of mutant alleles changes at the first couple of generations, and verifying that this is a Poisson distribution, we can now formulate the recurrence relation for the expected number of mutatnt allele - or the parameter of the Poisson distribution, \(\lambda\):</p>
+<p>\[
+\lambda (g+1) = \sum_{k=0}^{\infty }{k\cdot f_{k}(g+1)} = \\
+\sum_{k=0}^{\infty}{\sum_{i=0}^{k}{k\frac{(1-s)^{i}}{\bar{\omega}_{g}}f_{i}(g)\frac{U^{k-i}}{(k-i)!}e^{-U}}} = \\
+\sum_{i=0}^{\infty}{\sum_{k=i}^{\infty }{k\frac{(1-s)^{i}}{\bar{\omega}_{g}}f_{i}(g)\frac{U^{k-i}}{(k-i)!}e^{-U}}} = \\
+\sum_{i=0}^{\infty}{e^{-U}\frac{(1-s)^{i}}{\bar{\omega}_{g}}U^{-i}f_{i}(g)\sum_{k=i}^{\infty}{k\frac{U^{k}}{(k-i)!}}} = \\
+\sum_{i=0}^{\infty}{e^{-U}\frac{(1-s)^{i}}{\bar{\omega}_{g}}U^{-i}f_{i}(g)e^{U}U^{i}(i+U)} = \\
+\frac{1}{\bar{\omega}_{g}}\sum_{i=0}^{\infty }{f_{i}(g)(1-s)^{i}(i+U)} = \\
+\frac{U}{\bar{\omega}_{g}}\sum_{i=0}^{\infty }{f_{i}(g)(1-s)^{i}}+\frac{1}{\bar{\omega}_{g}}\sum_{i=1}^{\infty }{i\cdot f_{i}(g)(1-s)^{i}} = \\
+U + \frac{\sum_{i=1}^{\infty }{i\cdot f_{i}(g)(1-s)^{i}}}{\sum_{i=0}^{\infty}{f_{i}(g)(1-s)^{i}}} = \\
+U + \frac{\sum_{i=1}^{\infty }{i\cdot \frac{e^{\lambda (g)}(\lambda (g)(1-s))^{i}}{i!}}}{\sum_{i=0}^{\infty}{\frac{e^{\lambda(g)}(\lambda (g)(1-s))^{i}}{i!}}} = \\
+U + \frac{\lambda(g)(1-s)\cdot e^{\lambda (g)(1-s)}}{e^{\lambda(g)(1-s)}} = \\
+\lambda (g)(1-s) + U
+\]</p>
+<p>So we got a nice recurrence formula - \(\lambda (g+1)=\lambda (g)(1-s)+U\) with an initial condition \(\lambda (1)=U\). The recurrence means that the expected number of mutatnt alleles per individual in the population is reduced every generation by selection by multiplying it by <em>(1-s)</em> and increased by mutation by adding <em>U</em>.</p>
+<p>The solution to this recurrence relation is (why? this will require another post): \[
+\lambda(g)=\frac{U}{s}(1-(1-s)^{g})\xrightarrow{g\to \infty }\frac{U}{s}
+\]</p>
+<p>For a sinlge-locus deterministic model, the expected frequency of the wild-type allele at the mutation-selection balance (assuming that \(s&gt;&gt;U\)) is \(1 - \frac{U}{s}\), which agrees well with the frequency of mutation-free individuals we can now calculate: \(\phi(0 | \frac{U}{s}) = \frac{\frac{U}{s}^0}{0!} e^{-\frac{U}{s}} = e^{-\frac{U}{s}} = 1-\frac{U}{s} + O(\frac{U}{s}^{2})\). The last approximation uses the Taylor expansion of the exponential function around 0.</p>
+<h2 id="the-population-mean-fitness"><a href="#TOC">The population mean fitness</a></h2>
+<p>After <em>g</em> generations the population mean fitness is:</p>
+<p>\[
+\bar{\omega}_{g} = \sum_{i=0}^{\infty }{\frac{\lambda(g)^{i}}{i!}e^{-\lambda(g)}(1-s)^{i}} = \\ 
+e^{-\lambda(g)}\sum_{i=0}^{\infty}{\frac{ (\lambda(g) (1-s))^{i}}{i!}} = \\
+e^{-\lambda(g)}e^{\lambda(g)(1-s)} \Rightarrow \\
+\bar{\omega}_{g} = e^{-\lambda(g) s}
+\]</p>
+<p>Which gives us yet [another way][earlier post] to calculate the mean fitness at the mutation-selection balance: \[
+\bar{\omega }^* = lim_{g\to \infty} e^{-\lambda(g) s} = e^{-\frac{U}{s}s} = e^{-U}
+\]</p>
+<p>The second moment of the population fitness is given by:</p>
+<p>\[
+E[\omega_{g}^2] = \sum_{i=0}^{\infty }{\frac{\lambda(g)^{i}}{i!}e^{-\lambda(g)}(1-s)^{2i}} = \\
+e^{-\lambda(g)} \sum_{i=0}^{\infty }{\frac{ (\lambda(g)(1-s)^2)^{i} }{i!}} = \\
+e^{-\lambda(g)} e^{\lambda(g)(1-s)^2} = \\
+e^{\lambda(g)(1-2s+s^2)-\lambda(g)} = \\
+e^{\lambda(g)(s^2-2s)}
+\]</p>
+<h2 id="estimation-of-mutation-rates"><a href="#TOC">Estimation of mutation rates</a></h2>
+<p>In mutation-accumulation (MA) experiments, a population is undergoing a sequence of bottlenecks that cause the accumulation of deleterious mutations due to the random sampling effect of <strong>genetic drift</strong>. In these experiments the investigators usually measure the mean fitness of the experimental population thorugh time and use these measurements to estimate <em>s</em> and <em>U</em>.</p>
+<p>Denote the expected mean fitness at bottleneck <em>B</em> by \(\bar{\omega{B}}\). We start with a mutation-free population, and \(\bar{\omega_{0}} = 1\). At the first bottleneck, the population is assumed to reach a mutation-selection balance, so the expected mean fitness is now \(\bar{\omega_{1}} = e^{-U}\). At the next bottleneck, the expected mean fitness is reduced again by the same factor, so it is now \(\bar{\omega_{1}} = e^{-U}e^{-U} = e^{-2U}\). After <em>B</em> bottlenecks, the mean fitness is \(\bar{\omega_{B}} = e^{-UB}\). So one can take the log of the measured mean fitness after <em>B</em> bottlenecks, \(-BU\), and use a linear regression model to estimate <em>U</em>. By using a similar linear regression on the ratio of the second moment of fitness and the square of the expected mean fitness, one can estimate <em>s</em> (see below).</p>
+<p><strong>However, what happens if the population doesn't reach a mutation-selection balance?</strong> In a population of bacteria, for example, the number of generations between bottlenecks may be insufficient for the population to reach a mutation-selection balance (see Figure 1 in <span class="citation">(Gordo and Dionisio 2005)</span>). In this case one must use a the non-equilibrium value of the mean fitness which was derived above - \(\bar{\omega}_{g} = e^{-\frac{U}{s} (1-(1-s)^{g})}\). This concept is the subject of the paper by <span class="citation">Gordo and Dionisio (2005)</span>, titled: <strong>Nonequilibrium model for estimating parameters of deleterious mutations</strong>. The paper explores a statistical model based on the above calculations. The statistical model is tested with simulations. In a later paper, <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818"><span class="citation">Trindade, Perfeito, and Gordo (2010)</span></a>, the statistical model was used on results of a mutation-accumulation experiment with <em>E. coli</em>.</p>
+<p>In the above development, we saw that the expected mean fitness after <em>g</em> generations is \(\bar{\omega}_{g} = e^{-\lambda(g) s}\). If the number of generations between bottlenecks is constant, say <em>g=24</em> (for a population in which a generation is estimated at 30 minutes, resulting in a bottleneck period of 12 hours), then we can denote \(\lambda {:=} \lambda(g)\) and use \(\bar{\omega_{B}} = e^{-\lambda s B}\). Then we can use a linear regression model to estimate \(-\lambda s\).</p>
+<p>But how do we proceed? The estimator we found using linear regression, \(\lambda s= \lambda(g) s = U(1-(1-s)^{g})\), doesn't directly yield either <em>U</em> or <em>s</em>. Well, this is why we calculated the second moment. We will not use it directly, but instead define an F-statistic (not to be confused with the F-statistic used to describe heterozigosity or population structuring): \(F_{B} = \frac{\bar{\omega^2}}{\bar{\omega}^2}\). This is a little confusing so I'll write it in a probablistic presentation:</p>
+<p>\[
+F_{B} = \frac{E[\omega^2]}{E^2[\omega]}
+\]</p>
+<p>This is the ratio of the second moment to the square of the first moment. What is this ratio? Let's have a look:</p>
+<p>\[
+F_{B} = \frac{E[\omega^2]}{E^2[\omega]} = \\
+\frac{e^{\lambda (s^2-2s) B}}{e^{-2 \lambda s B}} =\\
+e^{( \lambda s^2-2\lambda s+2 \lambda s)B} = \\
+e^{( \lambda s^2)B}
+\]</p>
+<p>So the log of the <em>F-statistic</em> is \(\lambda s^2 B\), and linear regression can give us \(\lambda s^2\). Now have have both \(-\lambda s\), \(\lambda s^2\), and of course \(\lambda = \frac{U}{s}(1-(1-s)^g)\), and we can estimate both <em>U</em> and <em>s</em>.</p>
+<h2 id="technical-remarks"><a href="#TOC">Technical remarks</a></h2>
+<p>I originally wrote this post with <a href="http://en.wikipedia.org/wiki/Microsoft_Office_2010">Office 2010</a>. I converted it TeX using <a href="http://docx2tex.codeplex.com/">docx2tex</a> and from <a href="http://en.wikipedia.org/wiki/LaTeX">TeX</a> to <a href="http://daringfireball.net/projects/markdown/">Markdown</a> using <a href="https://github.com/ajtulloch/LaTeX2Markdown">LaTeX2Markdown</a>, although it can also be sone using <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>. Then I proof-read it, and several LaTeX bugs were identified and fixed using an online tool for <a href="http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm">testing MathJax code</a> (<a href="http://www.mathjax.org/">MathJax</a> is a JavaScript library that displays LaTeX in browsers, see how in <a href="/blogging-with-math-and-code">another post</a>).</p>
+<h2 id="references"><a href="#TOC">References</a></h2>
+<p>Gordo, Isabel, and Francisco Dionisio. 2005. &#8220;Nonequilibrium model for estimating parameters of deleterious mutations.&#8221; <em>Physical Review E</em> 71 (mar): 18&#8211;21. doi:10.1103/PhysRevE.71.031907. <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907" title="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">http://link.aps.org/doi/10.1103/PhysRevE.71.031907</a>.</p>
+<p>Trindade, Sandra, Lilia Perfeito, and Isabel Gordo. 2010. &#8220;Rate and effects of spontaneous mutations that affect fitness in mutator Escherichia coli.&#8221; <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em> 365 (apr): 1177&#8211;86. doi:10.1098/rstb.2009.0287. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818</a>.</p>
+	
+	<a name="bottom"></a>
+	
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/tenaillon-et-al-2000/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#">To top &uarr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+	
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
+	var disqus_shortname = 'yoavram'; // required: replace example with your forum shortname
+	var disqus_identifier = 'convergence-of-mean-fitness';
+	
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+		
+		
+	</div>
+	<div class="span3">
+	<div class="sidebar">
+		
+	
+		
+		</div>
+	</div>
+	
+</div>
+
+<!-- FOOTER -->
+<div class="row-fluid">
+<div class="span10 offset1">
+<footer class="colophon"> 
+	
+	
+	<ul class="quick-links">
+	<li> 
+		<!--a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+		<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
+		</a-->
+		The content on "<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">The Mutation-Selection Blog</span>" by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.yoavram.com/" property="cc:attributionName" rel="cc:attributionURL">Yoav Ram</a>
+		is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>	license.
+		<!-- Creative Commons Attribution-ShareAlike 3.0 Unported License -->
+		The rest is licensed separately:
+	</li>
+	</ul>
+	<ul class="quick-links">
+	<li>Front</li>
+	<li><a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a></li>
+	<li><a href="http://glyphicons.com/" title="CC BY-SA 3.0">Glyphicons Free</a><li>
+	<li><a href="http://code.google.com/p/google-code-prettify/">Google Code Prettifier</a></li>
+	<li><a href="http://ethanschoonover.com/solarized">Solarized</a></li>
+	<li><a href="http://mathjax.org/">MathJax</a></li>
+	</ul>
+
+	<ul class="quick-links">
+	<li>Back</li>
+	<li><a href="http://python.org/">Python</a></li>
+	<li><a href="http://flask.pocoo.org/">Flask</a></li>
+	<li><a href="http://pages.github.com/">GitHub Pages</a></li>	
+	<li><a href="http://daringfireball.net/projects/markdown/">Markdown</a></li>
+	<li><a href="http://johnmacfarlane.net/pandoc">Pandoc</a></li>
+	</ul>
+  
+	<ul class="quick-links">
+	<li>Code</li>
+	<li><a href="https://github.com/yoavram/yoavram.github.com">Static site</a></li>
+	<li><a href="https://github.com/yoavram/yoavram.github.com/tree/source">Site generator</a></li>
+	<li>Logo</li>
+	<li><a href="http://www.idancohen.com/">Idan Cohen</a></li>
+	<li><a href="http://www.dafont.com/sketch-block.font">Sketch Block</a></li>
+	<li><a href="http://www.dafont.com/positiv-a.font">Positiv-A</a></li>
+	</ul>
+	
+	<ul class="quick-links">
+	<li>This page was last modified on 19 November 2012 at 15:41.</li>
+	</ul>
+	
+	
+	<a href="/recent.atom" rel="alternate" title="Recent Articles" type="application/atom+xml"></a>
+</footer>
+</div>
+</div>
+
+</body>
+</html>

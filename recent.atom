@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Recent Articles</title>
   <id>http://blog.yoavram.com/recent.atom</id>
-  <updated>2012-10-16T13:22:00Z</updated>
+  <updated>2012-10-26T09:33:00Z</updated>
   <link href="http://blog.yoavram.com" />
   <link href="http://blog.yoavram.com/recent.atom" rel="self" />
   <author>
@@ -12,6 +12,149 @@
   </author>
   <rights>CC BY-SA 3.0</rights>
   <generator>Werkzeug</generator>
+  <entry xml:base="http://blog.yoavram.com/recent.atom">
+    <title type="text">The convergence of mean fitness towards the mutation-selection balance</title>
+    <id>http://blog.yoavram.com/convergence-of-mean-fitness/</id>
+    <updated>2012-10-26T09:33:00Z</updated>
+    <link href="http://blog.yoavram.com/convergence-of-mean-fitness/" />
+    <author>
+      <name></name>
+    </author>
+    <content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#motivation"&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#model"&gt;Model&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#definitions"&gt;Definitions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#the-distribution-of-mutant-alleles"&gt;The distribution of mutant alleles&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#the-expected-number-of-mutant-alleles"&gt;The expected number of mutant alleles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#the-population-mean-fitness"&gt;The population mean fitness&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#estimation-of-mutation-rates"&gt;Estimation of mutation rates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#technical-remarks"&gt;Technical remarks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#references"&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a name='TOC'&gt;&lt;/a&gt;
+&lt;h2 id="overview"&gt;&lt;a href="#TOC"&gt;Overview&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In an &lt;a href="http://blog.yoavram.com/mean-fitness-at-the-mutation-selection-balance/"&gt;eariler post&lt;/a&gt; I described how the mean fitness of a population at the &lt;em&gt;mutation-selection balance&lt;/em&gt; can be analysed. I assumed that the population is &lt;strong&gt;asexual&lt;/strong&gt;, that only &lt;strong&gt;deleterious mutations&lt;/strong&gt; occur, that there is &lt;strong&gt;no drift or recombination&lt;/strong&gt;, and that &lt;strong&gt;selection is constant&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;In this post I would like to continue with these assumpions. I will show how to find a &lt;strong&gt;simple formula for the mean fitness after an arbitrary number of generations&lt;/strong&gt;. The formulation and derivation will follow one of my favorite papers - &lt;a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907"&gt;&amp;quot;Nonequilibrium model for estimating parameters of deleterious mutations&amp;quot;&lt;/a&gt; by &lt;span class="citation"&gt;Gordo and Dionisio (2005)&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id="motivation"&gt;&lt;a href="#TOC"&gt;Motivation&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;But first, why are we interested in the mean fitness of a population that is not at the mutation-selection balance?&lt;/p&gt;
+&lt;p&gt;The general answer is that most populations are probably &lt;strong&gt;not&lt;/strong&gt; at the mutation-selection balance. The mutation-selection balance is a nice idea, but it serves as a reference, as a null hypothesis, not as a general rule. The assumption that selection is constant is not relevant to many populations - selection is probably fluctuating, both in amplitude and direction. This means that at least some of the natural populations we encounter in the wild are not evolving around a mutation-selection balance, but rather evolving towards a mutation-selection balance, never actually reaching one.&lt;/p&gt;
+&lt;p&gt;The more specific answer is that even in laboratory conditions which induce a constant selection regime it may take a long time for populations to reach the mutation-selection balance, and this time might be longer than what we intuitively expect (or desire).&lt;/p&gt;
+&lt;p&gt;This issue is presented by &lt;span class="citation"&gt;Gordo and Dionisio (2005)&lt;/span&gt;. They wanted to use traditional models for calculating the mutation rate of bacterial populations in the lab. These models assume that the populations are at a mutation-selection balance, but Gordo and Dionisio showed that in the timeframe they planned for their study their populations will not reach an equilibrium, especially if selection is weak (see Figure 1 in &lt;span class="citation"&gt;(Gordo and Dionisio 2005)&lt;/span&gt;).&lt;/p&gt;
+&lt;p&gt;This is interesting, because we saw in the &lt;a href="http://blog.yoavram.com/mean-fitness-at-the-mutation-selection-balance/"&gt;eariler post&lt;/a&gt; that the mean fitness at the mutation-selection balance is &lt;em&gt;e&lt;sup&gt;-U&lt;/sup&gt;&lt;/em&gt;, where &lt;em&gt;U&lt;/em&gt; is the mutation rate and is independent of &lt;em&gt;s&lt;/em&gt;, the selection coefficient. But Figure 1 in &lt;span class="citation"&gt;(Gordo and Dionisio 2005)&lt;/span&gt; shows that the mean fitness before the mutation-selection balance &lt;em&gt;is dependent&lt;/em&gt; on &lt;em&gt;s&lt;/em&gt;, and that &lt;em&gt;s&lt;/em&gt; determines the rate of convergence towards the balance.&lt;/p&gt;
+&lt;h2 id="model"&gt;&lt;a href="#TOC"&gt;Model&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This follows the model from &lt;span class="citation"&gt;(Gordo and Dionisio 2005)&lt;/span&gt; but I elaborated and included all the rigouros steps.&lt;/p&gt;
+&lt;h3 id="definitions"&gt;&lt;a href="#TOC"&gt;Definitions&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Denote the pmf (probability mass function) of a Poisson distribution with parameter \(\lambda\): \(\varphi_{\lambda} (x)\) Consider an asexual infinite population evolving in a constant environment. The number of new mutations per individual per generation is Poisson distributed with parameter &lt;em&gt;U&lt;/em&gt;, the mutation rate. All mutations are deleterious with a multiplicative effect &lt;em&gt;s&lt;/em&gt;, so that an individual with \(i\) mutant allele has a fitness \(\omega_{i}:=(1-s)^{i}\) with selection coefficient \(0&amp;lt;s&amp;lt;1\). The frequency of individuals with &lt;em&gt;i&lt;/em&gt; mutant at generation &lt;em&gt;g&lt;/em&gt; is denoted \(f_{i}(g)\) and \(\sum_{i}{f_{i}(g)}=1\). From the former two statements it follows that the population mean fitness at generation &lt;em&gt;g&lt;/em&gt; is \(\bar{\omega }_{g}=\sum_{i}{f_{i}(g)\omega _{i}}\). Assume that the selection occurs before mutation.&lt;/p&gt;
+&lt;h3 id="the-distribution-of-mutant-alleles"&gt;&lt;a href="#TOC"&gt;The distribution of mutant alleles&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The change in the frequency of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles from generation &lt;em&gt;g&lt;/em&gt; to generation &lt;em&gt;g+1&lt;/em&gt; is written as:&lt;/p&gt;
+&lt;p&gt;\[
+f_{i}(g+1)=\sum_{k=0}^{i}{\frac{ \omega _{k} }{ \bar{\omega}_{g} } f_{k}(g) \varphi_{U} (i-k) }
+\]&lt;/p&gt;
+&lt;p&gt;The model starts with a mutation-free population, so the initial condition is \(f_{0}(0)=1, f_{i&amp;gt;0}(0)=0\).&lt;/p&gt;
+&lt;p&gt;Let's calculate the frequency of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles after one generation:&lt;/p&gt;
+&lt;p&gt;\[
+f_{i}(1)=\sum_{k=0}^{i}{f_{k}(0)\frac{\omega _{k}}{\bar{\omega}_{1}}\cdot \frac{U^{i-k}}{(i-k)!}e^{-U}}
+\] and because \[
+f_{k}(0)=\bigg\{
+\begin{gathered}
+1, k=0 \\
+0, otherwise \\
+\end{gathered}
+\] we get \[
+f_{i}(1) = f_{0}(0)\frac{\omega _{0}}{\bar{\omega }_{1}} \cdot \frac{U^{i}}{i!}e^{-U} = \frac{U^{i}}{i!}e^{-U}
+\] so the frequency of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles after one generation is Poisson distributed with parameter &lt;em&gt;U&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;To verify this - the expected number of mutations after one generation is \[
+\sum_{i\ge 0}{i\cdot f_{i}(1)} = \sum_{i\ge 1}{i\cdot \frac{U^{i}}{i!}e^{-U}} =\\ 
+e^{-U}U\sum_{i\ge 1}{\frac{U^{i-1}}{(i-1)!}} = \\ 
+e^{-U}U\sum_{i\ge 0}{\frac{U^{i}}{i!}} = \\ 
+Ue^{-U}e^{U} = U
+\] as expected.&lt;/p&gt;
+&lt;p&gt;To go on the next step, we will find the frequency of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles at the second generation, after selection but &lt;em&gt;before&lt;/em&gt; mutations - this is marked by \(f_{i}^{s}(2)\): \[
+f_{i}^{s}(2) = \frac{\omega _{i}}{\bar{\omega}_{1}}f_{i}(1) = \\
+\frac{(1-s)^{i}}{\sum_{k=0}^{\infty }{f_{k}(1)\omega_{k}}}\frac{U^{i}}{i!}e^{-U} = \\
+\frac{(1-s)^{i}}{\sum_{k=0}^{\infty}{\frac{U^{k}}{k!}e^{-U}(1-s)^{k}}}\frac{U^{i}}{i!}e^{-U} = \\
+\frac{(U(1-s))^{i}}{i!\sum_{k=0}^{\infty}{\frac{(U(1-s))^{k}}{k!}}} = \\
+\frac{(U(1-s))^{i}}{i!}e^{-U(1-s)}
+\]&lt;/p&gt;
+&lt;p&gt;So, \(f_{i}^{s}(2)\) is Poisson distributed with parameter \(U(1-s)\), and the frequency &lt;em&gt;after&lt;/em&gt; mutation will be: \[
+f_{i}(2) = \sum_{k=0}^{i}{f_{k}^{s}(2)\frac{U^{i-k}}{(i-k)!}e^{-U}} = \\
+\sum_{k=0}^{i}{\frac{(U(1-s))^{k}}{k!}e^{-U(1-s)}\frac{U^{i-k}}{(i-k)!}e^{-U}} = \\
+e^{-U(1-s)-U}\sum_{k=0}^{i}{\frac{U^{i-k}(U(1-s))^{k}}{k! \cdot (i-k)!}} = \\
+\frac{U^{i}}{e^{U(1-s) + U}} \sum_{k=0}^{i}{\frac{(U(1-s))^{k}}{U^{k} \cdot k! \cdot (i-k)!}} = \\
+\frac{U^{i}}{e^{U(1-s) + U}} \sum_{k=0}^{i}{\frac{(1-s)^{k}}{k! \cdot (i-k)!}}
+\]&lt;/p&gt;
+&lt;p&gt;Note that \(\sum_{k=0}^{i}{\frac{q^{k}}{k!\cdot (i-k)! }} = \frac{(q+1)^{i}}{i!}\) And \(\sum_{k=1}^{i}{\frac{q^{k}}{k!\cdot (i-k)! }}=\frac{(q+1)^{i}-1}{i!}\), and therefore:&lt;/p&gt;
+&lt;p&gt;\[
+f_{i}(2) = \frac{U^{i}}{e^{U(1-s)+U}}\cdot \frac{(2-s)^{i}}{i!} = \\
+\frac{(U(1-s)+U)^{i}}{i!}e^{-(U(1-s)+U)} = \\
+\phi(i | U(1-s)+U)
+\]&lt;/p&gt;
+&lt;p&gt;Similar to the former expansion and because the Poisson process is &lt;em&gt;memoryless&lt;/em&gt;, the frequency of individuals with &lt;em&gt;i&lt;/em&gt; mutant alleles after mutation at generation 2 will be Poisson distributed with parameter \(U(1-s)+U\).&lt;/p&gt;
+&lt;p&gt;The same argument makes it clear that the distribution of mutant alleles at any generation &lt;em&gt;g&lt;/em&gt; is Poisson distributed, but let's see a rigrouros formulation of this.&lt;/p&gt;
+&lt;h2 id="the-expected-number-of-mutant-alleles"&gt;&lt;a href="#TOC"&gt;The expected number of mutant alleles&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;After seeing how the distribution of mutant alleles changes at the first couple of generations, and verifying that this is a Poisson distribution, we can now formulate the recurrence relation for the expected number of mutatnt allele - or the parameter of the Poisson distribution, \(\lambda\):&lt;/p&gt;
+&lt;p&gt;\[
+\lambda (g+1) = \sum_{k=0}^{\infty }{k\cdot f_{k}(g+1)} = \\
+\sum_{k=0}^{\infty}{\sum_{i=0}^{k}{k\frac{(1-s)^{i}}{\bar{\omega}_{g}}f_{i}(g)\frac{U^{k-i}}{(k-i)!}e^{-U}}} = \\
+\sum_{i=0}^{\infty}{\sum_{k=i}^{\infty }{k\frac{(1-s)^{i}}{\bar{\omega}_{g}}f_{i}(g)\frac{U^{k-i}}{(k-i)!}e^{-U}}} = \\
+\sum_{i=0}^{\infty}{e^{-U}\frac{(1-s)^{i}}{\bar{\omega}_{g}}U^{-i}f_{i}(g)\sum_{k=i}^{\infty}{k\frac{U^{k}}{(k-i)!}}} = \\
+\sum_{i=0}^{\infty}{e^{-U}\frac{(1-s)^{i}}{\bar{\omega}_{g}}U^{-i}f_{i}(g)e^{U}U^{i}(i+U)} = \\
+\frac{1}{\bar{\omega}_{g}}\sum_{i=0}^{\infty }{f_{i}(g)(1-s)^{i}(i+U)} = \\
+\frac{U}{\bar{\omega}_{g}}\sum_{i=0}^{\infty }{f_{i}(g)(1-s)^{i}}+\frac{1}{\bar{\omega}_{g}}\sum_{i=1}^{\infty }{i\cdot f_{i}(g)(1-s)^{i}} = \\
+U + \frac{\sum_{i=1}^{\infty }{i\cdot f_{i}(g)(1-s)^{i}}}{\sum_{i=0}^{\infty}{f_{i}(g)(1-s)^{i}}} = \\
+U + \frac{\sum_{i=1}^{\infty }{i\cdot \frac{e^{\lambda (g)}(\lambda (g)(1-s))^{i}}{i!}}}{\sum_{i=0}^{\infty}{\frac{e^{\lambda(g)}(\lambda (g)(1-s))^{i}}{i!}}} = \\
+U + \frac{\lambda(g)(1-s)\cdot e^{\lambda (g)(1-s)}}{e^{\lambda(g)(1-s)}} = \\
+\lambda (g)(1-s) + U
+\]&lt;/p&gt;
+&lt;p&gt;So we got a nice recurrence formula - \(\lambda (g+1)=\lambda (g)(1-s)+U\) with an initial condition \(\lambda (1)=U\). The recurrence means that the expected number of mutatnt alleles per individual in the population is reduced every generation by selection by multiplying it by &lt;em&gt;(1-s)&lt;/em&gt; and increased by mutation by adding &lt;em&gt;U&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;The solution to this recurrence relation is (why? this will require another post): \[
+\lambda(g)=\frac{U}{s}(1-(1-s)^{g})\xrightarrow{g\to \infty }\frac{U}{s}
+\]&lt;/p&gt;
+&lt;p&gt;For a sinlge-locus deterministic model, the expected frequency of the wild-type allele at the mutation-selection balance (assuming that \(s&amp;gt;&amp;gt;U\)) is \(1 - \frac{U}{s}\), which agrees well with the frequency of mutation-free individuals we can now calculate: \(\phi(0 | \frac{U}{s}) = \frac{\frac{U}{s}^0}{0!} e^{-\frac{U}{s}} = e^{-\frac{U}{s}} = 1-\frac{U}{s} + O(\frac{U}{s}^{2})\). The last approximation uses the Taylor expansion of the exponential function around 0.&lt;/p&gt;
+&lt;h2 id="the-population-mean-fitness"&gt;&lt;a href="#TOC"&gt;The population mean fitness&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;After &lt;em&gt;g&lt;/em&gt; generations the population mean fitness is:&lt;/p&gt;
+&lt;p&gt;\[
+\bar{\omega}_{g} = \sum_{i=0}^{\infty }{\frac{\lambda(g)^{i}}{i!}e^{-\lambda(g)}(1-s)^{i}} = \\ 
+e^{-\lambda(g)}\sum_{i=0}^{\infty}{\frac{ (\lambda(g) (1-s))^{i}}{i!}} = \\
+e^{-\lambda(g)}e^{\lambda(g)(1-s)} \Rightarrow \\
+\bar{\omega}_{g} = e^{-\lambda(g) s}
+\]&lt;/p&gt;
+&lt;p&gt;Which gives us yet [another way][earlier post] to calculate the mean fitness at the mutation-selection balance: \[
+\bar{\omega }^* = lim_{g\to \infty} e^{-\lambda(g) s} = e^{-\frac{U}{s}s} = e^{-U}
+\]&lt;/p&gt;
+&lt;p&gt;The second moment of the population fitness is given by:&lt;/p&gt;
+&lt;p&gt;\[
+E[\omega_{g}^2] = \sum_{i=0}^{\infty }{\frac{\lambda(g)^{i}}{i!}e^{-\lambda(g)}(1-s)^{2i}} = \\
+e^{-\lambda(g)} \sum_{i=0}^{\infty }{\frac{ (\lambda(g)(1-s)^2)^{i} }{i!}} = \\
+e^{-\lambda(g)} e^{\lambda(g)(1-s)^2} = \\
+e^{\lambda(g)(1-2s+s^2)-\lambda(g)} = \\
+e^{\lambda(g)(s^2-2s)}
+\]&lt;/p&gt;
+&lt;h2 id="estimation-of-mutation-rates"&gt;&lt;a href="#TOC"&gt;Estimation of mutation rates&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In mutation-accumulation (MA) experiments, a population is undergoing a sequence of bottlenecks that cause the accumulation of deleterious mutations due to the random sampling effect of &lt;strong&gt;genetic drift&lt;/strong&gt;. In these experiments the investigators usually measure the mean fitness of the experimental population thorugh time and use these measurements to estimate &lt;em&gt;s&lt;/em&gt; and &lt;em&gt;U&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Denote the expected mean fitness at bottleneck &lt;em&gt;B&lt;/em&gt; by \(\bar{\omega{B}}\). We start with a mutation-free population, and \(\bar{\omega_{0}} = 1\). At the first bottleneck, the population is assumed to reach a mutation-selection balance, so the expected mean fitness is now \(\bar{\omega_{1}} = e^{-U}\). At the next bottleneck, the expected mean fitness is reduced again by the same factor, so it is now \(\bar{\omega_{1}} = e^{-U}e^{-U} = e^{-2U}\). After &lt;em&gt;B&lt;/em&gt; bottlenecks, the mean fitness is \(\bar{\omega_{B}} = e^{-UB}\). So one can take the log of the measured mean fitness after &lt;em&gt;B&lt;/em&gt; bottlenecks, \(-BU\), and use a linear regression model to estimate &lt;em&gt;U&lt;/em&gt;. By using a similar linear regression on the ratio of the second moment of fitness and the square of the expected mean fitness, one can estimate &lt;em&gt;s&lt;/em&gt; (see below).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;However, what happens if the population doesn't reach a mutation-selection balance?&lt;/strong&gt; In a population of bacteria, for example, the number of generations between bottlenecks may be insufficient for the population to reach a mutation-selection balance (see Figure 1 in &lt;span class="citation"&gt;(Gordo and Dionisio 2005)&lt;/span&gt;). In this case one must use a the non-equilibrium value of the mean fitness which was derived above - \(\bar{\omega}_{g} = e^{-\frac{U}{s} (1-(1-s)^{g})}\). This concept is the subject of the paper by &lt;span class="citation"&gt;Gordo and Dionisio (2005)&lt;/span&gt;, titled: &lt;strong&gt;Nonequilibrium model for estimating parameters of deleterious mutations&lt;/strong&gt;. The paper explores a statistical model based on the above calculations. The statistical model is tested with simulations. In a later paper, &lt;a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818"&gt;&lt;span class="citation"&gt;Trindade, Perfeito, and Gordo (2010)&lt;/span&gt;&lt;/a&gt;, the statistical model was used on results of a mutation-accumulation experiment with &lt;em&gt;E. coli&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;In the above development, we saw that the expected mean fitness after &lt;em&gt;g&lt;/em&gt; generations is \(\bar{\omega}_{g} = e^{-\lambda(g) s}\). If the number of generations between bottlenecks is constant, say &lt;em&gt;g=24&lt;/em&gt; (for a population in which a generation is estimated at 30 minutes, resulting in a bottleneck period of 12 hours), then we can denote \(\lambda {:=} \lambda(g)\) and use \(\bar{\omega_{B}} = e^{-\lambda s B}\). Then we can use a linear regression model to estimate \(-\lambda s\).&lt;/p&gt;
+&lt;p&gt;But how do we proceed? The estimator we found using linear regression, \(\lambda s= \lambda(g) s = U(1-(1-s)^{g})\), doesn't directly yield either &lt;em&gt;U&lt;/em&gt; or &lt;em&gt;s&lt;/em&gt;. Well, this is why we calculated the second moment. We will not use it directly, but instead define an F-statistic (not to be confused with the F-statistic used to describe heterozigosity or population structuring): \(F_{B} = \frac{\bar{\omega^2}}{\bar{\omega}^2}\). This is a little confusing so I'll write it in a probablistic presentation:&lt;/p&gt;
+&lt;p&gt;\[
+F_{B} = \frac{E[\omega^2]}{E^2[\omega]}
+\]&lt;/p&gt;
+&lt;p&gt;This is the ratio of the second moment to the square of the first moment. What is this ratio? Let's have a look:&lt;/p&gt;
+&lt;p&gt;\[
+F_{B} = \frac{E[\omega^2]}{E^2[\omega]} = \\
+\frac{e^{\lambda (s^2-2s) B}}{e^{-2 \lambda s B}} =\\
+e^{( \lambda s^2-2\lambda s+2 \lambda s)B} = \\
+e^{( \lambda s^2)B}
+\]&lt;/p&gt;
+&lt;p&gt;So the log of the &lt;em&gt;F-statistic&lt;/em&gt; is \(\lambda s^2 B\), and linear regression can give us \(\lambda s^2\). Now have have both \(-\lambda s\), \(\lambda s^2\), and of course \(\lambda = \frac{U}{s}(1-(1-s)^g)\), and we can estimate both &lt;em&gt;U&lt;/em&gt; and &lt;em&gt;s&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id="technical-remarks"&gt;&lt;a href="#TOC"&gt;Technical remarks&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I originally wrote this post with &lt;a href="http://en.wikipedia.org/wiki/Microsoft_Office_2010"&gt;Office 2010&lt;/a&gt;. I converted it TeX using &lt;a href="http://docx2tex.codeplex.com/"&gt;docx2tex&lt;/a&gt; and from &lt;a href="http://en.wikipedia.org/wiki/LaTeX"&gt;TeX&lt;/a&gt; to &lt;a href="http://daringfireball.net/projects/markdown/"&gt;Markdown&lt;/a&gt; using &lt;a href="https://github.com/ajtulloch/LaTeX2Markdown"&gt;LaTeX2Markdown&lt;/a&gt;, although it can also be sone using &lt;a href="http://johnmacfarlane.net/pandoc/"&gt;Pandoc&lt;/a&gt;. Then I proof-read it, and several LaTeX bugs were identified and fixed using an online tool for &lt;a href="http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm"&gt;testing MathJax code&lt;/a&gt; (&lt;a href="http://www.mathjax.org/"&gt;MathJax&lt;/a&gt; is a JavaScript library that displays LaTeX in browsers, see how in &lt;a href="/blogging-with-math-and-code"&gt;another post&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 id="references"&gt;&lt;a href="#TOC"&gt;References&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Gordo, Isabel, and Francisco Dionisio. 2005. &amp;#8220;Nonequilibrium model for estimating parameters of deleterious mutations.&amp;#8221; &lt;em&gt;Physical Review E&lt;/em&gt; 71 (mar): 18&amp;#8211;21. doi:10.1103/PhysRevE.71.031907. &lt;a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907" title="http://link.aps.org/doi/10.1103/PhysRevE.71.031907"&gt;http://link.aps.org/doi/10.1103/PhysRevE.71.031907&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Trindade, Sandra, Lilia Perfeito, and Isabel Gordo. 2010. &amp;#8220;Rate and effects of spontaneous mutations that affect fitness in mutator Escherichia coli.&amp;#8221; &lt;em&gt;Philosophical Transactions of the Royal Society B: Biological Sciences&lt;/em&gt; 365 (apr): 1177&amp;#8211;86. doi:10.1098/rstb.2009.0287. &lt;a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818"&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818&lt;/a&gt;.&lt;/p&gt;</content>
+  </entry>
   <entry xml:base="http://blog.yoavram.com/recent.atom">
     <title type="text">Summary: "Mutators and sex in bacteria: Conflict between adaptive strategies" (Tenaillon et al. 2000)</title>
     <id>http://blog.yoavram.com/tenaillon-et-al-2000/</id>
@@ -173,7 +316,7 @@
 &lt;p&gt;Martens, Erik A., and Oskar Hallatschek. 2011. &amp;#8220;Interfering Waves of Adaptation Promote Spatial Mixing.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 189 (sep): 1045&amp;#8211;1060. doi:10.1534/genetics.111.130112. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/21900264" title="http://www.ncbi.nlm.nih.gov/pubmed/21900264"&gt;http://www.ncbi.nlm.nih.gov/pubmed/21900264&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Milkman, Roger, and Mellissa McKane Bridges. 1990. &amp;#8220;Molecular evolution of the Escherichia coli chromosome. III. Clonal frames.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 126 (nov): 505&amp;#8211;17. &lt;a href="http://mutage.oxfordjournals.org/cgi/doi/10.1093/mutage/2.2.147 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204208" title="http://mutage.oxfordjournals.org/cgi/doi/10.1093/mutage/2.2.147 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204208"&gt;http://mutage.oxfordjournals.org/cgi/doi/10.1093/mutage/2.2.147 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204208&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Ninio, Jacques. 1991. &amp;#8220;Transient mutators: a semiquantitative analysis of the influence of translation and transcription errors on mutation rates.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 129 (nov): 957&amp;#8211;62. &lt;a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204761\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204761\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract"&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204761\&amp;amp;tool=pmcentrez\&amp;amp;rendertype=abstract&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Ram, Yoav, and Lilach Hadany. 2012. &amp;#8220;The evolution of stress-induced hypermutation in asexual populations.&amp;#8221; &lt;em&gt;Evolution; International Journal of Organic Evolution&lt;/em&gt; 66 (jul): 2315&amp;#8211;28. doi:10.1111/j.1558-5646.2012.01576.x. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/22759304" title="http://www.ncbi.nlm.nih.gov/pubmed/22759304"&gt;http://www.ncbi.nlm.nih.gov/pubmed/22759304&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ram, Yoav, and Lilach Hadany. 2012. &amp;#8220;THE EVOLUTION OF STRESS-INDUCED HYPERMUTATION IN ASEXUAL POPULATIONS.&amp;#8221; &lt;em&gt;Evolution&lt;/em&gt; 66 (feb): 2315&amp;#8211;2328. doi:10.1111/j.1558-5646.2012.01576.x. &lt;a href="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x" title="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x"&gt;http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Sloan, Daniel B., and Vijay G. Panjeti. 2010. &amp;#8220;Evolutionary feedbacks between reproductive mode and mutation rate exacerbate the paradox of sex.&amp;#8221; &lt;em&gt;Evolution&lt;/em&gt; 64 (apr): 1129&amp;#8211;35. doi:10.1111/j.1558-5646.2009.00869.x. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/19863589" title="http://www.ncbi.nlm.nih.gov/pubmed/19863589"&gt;http://www.ncbi.nlm.nih.gov/pubmed/19863589&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Taddei, Fran&amp;#231;ois, Miroslav Radman, John Maynard Smith, Bruno Toupance, Pierre-Henri Gouyon, and Bernard Godelle. 1997. &amp;#8220;Role of mutator alleles in adaptive evolution.&amp;#8221; &lt;em&gt;Nature&lt;/em&gt; 387 (jun): 700&amp;#8211;2. doi:10.1038/42696. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/9192893" title="http://www.ncbi.nlm.nih.gov/pubmed/9192893"&gt;http://www.ncbi.nlm.nih.gov/pubmed/9192893&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Tenaillon, Olivier, Herve Le Nagard, Bernard Godelle, and Fran&amp;#231;ois Taddei. 2000. &amp;#8220;Mutators and sex in bacteria: conflict between adaptive strategies.&amp;#8221; &lt;em&gt;Proceedings of the National Academy of Sciences of the United States of America&lt;/em&gt; 97 (sep): 10465&amp;#8211;70. doi:10.1073/pnas.180063397. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/10973474" title="http://www.ncbi.nlm.nih.gov/pubmed/10973474"&gt;http://www.ncbi.nlm.nih.gov/pubmed/10973474&lt;/a&gt;.&lt;/p&gt;
@@ -289,7 +432,7 @@ e^{-U}
 &lt;p&gt;Gordo, Isabel, and Francisco Dionisio. 2005. &amp;#8220;Nonequilibrium model for estimating parameters of deleterious mutations.&amp;#8221; &lt;em&gt;Physical Review E&lt;/em&gt; 71 (mar): 18&amp;#8211;21. doi:10.1103/PhysRevE.71.031907. &lt;a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907" title="http://link.aps.org/doi/10.1103/PhysRevE.71.031907"&gt;http://link.aps.org/doi/10.1103/PhysRevE.71.031907&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Kimura, Motoo, and Takeo Maruyama. 1966. &amp;#8220;The mutational load with epistatic gene interactions in fitness.&amp;#8221; &lt;em&gt;Genetics&lt;/em&gt; 54 (dec): 1337&amp;#8211;51. &lt;a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299"&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Otto, Sarah P., and Troy Day. 2007. &lt;em&gt;A Biologist&amp;#8217;s Guide To Mathematical Modeling in Ecology and Evolution, Volume 13&lt;/em&gt;. Princeton University Press. &lt;a href="http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;amp;pgis=1" title="http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;amp;pgis=1"&gt;http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;amp;pgis=1&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Ram, Yoav, and Lilach Hadany. 2012. &amp;#8220;The evolution of stress-induced hypermutation in asexual populations.&amp;#8221; &lt;em&gt;Evolution; International Journal of Organic Evolution&lt;/em&gt; 66 (jul): 2315&amp;#8211;28. doi:10.1111/j.1558-5646.2012.01576.x. &lt;a href="http://www.ncbi.nlm.nih.gov/pubmed/22759304" title="http://www.ncbi.nlm.nih.gov/pubmed/22759304"&gt;http://www.ncbi.nlm.nih.gov/pubmed/22759304&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ram, Yoav, and Lilach Hadany. 2012. &amp;#8220;THE EVOLUTION OF STRESS-INDUCED HYPERMUTATION IN ASEXUAL POPULATIONS.&amp;#8221; &lt;em&gt;Evolution&lt;/em&gt; 66 (feb): 2315&amp;#8211;2328. doi:10.1111/j.1558-5646.2012.01576.x. &lt;a href="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x" title="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x"&gt;http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="footnotes"&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
