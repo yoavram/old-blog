@@ -1,5 +1,5 @@
 title: The convergence of mean fitness towards the mutation-selection balance
-datetime: 2012-10-26 11:33:00 +2
+datetime: 2012-11-19 15:49:00 +2
 tags: [mutation-selection balance, mean fitness, asexual populations, mathematical modeling]
 category: [research, mean fitness]
 math: true
