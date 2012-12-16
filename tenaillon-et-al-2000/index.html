@@ -28,8 +28,6 @@
 <!-- Le JS -->
 <script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="/static/bootstrap.min.js"></script>
-<script type="text/javascript" src="/static/bootstrap-transition.js"></script>
-<script type="text/javascript" src="/static/bootstrap-collapse.js"></script>
 
 <!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
 <script type="text/javascript" src="/static/prettify.js"></script>
@@ -216,7 +214,8 @@
 				title="Subscribe by Email">
 					<i class="icon-envelope"></i>
 					&nbsp;&nbsp;				
-				</a>		
+				</a>
+			</li>		
 			</ul>
       </div>
  
@@ -338,7 +337,7 @@
 </ul>
 <a name='TOC'></a>
 <h2 id="overview"><a href="#TOC">Overview</a></h2>
-<p>This post is mostly a technical summary of the paper by <strong>Tenaillon, Le Nagard, Godelle and Taddei <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/"><span class="citation">Tenaillon et al. (2000)</span></a></strong>. I wrote the summary because I use it as a baseline for my own research, which involves the evolution of stress-induced mutators <span class="citation">(Ram and Hadany 2012)</span>.</p>
+<p>This post is mostly a technical summary of the paper by <strong>Tenaillon, Le Nagard, Godelle and Taddei <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/"><span class="citation">Tenaillon et al. (2000)</span></a></strong>. I wrote the summary because I use it as a baseline for my own research, which involves the evolution of stress-induced mutators [@Ram2012a].</p>
 <p>The hypothesis the paper deals with is:</p>
 <blockquote>
 <p><em>The existence of genetic exchanges could modify the dynamics of adaptation and limits the success of mutator alleles<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup></em>.</p>
@@ -437,7 +436,7 @@
 <h4 id="selection-coefficient-of-beneficial-mutations"><a href="#TOC">Selection coefficient of beneficial mutations</a></h4>
 <p><a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/figure/F5/">Figure 5</a> shows that the negative effect of recombination of the fixation of mutators decreases when the selection coefficient of beneficial mutations increases.</p>
 <p>For a selection coefficient of 0.01 <span class="citation">(Kibota and Lynch 1996)</span> recombination reduced the fixation probability of mutators 17-fold.</p>
-<p>A selection coefficient of 0.1, used in my own work <span class="citation">(Ram and Hadany 2012)</span>, falls between the two right most points of <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/figure/F5/">Figure 5</a> - 2.5 and 3 - and the fixation probability of a 100-fold mutator allele drops ~10-fold due to recombination at a rate of 10<sup>-4</sup> per gene per generation in a population with size 10<sup>9</sup>.</p>
+<p>A selection coefficient of 0.1, used in my own work [@Ram2012a], falls between the two right most points of <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/figure/F5/">Figure 5</a> - 2.5 and 3 - and the fixation probability of a 100-fold mutator allele drops ~10-fold due to recombination at a rate of 10<sup>-4</sup> per gene per generation in a population with size 10<sup>9</sup>.</p>
 <h2 id="discussion"><a href="#TOC">Discussion</a></h2>
 <p>This paper is <em>packed</em> with interesting results. The effect of recombination on mutator evolution has not recieved alot of treatment using simulation (but see <span class="citation">Levin and Cornejo (2009)</span> and <span class="citation">Sloan and Panjeti (2010)</span> on which I hope to write some other time). So this is really interesting to someone interesed in the evolution of the mutation rate, even 12 years later.</p>
 <p>This work shows that indeed recombination has an effect on mutator evolution, and that this effect is highly sensitive - it is (I'm concentrating on when the effect is weak because that's when mutators are still going to evolve):</p>
@@ -468,7 +467,6 @@
 <p>Martens, Erik A., and Oskar Hallatschek. 2011. &#8220;Interfering Waves of Adaptation Promote Spatial Mixing.&#8221; <em>Genetics</em> 189 (sep): 1045&#8211;1060. doi:10.1534/genetics.111.130112. <a href="http://www.ncbi.nlm.nih.gov/pubmed/21900264" title="http://www.ncbi.nlm.nih.gov/pubmed/21900264">http://www.ncbi.nlm.nih.gov/pubmed/21900264</a>.</p>
 <p>Milkman, Roger, and Mellissa McKane Bridges. 1990. &#8220;Molecular evolution of the Escherichia coli chromosome. III. Clonal frames.&#8221; <em>Genetics</em> 126 (nov): 505&#8211;17. <a href="http://mutage.oxfordjournals.org/cgi/doi/10.1093/mutage/2.2.147 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204208" title="http://mutage.oxfordjournals.org/cgi/doi/10.1093/mutage/2.2.147 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204208">http://mutage.oxfordjournals.org/cgi/doi/10.1093/mutage/2.2.147 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204208</a>.</p>
 <p>Ninio, Jacques. 1991. &#8220;Transient mutators: a semiquantitative analysis of the influence of translation and transcription errors on mutation rates.&#8221; <em>Genetics</em> 129 (nov): 957&#8211;62. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204761\&amp;tool=pmcentrez\&amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204761\&amp;tool=pmcentrez\&amp;rendertype=abstract">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1204761\&amp;tool=pmcentrez\&amp;rendertype=abstract</a>.</p>
-<p>Ram, Yoav, and Lilach Hadany. 2012. &#8220;THE EVOLUTION OF STRESS-INDUCED HYPERMUTATION IN ASEXUAL POPULATIONS.&#8221; <em>Evolution</em> 66 (feb): 2315&#8211;2328. doi:10.1111/j.1558-5646.2012.01576.x. <a href="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x" title="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x">http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x</a>.</p>
 <p>Sloan, Daniel B., and Vijay G. Panjeti. 2010. &#8220;Evolutionary feedbacks between reproductive mode and mutation rate exacerbate the paradox of sex.&#8221; <em>Evolution</em> 64 (apr): 1129&#8211;35. doi:10.1111/j.1558-5646.2009.00869.x. <a href="http://www.ncbi.nlm.nih.gov/pubmed/19863589" title="http://www.ncbi.nlm.nih.gov/pubmed/19863589">http://www.ncbi.nlm.nih.gov/pubmed/19863589</a>.</p>
 <p>Taddei, Fran&#231;ois, Miroslav Radman, John Maynard Smith, Bruno Toupance, Pierre-Henri Gouyon, and Bernard Godelle. 1997. &#8220;Role of mutator alleles in adaptive evolution.&#8221; <em>Nature</em> 387 (jun): 700&#8211;2. doi:10.1038/42696. <a href="http://www.ncbi.nlm.nih.gov/pubmed/9192893" title="http://www.ncbi.nlm.nih.gov/pubmed/9192893">http://www.ncbi.nlm.nih.gov/pubmed/9192893</a>.</p>
 <p>Tenaillon, Olivier, Herve Le Nagard, Bernard Godelle, and Fran&#231;ois Taddei. 2000. &#8220;Mutators and sex in bacteria: conflict between adaptive strategies.&#8221; <em>Proceedings of the National Academy of Sciences of the United States of America</em> 97 (sep): 10465&#8211;70. doi:10.1073/pnas.180063397. <a href="http://www.ncbi.nlm.nih.gov/pubmed/10973474" title="http://www.ncbi.nlm.nih.gov/pubmed/10973474">http://www.ncbi.nlm.nih.gov/pubmed/10973474</a>.</p>
@@ -604,7 +602,7 @@
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 19 November 2012 at 15:49.</li>
+	<li>This page was last modified on 16 December 2012 at 11:40.</li>
 	</ul>
 	
 	

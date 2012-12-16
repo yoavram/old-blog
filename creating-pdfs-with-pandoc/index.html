@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title> The Mutation-Selection Blog </title>
+<title> Creating PDFs with Pandoc </title>
 <meta name="description" content="Yoav Ram's blog on evolutionary theory and other scientific interests, and especially on the theoretical treatment of the evolution of the mutation rate" />
 <meta name="author" content="Yoav Ram">
 <meta name="keywords" content="evolution,mutation rate,mutation rates,Yoav Ram,yoavram,evolutionary theory,science,theoretical biology,mathematical biology,mathematics">
@@ -31,6 +31,33 @@
 
 <!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
 <script type="text/javascript" src="/static/prettify.js"></script>
+
+
+
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+<!-- Online Debugger: http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm -->
+<!-- Doc: http://docs.mathjax.org/en/latest/output.html -->`
+  MathJax.Hub.Config({            
+			"HTML-CSS": { availableFonts: ["STIX", "TeX"], 
+						  linebreaks: { automatic: true }
+			}
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+
+
+
+
+<!-- ShareThis JS -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "{{ config.SHARETHIS_PUBLISHER }}"});</script>
+<!-- ShareThis JS -->
 
 
 
@@ -202,8 +229,69 @@
 <div class="row-fluid">
 	<div class="span8 offset1">
 	<header class="masthead">
-	<br>
-	<h1>List of posts tagged <em>python</em></h2>
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/convergence-of-mean-fitness/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#bottom">To bottom &darr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+	<h1>Creating PDFs with Pandoc</h1>
+	
+<ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
+	<li class="active"><i class="icon-time"></i> 16 December 2012 at 09:36</li>
+	
+	<li><span class="divider">/</span>
+	<i class="icon-star"></i> <a href='http://blog.yoavram.com/creating-pdfs-with-pandoc/'>Permalink</a></li>
+	
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/markdown/">markdown</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/pdf/">pdf</a></li>
+	
+	
+	
+	<li><span class="divider">/</span>
+	
+	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
+	<span class='st_email' ></span>
+	<span class='st_twitter' ></span>
+	<span class='st_facebook' ></span>
+	<span class='st_googleplus' ></span>
+	<span class='st_reddit' ></span>
+	<span class='st_linkedin' ></span>
+	<span class='st_stumbleupon' ></span>
+	<span class='st_delicious' ></span>
+	<span class='st_citeulike' ></span>
+	<span class='st_connotea' ></span>
+
+	</li>
+	</ul>
+
 	</header>
 	</div>
 </div>
@@ -214,23 +302,111 @@
 	<div class="span8 offset1">
 
 		
-    
-    
-        <div class="posts">
 
-
-	<h3>
-		<a href='/citations-in-markdown-using-pandoc/'>
-		  Citations in Markdown using Pandoc
-		  <small>12 October 2012 at 13:35</small>
-		</a>
-	</h3>
+<div class="post">
 	
-
-
+    <ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#simple-pdf-rendering">Simple PDF rendering</a></li>
+<li><a href="#with-bibliography">With bibliography</a></li>
+<li><a href="#creating-epub">Creating EPUB</a></li>
+<li><a href="#creating-pdfs-for-mobile-phones">Creating PDFs for mobile phones</a></li>
+<li><a href="#sample-text-with-math-code-and-citation">Sample text with math, code and citation</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<a name='TOC'></a>
+<h2 id="overview"><a href="#TOC">Overview</a></h2>
+<p>This post will show how to convert a <a href="http://daringfireball.net/projects/markdown/">Markdown</a> document to PDF, mobile-PDF and EPUB documents using <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>. The guide is not exhastive but rather a walkthrough of my own experiments. The mobile-PDF especially is lacking - it is based on somewhat advanced \(LaTeX\), and I'm a novice user of that language.</p>
+<p>The source <a href="http://daringfireball.net/projects/markdown/">Markdown</a> file use for this post, <a href="https://gist.github.com/4305736/">creating-pdfs-with-pandoc.md</a>, is available as a gist.</p>
+<h2 id="simple-pdf-rendering"><a href="#TOC">Simple PDF rendering</a></h2>
+<pre class="prettyprint linenums:1"><code>&gt; pandoc creating-pdfs-with-pandoc.md -o creating-pdfs-with-pandoc.pdf</code></pre>
+<p><a href="https://www.box.com/s/sbsvcg28mnao4clscz5n">See result</a></p>
+<h2 id="with-bibliography"><a href="#TOC">With bibliography</a></h2>
+<pre class="prettyprint linenums:1"><code>&gt; pandoc creating-pdfs-with-pandoc.md -o creating-pdfs-with-pandoc.pdf --bibliography=&lt;path to bibtex file&gt; [--csl=&lt;path to csl file&gt;] [--toc]</code></pre>
+<p>The CSL file is optional, if ommited <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> uses <a href="http://www.chicagomanualofstyle.org/tools_citationguide.html">Chicago-style citations</a>. You can find more information on citation styles at <a href="http://citationstyles.org/"><code class="url">http://citationstyles.org/</code></a>. If you add the <code>--toc</code> option <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> will add a table of contents.</p>
+<p><a href="https://www.box.com/s/3ct61opmejh76nn374ri">See result</a></p>
+<h2 id="creating-epub"><a href="#TOC">Creating EPUB</a></h2>
+<pre class="prettyprint linenums:1"><code>&gt; pandoc creating-pdfs-with-pandoc.md -o creating-pdfs-with-pandoc.epub --bibliography=&lt;path to bibtex file&gt; [--csl=&lt;path to csl file&gt;] [--toc]</code></pre>
+<p>On Windows 7 you can open EPUB files with <a href="http://calibre-ebook.com">Calibre</a>.</p>
+<p><a href="https://www.box.com/s/vaebc1h0l823yfqh1a3w">See result</a></p>
+<h2 id="creating-pdfs-for-mobile-phones"><a href="#TOC">Creating PDFs for mobile phones</a></h2>
+<p>This is following the discussion on <a href="http://tex.stackexchange.com/questions/78920/generating-smartphone-readable-pdf">tex.stackexchange</a>, and using a <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> latex template which merges the default template with <a href="http://uweziegenhagen.de/?p=765">this one</a>. Here is <a href="https://gist.github.com/3979276/">the template as a gist</a>. Remember to put the template in Pandoc's template folder (on Windows 7, C:\Program Files (x86)\Pandoc\templates).</p>
+<pre class="prettyprint linenums:1"><code>&gt; pandoc creating-pdfs-with-pandoc.md -o creating-pdfs-with-pandoc.iphone.pdf -s --template=iphone-pandoc-template.latex --bibliography=&lt;path to bibtex file&gt; [--csl=&lt;path to csl file&gt;] [--toc]</code></pre>
+<p>This rendering is <strong>not so good</strong> - pages are split strangely and code segements are cropped. If anyone wants to play around with the <a href="https://gist.github.com/3979276/">template</a>, I'll be happy to post the results.</p>
+<p><a href="https://www.box.com/s/82kjkhck9nf87kfha9b0">See result</a></p>
+<h2 id="sample-text-with-math-code-and-citation"><a href="#TOC">Sample text with math, code and citation</a></h2>
+<p>Here is a reference <span class="citation">(Kimura and Maruyama 1966)</span>, and also a link to my blog <a href="http://blog.yoavram.com">Mutation-Selection Blog</a>. Here's a footnote<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> that you can see on the bottom.</p>
+<p>One of my favorite mathematical expressions is the <a href="http://en.wikipedia.org/wiki/Triangle_inequality">triangle ineuqality</a>:</p>
+<p>\[
+\forall{x,y} \; \|x + y\| \leq \|x\| + \|y\|
+\]</p>
+<p>And a piece of Python code:</p>
+<pre class="prettyprint linenums:1"><code>for x in [p for p in posts if p[&#39;author&#39;] == &#39;yoavram&#39;]:
+    print x[&#39;date&#39;]
+print &#39;done&#39;</code></pre>
+<h2 id="references"><a href="#TOC">References</a></h2>
+<p>Kimura, Motoo, and Takeo Maruyama. 1966. &#8220;The mutational load with epistatic gene interactions in fitness.&#8221; <em>Genetics</em> 54 (dec): 1337&#8211;51. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299</a>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Footnotes are great.<a href="#fnref1">&#8617;</a></p></li>
+</ol>
 </div>
-    
 	
+	<a name="bottom"></a>
+	
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/convergence-of-mean-fitness/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#">To top &uarr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+	
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
+	var disqus_shortname = 'yoavram'; // required: replace example with your forum shortname
+	var disqus_identifier = 'creating-pdfs-with-pandoc';
+	
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
 
 		
 		
@@ -238,7 +414,8 @@
 	<div class="span3">
 	<div class="sidebar">
 		
-				
+	
+		
 		</div>
 	</div>
 	

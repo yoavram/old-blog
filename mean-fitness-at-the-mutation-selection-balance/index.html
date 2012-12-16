@@ -28,8 +28,6 @@
 <!-- Le JS -->
 <script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="/static/bootstrap.min.js"></script>
-<script type="text/javascript" src="/static/bootstrap-transition.js"></script>
-<script type="text/javascript" src="/static/bootstrap-collapse.js"></script>
 
 <!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
 <script type="text/javascript" src="/static/prettify.js"></script>
@@ -216,7 +214,8 @@
 				title="Subscribe by Email">
 					<i class="icon-envelope"></i>
 					&nbsp;&nbsp;				
-				</a>		
+				</a>
+			</li>		
 			</ul>
       </div>
  
@@ -389,13 +388,13 @@ M = \left(\begin{array}{cccc}
 \end{array}\right)
 \] This matrix is called a <a href="http://en.wikipedia.org/wiki/Stochastic_matrix">transition matrix</a> because its entries \(M_{i,j}\) are the transition probabilities from state <em>j</em> to state <em>i</em> - the state is the number of mutant alleles.</p>
 <p>Now if we set \(p^*=p&#39;=p\) we get \(\bar{\omega}^*p^*=Mp^*\), so if there is \(\bar{\omega}^*\) and \(p^*\) such that \(p^*_i \ge 0 \; \sum_{i}{p^*_i}=1\) that solve this equation, then \(p^*\) is an <strong>eigenvector</strong> of <em>M</em> and \(\bar{\omega}^*\) is an <strong>eigenvalue</strong> of M.</p>
-<p>From the <a href="http://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a> we know that this matrix always has a unique non-negative eigenvector, so \(p^*\) exists and it is unique. Furthermore, from the same theorem we know that \(\bar{\omega}^*\) also exists and that it is the leading (largest positive) eigenvalue of <em>M</em> <span class="citation">(Otto and Day 2007, 709)</span>.</p>
+<p>From the <a href="http://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a> we know that this matrix always has a unique non-negative eigenvector, so \(p^*\) exists and it is unique. Furthermore, from the same theorem we know that \(\bar{\omega}^*\) also exists and that it is the leading (largest positive) eigenvalue of <em>M</em> [@Otto2007, p. 709].</p>
 <p>Since this is a triangular matrix, the eigenvalues are simply the elements on the diagonal<sup><a href="#fn5" class="footnoteRef" id="fnref5">5</a></sup>. Therefore, the largest eigenvalue must be the largest element on the diagonal, which is the element \[
 \bar{\omega}^* = M_{0,0} = 
 \omega_0 \varphi_U(0) = (1-s)^0 \frac{U^0 e^{-U}}{0!} = 
 e^{-U}
 \]</p>
-<p>Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to derive the eigenvalue so easily, because the matrix would not be triagonal. However, it would still agree with the conditions of the Perron-Frobenius theorem and the mean fitness at the mutation-selection balance would still be the leading eigenvalue of the matrix, and would exist. I've used this fact in my paper <em>The Evolution of Stress-Induced Hypermutation in Asexual Populations</em> <span class="citation">(Ram and Hadany 2012)</span>.</p>
+<p>Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to derive the eigenvalue so easily, because the matrix would not be triagonal. However, it would still agree with the conditions of the Perron-Frobenius theorem and the mean fitness at the mutation-selection balance would still be the leading eigenvalue of the matrix, and would exist. I've used this fact in my paper <em>The Evolution of Stress-Induced Hypermutation in Asexual Populations</em> [@Ram2012a].</p>
 <h2 id="summary"><a href="#TOC">Summary</a></h2>
 <p>We've seen how to derive the mean fitness at the mutation-selection balance \(\bar{\omega} = e^{-U}\) both via a first-order approximation and via a more &quot;hardcore&quot; linear algerba method.</p>
 <p>The nice thing about deriving the mean fitness in the &quot;hardcore&quot; method is that we get some idea of <em>why</em> it is equal to e<sup>-U</sup>. We found that the mean fitness at the mutation-selection balance equals to the leading eigenvalue of the transition matrix, which is the relative probability that individuals from the least loaded class (the class of fittest individuals) survive to the next generation without mutating. By definition the fitness of the least loaded individuals is 1, and we assumed the mutations are <em>Poisson</em> distributed, and therefore we got e<sup>-U</sup>, but if we change these assumptions the general result will still hold:</p>
@@ -409,8 +408,6 @@ e^{-U}
 <p>Gillespie, John H. 2004. <em>Population Genetics: a Concise Guide</em>. Johns Hopkins University Press. <a href="http://www.google.com/books?id=KAcAfiyHpcoC" title="http://www.google.com/books?id=KAcAfiyHpcoC">http://www.google.com/books?id=KAcAfiyHpcoC</a>.</p>
 <p>Gordo, Isabel, and Francisco Dionisio. 2005. &#8220;Nonequilibrium model for estimating parameters of deleterious mutations.&#8221; <em>Physical Review E</em> 71 (mar): 18&#8211;21. doi:10.1103/PhysRevE.71.031907. <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907" title="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">http://link.aps.org/doi/10.1103/PhysRevE.71.031907</a>.</p>
 <p>Kimura, Motoo, and Takeo Maruyama. 1966. &#8220;The mutational load with epistatic gene interactions in fitness.&#8221; <em>Genetics</em> 54 (dec): 1337&#8211;51. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299</a>.</p>
-<p>Otto, Sarah P., and Troy Day. 2007. <em>A Biologist&#8217;s Guide To Mathematical Modeling in Ecology and Evolution, Volume 13</em>. Princeton University Press. <a href="http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;pgis=1" title="http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;pgis=1">http://books.google.com/books?id=Z\_bFNHJi\_VQC\&amp;pgis=1</a>.</p>
-<p>Ram, Yoav, and Lilach Hadany. 2012. &#8220;THE EVOLUTION OF STRESS-INDUCED HYPERMUTATION IN ASEXUAL POPULATIONS.&#8221; <em>Evolution</em> 66 (feb): 2315&#8211;2328. doi:10.1111/j.1558-5646.2012.01576.x. <a href="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x" title="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x">http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x</a>.</p>
 <div class="footnotes">
 <hr />
 <ol>
@@ -545,7 +542,7 @@ e^{-U}
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 19 November 2012 at 15:49.</li>
+	<li>This page was last modified on 16 December 2012 at 11:40.</li>
 	</ul>
 	
 	
