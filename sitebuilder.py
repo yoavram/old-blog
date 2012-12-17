@@ -215,7 +215,7 @@ def category(category):
     return render_template('category.html', pages=categorized, category=category, subcategories=subs)
 
 def freeze(debug=True):
-    app.config['DEBUG'] = debug
+    app.debug = debug
     freezer.freeze()
 
 
