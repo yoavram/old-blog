@@ -1,5 +1,6 @@
 title: The convergence of mean fitness towards the mutation-selection balance
 datetime: 2012-11-19 15:49:00 +2
+updated: 2012-12-18 09:30:00 +2
 tags: [mutation-selection balance, mean fitness, asexual populations, mathematical modeling]
 category: [research, mean fitness]
 math: true
@@ -224,7 +225,7 @@ e^{( \lambda s^2)B}
 $$
 
 So the log of the *F-statistic* is $\lambda s^2 B$, and linear regression can give us $\lambda s^2$. 
-Now have have both $-\lambda s$, $\lambda s^2$, and of course $\lambda = \frac{U}{s}(1-(1-s)^g)$,
+Now we have both $-\lambda s$, $\lambda s^2$, and $\lambda = \frac{U}{s}(1-(1-s)^g)$,
 and we can estimate both *U* and *s*.
 
 ## Technical remarks
