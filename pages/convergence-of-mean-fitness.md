@@ -225,8 +225,7 @@ e^{( \lambda s^2)B}
 $$
 
 So the log of the *F-statistic* is $\lambda s^2 B$, and linear regression can give us $\lambda s^2$. 
-Now we have both $-\lambda s$, $\lambda s^2$, and $\lambda = \frac{U}{s}(1-(1-s)^g)$,
-and we can estimate both *U* and *s*.
+Now we can estimate both *s* and *U* using the estimation for $-\lambda s$, $\lambda s^2$, and the relation $\lambda = \frac{U}{s}(1-(1-s)^g)$.
 
 ## Technical remarks
 
