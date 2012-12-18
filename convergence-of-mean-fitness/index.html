@@ -115,7 +115,7 @@
 
 	<li><a href='/tag/mutators/'>mutators: <small>1</small></a></li>
 
-	<li><a href='/tag/pandoc/'>pandoc: <small>1</small></a></li>
+	<li><a href='/tag/pandoc/'>pandoc: <small>2</small></a></li>
 
 	<li><a href='/tag/pdf/'>pdf: <small>1</small></a></li>
 
@@ -311,14 +311,14 @@
 </ul>
 <a name='TOC'></a>
 <h2 id="overview"><a href="#TOC">Overview</a></h2>
-<p>In an <a href="http://blog.yoavram.com/mean-fitness-at-the-mutation-selection-balance/">eariler post</a> I described how the mean fitness of a population at the <em>mutation-selection balance</em> can be analysed. I assumed that the population is <strong>asexual</strong>, that only <strong>deleterious mutations</strong> occur, that there is <strong>no drift or recombination</strong>, and that <strong>selection is constant</strong>.</p>
+<p>In an <a href="/mean-fitness-at-the-mutation-selection-balance/">eariler post</a> I described how the mean fitness of a population at the <em>mutation-selection balance</em> can be analysed. I assumed that the population is <strong>asexual</strong>, that only <strong>deleterious mutations</strong> occur, that there is <strong>no drift or recombination</strong>, and that <strong>selection is constant</strong>.</p>
 <p>In this post I would like to continue with these assumpions. I will show how to find a <strong>simple formula for the mean fitness after an arbitrary number of generations</strong>. The formulation and derivation will follow one of my favorite papers - <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">&quot;Nonequilibrium model for estimating parameters of deleterious mutations&quot;</a> by <span class="citation">Gordo and Dionisio (2005)</span>.</p>
 <h2 id="motivation"><a href="#TOC">Motivation</a></h2>
 <p>But first, why are we interested in the mean fitness of a population that is not at the mutation-selection balance?</p>
 <p>The general answer is that most populations are probably <strong>not</strong> at the mutation-selection balance. The mutation-selection balance is a nice idea, but it serves as a reference, as a null hypothesis, not as a general rule. The assumption that selection is constant is not relevant to many populations - selection is probably fluctuating, both in amplitude and direction. This means that at least some of the natural populations we encounter in the wild are not evolving around a mutation-selection balance, but rather evolving towards a mutation-selection balance, never actually reaching one.</p>
 <p>The more specific answer is that even in laboratory conditions which induce a constant selection regime it may take a long time for populations to reach the mutation-selection balance, and this time might be longer than what we intuitively expect (or desire).</p>
 <p>This issue is presented by <span class="citation">Gordo and Dionisio (2005)</span>. They wanted to use traditional models for calculating the mutation rate of bacterial populations in the lab. These models assume that the populations are at a mutation-selection balance, but Gordo and Dionisio showed that in the timeframe they planned for their study their populations will not reach an equilibrium, especially if selection is weak (see Figure 1 in <span class="citation">(Gordo and Dionisio 2005)</span>).</p>
-<p>This is interesting, because we saw in the <a href="http://blog.yoavram.com/mean-fitness-at-the-mutation-selection-balance/">eariler post</a> that the mean fitness at the mutation-selection balance is <em>e<sup>-U</sup></em>, where <em>U</em> is the mutation rate and is independent of <em>s</em>, the selection coefficient. But Figure 1 in <span class="citation">(Gordo and Dionisio 2005)</span> shows that the mean fitness before the mutation-selection balance <em>is dependent</em> on <em>s</em>, and that <em>s</em> determines the rate of convergence towards the balance.</p>
+<p>This is interesting, because we saw in the <a href="/mean-fitness-at-the-mutation-selection-balance/">eariler post</a> that the mean fitness at the mutation-selection balance is <em>e<sup>-U</sup></em>, where <em>U</em> is the mutation rate and is independent of <em>s</em>, the selection coefficient. But Figure 1 in <span class="citation">(Gordo and Dionisio 2005)</span> shows that the mean fitness before the mutation-selection balance <em>is dependent</em> on <em>s</em>, and that <em>s</em> determines the rate of convergence towards the balance.</p>
 <h2 id="model"><a href="#TOC">Model</a></h2>
 <p>This follows the model from <span class="citation">(Gordo and Dionisio 2005)</span> but I elaborated and included all the rigouros steps.</p>
 <h3 id="definitions"><a href="#TOC">Definitions</a></h3>
@@ -545,7 +545,7 @@ e^{( \lambda s^2)B}
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 18 December 2012 at 09:37.</li>
+	<li>This page was last modified on 18 December 2012 at 12:13.</li>
 	</ul>
 	
 	
