@@ -1,6 +1,7 @@
 title: Creating PDFs with Pandoc
 datetime: 2012-12-16 11:36:00 +2
-tags: [pdf, markdown]
+updated: 2012-12-18 12:10:00 +2
+tags: [pdf, markdown, pandoc]
 category: [hacking,blog]
 math: true
 
@@ -12,6 +13,8 @@ This post will show how to convert a [Markdown] document to PDF, mobile-PDF and 
 The guide is not exhastive but rather a walkthrough of my own experiments. The mobile-PDF especially is lacking - it is based on somewhat advanced $LaTeX$, and I'm a novice user of that language.
 
 The source [Markdown] file use for this post, [creating-pdfs-with-pandoc.md], is available as a gist.
+
+For more on rendering citations in [Markdown] with [Pandoc], see an [earlier post](/citations-in-markdown-using-pandoc/).
 
 ## Simple PDF rendering
 

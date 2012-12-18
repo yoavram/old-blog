@@ -235,4 +235,4 @@ I originally wrote this post with [Office 2010](http://en.wikipedia.org/wiki/Mic
 
 [gordo2005]: http://link.aps.org/doi/10.1103/PhysRevE.71.031907
 [trindade2010]: http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818
-[eariler post]: http://blog.yoavram.com/mean-fitness-at-the-mutation-selection-balance/
+[eariler post]: /mean-fitness-at-the-mutation-selection-balance/
