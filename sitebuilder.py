@@ -49,6 +49,20 @@ app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
 
+
+def add_bib_to_pages():
+    import re
+    citation_pattern = re.compile('@(\w+\d\d\d\d)', re.M)
+    import sys
+    sys.path.append(r"..\\..\\markx\\")
+    import bibi
+    bib = bibi.parse_file(app.config['BIB_FILE'])
+    for p in pages:
+        keys = set(citation_pattern.findall(p.body))
+        p.bib = bibi.to_string(bib, keys)
+        
+add_bib_to_pages()
+
 def load_categories(filename="categories.txt"):
     fin = open(filename)
     for category in fin:

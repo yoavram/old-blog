@@ -29,12 +29,26 @@
 <div class="post">
 	
     {{ page.html|safe }}
-	
+	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
+	<script type="text/javascript">
+	$(function() {
+		$('#download_bibtex_btn').click(function() {
+			var content = $('#bib').html();
+			var w = window.open();
+			$(w.document.body).html(content);
+		});
+	})
+	</script>
 	<a name="bottom"></a>
 	
 	{{ macros.pagination(prev_page(page), next_page(page)) }}
 	{{ macros.back_and_top() }}
 	
+</div>
+<div id="bib" style="display: none">
+	
+{{ page.bib|safe }}
+
 </div>
 
 {{ macros.comments(config, page) }}
