@@ -1,5 +1,6 @@
 title: 'Summary: "Mutators and sex in bacteria: Conflict between adaptive strategies" (Tenaillon et al. 2000)'
 datetime: 2012-10-16 15:22:00 +2
+update: 2013-1-14 09:51:00 +2
 tags: [evolution of the mutation rate, recombination, mutators, simulation, asexual populations]
 category: [research, mutation rate]
 math: true
@@ -9,9 +10,9 @@ cite: true
 
 ## Overview 
 
-This post is mostly a technical summary of the paper by **Tenaillon, Le Nagard, Godelle and Taddei [-@Tenaillon2000a][Tenaillon]**.
+This post is mostly a technical summary of the paper by **[Tenaillon, Le Nagard, Godelle and Taddei [-@Tenaillon2000]][Tenaillon]**.
 I wrote the summary because I use it as a baseline for my own research, 
-which involves the evolution of stress-induced mutators [@Ram2012a].
+which involves the evolution of stress-induced mutators [@Ram2012].
 
 The hypothesis the paper deals with is:  
 

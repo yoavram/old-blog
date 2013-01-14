@@ -61,7 +61,6 @@ def add_bib_to_pages():
     for p in pages:
         keys = set(citation_pattern.findall(p.body))
         p.bib = bibi.to_string(bib, keys).decode('utf-8')
-        
 add_bib_to_pages()
 
 def load_categories(filename="categories.txt"):

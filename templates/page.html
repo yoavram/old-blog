@@ -35,7 +35,9 @@
 		$('#download_bibtex_btn').click(function() {
 			var content = $('#bib').html();
 			var w = window.open();
-			$(w.document.body).html(content);
+			$(w.document.body).text(content);
+			w.document.title = '{{ page.title }}' + '.bib';
+			w.document.contentType = 'text/x-bibtex';
 		});
 	})
 	</script>
