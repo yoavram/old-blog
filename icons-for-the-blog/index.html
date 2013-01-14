@@ -333,7 +333,18 @@ Hospital <i class="glyphicon-hospital"></i>
 <h3 id="font-awesome"><a href="#TOC">Font Awesome</a></h3>
 <p>One last thing. During the search for the solution (15 mins?) I found someone that suggested to use the <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a> icon set instead of <em>Glyphicons</em>, so I tried that. First of all, the <em>Font Awesome</em> site is... awesome. It took me one minute to understand how I need to do, to follow the instructions, and transition my site to <em>Font Awesome</em>. The integration with <em>Twitter Bootstrap</em> is very easy. The icon set is large, and it looks nice, but... not as nice as <em>Glyphonics</em> looks. So I decided I'd stick with <em>Glyphicons</em>. I will say that <em>Font Awesome</em>'s social icons (twitter and company) are nicer, maybe because the <em>Glyphicons</em> social icons have a black background and they don't look so good at 14x14 pixels.</p>
 <p>You can, of course, decide for yourself. Here are screenshots of the navigation bar with <a href="http://i.imgur.com/3RFfm.png">Glyphonics</a> and here it is with <a href="http://i.imgur.com/WLVAM.png">Font Awesome</a>. If you would like to see the code, here are the commits for <a href="https://bitbucket.org/yoavram/msb/changeset/48d36660697bc022548e5476e40157c894aa3a99">Glyphonics</a> and for <a href="https://bitbucket.org/yoavram/msb/changeset/9a7b530667faeda8da08d9ba932e11622d07287b">Font Awesome</a>.</p>
-	
+	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
+	<script type="text/javascript">
+	$(function() {
+		$('#download_bibtex_btn').click(function() {
+			var content = $('#bib').html();
+			var w = window.open();
+			$(w.document.body).text(content);
+			w.document.title = 'Icons for the blog' + '.bib';
+			w.document.contentType = 'text/x-bibtex';
+		});
+	})
+	</script>
 	<a name="bottom"></a>
 	
 	
@@ -366,6 +377,11 @@ Hospital <i class="glyphicon-hospital"></i>
 	<!-- end of pagination -->
 
 	
+</div>
+<div id="bib" style="display: none">
+	
+
+
 </div>
 
 
@@ -448,7 +464,7 @@ Hospital <i class="glyphicon-hospital"></i>
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 18 December 2012 at 12:13.</li>
+	<li>This page was last modified on 14 January 2013 at 10:52.</li>
 	</ul>
 	
 	

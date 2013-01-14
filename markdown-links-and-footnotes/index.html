@@ -325,7 +325,18 @@ You can see a footnote here[^here].
 <li id="fn1"><p>This a footnote, it leads to <a href="http://somewhere.com" title="Somewhere">somewhere</a> but not much <em>else</em><a href="#fnref1">&#8617;</a></p></li>
 </ol>
 </div>
-	
+	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
+	<script type="text/javascript">
+	$(function() {
+		$('#download_bibtex_btn').click(function() {
+			var content = $('#bib').html();
+			var w = window.open();
+			$(w.document.body).text(content);
+			w.document.title = 'Markdown links and footnotes' + '.bib';
+			w.document.contentType = 'text/x-bibtex';
+		});
+	})
+	</script>
 	<a name="bottom"></a>
 	
 	
@@ -358,6 +369,11 @@ You can see a footnote here[^here].
 	<!-- end of pagination -->
 
 	
+</div>
+<div id="bib" style="display: none">
+	
+
+
 </div>
 
 
@@ -440,7 +456,7 @@ You can see a footnote here[^here].
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 18 December 2012 at 12:13.</li>
+	<li>This page was last modified on 14 January 2013 at 10:52.</li>
 	</ul>
 	
 	

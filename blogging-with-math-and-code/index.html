@@ -377,7 +377,18 @@ p&#39; = p + (1-p)(1-s)\mu
 <li id="fn4"><p><a href="http://www.htmlescape.net/htmlescape_tool.html">Online HTML escaping tool</a><a href="#fnref4">&#8617;</a></p></li>
 </ol>
 </div>
-	
+	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
+	<script type="text/javascript">
+	$(function() {
+		$('#download_bibtex_btn').click(function() {
+			var content = $('#bib').html();
+			var w = window.open();
+			$(w.document.body).text(content);
+			w.document.title = 'Blogging with math and code' + '.bib';
+			w.document.contentType = 'text/x-bibtex';
+		});
+	})
+	</script>
 	<a name="bottom"></a>
 	
 	
@@ -410,6 +421,11 @@ p&#39; = p + (1-p)(1-s)\mu
 	<!-- end of pagination -->
 
 	
+</div>
+<div id="bib" style="display: none">
+	
+
+
 </div>
 
 
@@ -492,7 +508,7 @@ p&#39; = p + (1-p)(1-s)\mu
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 18 December 2012 at 12:13.</li>
+	<li>This page was last modified on 14 January 2013 at 10:52.</li>
 	</ul>
 	
 	

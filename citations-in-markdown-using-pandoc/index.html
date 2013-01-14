@@ -349,7 +349,18 @@
 <li id="fn1"><p>The main Python module underlying my <a href="https://github.com/yoavram/yoavram.github.com/tree/source">Python static site generator</a>.<a href="#fnref1">&#8617;</a></p></li>
 </ol>
 </div>
-	
+	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
+	<script type="text/javascript">
+	$(function() {
+		$('#download_bibtex_btn').click(function() {
+			var content = $('#bib').html();
+			var w = window.open();
+			$(w.document.body).text(content);
+			w.document.title = 'Citations in Markdown using Pandoc' + '.bib';
+			w.document.contentType = 'text/x-bibtex';
+		});
+	})
+	</script>
 	<a name="bottom"></a>
 	
 	
@@ -382,6 +393,80 @@
 	<!-- end of pagination -->
 
 	
+</div>
+<div id="bib" style="display: none">
+	
+@article{Muller1964,
+abstract = {The method of calculation is shown wherebt a formula has been derived that approximately the ratio of the rate of accumulation of advantageous mutant genes in a population that undergoes recombination to the rate in an otherwise non-recombining one. A table is given showing the ratios thus found for different frequencies of advantageous mutations and different degrees of their advantage. It is shown that this calculation does not apply for mutant genes that act advantageously only when in some special combinations with one or more other mutant genes, and that as far as these cases of special synergism are concerned recombining lines have no evolutionary advantage over non-recombining ones. Other limitations of the formula are pointed out and assessed. It is explained that most factors that retard the rate of recombination—for expample, linkage, rarity of outbreeding, intercalation of sexual reproduction between more frequent cycles of sexual propagation, and partial isolation between subpopulations—must usually cause little long-term retardation of the speed of advance that is fostered by recombination. Moreover, even where long-term evolutions has virtually ceased, recombination of mutant genes still confers upon a population the means of adopting short-term genetic “dodges”, that adjust it to ecological and “physical” changes in its circumstances, much more rapidly than would be possible for a comparable asexual population. Under conditions where only stability of type is needed, a non-recombining does not actually degenerate as a result of an excess of mutation over selection, after the usual equilibrium between these pressures is reached. However, a irreversible ratchet mechanism exists in the non-recombining species (unlike the recombining ones) that prevents selection, even if intensified, from reducing the mutational loads below the lightest that were in existence when the intensified selection started, whereas, contrariwise, “drift”, and what might be called “selective noise” must allow occasional slips of the lightest loads in the direction of increased weight.},
+author = {Muller, Herman J.},
+doi = {10.1016/0027-5107(64)90047-8},
+issn = {00275107},
+journal = {Mutation Research/Fundamental and Molecular Mechanisms of Mutagenesis},
+keywords = {muller's ratchet,recombination},
+mendeley-tags = {muller's ratchet,recombination},
+month = may,
+number = {1},
+pages = {2--9},
+title = {{The relation of recombination to mutational advance}},
+url = {http://dx.doi.org/10.1016/0027-5107(64)90047-8},
+volume = {1},
+year = {1964}
+}
+@article{Hadany2003,
+abstract = {The adaptive value of recombination remains something of a puzzle. One of the basic problems is that recombination not only creates new and advantageous genetic combinations, but also breaks down existing good ones. A negative correlation between the fitness of an individual and its recombination rate would result in prolonged integrity of fitter genetic combinations while enabling less fit ones to produce new combinations. Such a correlation could be mediated by various factors, including stress responses, age, or direct DNA damage. For haploid population models, we show that an allele for such fitness-associated recombination (FAR) can spread both in asexual populations and in populations reproducing sexually at any uniform recombination rate. FAR also carries an advantage for the population as a whole, resulting in a higher average fitness at mutation-selection balance. These results are demonstrated in populations adapting to new environments as well as in well-adapted populations coping with deleterious mutations. Current experimental results providing evidence for the existence of FAR in nature are discussed.},
+author = {Hadany, Lilach and Beker, Tuvik},
+file = {:D$\backslash$:/papers/Hadany, Beker - 2003 - On the evolutionary advantage of fitness-associated recombination.pdf:pdf},
+issn = {0016-6731},
+journal = {Genetics},
+keywords = {Adaptation,Animals,Environment,Evolution,Gene Frequency,Genetic,Genetics,Haploidy,Humans,Models,Mutation,Physiological,Physiological: genetics,Population,Recombination,Reproduction,SIR,Selection},
+mendeley-tags = {SIR},
+month = dec,
+number = {4},
+pages = {2167--79},
+pmid = {14704195},
+title = {{On the evolutionary advantage of fitness-associated recombination.}},
+url = {http://www.ncbi.nlm.nih.gov/pubmed/14704195},
+volume = {165},
+year = {2003}
+}
+@article{Haigh1978,
+abstract = {A quantitative study of the operation of Muller's Ratchet for the accumulation of deleterious genes in an asexually reproducing population is made. For a population of size N, in which deleterious mutations occur at rate $\lambda$/genome/ generation, and the relative fitness of an individual with k mutants is (1 − s)k, the most important parameter is . If n0 is large (⩾25), deleterious mutations will accumulate very slowly, and independently of each other; if n0 is small (<1), the rate of accumulation of deleterious mutations will be greater than a natural population could plausibly bear; an estimate of the speed of the Ratchet for intermediate values of n0 is made. It is pointed out that the frequency distribution for the numbers of individuals carrying k mutants will retain its shape, but will move bodily to the right at the same average speed as the Ratchet. When favourable mutations also occur, the frequency distributions can move right of left; an estimate of the probability that any particular step is right or left is made, and it is shown that, for a given net rate of arrisal of deleterious mutations, the greater the rate of beneficial mutation, the greater the chance that beneficial mutations will accumulate.},
+author = {Haigh, John},
+doi = {10.1016/0040-5809(78)90027-8},
+file = {:D$\backslash$:/papers/Haigh - 1978 - The accumulation of deleterious genes in a population - Muller's Ratchet.pdf:pdf},
+issn = {00405809},
+journal = {Theoretical Population Biology},
+keywords = {muller's ratchet,theory},
+mendeley-tags = {muller's ratchet,theory},
+month = oct,
+number = {2},
+pages = {251--267},
+title = {{The accumulation of deleterious genes in a population - Muller's Ratchet}},
+url = {http://dx.doi.org/10.1016/0040-5809(78)90027-8 http://linkinghub.elsevier.com/retrieve/pii/0040580978900278},
+volume = {14},
+year = {1978}
+}
+@article{Drake1991,
+abstract = {In terms of evolution and fitness, the most significant spontaneous mutation rate is likely to be that for the entire genome (or its nonfrivolous fraction). Information is now available to calculate this rate for several DNA-based haploid microbes, including bacteriophages with single- or double-stranded DNA, a bacterium, a yeast, and a filamentous fungus. Their genome sizes vary by approximately 6500-fold. Their average mutation rates per base pair vary by approximately 16,000-fold, whereas their mutation rates per genome vary by only approximately 2.5-fold, apparently randomly, around a mean value of 0.0033 per DNA replication. The average mutation rate per base pair is inversely proportional to genome size. Therefore, a nearly invariant microbial mutation rate appears to have evolved. Because this rate is uniform in such diverse organisms, it is likely to be determined by deep general forces, perhaps by a balance between the usually deleterious effects of mutation and the physiological costs of further reducing mutation rates.},
+annote = {mu=0.0033},
+author = {Drake, John W.},
+doi = {10.1073/pnas.88.16.7160},
+file = {:D$\backslash$:/papers/Drake - 1991 - A constant rate of spontaneous mutation in DNA-based microbes.pdf:pdf},
+issn = {0027-8424},
+journal = {Proceedings of the National Academy of Sciences of the United States of America},
+keywords = {Bacterial,Bacterial: genetics,Bacteriophage lambda,Bacteriophage lambda: genetics,Base Composition,Biological Evolution,Coliphages,Coliphages: genetics,DNA,Escherichia coli,Escherichia coli: genetics,Fungal,Fungal: genetics,Genes,Mutation,Neurospora crassa,Neurospora crassa: genetics,Saccharomyces cerevisiae,Saccharomyces cerevisiae: genetics,Species Specificity,T-Phages,T-Phages: genetics,Viral,Viral: genetics,mutation rate},
+mendeley-tags = {mutation rate},
+month = aug,
+number = {16},
+pages = {7160--4},
+pmid = {1831267},
+title = {{A constant rate of spontaneous mutation in DNA-based microbes.}},
+url = {http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253},
+volume = {88},
+year = {1991}
+}
+
+
 </div>
 
 
@@ -464,7 +549,7 @@
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 18 December 2012 at 12:13.</li>
+	<li>This page was last modified on 14 January 2013 at 10:52.</li>
 	</ul>
 	
 	

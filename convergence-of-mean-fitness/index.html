@@ -430,7 +430,18 @@ e^{( \lambda s^2)B}
 <h2 id="references"><a href="#TOC">References</a></h2>
 <p>Gordo, Isabel, and Francisco Dionisio. 2005. &#8220;Nonequilibrium model for estimating parameters of deleterious mutations.&#8221; <em>Physical Review E</em> 71 (mar): 18&#8211;21. doi:10.1103/PhysRevE.71.031907. <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907" title="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">http://link.aps.org/doi/10.1103/PhysRevE.71.031907</a>.</p>
 <p>Trindade, Sandra, Lilia Perfeito, and Isabel Gordo. 2010. &#8220;Rate and effects of spontaneous mutations that affect fitness in mutator Escherichia coli.&#8221; <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em> 365 (apr): 1177&#8211;86. doi:10.1098/rstb.2009.0287. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818</a>.</p>
-	
+	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
+	<script type="text/javascript">
+	$(function() {
+		$('#download_bibtex_btn').click(function() {
+			var content = $('#bib').html();
+			var w = window.open();
+			$(w.document.body).text(content);
+			w.document.title = 'The convergence of mean fitness towards the mutation-selection balance' + '.bib';
+			w.document.contentType = 'text/x-bibtex';
+		});
+	})
+	</script>
 	<a name="bottom"></a>
 	
 	
@@ -463,6 +474,46 @@ e^{( \lambda s^2)B}
 	<!-- end of pagination -->
 
 	
+</div>
+<div id="bib" style="display: none">
+	
+@article{Gordo2005,
+abstract = {Deleterious mutations are of extreme evolutionary importance because, even though they are eliminated by natural selection, their continuous pressure creates a pool of variability in natural populations. They are of potential relevance for the existence of several features in evolution, such as sexual reproduction, and pose a risk to small asexual populations. Despite their extreme importance, the deleterious mutation rate and the effects of each mutation on fitness are poorly known quantities. Here we analyze a simple model that can be applied to simple experiments, in microorganisms, aiming at the quantification of these values.},
+author = {Gordo, Isabel and Dionisio, Francisco},
+doi = {10.1103/PhysRevE.71.031907},
+file = {:D$\backslash$:/papers/Gordo, Dionisio - 2005 - Nonequilibrium model for estimating parameters of deleterious mutations.pdf:pdf},
+issn = {1539-3755},
+journal = {Physical Review E},
+keywords = {muller's ratchet,mutation rate,theory},
+mendeley-tags = {muller's ratchet,mutation rate,theory},
+month = mar,
+number = {3},
+pages = {18--21},
+title = {{Nonequilibrium model for estimating parameters of deleterious mutations}},
+url = {http://link.aps.org/doi/10.1103/PhysRevE.71.031907},
+volume = {71},
+year = {2005}
+}
+@article{Trindade2010,
+abstract = {Knowledge of the mutational parameters that affect the evolution of organisms is of key importance in understanding the evolution of several characteristics of many natural populations, including recombination and mutation rates. In this study, we estimated the rate and mean effect of spontaneous mutations that affect fitness in a mutator strain of Escherichia coli and review some of the estimation methods associated with mutation accumulation (MA) experiments. We performed an MA experiment where we followed the evolution of 50 independent mutator lines that were subjected to repeated bottlenecks of a single individual for approximately 1150 generations. From the decline in mean fitness and the increase in variance between lines, we estimated a minimum mutation rate to deleterious mutations of 0.005 (+/-0.001 with 95\% confidence) and a maximum mean fitness effect per deleterious mutation of 0.03 (+/-0.01 with 95\% confidence). We also show that any beneficial mutations that occur during the MA experiment have a small effect on the estimate of the rate and effect of deleterious mutations, unless their rate is extremely large. Extrapolating our results to the wild-type mutation rate, we find that our estimate of the mutational effects is slightly larger and the inferred deleterious mutation rate slightly lower than previous estimates obtained for non-mutator E. coli.},
+author = {Trindade, Sandra and Perfeito, Lilia and Gordo, Isabel},
+doi = {10.1098/rstb.2009.0287},
+file = {:D$\backslash$:/papers/Trindade, Perfeito, Gordo - 2010 - Rate and effects of spontaneous mutations that affect fitness in mutator Escherichia coli.pdf:pdf},
+issn = {1471-2970},
+journal = {Philosophical Transactions of the Royal Society B: Biological Sciences},
+keywords = {Computer Simulation,Escherichia coli,Escherichia coli: genetics,Evolution,Genetic,Genetic Fitness,Genetic Variation,Genetic Variation: genetics,Models,Molecular,Monte Carlo Method,Mutation,mutation rate},
+mendeley-tags = {mutation rate},
+month = apr,
+number = {1544},
+pages = {1177--86},
+pmid = {20308092},
+title = {{Rate and effects of spontaneous mutations that affect fitness in mutator Escherichia coli.}},
+url = {http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818},
+volume = {365},
+year = {2010}
+}
+
+
 </div>
 
 
@@ -545,7 +596,7 @@ e^{( \lambda s^2)B}
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 18 December 2012 at 12:13.</li>
+	<li>This page was last modified on 14 January 2013 at 10:52.</li>
 	</ul>
 	
 	

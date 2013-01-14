@@ -341,7 +341,18 @@ print &#39;done&#39;</code></pre>
 <li id="fn1"><p>Footnotes are great.<a href="#fnref1">&#8617;</a></p></li>
 </ol>
 </div>
-	
+	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
+	<script type="text/javascript">
+	$(function() {
+		$('#download_bibtex_btn').click(function() {
+			var content = $('#bib').html();
+			var w = window.open();
+			$(w.document.body).text(content);
+			w.document.title = 'Creating PDFs with Pandoc' + '.bib';
+			w.document.contentType = 'text/x-bibtex';
+		});
+	})
+	</script>
 	<a name="bottom"></a>
 	
 	
@@ -374,6 +385,25 @@ print &#39;done&#39;</code></pre>
 	<!-- end of pagination -->
 
 	
+</div>
+<div id="bib" style="display: none">
+	
+@article{Kimura1966,
+author = {Kimura, Motoo and Maruyama, Takeo},
+file = {:D$\backslash$:/papers/Kimura, Maruyama - 1966 - The mutational load with epistatic gene interactions in fitness.pdf:pdf},
+issn = {0016-6731},
+journal = {Genetics},
+month = dec,
+number = {6},
+pages = {1337--51},
+pmid = {17248359},
+title = {{The mutational load with epistatic gene interactions in fitness.}},
+url = {http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299},
+volume = {54},
+year = {1966}
+}
+
+
 </div>
 
 
@@ -456,7 +486,7 @@ print &#39;done&#39;</code></pre>
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 18 December 2012 at 12:13.</li>
+	<li>This page was last modified on 14 January 2013 at 10:52.</li>
 	</ul>
 	
 	

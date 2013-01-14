@@ -370,7 +370,7 @@ M = \left(\begin{array}{cccc}
 \end{array}\right)
 \] This matrix is called a <a href="http://en.wikipedia.org/wiki/Stochastic_matrix">transition matrix</a> because its entries \(M_{i,j}\) are the transition probabilities from state <em>j</em> to state <em>i</em> - the state is the number of mutant alleles.</p>
 <p>Now if we set \(p^*=p&#39;=p\) we get \(\bar{\omega}^*p^*=Mp^*\), so if there is \(\bar{\omega}^*\) and \(p^*\) such that \(p^*_i \ge 0 \; \sum_{i}{p^*_i}=1\) that solve this equation, then \(p^*\) is an <strong>eigenvector</strong> of <em>M</em> and \(\bar{\omega}^*\) is an <strong>eigenvalue</strong> of M.</p>
-<p>From the <a href="http://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a> we know that this matrix always has a unique non-negative eigenvector, so \(p^*\) exists and it is unique. Furthermore, from the same theorem we know that \(\bar{\omega}^*\) also exists and that it is the leading (largest positive) eigenvalue of <em>M</em> [@Otto2007, p. 709].</p>
+<p>From the <a href="http://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a> we know that this matrix always has a unique non-negative eigenvector, so \(p^*\) exists and it is unique. Furthermore, from the same theorem we know that \(\bar{\omega}^*\) also exists and that it is the leading (largest positive) eigenvalue of <em>M</em> <span class="citation">(Otto and Day 2007, 709)</span>.</p>
 <p>Since this is a triangular matrix, the eigenvalues are simply the elements on the diagonal<sup><a href="#fn5" class="footnoteRef" id="fnref5">5</a></sup>. Therefore, the largest eigenvalue must be the largest element on the diagonal, which is the element \[
 \bar{\omega}^* = M_{0,0} = 
 \omega_0 \varphi_U(0) = (1-s)^0 \frac{U^0 e^{-U}}{0!} = 
@@ -390,6 +390,7 @@ e^{-U}
 <p>Gillespie, John H. 2004. <em>Population Genetics: a Concise Guide</em>. Johns Hopkins University Press. <a href="http://www.google.com/books?id=KAcAfiyHpcoC" title="http://www.google.com/books?id=KAcAfiyHpcoC">http://www.google.com/books?id=KAcAfiyHpcoC</a>.</p>
 <p>Gordo, Isabel, and Francisco Dionisio. 2005. &#8220;Nonequilibrium model for estimating parameters of deleterious mutations.&#8221; <em>Physical Review E</em> 71 (mar): 18&#8211;21. doi:10.1103/PhysRevE.71.031907. <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907" title="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">http://link.aps.org/doi/10.1103/PhysRevE.71.031907</a>.</p>
 <p>Kimura, Motoo, and Takeo Maruyama. 1966. &#8220;The mutational load with epistatic gene interactions in fitness.&#8221; <em>Genetics</em> 54 (dec): 1337&#8211;51. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299</a>.</p>
+<p>Otto, Sarah P., and Troy Day. 2007. <em>A Biologist&#8217;s Guide To Mathematical Modeling in Ecology and Evolution</em>. Princeton University Press.</p>
 <div class="footnotes">
 <hr />
 <ol>
@@ -400,7 +401,18 @@ e^{-U}
 <li id="fn5"><p>To prove this, one must notice that the determinant of a triangular matrix is the trace of the matrix, and therefore the characteristic polynomial is the trace of the matrix \(I\lambda - M\), and the eigenvalues are the solutions of this polynomial - see <a href="http://tutorial.math.lamar.edu/Classes/LinAlg/EVals_Evects.aspx#EV_EvalEvec_Thm1">Paul's online math notes</a>.<a href="#fnref5">&#8617;</a></p></li>
 </ol>
 </div>
-	
+	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
+	<script type="text/javascript">
+	$(function() {
+		$('#download_bibtex_btn').click(function() {
+			var content = $('#bib').html();
+			var w = window.open();
+			$(w.document.body).text(content);
+			w.document.title = 'Mean fitness at the mutation-selection balance' + '.bib';
+			w.document.contentType = 'text/x-bibtex';
+		});
+	})
+	</script>
 	<a name="bottom"></a>
 	
 	
@@ -433,6 +445,80 @@ e^{-U}
 	<!-- end of pagination -->
 
 	
+</div>
+<div id="bib" style="display: none">
+	
+@article{Kimura1966,
+author = {Kimura, Motoo and Maruyama, Takeo},
+file = {:D$\backslash$:/papers/Kimura, Maruyama - 1966 - The mutational load with epistatic gene interactions in fitness.pdf:pdf},
+issn = {0016-6731},
+journal = {Genetics},
+month = dec,
+number = {6},
+pages = {1337--51},
+pmid = {17248359},
+title = {{The mutational load with epistatic gene interactions in fitness.}},
+url = {http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299},
+volume = {54},
+year = {1966}
+}
+@book{Otto2007,
+abstract = {Thirty years ago, biologists could get by with a rudimentary grasp of mathematics and modeling. Not so today. In seeking to answer fundamental questions about how biological systems function and change over time, the modern biologist is as likely to rely on sophisticated mathematical and computer-based models as traditional fieldwork. In this book, Sarah Otto and Troy Day provide biology students with the tools necessary to both interpret models and to build their own.The book starts at an elementary level of mathematical modeling, assuming that the reader has had high school mathematics and first-year calculus. Otto and Day then gradually build in depth and complexity, from classic models in ecology and evolution to more intricate class-structured and probabilistic models. The authors provide primers with instructive exercises to introduce readers to the more advanced subjects of linear algebra and probability theory. Through examples, they describe how models have been used to understand such topics as the spread of HIV, chaos, the age structure of a country, speciation, and extinction.Ecologists and evolutionary biologists today need enough mathematical training to be able to assess the power and limits of biological models and to develop theories and models themselves. This innovative book will be an indispensable guide to the world of mathematical models for the next generation of biologists.A how-to guide for developing new mathematical models in biologyProvides step-by-step recipes for constructing and analyzing modelsInteresting biological applicationsExplores classical models in ecology and evolutionQuestions at the end of every chapterPrimers cover important mathematical topicsExercises with answersAppendixes summarize useful rulesLabs and advanced material available},
+author = {Otto, Sarah P. and Day, Troy},
+isbn = {9780691123448},
+pages = {732},
+publisher = {Princeton University Press},
+title = {{A biologist's guide to mathematical modeling in ecology and evolution}},
+year = {2007}
+}
+@article{Ram2012,
+abstract = {Numerous empirical studies show that stress of various kinds induces a state of hypermutation in bacteria via multiple mechanisms, but theoretical treatment of this intriguing phenomenon is lacking. We used deterministic and stochastic models to study the evolution of stress-induced hypermutation in infinite and finite-size populations of bacteria undergoing selection, mutation, and random genetic drift in constant environments and in changing ones. Our results suggest that if beneficial mutations occur, even rarely, then stress-induced hypermutation is advantageous for bacteria at both the individual and the population levels and that it is likely to evolve in populations of bacteria in a wide range of conditions because it is favored by selection. These results imply that mutations are not, as the current view holds, uniformly distributed in populations, but rather that mutations are more common in stressed individuals and populations. Because mutation is the raw material of evolution, these results have a profound impact on broad aspects of evolution and biology.},
+author = {Ram, Yoav and Hadany, Lilach},
+doi = {10.1111/j.1558-5646.2012.01576.x},
+file = {:D$\backslash$:/papers/Ram, Hadany - 2012 - The evolution of stress-induced hypermutation in asexual populations.pdf:pdf;:D$\backslash$:/papers//Ram, Hadany - 2012 - The evolution of stress-induced hypermutation in asexual populations.pdf:pdf},
+issn = {1558-5646},
+journal = {Evolution},
+keywords = {Adaptation,Asexual,Bacteria,Bacteria: genetics,Bacteria: growth \& development,Biological,Computer Simulation,Environment,Genetic,Genetic Drift,Models,Mutation Rate,Physiological,Population Density,Reproduction,Stochastic Processes,Stress},
+month = jul,
+number = {7},
+pages = {2315--28},
+pmid = {22759304},
+title = {{The evolution of stress-induced hypermutation in asexual populations.}},
+url = {http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x http://www.ncbi.nlm.nih.gov/pubmed/22759304},
+volume = {66},
+year = {2012}
+}
+@article{Gordo2005,
+abstract = {Deleterious mutations are of extreme evolutionary importance because, even though they are eliminated by natural selection, their continuous pressure creates a pool of variability in natural populations. They are of potential relevance for the existence of several features in evolution, such as sexual reproduction, and pose a risk to small asexual populations. Despite their extreme importance, the deleterious mutation rate and the effects of each mutation on fitness are poorly known quantities. Here we analyze a simple model that can be applied to simple experiments, in microorganisms, aiming at the quantification of these values.},
+author = {Gordo, Isabel and Dionisio, Francisco},
+doi = {10.1103/PhysRevE.71.031907},
+file = {:D$\backslash$:/papers/Gordo, Dionisio - 2005 - Nonequilibrium model for estimating parameters of deleterious mutations.pdf:pdf},
+issn = {1539-3755},
+journal = {Physical Review E},
+keywords = {muller's ratchet,mutation rate,theory},
+mendeley-tags = {muller's ratchet,mutation rate,theory},
+month = mar,
+number = {3},
+pages = {18--21},
+title = {{Nonequilibrium model for estimating parameters of deleterious mutations}},
+url = {http://link.aps.org/doi/10.1103/PhysRevE.71.031907},
+volume = {71},
+year = {2005}
+}
+@book{Gillespie2004,
+abstract = {This concise introduction offers students and researchers an overview of the discipline that connects genetics and evolution. Addressing the theories behind population genetics and relevant empirical evidence, John Gillespie discusses genetic drift, natural selection, nonrandom mating, quantitative genetics, and the evolutionary advantage of sex. First published to wide acclaim in 1998, this brilliant primer has been updated to include new sections on molecular evolution, genetic drift, genetic load, the stationary distribution, and two-locus dynamics. This book is indispensable for students working in a laboratory setting or studying free-ranging populations.},
+annote = {undefined},
+author = {Gillespie, John H.},
+edition = {2},
+isbn = {9780801880094},
+pages = {214},
+publisher = {Johns Hopkins University Press},
+title = {{Population genetics: a concise guide}},
+url = {http://www.google.com/books?id=KAcAfiyHpcoC},
+year = {2004}
+}
+
+
 </div>
 
 
@@ -524,7 +610,7 @@ e^{-U}
 	</ul>
 	
 	<ul class="quick-links">
-	<li>This page was last modified on 18 December 2012 at 12:13.</li>
+	<li>This page was last modified on 14 January 2013 at 10:52.</li>
 	</ul>
 	
 	
