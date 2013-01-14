@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # https://nicolas.perriault.net/code/2012/dead-easy-yet-powerful-static-website-generator-with-flask/
 import sys
 import datetime
@@ -59,7 +60,7 @@ def add_bib_to_pages():
     bib = bibi.parse_file(app.config['BIB_FILE'])
     for p in pages:
         keys = set(citation_pattern.findall(p.body))
-        p.bib = bibi.to_string(bib, keys)
+        p.bib = bibi.to_string(bib, keys).decode('utf-8')
         
 add_bib_to_pages()
 
