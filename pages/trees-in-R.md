@@ -13,6 +13,7 @@ draft: true
 3. [ade4](http://pbil.univ-lyon1.fr/ade4/home.php?lang=eng)
 4. [graph](http://www.bioconductor.org/packages/release/bioc/html/graph.html) package for R
 5. [Rgraphviz](http://www.bioconductor.org/packages/2.11/bioc/html/Rgraphviz.html)
+6. [GGobi](http://www.ggobi.org/) with [RGGobi](http://www.ggobi.org/rggobi/)[^ggobi-install]
 
 ## Newick Tree
 
@@ -59,3 +60,6 @@ An example output can be produced by running <code>test.tree()</code> from *tree
 ## Hello Shiny!
 
 I also made a [Shiny app that plots a random graph](https://gist.github.com/4045750).
+
+
+[^ggobi-install]: GGobi requires GTK+ and libxml which, on Ubuntu, can be installed by <code>sudo apt-get install gtk+-2.0</code> and <code>sudo apt-get install libxml2-dev</code>.
