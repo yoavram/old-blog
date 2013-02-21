@@ -82,27 +82,28 @@ This does not neccesarily hold for finite populations in which *genetic drift* c
 
 Haigh [-@Haigh1978] derived the stable distribution of deleterious mutations in an asexual population without beneficial mutations. He started from this equation:
 $$
-n_k = \frac{N}{T} \sum_{j=o}^{k} n_{k-j} (1-s)^{k-j} \frac{U^j e^{-U}}{j!}
+n_ik = \frac{N}{T} \sum_{j=o}^{i} n_{i-j} (1-s)^{i-j} \frac{U^j e^{-U}}{j!}
 $$
-where $n_k$ is the number of individuals with *k* deleterious mutations, $N=\sum_{i \ge 0} n_i$ is the total population size, *s* is the selection coefficient, *U* is the mutaion rate, and $T = \sum_{i \ge 0} n_i (1-s)^i$. He solved for $n_k$ to get this identity:
+where $n_i$ is the number of individuals with *i* deleterious mutations, $N=\sum_{i \ge 0} n_i$ is the total population size, *s* is the selection coefficient, *U* is the mutaion rate, and $T = \sum_{i \ge 0} n_i (1-s)^i$. He solved for $n_i$ to get this identity:
 $$
 n_0 = Ne^{-\lambda/s} \\
-n_k = n_o \frac{\lambda^k}{s^k k!}, \; \forall k>1
+n_i = n_o \frac{\lambda^i}{s^i i!}, \; \forall i>1
 $$
 To find the distribution for SIM, Shaw and Baer modified the mutation rates in Haigh's basic equation:
 $$
-n_k = \frac{N}{T} \sum_{j=o}^{k} n_{k-j} (1-s)^{k-j} \frac{U_{k-j}^j e^{-U_{k-j}}}{j!}
+n_i = \frac{N}{T} \sum_{j=o}^{i} n_{i-j} (1-s)^{i-j} \frac{U_{i-j}^j e^{-U_{i-j}}}{j!}
 $$
-where $U_{k-j}$ is the mutation rate of an individual with $k-j$ deleterious mutations.
-Without beneficial mutations, the population mean fitness is $e^{-U_0}$ and is also equal to $\frac{T}{N}$. Therefore,
+where $U_{i} = U_{max} - (U_{max} - U_{min})(1-s)^{ik}$ is the mutation rate of an individual with $i$ deleterious mutations.
+Without beneficial mutations, the population mean fitness is $e^{-U_0}$ and is also equal to $\frac{T}{N}$, where $U_0 = U_{min}$. Therefore,
 $$
-n_k = e^{U_0} \sum_{j=o}^{k} n_{k-j} (1-s)^{k-j} \frac{U_{k-j}^j e^{-U_{k-j}}}{j!}
+n_k = e^{U_0} \sum_{j=o}^{i} n_{i-j} (1-s)^{i-j} \frac{U_{i-j}^j e^{-U_{i-j}}}{j!} = 
+\sum_{j=o}^{i} n_{i-j} (1-s)^{i-j} \frac{U_{i-j}^j e^{U_0 - U_{i-j}}}{j!}
 $$
-which is Eq. (3) in [@Shaw2011].
+which is Eq. (3) in [@Shaw2011]. 
 
 ### Numerical treatment 
 
-Since there are no further equations in the paper, I understand that the rest of the treatment of the mutation distribution is numerical.
+Since there are no further equations in the paper, I understand that the rest of the treatment of the mutation distribution is numerical. [Figure 1] shows the distribution of mutations in a stable population for different values of *k*, where *k=0* is a constant mutation rate, *k=1* denotes a linear ratio between mutation rate increase and fitness decrease, and very large *k* is almost a step function. The figure shows that the higher *k* is, the more the distribution is biased towards the left, that is, the less loaded classes. As *k=0* gives a Poisson distribution with $U_0/s$ as the parameter (and the mean, and the variance - nothing like a Poisson distribution!), *k>0* gives a different kind of distribution.
 
 ### Asexual populations
 
@@ -113,3 +114,4 @@ Since there are no further equations in the paper, I understand that the rest of
 
 [Muller]: http://en.wikipedia.org/wiki/Hermann_Joseph_Muller
 [ratchet]: http://en.wikipedia.org/wiki/Ratchet_(device)
+[Figure 1]: http://onlinelibrary.wiley.com/store/10.1111/j.1420-9101.2011.02320.x/asset/image_n/JEB_2320_f2.gif?v=1&t=hdgbdo6r&s=e408de2de296548126498e914767d39207b9317a
