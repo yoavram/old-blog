@@ -24,36 +24,32 @@ This is:
 $$
 n_k = N \sum_{j=o}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j e^{-\lambda}}{j!}/T
 $$
-where $N=\sum n_i$ is the **stable population size** and $T/N = \sum \frac{n_i}{N} (1-s)^i$ is the **stable population mean fitness**.
+where $N=\sum_{i \ge 0} n_i$ is the **stable population size** and $T/N = \sum_{i \ge 0} \frac{n_i}{N} (1-s)^i$ is the **stable population mean fitness**.
 
 Looking at $n_0$ and assuming it is positive, the sum has only one term:
 $$
-n_0 = N n_{0}(1-s)^{0} \frac{\lambda^0 e^{-\lambda}}{0!}/T \Rightarrow
+n_0 = N n_{0}(1-s)^{0} \frac{\lambda^0 e^{-\lambda}}{0!}/T \Rightarrow \\
 T = N e^{-\lambda}
 $$
 which is another $\bar{\omega} = e^{-U}$ result, as we have [seen before](/mean-fitness-at-the-mutation-selection-balance/).
 Using this identify, we get
 $$
-n_k = N \sum_{j=o}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j e^{-\lambda}}{j!}/N e^{-\lambda} \Rightarrow
+n_k = N \sum_{j=o}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j e^{-\lambda}}{j!}/N e^{-\lambda} \Rightarrow \\
 n_k = \sum_{j=o}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j }{j!}
 $$
-To find the solution we first look at $k=1$:
-$$
-n_1 = n_{1}(1-s) + n_{0} \lambda \Rightarrow
-n_1 - n_{1}(1-s) = n_{0} \lambda \Rightarrow
-n_1 - n_{1} + s n_{1} = n_{0} \lambda \Rightarrow
-s n_{1} = n_{0} \lambda \Rightarrow
-n_{1} = n_{0} \frac{\lambda}{s}
-$$
+To find the solution we first observe that $n_0 = n_o \frac{\lambda^0}{s^0 0!}$. This is the induction base.
 Next, assume that $n_m = n_0 \frac{\lambda^m}{s^m m!}$ for all $m<k$ and check for $k$:
 $$
-n_k = \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j }{j!} \Rightarrow
-n_k = \sum_{j=0}^{k} n_{0} \frac{\lambda^{k-j}}{s^{k-j} (k-j)!} (1-s)^{k-j} \frac{\lambda^j }{j!} \Rightarrow
-n_k = \lambda^k n_{0} s^{-k} (1-s)^k \sum_{j=0}^{k} n_{0} \frac{s^{-j}}{(1-s)^{j} (k-j)! j!} \Rightarrow
-n_k = \lambda^k n_{0} s^{-k} (1-s)^k (1-s)^{-k} \frac{1}{k!} \Rightarrow
-n_k = n_{0}(\frac{\lambda}{s})^k \frac{1}{k!}
-$$
-or as Haigh writes it
+n_k = \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j }{j!} =
+\sum_{j=0}^{k} n_{0} \frac{\lambda^{k-j}}{s^{k-j} (k-j)!} (1-s)^{k-j} \frac{\lambda^j }{j!} \Rightarrow
+ n_{0} \lambda^{k} \sum_{j=0}^{k} \frac{(1-s)^{k-j} }{s^{k-j} (k-j)!j!}  =
+ n_{0} \frac{\lambda^{k}}{s^k k!} \sum_{j=0}^{k} \frac{k!}{(k-j)!j!} s^{j} (1-s)^{k-j}  =
+ n_{0} \frac{\lambda^{k}}{s^k k!}  \sum_{j=0}^{k} {k \choose j} s^{j} (1-s)^{k-j}  =
+ n_{0} \frac{\lambda^{k}}{s^k k!} \sum_{j=0}^{k} P(Bin(k,s)=j)  \Rightarrow \\
+n_k = n_{0} \frac{\lambda^{k}}{s^k k!}
+$$ 
+Where $P(Bin(k,s)=j)$ is the probability that a Binomial random variable with *k* trials and success probability *s* succeeds *j* times and fails *k-j* times. 
+Haigh writes this as
 $$
 n_k = n_{0}\frac{\theta^k}{k!}, \; \theta=\lambda/s
 $$
@@ -63,7 +59,7 @@ N = \sum_{k \ge 0} n_k =
 \sum_{k \ge 0} n_{0}\frac{\theta^k}{k!} = 
 n_{0} \sum_{k \ge 0} \frac{\theta^k}{k!} = 
 n_{0} e^\theta \Rightarrow 
-n_{0} = N e^{-\theta} \Rightarrow
+n_{0} = N e^{-\theta} \Rightarrow \\
 f_{0} = e^{-\theta}
 $$
 For example, for a mutation rate $\lambda=0.003$ and selection coefficient $s=0.01$ then the frequency of unloaded individuals is roughly 74%. 
