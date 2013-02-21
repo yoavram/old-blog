@@ -70,6 +70,46 @@ with $U_{min}=0.1$ and $U_{max}=4$. The number of mutations per reproduction is 
 
 ## Results
 
+In this paper Shaw & Baer [-@Shaw2011] present several lines of results but I will only write about the results which are most interesting to me, for comparison to my work.
+
+### Muller's ratchet
+
+As I discussed in a [previous post](/mean-fitness-at-the-mutation-selection-balance/), in an infinitly large asexual population the mean fitness as the equilibirum, called the *mutation-selection balance*, is equal to $\bar{\omega} = \omega_0 e^(-U)$, where $\omega_0$ is the fitness of the fittest individual and $U$ is the genomic mutation rate per genome per generation.
+
+This does not neccesarily hold for finite populations in which *genetic drift* can have an effect on the dynamics. Genetic drift can cause the fixation of deleterious mutation by *random sampling*, and in time the mean fitness of the population can decrease to levels that are so low that the population, in effect, is extinct. This process has been called **[Muller]'s [ratchet]** [@Muller1964, @Felsenstein1974] - at every 'click' of the 'ratchet' a deleterious mutation is fixed in the population, and assuming no recombination and no back-mutations (or very slow rates of these processes), this fixation is irreversible. The rate at which this ratchet clicks is increasing with the mutation rate and decreasing with selection, recombination and populaiton size.
+
+### Analytical treatment
+
+Haigh [-@Haigh1978] derived the stable distribution of deleterious mutations in an asexual population without beneficial mutations. He started from this equation:
+$$
+n_k = \frac{N}{T} \sum_{j=o}^{k} n_{k-j} (1-s)^{k-j} \frac{U^j e^{-U}}{j!}
+$$
+where $n_k$ is the number of individuals with *k* deleterious mutations, $N=\sum_{i \ge 0} n_i$ is the total population size, *s* is the selection coefficient, *U* is the mutaion rate, and $T = \sum_{i \ge 0} n_i (1-s)^i$. He solved for $n_k$ to get this identity:
+$$
+n_0 = Ne^{-\lambda/s} \\
+n_k = n_o \frac{\lambda^k}{s^k k!}, \; \forall k>1
+$$
+To find the distribution for SIM, Shaw and Baer modified the mutation rates in Haigh's basic equation:
+$$
+n_k = \frac{N}{T} \sum_{j=o}^{k} n_{k-j} (1-s)^{k-j} \frac{U_{k-j}^j e^{-U_{k-j}}}{j!}
+$$
+where $U_{k-j}$ is the mutation rate of an individual with $k-j$ deleterious mutations.
+Without beneficial mutations, the population mean fitness is $e^{-U_0}$ and is also equal to $\frac{T}{N}$. Therefore,
+$$
+n_k = e^{U_0} \sum_{j=o}^{k} n_{k-j} (1-s)^{k-j} \frac{U_{k-j}^j e^{-U_{k-j}}}{j!}
+$$
+which is Eq. (3) in [@Shaw2011].
+
+### Numerical treatment 
+
+Since there are no further equations in the paper, I understand that the rest of the treatment of the mutation distribution is numerical.
+
+### Asexual populations
+
+
 
 
 ## References
+
+[Muller]: http://en.wikipedia.org/wiki/Hermann_Joseph_Muller
+[ratchet]: http://en.wikipedia.org/wiki/Ratchet_(device)
