@@ -7,6 +7,10 @@
     <style type="text/css">
       @import url("http://www.google.com/uds/solutions/dynamicfeed/gfdynamicfeedcontrol.css");
     </style>
+    <!-- proudify https://github.com/icebreaker/proudify -->
+    <link rel="stylesheet" href="http://proudify.me/proudify.min.css" type="text/css"/>
+    <script type="text/javascript" src="https://raw.github.com/ahamid/proudify/master/jquery-proudify.js"></script>
+    
 {% endblock %}
 {% block header %}
 <div class="row-fluid">
@@ -29,6 +33,14 @@
     {% with pages=pages  %}
         {% include "_list.html" %}
     {% endwith %}
+
+ 	<div id="proudify"></div>
+	<script type="text/javascript">
+	  $('#proudify').proudify({
+	  	'username': 'yoavram',
+	  	'num': 10
+	  });
+	</script>
 	
 {% endblock content %}
 
