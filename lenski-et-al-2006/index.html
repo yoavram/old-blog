@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title> Blogging with math and code </title>
+	<title> Summary: &#34;Balancing robustness and evolvability&#34; (Lenski et al. 2006) </title>
 	<meta name="description" content="Yoav Ram's blog on evolutionary theory and other scientific interests, and especially on the theoretical treatment of the evolution of the mutation rate" />
 	<meta name="author" content="Yoav Ram">
 	<meta name="keywords" content="evolution,mutation rate,mutation rates,Yoav Ram,yoavram,evolutionary theory,science,theoretical biology,mathematical biology,mathematics">
@@ -35,22 +35,6 @@
 	<script type="text/javascript" src="/static/prettify.js"></script>
 
 	
-
-
-
-<!-- MathJax -->
-<script type="text/x-mathjax-config">
-<!-- Online Debugger: http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm -->
-<!-- Doc: http://docs.mathjax.org/en/latest/output.html -->`
-  MathJax.Hub.Config({            
-			"HTML-CSS": { availableFonts: ["STIX", "TeX"], 
-						  linebreaks: { automatic: true }
-			}
-  });
-</script>
-<script type="text/javascript"
-  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
-</script>
 
 
 
@@ -222,16 +206,16 @@
 	
 	<ul class="pager">
 	  
-	  <li class="previous disabled">
-		<a href="#">&larr; Older</a>
+	  <li class="previous">
+		<a href='/creating-pdfs-with-pandoc/'>&larr; Older</a>
 	  
 	  </li>
 	  
 	  
 	   
-	   <li class="next">
-		<a href='/markdown-links-and-footnotes/'>Newer &rarr;</a>
-		
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
 	  </li>
 	</ul>
 
@@ -252,23 +236,23 @@
 </div>
 <div class="row-fluid">
 	<div class="span7 offset2">
-	<h1>Blogging with math and code</h1>
+	<h1>Summary: &#34;Balancing robustness and evolvability&#34; (Lenski et al. 2006)</h1>
 	
 <ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
-	<li class="active"><i class="icon-time"></i> 03 October 2012 at 13:05</li>
-	
-	<li class="active"><span class="divider">/</span>
-	<i class="icon-refresh"></i> 21 October 2012 at 19:50</li>
+	<li class="active"><i class="icon-time"></i> 16 June 2013 at 10:46</li>
 	
 	<li><span class="divider">/</span>
-	<i class="icon-star"></i> <a href='http://blog.yoavram.com/blogging-with-math-and-code/'>Permalink</a></li>
+	<i class="icon-star"></i> <a href='http://blog.yoavram.com/lenski-et-al-2006/'>Permalink</a></li>
 	
 	
 	<li><span class="divider">/</span>
-		<i class="icon-tag"></i> <a href="/tag/latex/">latex</a></li>
+		<i class="icon-tag"></i> <a href="/tag/evolution%20of%20the%20mutation%20rate/">evolution of the mutation rate</a></li>
 	
 	<li><span class="divider">/</span>
-		<i class="icon-tag"></i> <a href="/tag/markdown/">markdown</a></li>
+		<i class="icon-tag"></i> <a href="/tag/evolvability/">evolvability</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/robustness/">robustness</a></li>
 	
 	
 	
@@ -304,87 +288,34 @@
 
 <div class="post">
 	
-    <ul>
-<li><a href="#examples">Examples</a><ul>
-<li><a href="#math">Math</a></li>
-<li><a href="#source-code">Source Code</a></li>
-</ul></li>
-<li><a href="#explanations">Explanations</a><ul>
-<li><a href="#math-1">Math</a></li>
-<li><a href="#source-code-1">Source Code</a></li>
-</ul></li>
-</ul>
-<p><a name='TOC'></a></p>
-<h2 id="examples"><a href="#examples">Examples</a></h2>
-<h3 id="math"><a href="#math">Math</a></h3>
-<p>When <span class="math">\(a \ne 0\)</span>, there are two solutions to <span class="math">\(ax^2 + bx + c = 0\)</span> and they are <span class="math">\[
-x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
-\]</span></p>
-<h3 id="source-code"><a href="#source-code">Source Code</a></h3>
-<h4 id="java"><a href="#java">Java</a></h4>
-<pre class="prettyprint linenums:1"><code>class Blog {
-public:
-  // Blog
-  static const string BLOG = &quot;Blog&quot;;
-}</code></pre>
-<h4 id="python"><a href="#python">Python</a></h4>
-<pre class="prettyprint linenums:1"><code>#!/usr/bin/python
-def pages_by_datetime(limit=0, latest_first=True):
-    # Articles are pages with a publication date
-    articles = (p for p in pages if &#39;datetime&#39; in p.meta)
-
-    # Show the 10 most recent articles, most recent first.
-    articles = sorted(articles, reverse=latest_first, key=lambda p: p.meta[&#39;datetime&#39;])
-    if limit:
-        return articles[:limit]
-    else:
-        return articles</code></pre>
-<h4 id="inline-code"><a href="#inline-code">Inline code</a></h4>
-<p>Small code elements like <code>print 'Hello World!'</code> can be put into HTML <code>&lt;code&gt;</code> elements.</p>
-<h2 id="explanations"><a href="#explanations">Explanations</a></h2>
-<h3 id="math-1"><a href="#math-1">Math</a></h3>
-<p>Math is written in <span class="math">\(LaTeX\)</span><sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> is written inside the <a href="http://daringfireball.net/projects/markdown/">Markdown</a><sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup> text using <code>$</code> (once for inline, two for display mode). <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, which is used to convert the <a href="http://daringfireball.net/projects/markdown/">Markdown</a> to HTML, is informed that <span class="math">\(LaTeX\)</span> is to be converted to mathematical notation in the browser using <a href="http://www.mathjax.org/">MathJax</a> javascript by specifing the command line argument <code>--mathjax</code>. <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> then converts <code>$</code> to <code>(</code> or <code>)</code> to start and finish <span class="math">\(LaTeX\)</span> blocks and doesn't parse <a href="http://daringfireball.net/projects/markdown/">Markdown</a> inside these blocks.</p>
-<p>To enable <a href="http://www.mathjax.org/">MathJax</a>, you put the following in the <code><head\></code> of your HTML file:</p>
-<pre class="prettyprint linenums:1"><code>&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
-  MathJax.Hub.Config({
-            &quot;HTML-CSS&quot;: { availableFonts: [&quot;STIX&quot;, &quot;TeX&quot;], 
-                          linebreaks: { automatic: true }
-            }
-  });
-&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;
-  src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&quot;&gt;
-&lt;/script&gt;</code></pre>
-<p>The confguration parameters are as follows:</p>
-<ul>
-<li><code>availableFonts</code> tells it to prefer using the <a href="http://www.stixfonts.org/">STIX</a> font if it is available.</li>
-<li><code>linebreaks</code> tells it to automatically break (wrap) long equations.</li>
-</ul>
-Now you can write:
-<pre>
-    $LaTeX$ is cool:
-    $$
-    p' = p + (1-p)(1-s)\mu
-    $$
-</pre>
     
-<p>to get the following result:</p>
-<p><span class="math">\(LaTeX\)</span> is cool: <span class="math">\[
-p&#39; = p + (1-p)(1-s)\mu
-\]</span></p>
-<p>For more information visit the <a href="http://docs.mathjax.org/en/latest/output.html">documentation</a><sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup>.</p>
-<h3 id="source-code-1"><a href="#source-code-1">Source Code</a></h3>
-<p>Code is written inside the <a href="http://daringfireball.net/projects/markdown/">Markdown</a> markup language by indenting it with a tab or four space. The <a href="http://daringfireball.net/projects/markdown/">Markdown</a> is converted to HTML with <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, which recognized these indented lines and wraps them with a <code>&lt;pre&gt;</code> element. The CSS class given to the <code>&lt;pre&gt;</code> element is set to <code>prettyprint</code>, which is then highlighted in the browser using <a href="http://google-code-prettify.googlecode.com/">Google code prettifier</a> javascript which automatically identifies the language. The CSS class is actually <code>prettyprint linenum:1</code> which tells the highlighter to number the lines.</p>
-<p>See the <a href="http://johnmacfarlane.net/pandoc/README.html#indented-code-blocks">Pandoc handbook</a> for instructions on the indented code blocks and the code prettifier <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">README</a> for detailed instructions on the highlighting mechanism. It's very easy to use and is the highligher used by <a href="http://code.google.com">Google Code</a> and <a href="http://stackoverflow.com/">stackoverflow.com</a>.</p>
-<p>If you have problems displaying HTML or XML source I suggest trying to replace <code>&lt;</code> with <code>&amp;lt;</code><sup><a href="#fn4" class="footnoteRef" id="fnref4">4</a></sup>.</p>
-<p>For a nice example of different highlighting styles you can use (by replacing the default <code>prettify.css</code> file), see <a href="http://demo.stanleyhlng.com/prettify-js/?id=sons-of-obsidian-dark">Stanley Ng's website</a>.</p>
+<p>This is a summary of <a href="http://www.plosbiology.org/article/info:doi/10.1371/journal.pbio.0040428">Lenski, Barrick and Ofria <span class="citation">(2006)</span></a>. The following are direct quotes of the original article. My comments are given as footnotes, highlighting and italics.</p>
+<ul>
+<li>Organisms must have a <strong>balance between robustness and evolvability</strong>, that is, between resisting and allowing change in their own internal states.</li>
+<li>A genome may be robust because it encodes <em>proofreading and repair systems</em><sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> that reduce replication errors or because it is organized such that many <em>mutations have little effect</em><sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup> on its phenotype.</li>
+<li>We will focus on genomic robustness to mutations.</li>
+<li>Two mechanisms that could make a genome more robust are <em>genetic redundancy</em>, so that many otherwise deleterious mutations are masked, and <em>proofreading during replication</em>, so that fewer mutations occur.</li>
+<li>Evolution at <strong>low mutation rates</strong> favors populations that achieve high fitness peaks, even if they are surrounded by steep cliffs, because mutations that push progeny off those cliffs are rare.</li>
+<li>At <strong>high mutation rates</strong>, most offspring carry mutations, and selection favors populations that find lower fitness peaks surrounded by less precipitous mutational chasms.</li>
+<li>Environmental change is a pervasive feature of nature, and those physiological mechanisms that allow organisms to <strong>adjust to changing environments</strong>, such as by regulating gene expression, will also compensate for the effects of many mutations.</li>
+<li><strong>Proofreading and repair must inhibit evolvability</strong> because they reduce the production of new beneficial mutations.</li>
+<li>Are robustness and evolvability inversely correlated more generally? Robustness and evolvability might again be positively, rather than negatively, correlated.</li>
+<li>Redundancy can also promote adaptation by <strong>allowing duplicated genes to evolve distinct functions</strong><sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup></li>
+<li>Evolving populations can also become robust by finding regions of genotypic space that are flat because they contain a high proportion of neutral mutations.</li>
+<li>Deleterious mutations may lead to genetic neighborhoods that are more promising.</li>
+<li>One could ask how robustness and evolvability change depending on whether evolution occurs in <strong>constant or variable environments</strong> <span class="citation">(Meyers, Ancel, and Lachmann 2005)</span>.</li>
+</ul>
+<h1 id="license">License</h1>
+<p>The original paper was published in <a href="http://www.plosbiology.org/">PLoS Biology</a> under a CC-BY license.</p>
+<h1 id="references">References</h1>
+<p>Lenski, Richard E., Jeffrey E. Barrick, and Charles Ofria. 2006. &#8220;Balancing Robustness and Evolvability.&#8221; <em>PLoS Biology</em> 4 (12) (dec): e428. doi:10.1371/journal.pbio.0040428. <a href="http://www.plosbiology.org/article/info:doi/10.1371/journal.pbio.0040428" title="http://www.plosbiology.org/article/info:doi/10.1371/journal.pbio.0040428">http://www.plosbiology.org/article/info:doi/10.1371/journal.pbio.0040428</a>.</p>
+<p>Meyers, Lauren Ancel, Fredric D. Ancel, and Michael Lachmann. 2005. &#8220;Evolution of Genetic Potential.&#8221; Ed. Eddie Holmes. <em>PLoS Computational Biology</em> 1 (3) (aug): 236&#8211;43. doi:10.1371/journal.pcbi.0010032. <a href="http://dx.plos.org/10.1371/journal.pcbi.0010032" title="http://dx.plos.org/10.1371/journal.pcbi.0010032">http://dx.plos.org/10.1371/journal.pcbi.0010032</a>.</p>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p><a href="http://texify.com/">Online LaTeX editor</a><a href="#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p><a href="http://www.ctrlshift.net/project/markdowneditor/">Online Markdown editor</a><a href="#fnref2">&#8617;</a></p></li>
-<li id="fn3"><p><a href="http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm">Online MathJax debugger</a>.<a href="#fnref3">&#8617;</a></p></li>
-<li id="fn4"><p><a href="http://www.htmlescape.net/htmlescape_tool.html">Online HTML escaping tool</a><a href="#fnref4">&#8617;</a></p></li>
+<li id="fn1"><p>Low mutation rate (<em>U</em>).<a href="#fnref1">&#8617;</a></p></li>
+<li id="fn2"><p>Small mutation effect (<em>s</em>).<a href="#fnref2">&#8617;</a></p></li>
+<li id="fn3"><p>The amplification model.<a href="#fnref3">&#8617;</a></p></li>
 </ol>
 </div>
 	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
@@ -394,7 +325,7 @@ p&#39; = p + (1-p)(1-s)\mu
 			var content = $('#bib').html();
 			var w = window.open();
 			$(w.document.body).text(content);
-			w.document.title = 'Blogging with math and code' + '.bib';
+			w.document.title = 'Summary: &#34;Balancing robustness and evolvability&#34; (Lenski et al. 2006)' + '.bib';
 			w.document.contentType = 'text/x-bibtex';
 		});
 	})
@@ -404,16 +335,16 @@ p&#39; = p + (1-p)(1-s)\mu
 	
 	<ul class="pager">
 	  
-	  <li class="previous disabled">
-		<a href="#">&larr; Older</a>
+	  <li class="previous">
+		<a href='/creating-pdfs-with-pandoc/'>&larr; Older</a>
 	  
 	  </li>
 	  
 	  
 	   
-	   <li class="next">
-		<a href='/markdown-links-and-footnotes/'>Newer &rarr;</a>
-		
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
 	  </li>
 	</ul>
 
@@ -434,6 +365,42 @@ p&#39; = p + (1-p)(1-s)\mu
 </div>
 <div id="bib" style="display: none">
 	
+@article{Meyers2005,
+abstract = {Organisms employ a multitude of strategies to cope with the dynamical environments in which they live. Homeostasis and physiological plasticity buffer changes within the lifetime of an organism, while stochastic developmental programs and hypermutability track changes on longer time-scales. An alternative long-term mechanism is "genetic potential"--a heightened sensitivity to the effects of mutation that facilitates rapid evolution to novel states. Using a transparent mathematical model, we illustrate the concept of genetic potential and show that as environmental variability decreases, the evolving population reaches three distinct steady state conditions: (1) organismal flexibility, (2) genetic potential, and (3) genetic robustness. As a specific example of this concept we examine fluctuating selection for hydrophobicity in a single amino acid. We see the same three stages, suggesting that environmental fluctuations can produce allele distributions that are distinct not only from those found under constant conditions, but also from the transient allele distributions that arise under isolated selective sweeps.},
+author = {Meyers, Lauren Ancel and Ancel, Fredric D and Lachmann, Michael},
+doi = {10.1371/journal.pcbi.0010032},
+editor = {Holmes, Eddie},
+file = {:D$\backslash$:/papers/Meyers, Ancel, Lachmann - 2005 - Evolution of genetic potential.pdf:pdf},
+issn = {1553-734X},
+journal = {PLoS computational biology},
+keywords = {Computational Biology,Evolutionary Biology,Genetics and Genomics/Population Genetics,None,Research Article},
+month = aug,
+number = {3},
+pages = {236--43},
+pmid = {16158095},
+publisher = {Public Library of Science},
+title = {{Evolution of genetic potential.}},
+url = {http://dx.plos.org/10.1371/journal.pcbi.0010032},
+volume = {1},
+year = {2005}
+}
+@article{Lenski2006,
+author = {Lenski, Richard E. and Barrick, Jeffrey E and Ofria, Charles},
+doi = {10.1371/journal.pbio.0040428},
+file = {:D$\backslash$:/papers/Lenski, Barrick, Ofria - 2006 - Balancing robustness and evolvability.pdf:pdf},
+issn = {1545-7885},
+journal = {PLoS biology},
+keywords = {Biological Evolution,Evolution,Molecular,Mutation,Mutation: genetics,evolvability,robustness},
+mendeley-tags = {evolvability,robustness},
+month = dec,
+number = {12},
+pages = {e428},
+pmid = {17238277},
+title = {{Balancing robustness and evolvability.}},
+url = {http://www.plosbiology.org/article/info:doi/10.1371/journal.pbio.0040428},
+volume = {4},
+year = {2006}
+}
 
 
 </div>
@@ -445,7 +412,7 @@ p&#39; = p + (1-p)(1-s)\mu
 	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
 	var disqus_shortname = 'yoavram'; // required: replace example with your forum shortname
-	var disqus_identifier = 'blogging-with-math-and-code';
+	var disqus_identifier = 'lenski-et-al-2006';
 	
 	/* * * DON'T EDIT BELOW THIS LINE * * */
 	(function() {
