@@ -4,7 +4,6 @@ tags: [evolution of the mutation rate, robustness, evolvability]
 category: [research, mutation rate]
 math: false
 cite: false
-draft: true
 
 This is a summary of [Lenski, Barrick and Ofria [-@Lenski2006] ](http://www.plosbiology.org/article/info:doi/10.1371/journal.pbio.0040428). The following are direct quotes of the original article. My comments are given as footnotes, highlighting and italics.
 
