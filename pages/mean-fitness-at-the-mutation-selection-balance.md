@@ -162,7 +162,7 @@ $$
 Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to derive the eigenvalue so easily, 
 because the matrix would not be triagonal. However, it would still agree with the conditions of the Perron-Frobenius theorem and the mean fitness 
 at the mutation-selection balance would still be the leading eigenvalue of the matrix, and would exist. I've used this fact in my paper 
-*The Evolution of Stress-Induced Hypermutation in Asexual Populations* [@Ram2012a].
+*The Evolution of Stress-Induced Hypermutation in Asexual Populations* [@Ram2012].
 
 ## Summary
 
