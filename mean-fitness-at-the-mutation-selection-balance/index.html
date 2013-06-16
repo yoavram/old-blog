@@ -98,11 +98,13 @@
 
 	<li><a href='/tag/R/'>R: <small>1</small></a></li>
 
-	<li><a href='/tag/asexual%20populations/'>asexual populations: <small>4</small></a></li>
+	<li><a href='/tag/asexual%20populations/'>asexual populations: <small>5</small></a></li>
 
 	<li><a href='/tag/citations/'>citations: <small>1</small></a></li>
 
 	<li><a href='/tag/evolution%20of%20the%20mutation%20rate/'>evolution of the mutation rate: <small>1</small></a></li>
+
+	<li><a href='/tag/genetic%20drift/'>genetic drift: <small>1</small></a></li>
 
 	<li><a href='/tag/latex/'>latex: <small>1</small></a></li>
 
@@ -112,7 +114,11 @@
 
 	<li><a href='/tag/mean%20fitness/'>mean fitness: <small>2</small></a></li>
 
-	<li><a href='/tag/mutation-selection%20balance/'>mutation-selection balance: <small>3</small></a></li>
+	<li><a href='/tag/muller%27s%20ratcher/'>muller&#39;s ratcher: <small>1</small></a></li>
+
+	<li><a href='/tag/mutation%20accumulation/'>mutation accumulation: <small>1</small></a></li>
+
+	<li><a href='/tag/mutation-selection%20balance/'>mutation-selection balance: <small>4</small></a></li>
 
 	<li><a href='/tag/mutators/'>mutators: <small>2</small></a></li>
 
@@ -124,7 +130,7 @@
 
 	<li><a href='/tag/python/'>python: <small>2</small></a></li>
 
-	<li><a href='/tag/recombination/'>recombination: <small>2</small></a></li>
+	<li><a href='/tag/recombination/'>recombination: <small>3</small></a></li>
 
 	<li><a href='/tag/simulation/'>simulation: <small>2</small></a></li>
 
@@ -389,7 +395,7 @@ M = \left(\begin{array}{cccc}
 \omega_0 \varphi_U(0) = (1-s)^0 \frac{U^0 e^{-U}}{0!} = 
 e^{-U}
 \]</span></p>
-<p>Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to derive the eigenvalue so easily, because the matrix would not be triagonal. However, it would still agree with the conditions of the Perron-Frobenius theorem and the mean fitness at the mutation-selection balance would still be the leading eigenvalue of the matrix, and would exist. I've used this fact in my paper <em>The Evolution of Stress-Induced Hypermutation in Asexual Populations</em> [@Ram2012a].</p>
+<p>Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to derive the eigenvalue so easily, because the matrix would not be triagonal. However, it would still agree with the conditions of the Perron-Frobenius theorem and the mean fitness at the mutation-selection balance would still be the leading eigenvalue of the matrix, and would exist. I've used this fact in my paper <em>The Evolution of Stress-Induced Hypermutation in Asexual Populations</em> <span class="citation">(Ram and Hadany 2012)</span>.</p>
 <h2 id="summary"><a href="#summary">Summary</a></h2>
 <p>We've seen how to derive the mean fitness at the mutation-selection balance <span class="math">\(\bar{\omega} = e^{-U}\)</span> both via a first-order approximation and via a more &quot;hardcore&quot; linear algerba method.</p>
 <p>The nice thing about deriving the mean fitness in the &quot;hardcore&quot; method is that we get some idea of <em>why</em> it is equal to e<sup>-U</sup>. We found that the mean fitness at the mutation-selection balance equals to the leading eigenvalue of the transition matrix, which is the relative probability that individuals from the least loaded class (the class of fittest individuals) survive to the next generation without mutating. By definition the fitness of the least loaded individuals is 1, and we assumed the mutations are <em>Poisson</em> distributed, and therefore we got e<sup>-U</sup>, but if we change these assumptions the general result will still hold:</p>
@@ -404,6 +410,7 @@ e^{-U}
 <p>Gordo, Isabel, and Francisco Dionisio. 2005. &#8220;Nonequilibrium Model for Estimating Parameters of Deleterious Mutations.&#8221; <em>Physical Review E</em> 71 (3) (mar): 18&#8211;21. doi:10.1103/PhysRevE.71.031907. <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907" title="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">http://link.aps.org/doi/10.1103/PhysRevE.71.031907</a>.</p>
 <p>Kimura, Motoo, and Takeo Maruyama. 1966. &#8220;The Mutational Load With Epistatic Gene Interactions in Fitness.&#8221; <em>Genetics</em> 54 (6) (dec): 1337&#8211;51. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299</a>.</p>
 <p>Otto, Sarah P., and Troy Day. 2007. <em>A Biologist&#8217;s Guide To Mathematical Modeling in Ecology and Evolution</em>. Princeton University Press.</p>
+<p>Ram, Yoav, and Lilach Hadany. 2012. &#8220;The Evolution of Stress-induced Hypermutation in Asexual Populations.&#8221; <em>Evolution</em> 66 (7) (jul): 2315&#8211;28. doi:10.1111/j.1558-5646.2012.01576.x. <a href="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x http://www.ncbi.nlm.nih.gov/pubmed/22759304" title="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x http://www.ncbi.nlm.nih.gov/pubmed/22759304">http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x http://www.ncbi.nlm.nih.gov/pubmed/22759304</a>.</p>
 <div class="footnotes">
 <hr />
 <ol>
@@ -618,7 +625,7 @@ year = {2004}
 				</ul>
 
 				<ul class="quick-links">
-					<li>This page was last modified on 20 February 2013 at 17:11.</li>
+					<li>This page was last modified on 16 June 2013 at 10:54.</li>
 				</ul>
 
 				
