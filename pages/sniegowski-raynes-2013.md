@@ -4,7 +4,6 @@ tags: [evolution of the mutation rate]
 category: [research, mutation rate]
 math: true
 cite: false
-draft: false
 
 This is a short summary of [Sniegowski and Raynes [-@Sniegowski2013]](http://www.sciencedirect.com/science/article/pii/S0960982213000213), a review about the evolution of the mutation rate, with an emphasis on the **Drift Barrier Hypothesis** (DBH). The summary is written in my own words, with a few footnotes and highlighting that express my thoughts.  
 
