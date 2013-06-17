@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> Summary: &#34;Mutation rates: How low can you go?&#34; (Sniegowski and Raynes 2013) </title>
+	<meta name="description" content="Yoav Ram's blog on evolutionary theory and other scientific interests, and especially on the theoretical treatment of the evolution of the mutation rate" />
+	<meta name="author" content="Yoav Ram">
+	<meta name="keywords" content="evolution,mutation rate,mutation rates,Yoav Ram,yoavram,evolutionary theory,science,theoretical biology,mathematical biology,mathematics">
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="icon" type="image/ico" href="/static/favicon.ico">
+	<link href="http://feeds.feedburner.com/yoavram/msb-recent" rel="alternate" title="Recent Articles" type="application/atom+xml">
+
+	<!-- Le style -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link href="/static/theme.css" rel="stylesheet">
+	<link href="/static/bootstrap.min.css" rel="stylesheet">
+	<link href="/static/glyphicons.css" rel="stylesheet">
+	<link href="/static/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="/static/jekyll.css" rel="stylesheet">
+
+	<style type="text/css">
+	[class^="icon-"] { background-image: url("/static/glyphicons-halflings.png"); } 
+	[class*="icon-white"] { background-image: url("/static/glyphicons-halflings-white.png"); } 
+	[class^="glyphicon-"] { background-image: url("/static/glyphicons.png"); } 
+	</style>
+	<link href="/static/prettify.css" rel="stylesheet">
+
+	<!-- Le JS -->
+	<script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/static/bootstrap.min.js"></script>
+
+	<!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
+	<script type="text/javascript" src="/static/prettify.js"></script>
+
+	
+
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+<!-- Online Debugger: http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm -->
+<!-- Doc: http://docs.mathjax.org/en/latest/output.html -->`
+  MathJax.Hub.Config({            
+			"HTML-CSS": { availableFonts: ["STIX", "TeX"], 
+						  linebreaks: { automatic: true }
+			}
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+
+
+
+
+<!-- ShareThis JS -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "{{ config.SHARETHIS_PUBLISHER }}"});</script>
+<!-- ShareThis JS -->
+
+
+
+
+</head>
+
+
+<body onload="prettyPrint()">
+
+	<!-- Navbar -->
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+
+				<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+
+				<!-- Be sure to leave the brand out there if you want it shown -->
+				<a class="brand" href='/'>The Mutation-Selection Blog</a>
+
+				<!-- Everything you want hidden at 940px or less, place within here -->
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Tags">
+								<!--Tags -->
+								<i class="icon-tags"></i>
+								<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								
+
+	<li><a href='/tag/R/'>R: <small>1</small></a></li>
+
+	<li><a href='/tag/asexual%20populations/'>asexual populations: <small>5</small></a></li>
+
+	<li><a href='/tag/citations/'>citations: <small>1</small></a></li>
+
+	<li><a href='/tag/evolution%20of%20the%20mutation%20rate/'>evolution of the mutation rate: <small>4</small></a></li>
+
+	<li><a href='/tag/evolvability/'>evolvability: <small>1</small></a></li>
+
+	<li><a href='/tag/genetic%20drift/'>genetic drift: <small>1</small></a></li>
+
+	<li><a href='/tag/latex/'>latex: <small>1</small></a></li>
+
+	<li><a href='/tag/markdown/'>markdown: <small>6</small></a></li>
+
+	<li><a href='/tag/mathematical%20modeling/'>mathematical modeling: <small>2</small></a></li>
+
+	<li><a href='/tag/mean%20fitness/'>mean fitness: <small>2</small></a></li>
+
+	<li><a href='/tag/muller%27s%20ratcher/'>muller&#39;s ratcher: <small>1</small></a></li>
+
+	<li><a href='/tag/mutation%20accumulation/'>mutation accumulation: <small>1</small></a></li>
+
+	<li><a href='/tag/mutation-selection%20balance/'>mutation-selection balance: <small>4</small></a></li>
+
+	<li><a href='/tag/mutators/'>mutators: <small>2</small></a></li>
+
+	<li><a href='/tag/pandoc/'>pandoc: <small>2</small></a></li>
+
+	<li><a href='/tag/pdf/'>pdf: <small>1</small></a></li>
+
+	<li><a href='/tag/phylogeny/'>phylogeny: <small>1</small></a></li>
+
+	<li><a href='/tag/python/'>python: <small>2</small></a></li>
+
+	<li><a href='/tag/recombination/'>recombination: <small>3</small></a></li>
+
+	<li><a href='/tag/robustness/'>robustness: <small>1</small></a></li>
+
+	<li><a href='/tag/simulation/'>simulation: <small>2</small></a></li>
+
+	<li><a href='/tag/st2/'>st2: <small>1</small></a></li>
+
+	<li><a href='/tag/stress-induced%20mutation/'>stress-induced mutation: <small>1</small></a></li>
+
+	<li><a href='/tag/twitter%20bootstrap/'>twitter bootstrap: <small>1</small></a></li>
+
+
+							</ul>
+						</li>			
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Online avatars">
+								<!-- Contact -->
+								<i class="icon-user"></i>
+								<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<!-- http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+								
+	
+	<li><a href="http://www.yoavram.com/">Home <i class="icon-home"></i></a></li>
+	
+	
+	<li><a href="mailto:yoavram@gmail.com">Email <i class="icon-envelope"></i></a></li>
+	
+	
+	<li><a href="http://www.mendeley.com/profiles/yoav-ram">Mendeley</a></li>
+	
+	
+	<li><a href="http://scholar.google.com/citations?user=RIFmJvYAAAAJ">Scholar Citations</a></li>
+	
+	
+	<li><a href="http://figshare.com/authors/Yoav_Ram/99206">FigShare</a></li>
+	
+	
+	<li><a href="http://twitter.com/yoavram">Twitter <i class="glyphicon-twitter-t"></i></a></li>
+	
+	
+	<li><a href="http://www.linkedin.com/in/yoav-ram">Linkedin <i class="glyphicon-linked-in"></i></a></li>
+	
+	
+	<li><a href="https://github.com/yoavram">GitHub <i class="glyphicon-github"></i></a></li>
+	
+	
+	<li><a href="https://bitbucket.org/yoavram">Bitbucket</a></li>
+	
+	
+	<li><a href="http://code.google.com/u/yoav-ram/">Google Code</a></li>
+		
+				
+							</ul>
+						</li>
+						<li>
+							<a href="http://www.yoavram.com/"  title="About me">
+								<i class="icon-question-sign"></i>
+								&nbsp;&nbsp;
+							</a>
+						</li>
+						<li>
+							<a href="http://feeds.feedburner.com/yoavram/msb-recent" rel="alternate" type="application/rss+xml" title="Subscribe in a reader">
+								<i class="glyphicon-rss"></i>
+								&nbsp;&nbsp;				
+							</a>
+						</li>
+						<li>
+							<a href="http://feedburner.google.com/fb/a/mailverify?uri=yoavram/msb-recent" title="Subscribe by Email">
+								<i class="icon-envelope"></i>
+								&nbsp;&nbsp;				
+							</a>
+						</li>		
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end Navbar -->
+
+	<!-- HEADER -->
+	
+<div class="row-fluid">
+	<div class="span7 offset2">
+	<header class="masthead">
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/lenski-et-al-2006/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#bottom">To bottom &darr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+</div>
+</div>
+<div class="row-fluid">
+	<div class="span7 offset2">
+	<h1>Summary: &#34;Mutation rates: How low can you go?&#34; (Sniegowski and Raynes 2013)</h1>
+	
+<ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
+	<li class="active"><i class="icon-time"></i> 16 June 2013 at 12:29</li>
+	
+	<li><span class="divider">/</span>
+	<i class="icon-star"></i> <a href='http://blog.yoavram.com/sniegowski-raynes-2013/'>Permalink</a></li>
+	
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/evolution%20of%20the%20mutation%20rate/">evolution of the mutation rate</a></li>
+	
+	
+	
+	<li><span class="divider">/</span>
+	
+	<!-- sharethis buttons http://sharethis.com/publishers/get-sharing-tools -->
+	<span class='st_email' ></span>
+	<span class='st_twitter' ></span>
+	<span class='st_facebook' ></span>
+	<span class='st_googleplus' ></span>
+	<span class='st_reddit' ></span>
+	<span class='st_linkedin' ></span>
+	<span class='st_stumbleupon' ></span>
+	<span class='st_delicious' ></span>
+	<span class='st_citeulike' ></span>
+	<span class='st_connotea' ></span>
+
+	</li>
+	</ul>
+
+	</header>
+	</div>
+	<div class="span3">
+		
+	</div>
+</div>
+
+
+	<!-- BODY -->	
+	<div class="row-fluid">
+		<div class="span7 offset2">
+			
+
+<div class="post">
+	
+    
+<p>This is a short summary of <a href="http://www.sciencedirect.com/science/article/pii/S0960982213000213">Sniegowski and Raynes <span class="citation">(2013)</span></a>, a review about the evolution of the mutation rate, with an emphasis on the <strong>Drift Barrier Hypothesis</strong> (DBH). The summary is written in my own words, with a few footnotes and highlighting that express my thoughts.</p>
+<ol style="list-style-type: decimal">
+<li>Because most mutations are deleterious, <strong>selection favors decreased mutation rates</strong><sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup></li>
+<li>Then what keeps the mutation rate from dropping to <em>zero</em>?</li>
+<li>One force <em>could</em> be <strong>adaptive evolution</strong> which creates selection for the generation of beneficial mutations.<sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup> This selection, however, is limited <span class="citation">(Sniegowski et al. 2000)</span>.</li>
+<li>Another force can be the fitness cost of increasing genomic replication fidelity<sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup>. This doesn't seem to solve the problem, mainly because although the cost of fidelity in prokaryotes should be higher than in eukaryotes, the genomic mutation rate is lower<sup><a href="#fn4" class="footnoteRef" id="fnref4">4</a></sup>.</li>
+<li>There is also a physio-chemical constraint on the fidelity of replication and repair mechanisms<sup><a href="#fn5" class="footnoteRef" id="fnref5">5</a></sup>. But this constraint should be similar to all species so it cannot explain the diversity.</li>
+<li><strong>DBH</strong> <span class="citation">(Sung, Ackerman, et al. 2012)</span>: Reduction of the mutation rate has a diminishing effect on fitness<sup><a href="#fn6" class="footnoteRef" id="fnref6">6</a></sup> and therefore at some point selection towards low mutation rates is weaker than drift. This effect is highly dependent on the <strong>population size</strong>.</li>
+<li><strong>&quot;Drake's Rule&quot;</strong>: genomic mutation rates of DNA microbes<sup><a href="#fn7" class="footnoteRef" id="fnref7">7</a></sup> are very similar (0.003 mutations per genome per generation) - the per base-pair mutation rate decreases with the genome size <span class="citation">(Drake 1991)</span>. This suggest a universal selective force which acts to adjust the mutation rate of microbes. This rule was recently tested and confirmed in <em>C. reinhardtii</em> and <em>M. florum</em> <span class="citation">(Sung, Tucker, et al. 2012)</span>, and it fits with the DBH, as microbes usually have very large populations.</li>
+<li>In contrast, in <strong>eukaryotes</strong>, however, the per base-pair and genomic <strong>mutation rate increases with genome size</strong>. This fits with the DBH, because eukaryotes presumebly have small effective population sizes.</li>
+<li>However, it is noted that both mutation rates and effective population sizes are very hard to measure and estimate.</li>
+</ol>
+<h1 id="references">References</h1>
+<p>Dawson, Kevin J. 1998. &#8220;Evolutionarily Stable Mutation Rates.&#8221; <em>Journal of Theoretical Biology</em> 194 (1) (sep): 143&#8211;57. doi:10.1006/jtbi.1998.0752. <a href="http://www.ncbi.nlm.nih.gov/pubmed/9778430" title="http://www.ncbi.nlm.nih.gov/pubmed/9778430">http://www.ncbi.nlm.nih.gov/pubmed/9778430</a>.</p>
+<p>Drake, John W. 1991. &#8220;A Constant Rate of Spontaneous Mutation in DNA-based Microbes.&#8221; <em>Proceedings of the National Academy of Sciences of the United States of America</em> 88 (16) (aug): 7160&#8211;4. doi:10.1073/pnas.88.16.7160. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253</a>.</p>
+<p>Furi&#243;, Victoria, Andr&#233;s Moya, and Rafael Sanju&#225;n. 2005. &#8220;The Cost of Replication Fidelity in an RNA Virus.&#8221; <em>Proceedings of the National Academy of Sciences of the United States of America</em> 102 (29) (jul): 10233&#8211;7. doi:10.1073/pnas.0501062102. <a href="http://www.pnas.org/content/102/29/10233.short http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1177365\&amp;tool=pmcentrez\&amp;rendertype=abstract" title="http://www.pnas.org/content/102/29/10233.short http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1177365\&amp;tool=pmcentrez\&amp;rendertype=abstract">http://www.pnas.org/content/102/29/10233.short http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1177365\&amp;tool=pmcentrez\&amp;rendertype=abstract</a>.</p>
+<p>Liberman, Uri, and Marcus W. Feldman. 1986. &#8220;A General Reduction Principle for Genetic Modifiers of Recombination.&#8221; <em>Theoretical Population Biology</em> 30 (3) (dec): 341&#8211;71. <a href="http://www.ncbi.nlm.nih.gov/pubmed/3810506" title="http://www.ncbi.nlm.nih.gov/pubmed/3810506">http://www.ncbi.nlm.nih.gov/pubmed/3810506</a>.</p>
+<p>Loh, Ern, Jesse J. Salk, and Lawrence A. Loeb. 2010. &#8220;Optimization of DNA Polymerase Mutation Rates During Bacterial Evolution.&#8221; <em>Proceedings of the National Academy of Sciences of the United States of America</em> 107 (3) (jan): 1154&#8211;9. doi:10.1073/pnas.0912451107. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2824296\&amp;tool=pmcentrez\&amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2824296\&amp;tool=pmcentrez\&amp;rendertype=abstract">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2824296\&amp;tool=pmcentrez\&amp;rendertype=abstract</a>.</p>
+<p>Machielsen, Ronnie, Ingrid J. van Alen-Boerrigter, Lucy A. Koole, Roger S. Bongers, Michiel Kleerebezem, and Johan E. T. Van Hylckama Vlieg. 2010. &#8220;Indigenous and Environmental Modulation of Frequencies of Mutation in Lactobacillus Plantarum.&#8221; <em>Applied and Environmental Microbiology</em> 76 (5) (mar): 1587&#8211;95. doi:10.1128/AEM.02595-09. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2832393\&amp;tool=pmcentrez\&amp;rendertype=abstract" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2832393\&amp;tool=pmcentrez\&amp;rendertype=abstract">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2832393\&amp;tool=pmcentrez\&amp;rendertype=abstract</a>.</p>
+<p>Sniegowski, Paul D., Philip J. Gerrish, Toby Johnson, and Aaron Shaver. 2000. &#8220;The Evolution of Mutation Rates: Separating Causes From Consequences.&#8221; <em>BioEssays : News and Reviews in Molecular, Cellular and Developmental Biology</em> 22 (12) (dec): 1057&#8211;66. doi:10.1002/1521-1878(200012)22:12&lt;1057::AID-BIES3&gt;3.0.CO;2-W. <a href="http://www.ncbi.nlm.nih.gov/pubmed/11084621" title="http://www.ncbi.nlm.nih.gov/pubmed/11084621">http://www.ncbi.nlm.nih.gov/pubmed/11084621</a>.</p>
+<p>Sniegowski, Paul D., and Yevgeniy Raynes. 2013. &#8220;Mutation Rates: How Low Can You Go?&#8221; <em>Current Biology : CB</em> 23 (4) (feb): R147&#8211;9. doi:10.1016/j.cub.2013.01.018. <a href="http://www.ncbi.nlm.nih.gov/pubmed/23428322" title="http://www.ncbi.nlm.nih.gov/pubmed/23428322">http://www.ncbi.nlm.nih.gov/pubmed/23428322</a>.</p>
+<p>Sung, Way, M. S. Ackerman, S. F. Miller, T. G. Doak, and Michael Lynch. 2012. &#8220;Drift-barrier Hypothesis and Mutation-rate Evolution.&#8221; <em>Proceedings of the National Academy of Sciences of the United States of America</em> (oct). doi:10.1073/pnas.1216223109. <a href="http://m.pnas.org/content/early/2012/10/17/1216223109.abstract?sid=675666f0-38c1-41f3-935b-dd6b0e6620cb" title="http://m.pnas.org/content/early/2012/10/17/1216223109.abstract?sid=675666f0-38c1-41f3-935b-dd6b0e6620cb">http://m.pnas.org/content/early/2012/10/17/1216223109.abstract?sid=675666f0-38c1-41f3-935b-dd6b0e6620cb</a>.</p>
+<p>Sung, Way, Abraham E. Tucker, Thomas G. Doak, Eunjin Choi, W. Kelley Thomas, and Michael Lynch. 2012. &#8220;Extraordinary Genome Stability in the Ciliate Paramecium Tetraurelia.&#8221; <em>Proceedings of the National Academy of Sciences of the United States of America</em> 109 (47) (nov): 19339&#8211;44. doi:10.1073/pnas.1210663109. <a href="http://www.ncbi.nlm.nih.gov/pubmed/23129619" title="http://www.ncbi.nlm.nih.gov/pubmed/23129619">http://www.ncbi.nlm.nih.gov/pubmed/23129619</a>.</p>
+<p>Taddei, Fran&#231;ois, Miroslav Radman, John Maynard Smith, Bruno Toupance, Pierre-Henri Gouyon, and Bernard Godelle. 1997. &#8220;Role of Mutator Alleles in Adaptive Evolution.&#8221; <em>Nature</em> 387 (6634) (jun): 700&#8211;2. doi:10.1038/42696. <a href="http://www.ncbi.nlm.nih.gov/pubmed/9192893" title="http://www.ncbi.nlm.nih.gov/pubmed/9192893">http://www.ncbi.nlm.nih.gov/pubmed/9192893</a>.</p>
+<p>Torres-Barcel&#243;, Clara, Gabriel Cabot, Antonio Oliver, Angus Buckling, and R. Craig Maclean. 2013. &#8220;A Trade-off Between Oxidative Stress Resistance and DNA Repair Plays a Role in the Evolution of Elevated Mutation Rates in Bacteria.&#8221; <em>Proceedings. Biological Sciences / The Royal Society</em> 280 (1757) (jan): 20130007. doi:10.1098/rspb.2013.0007. <a href="http://www.ncbi.nlm.nih.gov/pubmed/23446530 http://datadryad.org/resource/doi:10.5061/dryad.jr4dc" title="http://www.ncbi.nlm.nih.gov/pubmed/23446530 http://datadryad.org/resource/doi:10.5061/dryad.jr4dc">http://www.ncbi.nlm.nih.gov/pubmed/23446530 http://datadryad.org/resource/doi:10.5061/dryad.jr4dc</a>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The reduction principle <span class="citation">(Liberman and Feldman 1986)</span><a href="#fnref1">&#8617;</a></p></li>
+<li id="fn2"><p>Second-order selection <span class="citation">(Taddei et al. 1997; Machielsen et al. 2010)</span><a href="#fnref2">&#8617;</a></p></li>
+<li id="fn3"><p>The cost of fidelity argument <span class="citation">(Dawson 1998)</span><a href="#fnref3">&#8617;</a></p></li>
+<li id="fn4"><p>AFAIK, this cost was mainly shown in viruses so far <span class="citation">(Furi&#243;, Moya, and Sanju&#225;n 2005)</span>, but a recent study did show some direct advantage of mutators which do not depend on replication fidelity <em>per se</em> <span class="citation">(Torres-Barcel&#243; et al. 2013)</span><a href="#fnref4">&#8617;</a></p></li>
+<li id="fn5"><p>However, anti-mutators do exist <span class="citation">(Loh, Salk, and Loeb 2010)</span>, so it seems that the mutation rate is not at its lower physio-chemical level.<a href="#fnref5">&#8617;</a></p></li>
+<li id="fn6"><p>Why? Because, as we have seen in <a href="/mean-fitness-at-the-mutation-selection-balance/">previous posts</a>, the population mean fitness decays exponentialy as the genomic per generation mutation rate increases: <span class="math">\(\bar{\omega} = e^{-U}\)</span>.<a href="#fnref6">&#8617;</a></p></li>
+<li id="fn7"><p>That is, not including RNA viruses.<a href="#fnref7">&#8617;</a></p></li>
+</ol>
+</div>
+	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
+	<script type="text/javascript">
+	$(function() {
+		$('#download_bibtex_btn').click(function() {
+			var content = $('#bib').html();
+			var w = window.open();
+			$(w.document.body).text(content);
+			w.document.title = 'Summary: &#34;Mutation rates: How low can you go?&#34; (Sniegowski and Raynes 2013)' + '.bib';
+			w.document.contentType = 'text/x-bibtex';
+		});
+	})
+	</script>
+	<a name="bottom"></a>
+	
+	
+	<ul class="pager">
+	  
+	  <li class="previous">
+		<a href='/lenski-et-al-2006/'>&larr; Older</a>
+	  
+	  </li>
+	  
+	  
+	   
+	   <li class="next disabled">
+	   <a href='#'>Newer &rarr;</a>
+	   
+	  </li>
+	</ul>
+
+	
+	<ul class="pager">
+	<li class="previous">
+		<a href='/'>&larr; Back to blog</a>
+	</li>
+	<li class="next">
+		
+		<a href="#">To top &uarr;</a>
+		
+	</li>
+	</ul>
+	<!-- end of pagination -->
+
+	
+</div>
+<div id="bib" style="display: none">
+	
+@article{Dawson1998,
+abstract = {I investigate the hypothesis that mutation rates in natural populations are determined by a balance between: (1) selection against deleterious mutations favouring lower mutation rates, and (2) selection opposing further reduction of the mutation rate, resulting from the costs incurred by more stringent proof-reading and repair (for example, a reduction in the rate of DNA replication). The influence of advantageous mutations is assumed to be negligible. In a previous paper, I analysed the dynamics of a modifier of the mutation rate in a large sexual population, where (infinitesimally rare) deleterious alleles segregate at an infinite number of unlinked loci with symmetric multiplicative fitness effects. A simple condition was obtained for a modifier allele to increase in frequency. Remarkably, this condition does not depend on the allele frequencies at the modifier locus. Here, I show that (as a consequence), given any set of possible values of the mutation rate (any set of possible modifier alleles), there always exists a single globally stable value of the mutation rate. This is an unusually strong form of "evolutionary stability" for a sexual population. Less surprisingly the optimum mutation rate in an asexual population has similar stability properties. Furthermore, in the case of an asexual population, it is not necessary to make any special assumptions about the selection acting against deleterious mutations, except that a deterministic mutation-selection equilibrium exists. I present a simple method for identifying the evolutionarily stable value of the mutation rate, given the function alpha(U) relating the value of the mutation rate to the fitness cost of maintaining this rate. I also argue that if there is a highly conserved relationship between the rate of replication per base, and the rate of mutation per base, and if this relationship has the form of a power law, then the remarkable uniformity of the per genome mutation rate in DNA based microbes can be explained.},
+annote = {no beneficial mutations
+MSB
+the difference between k-m model and kond model
+stable mu rate is lower for asex (like sloan \& panjeti) because indirect selection is weaker. very different results than if ben muts are allowed (leigh 70) in which case asex will have higher mut rates.selection at haploid stage - no hetero effect
+        
+        
+discussion on the different terms of the CoF
+        
+        
+      },
+author = {Dawson, Kevin J.},
+doi = {10.1006/jtbi.1998.0752},
+file = {:D$\backslash$:/papers//Dawson - 1998 - Evolutionarily stable mutation rates.pdf:pdf},
+issn = {0022-5193},
+journal = {Journal of theoretical biology},
+keywords = {Animals,Asexual,Asexual: genetics,Evolution,Genetic,Molecular,Mutation,Reproduction,Reproduction: genetics,Selection,cost of fidelity,mutation rate,theory},
+mendeley-tags = {cost of fidelity,mutation rate,theory},
+month = sep,
+number = {1},
+pages = {143--57},
+pmid = {9778430},
+title = {{Evolutionarily stable mutation rates.}},
+url = {http://www.ncbi.nlm.nih.gov/pubmed/9778430},
+volume = {194},
+year = {1998}
+}
+@article{Loh2010,
+abstract = {Mutation rate is an important determinant of evolvability. The optimal mutation rate for different organisms during evolution has been modeled in silico and tested in vivo, predominantly through pairwise comparisons. To characterize the fitness landscape across a broad range of mutation rates, we generated a panel of 66 DNA polymerase I mutants in Escherichia coli with comparable growth properties, yet with differing DNA replication fidelities, spanning 10(3)-fold higher and lower than that of wild type. These strains were competed for 350 generations in six replicate cultures in two different environments. A narrow range of mutation rates, 10- to 47-fold greater than that of wild type, predominated after serial passage. Mutants exhibiting higher mutation rates were not detected, nor were wild-type or antimutator strains. Winning clones exhibited shorter doubling times, greater maximum culture densities, and a growth advantages in pairwise competition relative to their precompetition ancestors, indicating the acquisition of adaptive phenotypes. To investigate the basis for mutator selection, we undertook a large series of pairwise competitions between mutator and wild-type strains under conditions where, in most cases, one strain completely overtook the culture within 18 days. Mutators were the most frequent winners but wild-type strains were also observed winning, suggesting that the competitive advantage of mutators is due to a greater probability of developing selectably advantageous mutations rather than from an initial growth advantage conferred by the polymerase variant itself. Our results indicate that under conditions where organism fitness is not yet maximized for a particular environment, competitive adaptation may be facilitated by enhanced mutagenesis.},
+annote = {        mutators evolve due to second order selection and not cost of fidelity        
+        
+"the competitive advantage of mutators is due to a greater probability of developing selectably advanta- geous mutations rather than from an initial growth advantage con- ferred by the polymerase variant itself. Our results indicate that under conditions where organism fitness is not yet maximized for a particular environment, competitive adaptationmay be facilitated by enhanced mutagenesis."},
+author = {Loh, Ern and Salk, Jesse J and Loeb, Lawrence A},
+doi = {10.1073/pnas.0912451107},
+file = {:D$\backslash$:/papers/Loh, Salk, Loeb - 2010 - Optimization of DNA polymerase mutation rates during bacterial evolution.pdf:pdf},
+issn = {1091-6490},
+journal = {Proceedings of the National Academy of Sciences of the United States of America},
+keywords = {Biological Evolution,DNA Polymerase I,DNA Polymerase I: genetics,Escherichia coli,Escherichia coli: enzymology,Escherichia coli: genetics,Mutation,competition assay,cost of fidelity,mutation rate},
+mendeley-tags = {competition assay,cost of fidelity,mutation rate},
+month = jan,
+number = {3},
+pages = {1154--9},
+pmid = {20080608},
+title = {{Optimization of DNA polymerase mutation rates during bacterial evolution.}},
+url = {http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2824296\&tool=pmcentrez\&rendertype=abstract},
+volume = {107},
+year = {2010}
+}
+@article{Liberman1986,
+author = {Liberman, Uri and Feldman, Marcus W.},
+file = {:D$\backslash$:/papers/Liberman, Feldman - 1986 - A general reduction principle for genetic modifiers of recombination.pdf:pdf},
+issn = {0040-5809},
+journal = {Theoretical population biology},
+keywords = {Biological Evolution,Gene Frequency,Genetic Linkage,Genetics, Population,Models, Genetic,Models, Theoretical,Recombination, Genetic,Selection, Genetic},
+month = dec,
+number = {3},
+pages = {341--71},
+pmid = {3810506},
+title = {{A general reduction principle for genetic modifiers of recombination.}},
+url = {http://www.ncbi.nlm.nih.gov/pubmed/3810506},
+volume = {30},
+year = {1986}
+}
+@article{Sniegowski1997,
+abstract = {Reliability of microbial (starter) strains in terms of quality, functional properties, growth performance, and robustness is essential for industrial applications. In an industrial fermentation process, the bacterium should be able to successfully withstand various adverse conditions during processing, such as acid, osmotic, temperature, and oxidative stresses. Besides the evolved defense mechanisms, stress-induced mutations participate in adaptive evolution for survival under stress conditions. However, this may lead to accumulation of mutant strains, which may be accompanied by loss of desired functional properties. Defining the effects of specific fermentation or processing conditions on the mutation frequency is an important step toward preventing loss of genome integrity and maintaining the productivity of industrial strains. Therefore, a set of Lactobacillus plantarum mutator reporter strains suitable for qualitative and quantitative analysis of low-frequency mutation events was developed. The mutation reporter system constructed was validated by using chemical mutagenesis (N-methyl-N'-nitro-N-nitrosoguanidine) and by controlled expression of endogenous candidate mutator genes (e.g., a truncated derivative of the L. plantarum hexA gene). Growth at different temperatures, under low-pH conditions, at high salt concentrations, or under starvation conditions did not have a significant effect on the mutation frequency. However, incubation with sublethal levels of hydrogen peroxide resulted in a 100-fold increase in the mutation frequency compared to the background mutation frequency. Importantly, when cells of L. plantarum were adapted to 42 degrees C prior to treatment with sublethal levels of hydrogen peroxide, there was a 10-fold increase in survival after peroxide treatment, and there was a concomitant 50-fold decrease in the mutation frequency. These results show that specific environmental conditions encountered by bacteria may significantly influence the genetic stability of strains, while protection against mutagenic conditions may be obtained by pretreatment of cultures with other, nonmutagenic stress conditions.},
+annote = {        From Duplicate 1 (                   Indigenous and environmental modulation of frequencies of mutation in Lactobacillus plantarum.                 - Machielsen, Ronnie; van Alen-Boerrigter, Ingrid J.; Koole, Lucy A.; Bongers, Roger S.; Kleerebezem, Michiel; Van Hylckama Vlieg, Johan E. T. )
+                
+        From Duplicate 1 (                           Indigenous and environmental modulation of frequencies of mutation in Lactobacillus plantarum.                         - Machielsen, Ronnie; van Alen-Boerrigter, Ingrid J; Koole, Lucy A; Bongers, Roger S; Kleerebezem, Michiel; Van Hylckama Vlieg, Johan E T )
+                
+-cross-protection (11) not only is re- flected by survival rates but also extends to the capacity of cells to prevent or counteract DNA damage, including increases in the mutation frequency due to environmental conditions.
+-Stress-induced mutations can participate in adaptive evolu-tion for survival under stress conditions encountered in indus- trial processes, and accumulation of such mutations can con- tribute to instability of desired functional properties of the microbial strains used.
+-
+        
+        From Duplicate 2 (                           Indigenous and environmental modulation of frequencies of mutation in Lactobacillus plantarum.                         - Machielsen, Ronnie; van Alen-Boerrigter, Ingrid J; Koole, Lucy A; Bongers, Roger S; Kleerebezem, Michiel; Van Hylckama Vlieg, Johan E T )
+                
+        
+        
+        
+        
+      },
+author = {Machielsen, Ronnie and van Alen-Boerrigter, Ingrid J. and Koole, Lucy A. and Bongers, Roger S. and Kleerebezem, Michiel and {Van Hylckama Vlieg}, Johan E. T.},
+doi = {10.1128/AEM.02595-09},
+file = {:D$\backslash$:/papers/Machielsen et al. - 2010 - Indigenous and environmental modulation of frequencies of mutation in Lactobacillus plantarum(2).pdf:pdf;:D$\backslash$:/papers//Machielsen et al. - 2010 - Indigenous and environmental modulation of frequencies of mutation in Lactobacillus plantarum.pdf:pdf},
+issn = {1098-5336},
+journal = {Applied and environmental microbiology},
+keywords = {Adaptation,Bacterial,Bacterial: genetics,Biological,DNA,Genes,Humans,Hydrogen Peroxide,Hydrogen Peroxide: pharmacology,Lactobacillus plantarum,Lactobacillus plantarum: drug effects,Lactobacillus plantarum: genetics,Mutagens,Mutagens: pharmacology,Mutation,Nitrosoguanidines,Nitrosoguanidines: pharmacology,Physiological,Reporter,Stress,mutation rate},
+mendeley-tags = {mutation rate},
+month = mar,
+number = {5},
+pages = {1587--95},
+pmid = {20038685},
+title = {{Indigenous and environmental modulation of frequencies of mutation in Lactobacillus plantarum.}},
+url = {http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2832393\&tool=pmcentrez\&rendertype=abstract},
+volume = {76},
+year = {2010}
+}
+@article{Sniegowski2000,
+abstract = {Natural selection can adjust the rate of mutation in a population by acting on allelic variation affecting processes of DNA replication and repair. Because mutation is the ultimate source of the genetic variation required for adaptation, it can be appealing to suppose that the genomic mutation rate is adjusted to a level that best promotes adaptation. Most mutations with phenotypic effects are harmful, however, and thus there is relentless selection within populations for lower genomic mutation rates. Selection on beneficial mutations can counter this effect by favoring alleles that raise the mutation rate, but the effect of beneficial mutations on the genomic mutation rate is extremely sensitive to recombination and is unlikely to be important in sexual populations. In contrast, high genomic mutation rates can evolve in asexual populations under the influence of beneficial mutations, but this phenomenon is probably of limited adaptive significance and represents, at best, a temporary reprieve from the continual selection pressure to reduce mutation. The physiological cost of reducing mutation below the low level observed in most populations may be the most important factor in setting the genomic mutation rate in sexual and asexual systems, regardless of the benefits of mutation in producing new adaptive variation. Maintenance of mutation rates higher than the minimum set by this "cost of fidelity" is likely only under special circumstances.},
+author = {Sniegowski, Paul D. and Gerrish, Philip J. and Johnson, Toby and Shaver, Aaron},
+doi = {10.1002/1521-1878(200012)22:12<1057::AID-BIES3>3.0.CO;2-W},
+file = {:D$\backslash$:/papers/Sniegowski et al. - 2000 - The evolution of mutation rates separating causes from consequences.pdf:pdf},
+issn = {0265-9247},
+journal = {BioEssays : news and reviews in molecular, cellular and developmental biology},
+keywords = {Animals,Biological Evolution,DNA Replication,Genetic,Genetic Variation,Models,Mutation,Selection,cost of fidelity,mutation rate,mutator,review,theory},
+mendeley-tags = {cost of fidelity,mutation rate,mutator,review,theory},
+month = dec,
+number = {12},
+pages = {1057--66},
+pmid = {11084621},
+title = {{The evolution of mutation rates: separating causes from consequences.}},
+url = {http://www.ncbi.nlm.nih.gov/pubmed/11084621},
+volume = {22},
+year = {2000}
+}
+@article{Furio2005,
+abstract = {It is often argued that high mutation rates are advantageous for RNA viruses, because they confer elevated rates of adaptation. However, there is no direct evidence showing a positive correlation between mutation and adaptation rates among RNA viruses. Moreover, theoretical work does not argue in favor of this prediction. We used a series of vesicular stomatitis virus clones harboring single amino acid substitutions in the RNA polymerase to demonstrate that changes inducing enhanced fidelity paid a fitness cost, but that there was no positive correlation between mutation an adaptation rates. We demonstrate that the observed mutation rate in vesicular stomatitis virus can be explained by a trade-off between replication rate and replication fidelity.},
+annote = {intro
+-evidence that mutation rates in RNA viruses are not at their physical limit
+        
+results
+-8 strains of VSV each with a mutation in the polymerase conferring an anti-mutator state
+-measured mutation rates and growth rate
+-regression between mutation rate and growth rate (without time to evolve) is positive (Fig 2)
+also allowed to evolve in passage in cells
+-regression between mutation rate and adaptation rate is negarive (Fig 3)
+-no correlation between mutation rate and fitness after evolution
+-evolved strains increased mutation rates \~{}X2 (Table 2)
+-estimate the optimal mutation rate to be 0.16 subtitutions per genome per replication event
+        
+discussion
+-use of theory and parameter estimation to derive the increase in mean fitness due to lower mutation rates
+        
+forces at large:
+1. deleterious mutation accumulation: reduction of mutation rate
+2. adaptation to new conditions (hitchhiking): increase of mutation rate
+3. cost of fidelity: increase of mutation rate
+        
+this paper checks (2) and (3) and discusses (1).
+it suggests that (3) is stronger than (2) because they find positive correlation of mutation rate and fitness, but a negative correlation of mutation rate and adaptation rate and no correlation of mutation rate and fitness after adaptation.
+also found that after evolution, the mutation rate increaed (on average)
+all work was done with 8 anti-mutator strains
+      },
+author = {Furi\'{o}, Victoria and Moya, Andr\'{e}s and Sanju\'{a}n, Rafael},
+doi = {10.1073/pnas.0501062102},
+file = {:D$\backslash$:/papers/Furi\'{o}, Moya, Sanju\'{a}n - 2005 - The cost of replication fidelity in an RNA virus.pdf:pdf},
+issn = {0027-8424},
+journal = {Proceedings of the National Academy of Sciences of the United States of America},
+keywords = {Adaptation,Amino Acid Substitution,Amino Acid Substitution: genetics,Biological,Biological: genetics,DNA-Directed RNA Polymerases,DNA-Directed RNA Polymerases: genetics,Genetic,Mutagenesis,Selection,Site-Directed,VSV,Vesicular stomatitis Indiana virus,Vesicular stomatitis Indiana virus: genetics,Vesicular stomatitis Indiana virus: physiology,Virus Replication,Virus Replication: genetics,cost of fidelity,virus},
+mendeley-tags = {VSV,cost of fidelity,virus},
+month = jul,
+number = {29},
+pages = {10233--7},
+pmid = {16006529},
+title = {{The cost of replication fidelity in an RNA virus.}},
+url = {http://www.pnas.org/content/102/29/10233.short http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1177365\&tool=pmcentrez\&rendertype=abstract},
+volume = {102},
+year = {2005}
+}
+@article{Taddei1997,
+abstract = {Because most newly arising mutations are neutral or deleterious, it has been argued that the mutation rate has evolved to be as low as possible, limited only by the cost of error-avoidance and error-correction mechanisms. But up to one per cent of natural bacterial isolates are 'mutator' clones that have high mutation rates. We consider here whether high mutation rates might play an important role in adaptive evolution. Models of large, asexual, clonal populations adapting to a new environment show that strong mutator genes (such as those that increase mutation rates by 1,000-fold) can accelerate adaptation, even if the mutator gene remains at a very low frequency (for example, 10[-5]). Less potent mutators (10 to 100-fold increase) can become fixed in a fraction of finite populations. The parameters of the model have been set to values typical for Escherichia coli cultures, which behave in a manner similar to the model in long-term adaptation experiments.},
+annote = {-transient mutators:  by mutation and reverse mutation at modifier gene. rate: \~{} 10-5-10-7
+-if transient effect is removed, that is, no reversion allowed,  than mutators do not speed adaptation
+-"Furthermore, these results show that during the course of evolution, where phases of adaptation and stasis alternate, there is no pure strategy of mutation rate. Rather, selection seems to result in an alternation of high and low mutation rate through forward and reverse mutations at the mutator locus. Alternatively, transient mutators
+ability by increasing their mutation rate: for example, inducible mechanisms (see ref. 30 for a review) might be particularly useful in response to stress."
+      },
+author = {Taddei, Fran\c{c}ois and Radman, Miroslav and {Maynard Smith}, John and Toupance, Bruno and Gouyon, Pierre-Henri and Godelle, Bernard},
+doi = {10.1038/42696},
+file = {:D$\backslash$:/papers/Taddei et al. - 1997 - Role of mutator alleles in adaptive evolution.pdf:pdf},
+issn = {0028-0836},
+journal = {Nature},
+keywords = {Adaptation,Alleles,Animals,Biological,Directed Molecular Evolution,Escherichia coli,Evolution,Genetic,Mammals,Models,Molecular,Mutation,Physiological,Selection,mutator},
+mendeley-tags = {mutator},
+month = jun,
+number = {6634},
+pages = {700--2},
+pmid = {9192893},
+title = {{Role of mutator alleles in adaptive evolution.}},
+url = {http://www.ncbi.nlm.nih.gov/pubmed/9192893},
+volume = {387},
+year = {1997}
+}
+@article{Sung2012,
+author = {Sung, Way and Ackerman, M. S. and Miller, S. F. and Doak, T. G. and Lynch, Michael},
+doi = {10.1073/pnas.1216223109},
+file = {:D$\backslash$:/papers/Sung et al. - 2012 - Drift-barrier hypothesis and mutation-rate evolution.pdf:pdf},
+issn = {0027-8424},
+journal = {Proceedings of the National Academy of Sciences of the United States of America},
+keywords = {mutation rate,population size},
+mendeley-tags = {mutation rate,population size},
+month = oct,
+title = {{Drift-barrier hypothesis and mutation-rate evolution}},
+url = {http://m.pnas.org/content/early/2012/10/17/1216223109.abstract?sid=675666f0-38c1-41f3-935b-dd6b0e6620cb},
+year = {2012}
+}
+@article{Sniegowski2013,
+abstract = {Two recent reports combine mutation accumulation and whole-genome sequencing to measure mutation rates in microbes with unusual genome sizes and life cycles. The results are broadly consistent with the hypothesis that genetic drift plays a role in shaping genomic mutation rates across a wide range of taxa.},
+author = {Sniegowski, Paul D. and Raynes, Yevgeniy},
+doi = {10.1016/j.cub.2013.01.018},
+file = {:D$\backslash$:/papers/Sniegowski, Raynes - 2013 - Mutation rates how low can you go.pdf:pdf},
+issn = {1879-0445},
+journal = {Current biology : CB},
+keywords = {mutation rate,review},
+mendeley-tags = {mutation rate,review},
+month = feb,
+number = {4},
+pages = {R147--9},
+pmid = {23428322},
+publisher = {Elsevier},
+title = {{Mutation rates: how low can you go?}},
+url = {http://www.ncbi.nlm.nih.gov/pubmed/23428322},
+volume = {23},
+year = {2013}
+}
+@article{Drake1991,
+abstract = {In terms of evolution and fitness, the most significant spontaneous mutation rate is likely to be that for the entire genome (or its nonfrivolous fraction). Information is now available to calculate this rate for several DNA-based haploid microbes, including bacteriophages with single- or double-stranded DNA, a bacterium, a yeast, and a filamentous fungus. Their genome sizes vary by approximately 6500-fold. Their average mutation rates per base pair vary by approximately 16,000-fold, whereas their mutation rates per genome vary by only approximately 2.5-fold, apparently randomly, around a mean value of 0.0033 per DNA replication. The average mutation rate per base pair is inversely proportional to genome size. Therefore, a nearly invariant microbial mutation rate appears to have evolved. Because this rate is uniform in such diverse organisms, it is likely to be determined by deep general forces, perhaps by a balance between the usually deleterious effects of mutation and the physiological costs of further reducing mutation rates.},
+annote = {mu=0.0033},
+author = {Drake, John W.},
+doi = {10.1073/pnas.88.16.7160},
+file = {:D$\backslash$:/papers/Drake - 1991 - A constant rate of spontaneous mutation in DNA-based microbes.pdf:pdf},
+issn = {0027-8424},
+journal = {Proceedings of the National Academy of Sciences of the United States of America},
+keywords = {Bacterial,Bacterial: genetics,Bacteriophage lambda,Bacteriophage lambda: genetics,Base Composition,Biological Evolution,Coliphages,Coliphages: genetics,DNA,Escherichia coli,Escherichia coli: genetics,Fungal,Fungal: genetics,Genes,Mutation,Neurospora crassa,Neurospora crassa: genetics,Saccharomyces cerevisiae,Saccharomyces cerevisiae: genetics,Species Specificity,T-Phages,T-Phages: genetics,Viral,Viral: genetics,mutation rate},
+mendeley-tags = {mutation rate},
+month = aug,
+number = {16},
+pages = {7160--4},
+pmid = {1831267},
+title = {{A constant rate of spontaneous mutation in DNA-based microbes.}},
+url = {http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253},
+volume = {88},
+year = {1991}
+}
+
+
+</div>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
+	var disqus_shortname = 'yoavram'; // required: replace example with your forum shortname
+	var disqus_identifier = 'sniegowski-raynes-2013';
+	
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+		</div>
+		<div class="span3">
+			<div class="sidebar">
+				
+
+		
+			</div>
+		</div>
+
+	</div>
+
+	<!-- FOOTER -->
+	<div class="row-fluid">
+		<div class="span8 offset2">
+			<footer class="colophon"> 
+				
+				
+				<ul class="quick-links">
+					<li> 
+						The content on "<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">The Mutation-Selection Blog</span>" by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.yoavram.com/" property="cc:attributionName" rel="cc:attributionURL">Yoav Ram</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license. The rest is licensed separately:
+					</li>
+				</ul>
+				<ul class="quick-links">
+					<li>Front</li>
+					<li>
+						<a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a>
+					</li>
+					<li>
+						<a href="http://glyphicons.com/" title="CC BY-SA 3.0">Glyphicons Free</a>
+					</li>
+					<li>
+						<a href="http://code.google.com/p/google-code-prettify/">Google Code Prettifier</a>
+					</li>
+					<li>
+						<a href="http://ethanschoonover.com/solarized">Solarized</a>
+					</li>
+					<li>
+						<a href="http://mathjax.org/">MathJax</a>
+					</li>
+				</ul>
+
+				<ul class="quick-links">
+					<li>Back</li>
+					<li><a href="http://python.org/">Python</a></li>
+					<li><a href="http://flask.pocoo.org/">Flask</a></li>
+					<li><a href="http://pages.github.com/">GitHub Pages</a></li>	
+					<li><a href="http://daringfireball.net/projects/markdown/">Markdown</a></li>
+					<li><a href="http://johnmacfarlane.net/pandoc">Pandoc</a></li>
+				</ul>
+
+				<ul class="quick-links">
+					<li>Code</li>
+					<li><a href="https://github.com/yoavram/yoavram.github.com">Static site</a></li>
+					<li><a href="https://github.com/yoavram/yoavram.github.com/tree/source">Site generator</a></li>
+					<li>Logo</li>
+					<li><a href="http://www.idancohen.com/">Idan Cohen</a></li>
+					<li><a href="http://www.dafont.com/sketch-block.font">Sketch Block</a></li>
+					<li><a href="http://www.dafont.com/positiv-a.font">Positiv-A</a></li>
+				</ul>
+
+				<ul class="quick-links">
+					<li>This page was last modified on 17 June 2013 at 15:43.</li>
+				</ul>
+
+				
+				<!-- Google Analytics www.google.com/analytics/ -->
+				<script type="text/javascript">
+
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-3865698-10']);
+				_gaq.push(['_trackPageview']);
+
+				(function() {
+					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+				</script>
+				
+				<a href="/recent.atom" rel="alternate" title="Recent Articles" type="application/atom+xml"></a>
+			</footer>
+		</div>
+	</div>
+
+</body>
+</html>
