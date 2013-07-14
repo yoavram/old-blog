@@ -35,6 +35,7 @@ CSL = "chicago"
 LAST_MODIFICATION = datetime.datetime.now()
 FIGSHARE_AUTHOR = "Yoav_Ram"
 FIGSHARE_ID = "99206"
+ORCID = "0000-0002-9653-4458"
 FEED_URL = "http://feeds.feedburner.com/yoavram/msb-recent"
 EMAIL_SUBSCRIPTION_URL = "http://feedburner.google.com/fb/a/mailverify?uri=yoavram/msb-recent"
 
