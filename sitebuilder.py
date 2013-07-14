@@ -3,7 +3,7 @@
 import sys
 import datetime
 from renderers import pandoc_renderer
-from flask import Flask, render_template, url_for, send_file
+from flask import Flask, render_template, url_for, send_file, jsonify
 # http://packages.python.org/Flask-FlatPages
 from flask_flatpages import FlatPages
 from flask_frozen import Freezer
@@ -193,6 +193,16 @@ def page_to_pdf(page):
     text = page.body
     pdf = FLATPAGES_PDF_RENDERER(text, path=page.path, title=page.meta['title'], author=AUTHOR_FIRSTNAME+" "+AUTHOR_LASTNAME, date=page.meta['datetime'])
     return send_file(pdf)
+
+
+@app.route('/orcid/')
+def orcid():
+    if ORCID:
+        import orcid
+        items = orcid.orcid_items(ORCID)    
+    else:
+        items = []
+    return jsonify(data=items)
 
 
 @app.route('/<path:path>/')
