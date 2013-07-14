@@ -30,7 +30,18 @@
 	<!-- Le JS -->
 	<script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="/static/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	// http://henrywrites.wordpress.com/2012/09/03/jquery-string-format/
+	String.prototype.format = String.prototype.f = function() {
+	    var s = this,
+	        i = arguments.length;
 
+	    while (i--) {
+	        s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+	    }
+	    return s;
+	};
+</script>
 	<!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
 	<script type="text/javascript" src="/static/prettify.js"></script>
 
@@ -169,13 +180,16 @@
 	<li><a href="http://scholar.google.com/citations?user=RIFmJvYAAAAJ">Scholar Citations</a></li>
 	
 	
+	<li><a href="http://orcid.org/0000-0002-9653-4458">ORCID</a></li>
+	
+	
 	<li><a href="http://figshare.com/authors/Yoav_Ram/99206">FigShare</a></li>
 	
 	
 	<li><a href="http://twitter.com/yoavram">Twitter <i class="glyphicon-twitter-t"></i></a></li>
 	
 	
-	<li><a href="http://www.linkedin.com/in/yoav-ram">Linkedin <i class="glyphicon-linked-in"></i></a></li>
+	<li><a href="http://www.linkedin.com/in/yoavram">Linkedin <i class="glyphicon-linked-in"></i></a></li>
 	
 	
 	<li><a href="https://github.com/yoavram">GitHub <i class="glyphicon-github"></i></a></li>
@@ -704,7 +718,7 @@ year = {1991}
 				</ul>
 
 				<ul class="quick-links">
-					<li>This page was last modified on 14 July 2013 at 14:16.</li>
+					<li>This page was last modified on 14 July 2013 at 21:58.</li>
 				</ul>
 
 				
