@@ -30,7 +30,18 @@
 	<!-- Le JS -->
 	<script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="/static/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	// http://henrywrites.wordpress.com/2012/09/03/jquery-string-format/
+	String.prototype.format = String.prototype.f = function() {
+	    var s = this,
+	        i = arguments.length;
 
+	    while (i--) {
+	        s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+	    }
+	    return s;
+	};
+</script>
 	<!-- google code prettifier http://code.google.com/p/google-code-prettify/ -->
 	<script type="text/javascript" src="/static/prettify.js"></script>
 
