@@ -33,9 +33,6 @@
         <div id="papers" class="posts">
         </div>
         <script type="text/javascript">
-        String.prototype.toProperCase = function () {
-		    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-	  };
         $(function() {
         	
         	$.getJSON("/orcid/", function(data) {     
