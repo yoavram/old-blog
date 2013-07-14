@@ -27,7 +27,28 @@
 
 {% block content %}
     {% with pages=pages  %}
-        {% include "_list.html" %}
+    	<h2>Posts</h2>
+        	{% include "_list.html" %}
+        <h2>Papers</h2>
+        <div id="papers" class="posts">
+        </div>
+        <script type="text/javascript">
+        String.prototype.toProperCase = function () {
+		    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+	  };
+        $(function() {
+        	
+        	$.getJSON("/orcid/", function(data) {     
+        		$.each(data['data'], function(i,record) {
+        			var ref = '<h3><a href="{0}" target="_blank">{1}		  ';
+        			ref += '<small>{2}, {3}</small>';
+        			ref += '</a></h3>';
+        			ref = ref.format(record['url'], record['title'], record['journal'], record['year']);
+        			$('#papers').append(ref);
+        		})
+        	});
+        })
+        </script>
     {% endwith %}
 	
 {% endblock content %}
