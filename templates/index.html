@@ -49,7 +49,6 @@
 	        	var url = '';
 	        	var doi = '';
 	        	$.each(record['work-external-identifiers']['work-external-identifier'], function(i,v) {
-	        		alert(v['work-external-identifier-id']['value']);
 			       if (v['work-external-identifier-type'] == 'DOI') {
 			            doi = v['work-external-identifier-id']['value'];
 			            url = DOI_BASE_URL + doi;
