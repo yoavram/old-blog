@@ -338,20 +338,34 @@
         <div id="papers" class="posts">
         </div>
         <script type="text/javascript">
-        String.prototype.toProperCase = function () {
-		    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-	  };
+        DOI_BASE_URL = 'http://dx.doi.org/';
+        var ORCID_URL = "http://pub.orcid.org/0000-0002-9653-4458/orcid-works?callback=?";
+        var ORCID_HTML = '<h3><a href="{0}" target="_blank">{1}		  ';
+        ORCID_HTML+= '<small>{2}, {3}</small>';
+        ORCID_HTML += '</a></h3>';
+
+        function process_orcid_result(data) {
+        	// get list of works from the ORCID result
+        	var data = data['orcid-profile']['orcid-activities']['orcid-works']['orcid-work'];
+        	// iterate list of results
+        	$.each(data, function(i,record) {
+	        	var title = record['work-title']['title']['value'];
+	        	var journal = record['work-title']['subtitle']['value'];
+	        	var url = '';
+	        	var doi = '';
+	        	$.each(record['work-external-identifiers']['work-external-identifier'], function(i,v) {
+	        		alert(v['work-external-identifier-id']['value']);
+			       if (v['work-external-identifier-type'] == 'DOI') {
+			            doi = v['work-external-identifier-id']['value'];
+			            url = DOI_BASE_URL + doi;
+				}
+			});
+			year = record['publication-date']['year']['value'];
+			$('#papers').append(ORCID_HTML.format(url, title, journal, year));
+		})
+        }
         $(function() {
-        	
-        	$.getJSON("/orcid/", function(data) {     
-        		$.each(data['data'], function(i,record) {
-        			var ref = '<h3><a href="{0}" target="_blank">{1}		  ';
-        			ref += '<small>{2}, {3}</small>';
-        			ref += '</a></h3>';
-        			ref = ref.format(record['url'], record['title'], record['journal'], record['year']);
-        			$('#papers').append(ref);
-        		})
-        	});
+        	$.getJSON(ORCID_URL).done(process_orcid_result);
         })
         </script>
     
@@ -433,7 +447,7 @@
 				</ul>
 
 				<ul class="quick-links">
-					<li>This page was last modified on 14 July 2013 at 21:58.</li>
+					<li>This page was last modified on 15 July 2013 at 11:00.</li>
 				</ul>
 
 				
