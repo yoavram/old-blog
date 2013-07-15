@@ -10,7 +10,7 @@ def parse_item(data):
     journal = data['work-title']['subtitle']['value']
     url = ''
     if data['url']:
-        url = data[0]['url']['value']
+        url = data['url']['value']
     doi = ''
     for v in data['work-external-identifiers']['work-external-identifier']:
        if v['work-external-identifier-type'] == 'DOI':
