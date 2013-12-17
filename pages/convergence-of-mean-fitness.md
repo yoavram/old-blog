@@ -1,6 +1,6 @@
 title: The convergence of mean fitness towards the mutation-selection balance
 datetime: 2012-11-19 15:49:00 +2
-updated: 2012-12-18 09:30:00 +2
+updated: 2013-12-17 15:37:00 +2
 tags: [mutation-selection balance, mean fitness, asexual populations, mathematical modeling]
 category: [research, mean fitness]
 math: true
@@ -124,14 +124,14 @@ Similar to the former expansion and because the Poisson process is *memoryless*,
 the frequency of individuals with *i* mutant alleles after mutation at generation 2 will be Poisson distributed with parameter $U(1-s)+U$.
 
 The same argument makes it clear that the distribution of mutant alleles 
-at any generation *g* is Poisson distributed, but let's see a rigrouros formulation of this.
+at any generation *g* is Poisson distributed.
 
 ## The expected number of mutant alleles
 
 After seeing how the distribution of mutant alleles changes at the first couple of generations,
 and verifying that this is a Poisson distribution,
 we can now formulate the recurrence relation for the expected number of
-mutatnt allele - or the parameter of the Poisson distribution, $\lambda$:
+mutant alleles - or the parameter of the Poisson distribution, $\lambda$:
 
 $$
 \lambda (g+1) = \sum_{k=0}^{\infty }{k\cdot f_{k}(g+1)} = \\
@@ -201,7 +201,7 @@ After *B* bottlenecks, the mean fitness is $\bar{\omega_{B}} = e^{-UB}$.
 So one can take the log of the measured mean fitness after *B* bottlenecks, $-BU$, and use a linear regression model to estimate *U*. By using a similar linear regression on the ratio of the second moment of fitness and the square of the expected mean fitness, one can estimate *s* (see below).
 
 **However, what happens if the population doesn't reach a mutation-selection balance?**
-In a population of bacteria, for example, the number of generations between bottlenecks may be insufficient for the population to reach a mutation-selection balance (see Figure 1 in [@Gordo2005]). In this case one must use a the non-equilibrium value of the mean fitness which was derived above - $\bar{\omega}_{g} = e^{-\frac{U}{s} (1-(1-s)^{g})}$. This concept is the subject of the paper by @Gordo2005, titled: **Nonequilibrium model for estimating parameters of deleterious mutations**. The paper explores a statistical model based on the above calculations. The statistical model is tested with simulations. In a later paper, [@Trindade2010][trindade2010], the statistical model was used on results of a mutation-accumulation experiment with *E. coli*.
+In a population of bacteria, for example, the number of generations between bottlenecks may be insufficient for the population to reach a mutation-selection balance (see Figure 1 in [@Gordo2005]). In this case one must use a the non-equilibrium value of the mean fitness which was derived above - $\bar{\omega}_{g} = e^{-\frac{U}{s} (1-(1-s)^{g})}$. This concept is the subject of the paper by @Gordo2005, titled: **Nonequilibrium model for estimating parameters of deleterious mutations**. The paper explores a statistical model based on the above calculations. The statistical model is tested with simulations. In a later paper, [@Trindade2010], the statistical model was used on results of a mutation-accumulation experiment with *E. coli*.
 
 In the above development, we saw that the expected mean fitness after *g* generations is $\bar{\omega}_{g} = e^{-\lambda(g) s}$. 
 If the number of generations between bottlenecks is constant, say *g=24* (for a population in which a generation is estimated at 30 minutes, resulting in a bottleneck period of 12 hours), then we can denote $\lambda {:=} \lambda(g)$ and use $\bar{\omega_{B}} = e^{-\lambda s B}$. 
@@ -234,5 +234,4 @@ I originally wrote this post with [Office 2010](http://en.wikipedia.org/wiki/Mic
 ##  References
 
 [gordo2005]: http://link.aps.org/doi/10.1103/PhysRevE.71.031907
-[trindade2010]: http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818
-[eariler post]: /mean-fitness-at-the-mutation-selection-balance/
+[eariler post]: /convergence-of-mean-fitness
