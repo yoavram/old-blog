@@ -147,9 +147,9 @@
   </entry>
   <entry xml:base="http://blog.yoavram.com/recent.atom">
     <title type="text">The distribution of deleterious mutations at the mutation-selection balance</title>
-    <id>http://blog.yoavram.com/mullers-ratchet/</id>
+    <id>http://blog.yoavram.com/distribution-of-deleterious-mutations/</id>
     <updated>2013-02-21T10:38:00Z</updated>
-    <link href="http://blog.yoavram.com/mullers-ratchet/" />
+    <link href="http://blog.yoavram.com/distribution-of-deleterious-mutations/" />
     <content type="html">
 &lt;p&gt;If we sample a random individual from an asexual population that had allot of time to adapt to its environment, how many deleterious mutations can we expect it to have? This distribution of deleterious mutations is the starting point of many population genetics models. In an &lt;a href=&quot;/mean-fitness-at-the-mutation-selection-balance/&quot;&gt;eariler post&lt;/a&gt; we've calculated this distribution - not only at the mutation-selection balance, but also on the way towards the balance from a mutation-free population.&lt;/p&gt;
 &lt;p&gt;Here, we calculate the distribution of deleterious mutation at the mutation-selection balance by following the derivation of John Haigh in his ultra-classic paper &lt;strong&gt;&amp;quot;The Accumulation of Deleterious Genes in a Population - Muller's Ratchet&amp;quot;&lt;/strong&gt; &lt;span class=&quot;citation&quot;&gt;(Haigh 1978)&lt;/span&gt;.&lt;/p&gt;
