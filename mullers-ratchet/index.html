@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title> Icons for the blog </title>
+	<title> The distribution of deleterious mutations at the mutation-selection balance </title>
 	<meta name="description" content="Yoav Ram's blog on evolutionary theory and other scientific interests, and especially on the theoretical treatment of the evolution of the mutation rate" />
 	<meta name="author" content="Yoav Ram">
 	<meta name="keywords" content="evolution,mutation rate,mutation rates,Yoav Ram,yoavram,evolutionary theory,science,theoretical biology,mathematical biology,mathematics">
@@ -46,6 +46,22 @@
 	<script type="text/javascript" src="/static/prettify.js"></script>
 
 	
+
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+<!-- Online Debugger: http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm -->
+<!-- Doc: http://docs.mathjax.org/en/latest/output.html -->`
+  MathJax.Hub.Config({            
+			"HTML-CSS": { availableFonts: ["STIX", "TeX"], 
+						  linebreaks: { automatic: true }
+			}
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
 
 
 
@@ -219,14 +235,14 @@
 	<ul class="pager">
 	  
 	  <li class="previous">
-		<a href='/markdown-links-and-footnotes/'>&larr; Older</a>
+		<a href='/creating-pdfs-with-pandoc/'>&larr; Older</a>
 	  
 	  </li>
 	  
 	  
 	   
 	   <li class="next">
-		<a href='/citations-in-markdown-using-pandoc/'>Newer &rarr;</a>
+		<a href='/lenski-et-al-2006/'>Newer &rarr;</a>
 		
 	  </li>
 	</ul>
@@ -248,17 +264,23 @@
 </div>
 <div class="row-fluid">
 	<div class="span7 offset2">
-	<h1>Icons for the blog</h1>
+	<h1>The distribution of deleterious mutations at the mutation-selection balance</h1>
 	
 <ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
-	<li class="active"><i class="icon-time"></i> 11 October 2012 at 14:59</li>
+	<li class="active"><i class="icon-time"></i> 21 February 2013 at 10:38</li>
 	
 	<li><span class="divider">/</span>
-	<i class="icon-star"></i> <a href='http://blog.yoavram.com/icons-for-the-blog/'>Permalink</a></li>
+	<i class="icon-star"></i> <a href='http://blog.yoavram.com/mullers-ratchet/'>Permalink</a></li>
 	
 	
 	<li><span class="divider">/</span>
-		<i class="icon-tag"></i> <a href="/tag/twitter%20bootstrap/">twitter bootstrap</a></li>
+		<i class="icon-tag"></i> <a href="/tag/asexual%20populations/">asexual populations</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/mutation%20accumulation/">mutation accumulation</a></li>
+	
+	<li><span class="divider">/</span>
+		<i class="icon-tag"></i> <a href="/tag/mutation-selection%20balance/">mutation-selection balance</a></li>
 	
 	
 	
@@ -283,6 +305,15 @@
 	</div>
 	<div class="span3">
 		
+		
+<div class="well-large">
+	<strong>Please cite this article as:</strong>
+	<br>
+	Ram, Yoav (2013) The distribution of deleterious mutations at the mutation-selection balance. <em>The Mutation-Selection Blog</em>. 
+	<a href='http://blog.yoavram.com/mullers-ratchet/'>http://blog.yoavram.com/mullers-ratchet/</a>
+</div>
+
+		
 	</div>
 </div>
 
@@ -294,71 +325,65 @@
 
 <div class="post">
 	
-    <ul>
-<li><a href="#the-problem">The problem</a></li>
-<li><a href="#the-solution">The solution</a></li>
-<li><a href="#font-awesome">Font Awesome</a></li>
-</ul>
-<p><a name='TOC'></a></p>
-<h3 id="the-problem"><a href="#the-problem">The problem</a></h3>
-<p>To build this blog I used the wonderful <a href="http://twitter.github.com/bootstrap/index.html">Twitter Bootstrap</a> framework. It's hard to define what it is, so I'll leave it for another time. <em>Twitter Bootstrap</em> comes packed with 120 icons packaged under the name <a href="http://glyphicons.com/">Glyphicons</a> <em>Halflings</em>. These are a subset of the <em>Glyphicons Free</em> set, and they include most of the little icons you see around the blog, like:</p>
-<ul>
-<li>the user icon: <i class="icon-user"></i></li>
-<li>the time icon: <i class="icon-time"></i></li>
-<li>the tag icon: <i class="icon-tag"></i></li>
-</ul>
-<p>For a complete list visit either <em>Glyphicons</em> or <a href="http://twitter.github.com/bootstrap/base-css.html#icons">Twitter Bootstrap icons documentation</a></p>
-<p>But when I built the top navigation bar, I saw that I needed something more - I needed a button for my <a href="http://en.wikipedia.org/wiki/Web_feed">web feed</a>. Web feeds (or RSS) have distinctive icons, but the <em>Glyphicons Halflings</em> set didn't have the feedicon. But there is an RSS icon in <em>Glyphicons Free</em> - here it is <i class="glyphicon-rss"></i>.</p>
-<p>So how do I add it to my site?</p>
-<p>The thing to understand is that these icons are not used like any image that you can put using an HTML <code>img</code> tag. The icons are packed together in a small <em>png</em> file and are parsed using a special <em>css</em> file. This is called a <a href="http://en.wikipedia.org/wiki/Sprite_(computer_graphics)#Sprites_by_CSS">CSS sprite</a>. The advantage is that the browser only asks for a single <em>png</em> file and a single <em>css</em> file for all icons, reducing requests to the server. But these <em>png</em> and <em>css</em> were pre-packed in <em>Twitter Bootstrap</em> - I simply downloaded <em>Twitter Bootstrap</em> and put it in my <em>static</em> directory, and from then on I could use icons like this: <code> &lt;i class=&quot;icon-camera&quot;&gt;&lt;/i&gt; </code> produces this icon - <i class="icon-camera"></i>.</p>
-<p>So how do I use the <em>Glyphicons Free</em> icon set, that has 400 icons including my desired <i class="glyphicon-rss"></i>?</p>
-<p>At first I downloaded the <em>Glyphicons Free</em> set from their website. But this download has two problems:</p>
-<ul>
-<li>There is no CSS sprite - instead of one <em>png</em> and one <em>css</em> I got 400 <em>png</em>s...</li>
-<li>The icons are 24x24 pixels, instead of 14x14, like the Halflings...</li>
-</ul>
-<p>A quick goole led me to a few sites that offered CSS sprites for <em>Glyphicons Free</em> (for example <a href="http://supercerebral.com/glyphicons-to-halflings-sprite/">here</a>, but each had its own problem. Until I found the right place <a href="http://rnikitin.tumblr.com/post/28834314453/all-glyphicons-as-12px-is-css-sprite-fot-bootstrap">rnitkin</a>.</p>
-<h3 id="the-solution"><a href="#the-solution">The solution</a></h3>
-<p>On this blog post there are both a <a href="/static/glyphicons.png">glyphicons.png</a> and a <a href="/static/glyphicons.css">glyphicons.css</a>. You can download them and use them. All you need to do, after putting them on some folder of your site:</p>
-<ul>
-<li>Add the <em>css</em> file to the <code>head</code> of any <em>HTML</em> file that uses the icons - change the <code>href</code> accordingly:</li>
-</ul>
-<pre class="prettyprint">
-&lt;link href="/static/glyphicons.css" rel="stylesheet">
-</pre>
-  
-<ul>
-<li>Change the URL of the <em>png</em> file in the <em>css</em> file to point at where the <em>png</em> file is:</li>
-</ul>
-<pre class="prettyprint">
-background-image: url("images/glyphicons-2.png");
-</pre>
-
-<ul>
-<li>Alternatively, you can change the URL in the <code>head</code> of your <em>HTML</em> file:</li>
-</ul>
-<pre class="prettyprint">
-[class^="glyphicon-"] { background-image: url("/static/glyphicons.png"); } 
-</pre>
-
-<ul>
-<li>Now you can use icons from <em>Glyphicons Free</em> like this:</li>
-</ul>
-<pre class="prettyprint">
-Hospital &lt;i class="glyphicon-hospital"></i>
-</pre>
-<pre>
-Hospital <i class="glyphicon-hospital"></i>
-</pre>
-
-<ul>
-<li><p>For a mapping between icon and its name, like the one for <em>Glyphicons Halflings</em> on the <a href="http://twitter.github.com/bootstrap/base-css.html#icons">Twitter Bootstrap icons documentation</a>, you can check out <a href="http://maximals.ru/project/sprite/glyphicons/">MaximaAL's site</a>. Just change the names from <code>gi-XXX</code> to <code>glyphicon-XXX</code>. It doesn't always work though, so the last resort is to look at the <em>css</em> file.</p></li>
-<li><p>Make sure you give proper attribution: the <a href="http://glyphicons.com/glyphicons-licenses/">Glyphicons License</a> page states that the use of Glyphonics Free is, well, free, but you must include a link to <a href="http://glyphonics.com/">http://glyphonics.com/</a> and include the <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY 3.0</a> license.</p></li>
-<li><p>You might be able to install the icons from this <a href="https://bitbucket.org/creat1va/compass-glyphicons">project</a>, especially if you're a Ruby user. You can also het a <em>_white</em> version.</p></li>
-</ul>
-<h3 id="font-awesome"><a href="#font-awesome">Font Awesome</a></h3>
-<p>One last thing. During the search for the solution (15 mins?) I found someone that suggested to use the <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a> icon set instead of <em>Glyphicons</em>, so I tried that. First of all, the <em>Font Awesome</em> site is... awesome. It took me one minute to understand how I need to do, to follow the instructions, and transition my site to <em>Font Awesome</em>. The integration with <em>Twitter Bootstrap</em> is very easy. The icon set is large, and it looks nice, but... not as nice as <em>Glyphonics</em> looks. So I decided I'd stick with <em>Glyphicons</em>. I will say that <em>Font Awesome</em>'s social icons (twitter and company) are nicer, maybe because the <em>Glyphicons</em> social icons have a black background and they don't look so good at 14x14 pixels.</p>
-<p>You can, of course, decide for yourself. Here are screenshots of the navigation bar with <a href="http://i.imgur.com/3RFfm.png">Glyphonics</a> and here it is with <a href="http://i.imgur.com/WLVAM.png">Font Awesome</a>. If you would like to see the code, here are the commits for <a href="https://bitbucket.org/yoavram/msb/changeset/48d36660697bc022548e5476e40157c894aa3a99">Glyphonics</a> and for <a href="https://bitbucket.org/yoavram/msb/changeset/9a7b530667faeda8da08d9ba932e11622d07287b">Font Awesome</a>.</p>
+    
+<p>If we sample a random individual from an asexual population that had allot of time to adapt to its environment, how many deleterious mutations can we expect it to have? This distribution of deleterious mutations is the starting point of many population genetics models. In an <a href="/mean-fitness-at-the-mutation-selection-balance/">eariler post</a> we've calculated this distribution - not only at the mutation-selection balance, but also on the way towards the balance from a mutation-free population.</p>
+<p>Here, we calculate the distribution of deleterious mutation at the mutation-selection balance by following the derivation of John Haigh in his ultra-classic paper <strong>&quot;The Accumulation of Deleterious Genes in a Population - Muller's Ratchet&quot;</strong> <span class="citation">(Haigh 1978)</span>.</p>
+<p>We focus on a finite asexual population undergoing selection and mutation. All mutations are deleterious with an independent (multiplicative) identical effect on fitness. The number of mutations per individual per generation is Poisson distributed<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup>. and The master equation is:</p>
+<p><span class="math">\[
+p_{k}(t) = \sum_{j=0}^{k} (X_{k-j}(t)(1-s)^{k-j} e^{-\lambda} \frac{\lambda^j}{j!})/T_{1}(t)
+\]</span></p>
+<p><span class="math">\(X_i(t)\)</span> is a multinomial random variable representing the <strong>number of individuals with <em>i</em> deleterious mutations at time <em>t</em></strong>, <span class="math">\(p_k(t)\)</span> is the multinomial probability for <span class="math">\(X_k(t+1)\)</span> (or the expected value of <span class="math">\(X_k(t+1)/\sum_{j\ge 0}{X_j(t+1)}\)</span>), <em>s</em> is the <strong>selection coefficient</strong><sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup>, <span class="math">\(\lambda\)</span> is the <strong>mutation rate</strong> (usually denoted on this blog by <span class="math">\(\mu\)</span> or <em>U</em>) in mutations per individual per generation, and <span class="math">\(T_{r}(t)\)</span> is the sum of <em>r</em>-th power of the population fitness at time <em>t</em>:</p>
+<p><span class="math">\[
+T_{r}(t) = \sum_{i\ge 0} X_{i}(t) (1-s)^{ir}
+\]</span></p>
+<p>So <span class="math">\(\bar{\omega} = T_{1}(t) / \sum_{j\ge 0}{X_j(t)}\)</span> is the population mean fitness.</p>
+<p>Now we are looking for the <strong>stable distribution</strong> of mutations in the population <span class="math">\(n=(n_0, n_1, ...)\)</span> for which <span class="math">\(E[X(t+1) | X(t) = n] = n\)</span>. This is:</p>
+<p><span class="math">\[
+n_k = N \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j e^{-\lambda}}{j!}/T
+\]</span></p>
+<p>where <span class="math">\(N=\sum_{i \ge 0} n_i\)</span> is the <strong>stable population size</strong> and <span class="math">\(T/N = \sum_{i \ge 0} \frac{n_i}{N} (1-s)^i\)</span> is the <strong>stable population mean fitness</strong>, (usually denoted by <span class="math">\(\bar{\omega}\)</span>.</p>
+<p>Looking at <span class="math">\(n_0\)</span> and assuming it is positive (because this the the stable number of individuals without deleterious mutations), the sum has only one term:</p>
+<p><span class="math">\[
+n_0 = N n_{0}(1-s)^{0} \frac{\lambda^0 e^{-\lambda}}{0!}/T \Rightarrow \\
+T = N e^{-\lambda}
+\]</span></p>
+<p>which is another <span class="math">\(\bar{\omega} = e^{-U}\)</span> result, as we have <a href="/mean-fitness-at-the-mutation-selection-balance/">seen before</a>.</p>
+<p>Using this identify, we get</p>
+<p><span class="math">\[
+n_k = N \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j e^{-\lambda}}{j!}/N e^{-\lambda} \Rightarrow \\
+n_k = \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j }{j!}
+\]</span></p>
+<p>We find the solution using induction, assume that <span class="math">\(n_m = n_0 \frac{\lambda^m}{s^m m!}\)</span> for all <span class="math">\(m&lt;k\)</span> and check for <span class="math">\(k\)</span> (the induction base is trivial, <span class="math">\(n_0=n_0\)</span>): <span class="math">\[
+n_k = \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j }{j!} =
+\sum_{j=0}^{k} n_{0} \frac{\lambda^{k-j}}{s^{k-j} (k-j)!} (1-s)^{k-j} \frac{\lambda^j }{j!} \Rightarrow
+ n_{0} \lambda^{k} \sum_{j=0}^{k} \frac{(1-s)^{k-j} }{s^{k-j} (k-j)!j!}  =
+ n_{0} \frac{\lambda^{k}}{s^k k!} \sum_{j=0}^{k} \frac{k!}{(k-j)!j!} s^{j} (1-s)^{k-j}  =
+ n_{0} \frac{\lambda^{k}}{s^k k!}  \sum_{j=0}^{k} {k \choose j} s^{j} (1-s)^{k-j}  =
+ n_{0} \frac{\lambda^{k}}{s^k k!} \sum_{j=0}^{k} P(Bin(k,s)=j)  \Rightarrow \\
+n_k = n_{0} \frac{\lambda^{k}}{s^k k!}
+\]</span> Where <span class="math">\(P(Bin(k,s)=j)\)</span> is the probability that a Binomial random variable with <em>k</em> trials and success probability <em>s</em> succeeds <em>j</em> times and fails <em>k-j</em> times.</p>
+<p>Haigh wrote this as: <span class="math">\[
+n_k = n_{0}\frac{\theta^k}{k!}, \; \theta=\lambda/s
+\]</span> From this we can find the <strong>frequency of the fittest class of individuals</strong>, <span class="math">\(f_0 = n_0/N\)</span>, because we know that the population size is <span class="math">\(\sum_{k \ge 0} n_k = N\)</span>:</p>
+<p><span class="math">\[
+N = \sum_{k \ge 0} n_k = 
+\sum_{k \ge 0} n_{0}\frac{\theta^k}{k!} = 
+n_{0} \sum_{k \ge 0} \frac{\theta^k}{k!} = 
+n_{0} e^\theta \Rightarrow 
+n_{0} = N e^{-\theta} \Rightarrow \\
+f_{0} = e^{-\theta}
+\]</span></p>
+<p>For example, Trindade et al. <span class="citation">(2010)</span> studied a mutator strain of <em>E. coli</em> and found that is has a mutation rate of <span class="math">\(\lambda=0.005\)</span> and selection coefficient <span class="math">\(s=0.03\)</span>. For these values, the frequency of the fittest individuals is roughly 85%.</p>
+<h2 id="references">References</h2>
+<p>Haigh, John. 1978. &#8220;The Accumulation of Deleterious Genes in a Population - Muller&#8217;s Ratchet.&#8221; <em>Theoretical Population Biology</em> 14 (2) (oct): 251&#8211;267. doi:10.1016/0040-5809(78)90027-8. <a href="http://dx.doi.org/10.1016/0040-5809(78)90027-8" title="http://dx.doi.org/10.1016/0040-5809(78)90027-8">http://dx.doi.org/10.1016/0040-5809(78)90027-8</a>.</p>
+<p>Trindade, Sandra, Lilia Perfeito, and Isabel Gordo. 2010. &#8220;Rate and Effects of Spontaneous Mutations That Affect Fitness in Mutator Escherichia Coli.&#8221; <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em> 365 (1544) (apr): 1177&#8211;86. doi:10.1098/rstb.2009.0287. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818</a>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This is reasonable because the mutation rate per locus is very low, but there are many loci.<a href="#fnref1">&#8617;</a></p></li>
+<li id="fn2"><p>The effect of deleterious mutations on fitness.<a href="#fnref2">&#8617;</a></p></li>
+</ol>
+</div>
 	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
 	<script type="text/javascript">
 	$(function() {
@@ -366,7 +391,7 @@ Hospital <i class="glyphicon-hospital"></i>
 			var content = $('#bib').html();
 			var w = window.open();
 			$(w.document.body).text(content);
-			w.document.title = 'Icons for the blog' + '.bib';
+			w.document.title = 'The distribution of deleterious mutations at the mutation-selection balance' + '.bib';
 			w.document.contentType = 'text/x-bibtex';
 		});
 	})
@@ -377,14 +402,14 @@ Hospital <i class="glyphicon-hospital"></i>
 	<ul class="pager">
 	  
 	  <li class="previous">
-		<a href='/markdown-links-and-footnotes/'>&larr; Older</a>
+		<a href='/creating-pdfs-with-pandoc/'>&larr; Older</a>
 	  
 	  </li>
 	  
 	  
 	   
 	   <li class="next">
-		<a href='/citations-in-markdown-using-pandoc/'>Newer &rarr;</a>
+		<a href='/lenski-et-al-2006/'>Newer &rarr;</a>
 		
 	  </li>
 	</ul>
@@ -406,6 +431,41 @@ Hospital <i class="glyphicon-hospital"></i>
 </div>
 <div id="bib" style="display: none">
 	
+@article{Trindade2010,
+abstract = {Knowledge of the mutational parameters that affect the evolution of organisms is of key importance in understanding the evolution of several characteristics of many natural populations, including recombination and mutation rates. In this study, we estimated the rate and mean effect of spontaneous mutations that affect fitness in a mutator strain of Escherichia coli and review some of the estimation methods associated with mutation accumulation (MA) experiments. We performed an MA experiment where we followed the evolution of 50 independent mutator lines that were subjected to repeated bottlenecks of a single individual for approximately 1150 generations. From the decline in mean fitness and the increase in variance between lines, we estimated a minimum mutation rate to deleterious mutations of 0.005 (+/-0.001 with 95\% confidence) and a maximum mean fitness effect per deleterious mutation of 0.03 (+/-0.01 with 95\% confidence). We also show that any beneficial mutations that occur during the MA experiment have a small effect on the estimate of the rate and effect of deleterious mutations, unless their rate is extremely large. Extrapolating our results to the wild-type mutation rate, we find that our estimate of the mutational effects is slightly larger and the inferred deleterious mutation rate slightly lower than previous estimates obtained for non-mutator E. coli.},
+author = {Trindade, Sandra and Perfeito, Lilia and Gordo, Isabel},
+doi = {10.1098/rstb.2009.0287},
+file = {:D$\backslash$:/papers/Trindade, Perfeito, Gordo - 2010 - Rate and effects of spontaneous mutations that affect fitness in mutator Escherichia coli.pdf:pdf},
+issn = {1471-2970},
+journal = {Philosophical Transactions of the Royal Society B: Biological Sciences},
+keywords = {Computer Simulation,Escherichia coli,Escherichia coli: genetics,Evolution,Genetic,Genetic Fitness,Genetic Variation,Genetic Variation: genetics,Models,Molecular,Monte Carlo Method,Mutation,mutation rate},
+mendeley-tags = {mutation rate},
+month = apr,
+number = {1544},
+pages = {1177--86},
+pmid = {20308092},
+title = {{Rate and effects of spontaneous mutations that affect fitness in mutator Escherichia coli.}},
+url = {http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818},
+volume = {365},
+year = {2010}
+}
+@article{Haigh1978,
+abstract = {A quantitative study of the operation of Muller's Ratchet for the accumulation of deleterious genes in an asexually reproducing population is made. For a population of size N, in which deleterious mutations occur at rate $\lambda$/genome/ generation, and the relative fitness of an individual with k mutants is (1 − s)k, the most important parameter is . If n0 is large (⩾25), deleterious mutations will accumulate very slowly, and independently of each other; if n0 is small (<1), the rate of accumulation of deleterious mutations will be greater than a natural population could plausibly bear; an estimate of the speed of the Ratchet for intermediate values of n0 is made. It is pointed out that the frequency distribution for the numbers of individuals carrying k mutants will retain its shape, but will move bodily to the right at the same average speed as the Ratchet. When favourable mutations also occur, the frequency distributions can move right of left; an estimate of the probability that any particular step is right or left is made, and it is shown that, for a given net rate of arrisal of deleterious mutations, the greater the rate of beneficial mutation, the greater the chance that beneficial mutations will accumulate.},
+author = {Haigh, John},
+doi = {10.1016/0040-5809(78)90027-8},
+file = {:D$\backslash$:/papers/Haigh - 1978 - The accumulation of deleterious genes in a population - Muller's Ratchet.pdf:pdf},
+issn = {00405809},
+journal = {Theoretical Population Biology},
+keywords = {muller's ratchet,theory},
+mendeley-tags = {muller's ratchet,theory},
+month = oct,
+number = {2},
+pages = {251--267},
+title = {{The accumulation of deleterious genes in a population - Muller's Ratchet}},
+url = {http://dx.doi.org/10.1016/0040-5809(78)90027-8},
+volume = {14},
+year = {1978}
+}
 
 
 </div>
@@ -417,7 +477,7 @@ Hospital <i class="glyphicon-hospital"></i>
 	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 	/* see http://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables */
 	var disqus_shortname = 'yoavram'; // required: replace example with your forum shortname
-	var disqus_identifier = 'icons-for-the-blog';
+	var disqus_identifier = 'mullers-ratchet';
 	
 	/* * * DON'T EDIT BELOW THIS LINE * * */
 	(function() {
