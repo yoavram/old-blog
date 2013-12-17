@@ -1,9 +1,9 @@
 title: "The distribution of deleterious mutations at the mutation-selection balance"
-datetime: 2013-2-21 12:38:00 +2
+datetime: 2013-12-17 15:55:00 +2
 tags: [asexual populations, mutation-selection balance, mutation accumulation]
 category: [research, mutation rate]
 math: true
-cite: true
+cite: false
 
 If we sample a random individual from an asexual population that had allot of time to adapt to its environment, how many deleterious mutations can we expect it to have? This distribution of deleterious mutations is the starting point of many population genetics models. In an [eariler post] we've calculated this distribution - not only at the mutation-selection balance, but also on the way towards the balance from a mutation-free population. 
 
