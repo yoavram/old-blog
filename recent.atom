@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Recent Articles</title>
   <id>http://blog.yoavram.com/recent.atom</id>
-  <updated>2013-07-14T12:16:00Z</updated>
+  <updated>2013-12-17T13:55:00Z</updated>
   <link href="http://blog.yoavram.com" />
   <link href="http://blog.yoavram.com/recent.atom" rel="self" />
   <author>
@@ -12,6 +12,71 @@
   </author>
   <rights>CC BY-SA 3.0</rights>
   <generator>Werkzeug</generator>
+  <entry xml:base="http://blog.yoavram.com/recent.atom">
+    <title type="text">The distribution of deleterious mutations at the mutation-selection balance</title>
+    <id>http://blog.yoavram.com/distribution-of-deleterious-mutations/</id>
+    <updated>2013-12-17T13:55:00Z</updated>
+    <link href="http://blog.yoavram.com/distribution-of-deleterious-mutations/" />
+    <content type="html">
+&lt;p&gt;If we sample a random individual from an asexual population that had allot of time to adapt to its environment, how many deleterious mutations can we expect it to have? This distribution of deleterious mutations is the starting point of many population genetics models. In an &lt;a href=&quot;/mean-fitness-at-the-mutation-selection-balance/&quot;&gt;eariler post&lt;/a&gt; we've calculated this distribution - not only at the mutation-selection balance, but also on the way towards the balance from a mutation-free population.&lt;/p&gt;
+&lt;p&gt;Here, we calculate the distribution of deleterious mutation at the mutation-selection balance by following the derivation of John Haigh in his ultra-classic paper &lt;strong&gt;&amp;quot;The Accumulation of Deleterious Genes in a Population - Muller's Ratchet&amp;quot;&lt;/strong&gt; &lt;span class=&quot;citation&quot;&gt;(Haigh 1978)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;We focus on a finite asexual population undergoing selection and mutation. All mutations are deleterious with an independent (multiplicative) identical effect on fitness. The number of mutations per individual per generation is Poisson distributed&lt;sup&gt;&lt;a href=&quot;#fn1&quot; class=&quot;footnoteRef&quot; id=&quot;fnref1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. and The master equation is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
+p_{k}(t) = \sum_{j=0}^{k} (X_{k-j}(t)(1-s)^{k-j} e^{-\lambda} \frac{\lambda^j}{j!})/T_{1}(t)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\(X_i(t)\)&lt;/span&gt; is a multinomial random variable representing the &lt;strong&gt;number of individuals with &lt;em&gt;i&lt;/em&gt; deleterious mutations at time &lt;em&gt;t&lt;/em&gt;&lt;/strong&gt;, &lt;span class=&quot;math&quot;&gt;\(p_k(t)\)&lt;/span&gt; is the multinomial probability for &lt;span class=&quot;math&quot;&gt;\(X_k(t+1)\)&lt;/span&gt; (or the expected value of &lt;span class=&quot;math&quot;&gt;\(X_k(t+1)/\sum_{j\ge 0}{X_j(t+1)}\)&lt;/span&gt;), &lt;em&gt;s&lt;/em&gt; is the &lt;strong&gt;selection coefficient&lt;/strong&gt;&lt;sup&gt;&lt;a href=&quot;#fn2&quot; class=&quot;footnoteRef&quot; id=&quot;fnref2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, &lt;span class=&quot;math&quot;&gt;\(\lambda\)&lt;/span&gt; is the &lt;strong&gt;mutation rate&lt;/strong&gt; (usually denoted on this blog by &lt;span class=&quot;math&quot;&gt;\(\mu\)&lt;/span&gt; or &lt;em&gt;U&lt;/em&gt;) in mutations per individual per generation, and &lt;span class=&quot;math&quot;&gt;\(T_{r}(t)\)&lt;/span&gt; is the sum of &lt;em&gt;r&lt;/em&gt;-th power of the population fitness at time &lt;em&gt;t&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
+T_{r}(t) = \sum_{i\ge 0} X_{i}(t) (1-s)^{ir}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;So &lt;span class=&quot;math&quot;&gt;\(\bar{\omega} = T_{1}(t) / \sum_{j\ge 0}{X_j(t)}\)&lt;/span&gt; is the population mean fitness.&lt;/p&gt;
+&lt;p&gt;Now we are looking for the &lt;strong&gt;stable distribution&lt;/strong&gt; of mutations in the population &lt;span class=&quot;math&quot;&gt;\(n=(n_0, n_1, ...)\)&lt;/span&gt; for which &lt;span class=&quot;math&quot;&gt;\(E[X(t+1) | X(t) = n] = n\)&lt;/span&gt;. This is:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
+n_k = N \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j e^{-\lambda}}{j!}/T
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;where &lt;span class=&quot;math&quot;&gt;\(N=\sum_{i \ge 0} n_i\)&lt;/span&gt; is the &lt;strong&gt;stable population size&lt;/strong&gt; and &lt;span class=&quot;math&quot;&gt;\(T/N = \sum_{i \ge 0} \frac{n_i}{N} (1-s)^i\)&lt;/span&gt; is the &lt;strong&gt;stable population mean fitness&lt;/strong&gt;, (usually denoted by &lt;span class=&quot;math&quot;&gt;\(\bar{\omega}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Looking at &lt;span class=&quot;math&quot;&gt;\(n_0\)&lt;/span&gt; and assuming it is positive (because this the the stable number of individuals without deleterious mutations), the sum has only one term:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
+n_0 = N n_{0}(1-s)^{0} \frac{\lambda^0 e^{-\lambda}}{0!}/T \Rightarrow \\
+T = N e^{-\lambda}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;which is another &lt;span class=&quot;math&quot;&gt;\(\bar{\omega} = e^{-U}\)&lt;/span&gt; result, as we have &lt;a href=&quot;/mean-fitness-at-the-mutation-selection-balance/&quot;&gt;seen before&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Using this identify, we get&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
+n_k = N \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j e^{-\lambda}}{j!}/N e^{-\lambda} \Rightarrow \\
+n_k = \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j }{j!}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;We find the solution using induction, assume that &lt;span class=&quot;math&quot;&gt;\(n_m = n_0 \frac{\lambda^m}{s^m m!}\)&lt;/span&gt; for all &lt;span class=&quot;math&quot;&gt;\(m&amp;lt;k\)&lt;/span&gt; and check for &lt;span class=&quot;math&quot;&gt;\(k\)&lt;/span&gt; (the induction base is trivial, &lt;span class=&quot;math&quot;&gt;\(n_0=n_0\)&lt;/span&gt;): &lt;span class=&quot;math&quot;&gt;\[
+n_k = \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j }{j!} =
+\sum_{j=0}^{k} n_{0} \frac{\lambda^{k-j}}{s^{k-j} (k-j)!} (1-s)^{k-j} \frac{\lambda^j }{j!} \Rightarrow
+ n_{0} \lambda^{k} \sum_{j=0}^{k} \frac{(1-s)^{k-j} }{s^{k-j} (k-j)!j!}  =
+ n_{0} \frac{\lambda^{k}}{s^k k!} \sum_{j=0}^{k} \frac{k!}{(k-j)!j!} s^{j} (1-s)^{k-j}  =
+ n_{0} \frac{\lambda^{k}}{s^k k!}  \sum_{j=0}^{k} {k \choose j} s^{j} (1-s)^{k-j}  =
+ n_{0} \frac{\lambda^{k}}{s^k k!} \sum_{j=0}^{k} P(Bin(k,s)=j)  \Rightarrow \\
+n_k = n_{0} \frac{\lambda^{k}}{s^k k!}
+\]&lt;/span&gt; Where &lt;span class=&quot;math&quot;&gt;\(P(Bin(k,s)=j)\)&lt;/span&gt; is the probability that a Binomial random variable with &lt;em&gt;k&lt;/em&gt; trials and success probability &lt;em&gt;s&lt;/em&gt; succeeds &lt;em&gt;j&lt;/em&gt; times and fails &lt;em&gt;k-j&lt;/em&gt; times.&lt;/p&gt;
+&lt;p&gt;Haigh wrote this as: &lt;span class=&quot;math&quot;&gt;\[
+n_k = n_{0}\frac{\theta^k}{k!}, \; \theta=\lambda/s
+\]&lt;/span&gt; From this we can find the &lt;strong&gt;frequency of the fittest class of individuals&lt;/strong&gt;, &lt;span class=&quot;math&quot;&gt;\(f_0 = n_0/N\)&lt;/span&gt;, because we know that the population size is &lt;span class=&quot;math&quot;&gt;\(\sum_{k \ge 0} n_k = N\)&lt;/span&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
+N = \sum_{k \ge 0} n_k = 
+\sum_{k \ge 0} n_{0}\frac{\theta^k}{k!} = 
+n_{0} \sum_{k \ge 0} \frac{\theta^k}{k!} = 
+n_{0} e^\theta \Rightarrow 
+n_{0} = N e^{-\theta} \Rightarrow \\
+f_{0} = e^{-\theta}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;For example, Trindade et al. &lt;span class=&quot;citation&quot;&gt;(2010)&lt;/span&gt; studied a mutator strain of &lt;em&gt;E. coli&lt;/em&gt; and found that is has a mutation rate of &lt;span class=&quot;math&quot;&gt;\(\lambda=0.005\)&lt;/span&gt; and selection coefficient &lt;span class=&quot;math&quot;&gt;\(s=0.03\)&lt;/span&gt;. For these values, the frequency of the fittest individuals is roughly 85%.&lt;/p&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;p&gt;Haigh, John. 1978. &amp;#8220;The Accumulation of Deleterious Genes in a Population - Muller&amp;#8217;s Ratchet.&amp;#8221; &lt;em&gt;Theoretical Population Biology&lt;/em&gt; 14 (2) (oct): 251&amp;#8211;267. doi:10.1016/0040-5809(78)90027-8. &lt;a href=&quot;http://dx.doi.org/10.1016/0040-5809(78)90027-8&quot; title=&quot;http://dx.doi.org/10.1016/0040-5809(78)90027-8&quot;&gt;http://dx.doi.org/10.1016/0040-5809(78)90027-8&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Trindade, Sandra, Lilia Perfeito, and Isabel Gordo. 2010. &amp;#8220;Rate and Effects of Spontaneous Mutations That Affect Fitness in Mutator Escherichia Coli.&amp;#8221; &lt;em&gt;Philosophical Transactions of the Royal Society B: Biological Sciences&lt;/em&gt; 365 (1544) (apr): 1177&amp;#8211;86. doi:10.1098/rstb.2009.0287. &lt;a href=&quot;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818&quot; title=&quot;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818&quot;&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn1&quot;&gt;&lt;p&gt;This is reasonable because the mutation rate per locus is very low, but there are many loci.&lt;a href=&quot;#fnref1&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&quot;fn2&quot;&gt;&lt;p&gt;The effect of deleterious mutations on fitness.&lt;a href=&quot;#fnref2&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry xml:base="http://blog.yoavram.com/recent.atom">
     <title type="text">Summary: &quot;Evolution of mutation rates in bacteria&quot; (Denamur and Matic 2006)</title>
     <id>http://blog.yoavram.com/denamur-and-matic-2006/</id>
@@ -142,71 +207,6 @@
 &lt;li id=&quot;fn1&quot;&gt;&lt;p&gt;Low mutation rate (&lt;em&gt;U&lt;/em&gt;).&lt;a href=&quot;#fnref1&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li id=&quot;fn2&quot;&gt;&lt;p&gt;Small mutation effect (&lt;em&gt;s&lt;/em&gt;).&lt;a href=&quot;#fnref2&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li id=&quot;fn3&quot;&gt;&lt;p&gt;The amplification model.&lt;a href=&quot;#fnref3&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry xml:base="http://blog.yoavram.com/recent.atom">
-    <title type="text">The distribution of deleterious mutations at the mutation-selection balance</title>
-    <id>http://blog.yoavram.com/distribution-of-deleterious-mutations/</id>
-    <updated>2013-02-21T10:38:00Z</updated>
-    <link href="http://blog.yoavram.com/distribution-of-deleterious-mutations/" />
-    <content type="html">
-&lt;p&gt;If we sample a random individual from an asexual population that had allot of time to adapt to its environment, how many deleterious mutations can we expect it to have? This distribution of deleterious mutations is the starting point of many population genetics models. In an &lt;a href=&quot;/mean-fitness-at-the-mutation-selection-balance/&quot;&gt;eariler post&lt;/a&gt; we've calculated this distribution - not only at the mutation-selection balance, but also on the way towards the balance from a mutation-free population.&lt;/p&gt;
-&lt;p&gt;Here, we calculate the distribution of deleterious mutation at the mutation-selection balance by following the derivation of John Haigh in his ultra-classic paper &lt;strong&gt;&amp;quot;The Accumulation of Deleterious Genes in a Population - Muller's Ratchet&amp;quot;&lt;/strong&gt; &lt;span class=&quot;citation&quot;&gt;(Haigh 1978)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;We focus on a finite asexual population undergoing selection and mutation. All mutations are deleterious with an independent (multiplicative) identical effect on fitness. The number of mutations per individual per generation is Poisson distributed&lt;sup&gt;&lt;a href=&quot;#fn1&quot; class=&quot;footnoteRef&quot; id=&quot;fnref1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. and The master equation is:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
-p_{k}(t) = \sum_{j=0}^{k} (X_{k-j}(t)(1-s)^{k-j} e^{-\lambda} \frac{\lambda^j}{j!})/T_{1}(t)
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\(X_i(t)\)&lt;/span&gt; is a multinomial random variable representing the &lt;strong&gt;number of individuals with &lt;em&gt;i&lt;/em&gt; deleterious mutations at time &lt;em&gt;t&lt;/em&gt;&lt;/strong&gt;, &lt;span class=&quot;math&quot;&gt;\(p_k(t)\)&lt;/span&gt; is the multinomial probability for &lt;span class=&quot;math&quot;&gt;\(X_k(t+1)\)&lt;/span&gt; (or the expected value of &lt;span class=&quot;math&quot;&gt;\(X_k(t+1)/\sum_{j\ge 0}{X_j(t+1)}\)&lt;/span&gt;), &lt;em&gt;s&lt;/em&gt; is the &lt;strong&gt;selection coefficient&lt;/strong&gt;&lt;sup&gt;&lt;a href=&quot;#fn2&quot; class=&quot;footnoteRef&quot; id=&quot;fnref2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, &lt;span class=&quot;math&quot;&gt;\(\lambda\)&lt;/span&gt; is the &lt;strong&gt;mutation rate&lt;/strong&gt; (usually denoted on this blog by &lt;span class=&quot;math&quot;&gt;\(\mu\)&lt;/span&gt; or &lt;em&gt;U&lt;/em&gt;) in mutations per individual per generation, and &lt;span class=&quot;math&quot;&gt;\(T_{r}(t)\)&lt;/span&gt; is the sum of &lt;em&gt;r&lt;/em&gt;-th power of the population fitness at time &lt;em&gt;t&lt;/em&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
-T_{r}(t) = \sum_{i\ge 0} X_{i}(t) (1-s)^{ir}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;So &lt;span class=&quot;math&quot;&gt;\(\bar{\omega} = T_{1}(t) / \sum_{j\ge 0}{X_j(t)}\)&lt;/span&gt; is the population mean fitness.&lt;/p&gt;
-&lt;p&gt;Now we are looking for the &lt;strong&gt;stable distribution&lt;/strong&gt; of mutations in the population &lt;span class=&quot;math&quot;&gt;\(n=(n_0, n_1, ...)\)&lt;/span&gt; for which &lt;span class=&quot;math&quot;&gt;\(E[X(t+1) | X(t) = n] = n\)&lt;/span&gt;. This is:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
-n_k = N \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j e^{-\lambda}}{j!}/T
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;where &lt;span class=&quot;math&quot;&gt;\(N=\sum_{i \ge 0} n_i\)&lt;/span&gt; is the &lt;strong&gt;stable population size&lt;/strong&gt; and &lt;span class=&quot;math&quot;&gt;\(T/N = \sum_{i \ge 0} \frac{n_i}{N} (1-s)^i\)&lt;/span&gt; is the &lt;strong&gt;stable population mean fitness&lt;/strong&gt;, (usually denoted by &lt;span class=&quot;math&quot;&gt;\(\bar{\omega}\)&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;Looking at &lt;span class=&quot;math&quot;&gt;\(n_0\)&lt;/span&gt; and assuming it is positive (because this the the stable number of individuals without deleterious mutations), the sum has only one term:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
-n_0 = N n_{0}(1-s)^{0} \frac{\lambda^0 e^{-\lambda}}{0!}/T \Rightarrow \\
-T = N e^{-\lambda}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;which is another &lt;span class=&quot;math&quot;&gt;\(\bar{\omega} = e^{-U}\)&lt;/span&gt; result, as we have &lt;a href=&quot;/mean-fitness-at-the-mutation-selection-balance/&quot;&gt;seen before&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Using this identify, we get&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
-n_k = N \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j e^{-\lambda}}{j!}/N e^{-\lambda} \Rightarrow \\
-n_k = \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j }{j!}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;We find the solution using induction, assume that &lt;span class=&quot;math&quot;&gt;\(n_m = n_0 \frac{\lambda^m}{s^m m!}\)&lt;/span&gt; for all &lt;span class=&quot;math&quot;&gt;\(m&amp;lt;k\)&lt;/span&gt; and check for &lt;span class=&quot;math&quot;&gt;\(k\)&lt;/span&gt; (the induction base is trivial, &lt;span class=&quot;math&quot;&gt;\(n_0=n_0\)&lt;/span&gt;): &lt;span class=&quot;math&quot;&gt;\[
-n_k = \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j }{j!} =
-\sum_{j=0}^{k} n_{0} \frac{\lambda^{k-j}}{s^{k-j} (k-j)!} (1-s)^{k-j} \frac{\lambda^j }{j!} \Rightarrow
- n_{0} \lambda^{k} \sum_{j=0}^{k} \frac{(1-s)^{k-j} }{s^{k-j} (k-j)!j!}  =
- n_{0} \frac{\lambda^{k}}{s^k k!} \sum_{j=0}^{k} \frac{k!}{(k-j)!j!} s^{j} (1-s)^{k-j}  =
- n_{0} \frac{\lambda^{k}}{s^k k!}  \sum_{j=0}^{k} {k \choose j} s^{j} (1-s)^{k-j}  =
- n_{0} \frac{\lambda^{k}}{s^k k!} \sum_{j=0}^{k} P(Bin(k,s)=j)  \Rightarrow \\
-n_k = n_{0} \frac{\lambda^{k}}{s^k k!}
-\]&lt;/span&gt; Where &lt;span class=&quot;math&quot;&gt;\(P(Bin(k,s)=j)\)&lt;/span&gt; is the probability that a Binomial random variable with &lt;em&gt;k&lt;/em&gt; trials and success probability &lt;em&gt;s&lt;/em&gt; succeeds &lt;em&gt;j&lt;/em&gt; times and fails &lt;em&gt;k-j&lt;/em&gt; times.&lt;/p&gt;
-&lt;p&gt;Haigh wrote this as: &lt;span class=&quot;math&quot;&gt;\[
-n_k = n_{0}\frac{\theta^k}{k!}, \; \theta=\lambda/s
-\]&lt;/span&gt; From this we can find the &lt;strong&gt;frequency of the fittest class of individuals&lt;/strong&gt;, &lt;span class=&quot;math&quot;&gt;\(f_0 = n_0/N\)&lt;/span&gt;, because we know that the population size is &lt;span class=&quot;math&quot;&gt;\(\sum_{k \ge 0} n_k = N\)&lt;/span&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;math&quot;&gt;\[
-N = \sum_{k \ge 0} n_k = 
-\sum_{k \ge 0} n_{0}\frac{\theta^k}{k!} = 
-n_{0} \sum_{k \ge 0} \frac{\theta^k}{k!} = 
-n_{0} e^\theta \Rightarrow 
-n_{0} = N e^{-\theta} \Rightarrow \\
-f_{0} = e^{-\theta}
-\]&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;For example, Trindade et al. &lt;span class=&quot;citation&quot;&gt;(2010)&lt;/span&gt; studied a mutator strain of &lt;em&gt;E. coli&lt;/em&gt; and found that is has a mutation rate of &lt;span class=&quot;math&quot;&gt;\(\lambda=0.005\)&lt;/span&gt; and selection coefficient &lt;span class=&quot;math&quot;&gt;\(s=0.03\)&lt;/span&gt;. For these values, the frequency of the fittest individuals is roughly 85%.&lt;/p&gt;
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-&lt;p&gt;Haigh, John. 1978. &amp;#8220;The Accumulation of Deleterious Genes in a Population - Muller&amp;#8217;s Ratchet.&amp;#8221; &lt;em&gt;Theoretical Population Biology&lt;/em&gt; 14 (2) (oct): 251&amp;#8211;267. doi:10.1016/0040-5809(78)90027-8. &lt;a href=&quot;http://dx.doi.org/10.1016/0040-5809(78)90027-8&quot; title=&quot;http://dx.doi.org/10.1016/0040-5809(78)90027-8&quot;&gt;http://dx.doi.org/10.1016/0040-5809(78)90027-8&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Trindade, Sandra, Lilia Perfeito, and Isabel Gordo. 2010. &amp;#8220;Rate and Effects of Spontaneous Mutations That Affect Fitness in Mutator Escherichia Coli.&amp;#8221; &lt;em&gt;Philosophical Transactions of the Royal Society B: Biological Sciences&lt;/em&gt; 365 (1544) (apr): 1177&amp;#8211;86. doi:10.1098/rstb.2009.0287. &lt;a href=&quot;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818&quot; title=&quot;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818&quot;&gt;http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818&lt;/a&gt;.&lt;/p&gt;
-&lt;div class=&quot;footnotes&quot;&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id=&quot;fn1&quot;&gt;&lt;p&gt;This is reasonable because the mutation rate per locus is very low, but there are many loci.&lt;a href=&quot;#fnref1&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li id=&quot;fn2&quot;&gt;&lt;p&gt;The effect of deleterious mutations on fitness.&lt;a href=&quot;#fnref2&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</content>
   </entry>
