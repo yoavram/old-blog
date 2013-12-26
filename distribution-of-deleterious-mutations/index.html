@@ -109,7 +109,7 @@
 
 	<li><a href='/tag/R/'>R: <small>1</small></a></li>
 
-	<li><a href='/tag/asexual%20populations/'>asexual populations: <small>5</small></a></li>
+	<li><a href='/tag/asexual%20populations/'>asexual populations: <small>6</small></a></li>
 
 	<li><a href='/tag/book/'>book: <small>1</small></a></li>
 
@@ -127,7 +127,7 @@
 
 	<li><a href='/tag/mean%20fitness/'>mean fitness: <small>2</small></a></li>
 
-	<li><a href='/tag/mutation%20accumulation/'>mutation accumulation: <small>1</small></a></li>
+	<li><a href='/tag/mutation%20accumulation/'>mutation accumulation: <small>2</small></a></li>
 
 	<li><a href='/tag/mutation-selection%20balance/'>mutation-selection balance: <small>4</small></a></li>
 
@@ -141,7 +141,7 @@
 
 	<li><a href='/tag/python/'>python: <small>2</small></a></li>
 
-	<li><a href='/tag/recombination/'>recombination: <small>2</small></a></li>
+	<li><a href='/tag/recombination/'>recombination: <small>3</small></a></li>
 
 	<li><a href='/tag/robustness/'>robustness: <small>1</small></a></li>
 
@@ -269,6 +269,9 @@
 <ul class="breadcrumb" style="background-color: #fff;padding: 0px 0;margin: 0 0 10px;">
 	<li class="active"><i class="icon-time"></i> 17 December 2013 at 13:55</li>
 	
+	<li class="active"><span class="divider">/</span>
+	<i class="icon-refresh"></i> 26 December 2013 at 08:04</li>
+	
 	<li><span class="divider">/</span>
 	<i class="icon-star"></i> <a href='http://blog.yoavram.com/distribution-of-deleterious-mutations/'>Permalink</a></li>
 	
@@ -332,8 +335,8 @@ T_{r}(t) = \sum_{i\ge 0} X_{i}(t) (1-s)^{ir}
 <p><span class="math">\[
 n_k = N \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j e^{-\lambda}}{j!}/T
 \]</span></p>
-<p>where <span class="math">\(N=\sum_{i \ge 0} n_i\)</span> is the <strong>stable population size</strong> and <span class="math">\(T/N = \sum_{i \ge 0} \frac{n_i}{N} (1-s)^i\)</span> is the <strong>stable population mean fitness</strong>, (usually denoted by <span class="math">\(\bar{\omega}\)</span>.</p>
-<p>Looking at <span class="math">\(n_0\)</span> and assuming it is positive (because this the the stable number of individuals without deleterious mutations), the sum has only one term:</p>
+<p>where <span class="math">\(N=\sum_{i \ge 0} n_i\)</span> is the <strong>stable population size</strong> and <span class="math">\(T/N = \sum_{i \ge 0} \frac{n_i}{N} (1-s)^i\)</span> is the <strong>stable population mean fitness</strong>, (usually denoted by <span class="math">\(\bar{\omega}\)</span>).</p>
+<p>Looking at <span class="math">\(n_0\)</span> and <strong>assuming it is positive</strong> (because this the the stable number of individuals without deleterious mutations), the sum has only one term:</p>
 <p><span class="math">\[
 n_0 = N n_{0}(1-s)^{0} \frac{\lambda^0 e^{-\lambda}}{0!}/T \Rightarrow \\
 T = N e^{-\lambda}
@@ -365,7 +368,9 @@ n_{0} = N e^{-\theta} \Rightarrow \\
 f_{0} = e^{-\theta}
 \]</span></p>
 <p>For example, Trindade et al. <span class="citation">(2010)</span> studied a mutator strain of <em>E. coli</em> and found that is has a mutation rate of <span class="math">\(\lambda=0.005\)</span> and selection coefficient <span class="math">\(s=0.03\)</span>. For these values, the frequency of the fittest individuals is roughly 85%.</p>
+<p>The main assumption made here is <span class="math">\(n_0 &gt; 0\)</span> (emphasized above). Of course, in an <em>infinite</em> population this is always true, but in real populations, the frequency of unloaded individuals <span class="math">\(f_0\)</span> can be smaller smaller that <span class="math">\(1/N\)</span> and then we can expect <span class="math">\(n_0=0\)</span>, and the population will have a different distribution. According to Gessler <span class="citation">(1995)</span> the number of deleterious mutations per individual will assume a shifted negative binomial distribution.</p>
 <h2 id="references">References</h2>
+<p>Gessler, Damian D. G. 1995. &#8220;The Constraints of Finite Size in Asexual Populations and the Rate of the Ratchet.&#8221; <em>Genetical Research</em> 66 (03) (apr): 241. doi:10.1017/S0016672300034686. <a href="http://www.journals.cambridge.org/abstract\_S0016672300034686" title="http://www.journals.cambridge.org/abstract\_S0016672300034686">http://www.journals.cambridge.org/abstract\_S0016672300034686</a>.</p>
 <p>Haigh, John. 1978. &#8220;The Accumulation of Deleterious Genes in a Population - Muller&#8217;s Ratchet.&#8221; <em>Theoretical Population Biology</em> 14 (2) (oct): 251&#8211;267. doi:10.1016/0040-5809(78)90027-8. <a href="http://dx.doi.org/10.1016/0040-5809(78)90027-8" title="http://dx.doi.org/10.1016/0040-5809(78)90027-8">http://dx.doi.org/10.1016/0040-5809(78)90027-8</a>.</p>
 <p>Trindade, Sandra, Lilia Perfeito, and Isabel Gordo. 2010. &#8220;Rate and Effects of Spontaneous Mutations That Affect Fitness in Mutator Escherichia Coli.&#8221; <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em> 365 (1544) (apr): 1177&#8211;86. doi:10.1098/rstb.2009.0287. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818</a>.</p>
 <div class="footnotes">
@@ -422,6 +427,24 @@ f_{0} = e^{-\theta}
 </div>
 <div id="bib" style="display: none">
 	
+@article{Gessler1995,
+abstract = {An analysis of mutation accumulation in finite, asexual populations shows that by modeling discrete individuals, a necessary condition for mutation–selection balance is often not met. It is found that over a wide parameter range (whenever N e−$\mu$/s < 1, where N is the population size, $\mu$ is the genome-wide mutation rate, and s is the realized strength of selection), asexual populations will fail to achieve mutation–selection balance. This is specifically because the steady-state strength of selection on the best individuals is too weak to counter mutation pressure. The discrete nature of individuals means that if the equilibrium level of mutation and selection is such that less than one individual is expected in a class, then equilibration towards this level acts to remove the class. When applied to the classes with the fewest mutations, this drives mutation accumulation. This drive is in addition to the well-known identification of the stochastic loss of the best class as a mechanism for Muller's ratchet. Quantification of this process explains why the distribution of the number of mutations per individual can be markedly hypodispersed compared to the Poisson expectation. The actual distribution, when corrected for stochasticity between the best class and the mean, is akin to a shifted negative binomial. The parameterization of the distribution allows for an approximation for the rate of Muller's ratchet when N e−$\mu$/s < 1. The analysis is extended to the case of variable selection coefficients where incoming mutations assume a distribution of deleterious effects. Under this condition, asexual populations accumulate mutations faster, yet may be able to survive longer, than previously estimated.},
+author = {Gessler, Damian D. G.},
+doi = {10.1017/S0016672300034686},
+file = {:D$\backslash$:/papers/Gessler - 1995 - The constraints of finite size in asexual populations and the rate of the ratchet.pdf:pdf},
+issn = {0016-6723},
+journal = {Genetical Research},
+keywords = {asexual,muller's ratchet},
+language = {English},
+mendeley-tags = {asexual,muller's ratchet},
+month = apr,
+number = {03},
+pages = {241},
+title = {{The constraints of finite size in asexual populations and the rate of the ratchet}},
+url = {http://www.journals.cambridge.org/abstract\_S0016672300034686},
+volume = {66},
+year = {1995}
+}
 @article{Trindade2010,
 abstract = {Knowledge of the mutational parameters that affect the evolution of organisms is of key importance in understanding the evolution of several characteristics of many natural populations, including recombination and mutation rates. In this study, we estimated the rate and mean effect of spontaneous mutations that affect fitness in a mutator strain of Escherichia coli and review some of the estimation methods associated with mutation accumulation (MA) experiments. We performed an MA experiment where we followed the evolution of 50 independent mutator lines that were subjected to repeated bottlenecks of a single individual for approximately 1150 generations. From the decline in mean fitness and the increase in variance between lines, we estimated a minimum mutation rate to deleterious mutations of 0.005 (+/-0.001 with 95\% confidence) and a maximum mean fitness effect per deleterious mutation of 0.03 (+/-0.01 with 95\% confidence). We also show that any beneficial mutations that occur during the MA experiment have a small effect on the estimate of the rate and effect of deleterious mutations, unless their rate is extremely large. Extrapolating our results to the wild-type mutation rate, we find that our estimate of the mutational effects is slightly larger and the inferred deleterious mutation rate slightly lower than previous estimates obtained for non-mutator E. coli.},
 author = {Trindade, Sandra and Perfeito, Lilia and Gordo, Isabel},
@@ -545,7 +568,7 @@ year = {1978}
 				</ul>
 
 				<ul class="quick-links">
-					<li>This page was last modified on 17 December 2013 at 16:21.</li>
+					<li>This page was last modified on 26 December 2013 at 14:47.</li>
 				</ul>
 
 				
