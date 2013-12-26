@@ -1,5 +1,6 @@
 title: "The distribution of deleterious mutations at the mutation-selection balance"
 datetime: 2013-12-17 15:55:00 +2
+updated: 2013-12-26 10:04:00 +2
 tags: [asexual populations, mutation-selection balance, mutation accumulation]
 category: [research, mutation rate]
 math: true
@@ -30,9 +31,9 @@ $$
 n_k = N \sum_{j=0}^{k} n_{k-j}(1-s)^{k-j} \frac{\lambda^j e^{-\lambda}}{j!}/T
 $$
 
-where $N=\sum_{i \ge 0} n_i$ is the **stable population size** and $T/N = \sum_{i \ge 0} \frac{n_i}{N} (1-s)^i$ is the **stable population mean fitness**, (usually denoted by $\bar{\omega}$.
+where $N=\sum_{i \ge 0} n_i$ is the **stable population size** and $T/N = \sum_{i \ge 0} \frac{n_i}{N} (1-s)^i$ is the **stable population mean fitness**, (usually denoted by $\bar{\omega}$).
 
-Looking at $n_0$ and assuming it is positive (because this the the stable number of individuals without deleterious mutations), the sum has only one term:
+Looking at $n_0$ and **assuming it is positive** (because this the the stable number of individuals without deleterious mutations), the sum has only one term:
 
 $$
 n_0 = N n_{0}(1-s)^{0} \frac{\lambda^0 e^{-\lambda}}{0!}/T \Rightarrow \\
@@ -76,6 +77,8 @@ f_{0} = e^{-\theta}
 $$
 
 For example, Trindade et al. [-@Trindade2010] studied a mutator strain of *E. coli* and found that is has a mutation rate of $\lambda=0.005$ and selection coefficient $s=0.03$. For these values, the frequency of the fittest individuals is roughly 85%. 
+
+The main assumption made here is $n_0 > 0$ (emphasized above). Of course, in an *infinite* population this is always true, but in real populations, the frequency of unloaded individuals $f_0$ can be smaller smaller that $1/N$ and then we can expect $n_0=0$, and the population will have a different distribution. According to Gessler [-@Gessler1995] the number of deleterious mutations per individual will assume a shifted negative binomial distribution.
 
 ## References
 
