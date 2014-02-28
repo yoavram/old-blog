@@ -92,8 +92,10 @@ decreases. *Figure 1A* shows this very clearly for a 100-fold mutator:
 
 [![Figure 1]](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC27047/figure/F1/)
 
-> Figure 1 from @Tenaillon2000a. 
+> Figure 1 from [@Tenaillon2000].
+>
 > A) Fixation probability of a 100-fold fold mutator, population size 10^-9. 
+>
 > B) Adaptation times of populations with: circle - low mutation rate, square - high mutation rate, triangle - mixed populations.
 
 However, the *B panel* shows that the adaptation time of a mutator population
