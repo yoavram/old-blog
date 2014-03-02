@@ -94,7 +94,7 @@ decreases. *Figure 1A* shows this very clearly for a 100-fold mutator:
 
 > Figure 1 from [@Tenaillon2000].
 >
-> A) Fixation probability of a 100-fold fold mutator, population size 10^-9. 
+> A) Fixation probability of a 100-fold fold mutator, population size 10^9^. 
 >
 > B) Adaptation times of populations with: circle - low mutation rate, square - high mutation rate, triangle - mixed populations.
 
@@ -188,7 +188,7 @@ the effect of other parameters was investigated:
  
  In recombining populations, this is not the case. [Figure 3A][Figure 3] shows that for a population size <10^6^,
  recombination has a very small effect on the fixation of a 100-fold mutator. However,
- the trends of the fixation probability are completely different for population size >10^-6^.
+ the trends of the fixation probability are completely different for population size >10^6^.
  In asexual populations it increases (rapidly after 10^7^), but in recombining populations it decreases and then increases
  a bit again at 10^9^, but not much, never surprassing 0.2.
  
@@ -204,7 +204,7 @@ but only at 10^-8^ for sexual populations.
 
 For a selection coefficient of 0.01 [@Kibota1996]  recombination reduced the fixation probability of mutators 17-fold. 
 
-A selection coefficient of 0.1, used in my own work [@Ram2012a], falls between the 
+A selection coefficient of 0.1, used in my own work [@Ram2012], falls between the 
 two right most points of [Figure 5] - 2.5 and 3 - and the fixation probability of a 
 100-fold mutator allele drops ~10-fold due to recombination at a rate of 10^-4^ per gene per generation 
 in a population with size 10^9^.
