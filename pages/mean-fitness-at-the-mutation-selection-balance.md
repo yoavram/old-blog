@@ -1,6 +1,6 @@
 title: Mean fitness at the mutation-selection balance
 datetime: 2012-10-14 16:45:00 +2
-updated: 2012-10-22 09:56:00 +2
+updated: 2014-04-03 11:28:00 +2
 tags: [mutation-selection balance, mean fitness, asexual populations, mathematical modeling]
 category: [research, mean fitness]
 math: true
@@ -39,9 +39,7 @@ $$
 \bar{\omega}^* = e^{-U}
 $$
 
-## Simple approximation 
-
-### Single locus
+## Single locus
 
 In this section I roughly follow the route of [@Gillespie2004].
 To reach this formula in a simple way (all you need is some straightforward *Calculus* and a little bit of *Genetics*), 
@@ -83,7 +81,9 @@ $$
 $$
 This, however, is the mean fitness due to a single locus, not the entire genome.
 
-### Multiple locus
+## Multiple locus
+
+### Extension of single locus model
 
 Moving on to a multiple locus model with an arbitrary number of loci[^loci], we define the mutation rate at locus *j* as $\mu_j$, 
 so the mean fitness at the mutation-selection balance in locus *j* is $\bar{\omega}^*_j = 1 - \mu_j$,
@@ -107,10 +107,9 @@ $$
 You can find this derivation at the begining of a [presentation](http://dx.doi.org/10.6084/m9.figshare.95940)
 I gave at the [BioMath Student Journal Club at Tel-Aviv University](http://biomathsjctau.wordpress.com).
 
-## Matrix Theory: the Perron-Frobenius theorem
+### A separate multiple locus model
 
-We can produce the same result without approximations using a bit heavier mathematics, but not much heavier -
-this is still undergraduate *Linear Algebra*.
+We can produce the same result without approximations using a different approach.
 
 This time we start with the multiple locus model right away. 
 Instead of following allele frequencies, though, we follow the frequency of individuals with *i* mutant alleles,
@@ -143,40 +142,32 @@ $$
 This matrix is called a [transition matrix](http://en.wikipedia.org/wiki/Stochastic_matrix) 
 because its entries $M_{i,j}$ are the transition probabilities from state *j* to state *i* - the state is the number of mutant alleles.
 
-Now if we set $p^*=p'=p$ we get $\bar{\omega}^*p^*=Mp^*$, so if there is $\bar{\omega}^*$ and $p^*$ such that $p^*_i \ge 0 \; \sum_{i}{p^*_i}=1$
-that solve this equation, then $p^*$ is an **eigenvector** of *M* and $\bar{\omega}^*$ is an **eigenvalue** of M.
-
-From the [Perron-Frobenius theorem](http://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem) 
-we know that this matrix always has a unique non-negative eigenvector, so $p^*$ exists and it is unique. 
-Furthermore, from the same theorem we know that $\bar{\omega}^*$ also exists and that it
-is the leading (largest positive) eigenvalue of *M* [@Otto2007, p. 709].
-
-Since this is a triangular matrix, the eigenvalues are simply the elements on the diagonal[^diagonal].
-Therefore, the largest eigenvalue must be the largest element on the diagonal, which is the element 
+Now if we set $p^*=p'=p$ we get $\bar{\omega}^*p^*=Mp^*$, so that $\bar{\omega}$ is an eigenvalue of $M$. 
+Because $M$ is a triangular matrix, the eigenvalues are simply the elements on the main diagonal[^diagonal].
+We can use the first equation to find the value of $\bar{\omega}$, assuming $p^*_0>0$:
 $$
-\bar{\omega}^* = M_{0,0} = 
-\omega_0 \varphi_U(0) = (1-s)^0 \frac{U^0 e^{-U}}{0!} = 
-e^{-U}
+\bar{\omega}^*p^*_0 = \omega_0 \varphi_U(0) p^*_0 \Rightarrow \\\\
+\bar{\omega}^* = \omega_0 \varphi_U(0) = e^{-U}
 $$
 
-Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to derive the eigenvalue so easily, 
-because the matrix would not be triagonal. However, it would still agree with the conditions of the Perron-Frobenius theorem and the mean fitness 
-at the mutation-selection balance would still be the leading eigenvalue of the matrix, and would exist. I've used this fact in my paper 
-*The Evolution of Stress-Induced Hypermutation in Asexual Populations* [@Ram2012].
+Note that if beneficial mutations or back-mutations were allowed in this model, 
+we would not be able to find the population mean fitness so easily, because the matrix would not be triangular. 
+However, in that case we could use the _Perron-Frobenius theorem_ to find that $\bar{\omega}^*$ is the leading eigenvalue 
+of the $M$. I've used this approach in our article *The Evolution of Stress-Induced Hypermutation in Asexual Populations* [@Ram2012].
 
 ## Summary
 
-We've seen how to derive the mean fitness at the mutation-selection balance $\bar{\omega} = e^{-U}$ 
-both via a first-order approximation and via a more "hardcore" linear algerba method.
+We've seen how to find the population mean fitness at the mutation-selection balance $\bar{\omega} = e^{-U}$.
 
-The nice thing about deriving the mean fitness in the "hardcore" method is that we get some idea of *why* it is equal to e^-U^.
-We found that the mean fitness at the mutation-selection balance equals to the leading eigenvalue of the transition matrix,
-which is the relative probability that individuals from the least loaded class (the class of fittest individuals) survive to the next generation without mutating.
-By definition the fitness of the least loaded individuals is 1, and we assumed the mutations are *Poisson* distributed, 
+The advantage in the multiple locus model method is that we get some intuition on *why* the population mean fitness is equal to e^-U^.
+We found that the population mean fitness at the mutation-selection balance equals 
+the probability that the fittest individuals survive to the next generation without mutating.
+By definition the fitness of the fittest individuals is 1, and we assumed the number of new mutations is *Poisson* distributed, 
 and therefore we got e^-U^, but if we change these assumptions the general result will still hold:
 
-> The mean fitness of an asexual population at the mutation-selection balance, in the absence of beneficial mutations,
-> is the product of the fitness of the least loaded class and the probability that no mutations occur.
+> The mean fitness of an asexual population at the mutation-selection balance, 
+> in the absence of beneficial mutations,
+> is the product of the fitness of the fittest individuals and the probability that no mutations occur.
 
 What's left?
 
