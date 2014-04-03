@@ -327,19 +327,19 @@
 </ul></li>
 </ul>
 <p><a name='TOC'></a></p>
-<h2 id="examples"><a href="#examples">Examples</a></h2>
-<h3 id="math"><a href="#math">Math</a></h3>
+<h2 id="examples">Examples</h2>
+<h3 id="math">Math</h3>
 <p>When <span class="math">\(a \ne 0\)</span>, there are two solutions to <span class="math">\(ax^2 + bx + c = 0\)</span> and they are <span class="math">\[
 x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
 \]</span></p>
-<h3 id="source-code"><a href="#source-code">Source Code</a></h3>
-<h4 id="java"><a href="#java">Java</a></h4>
+<h3 id="source-code">Source Code</h3>
+<h4 id="java">Java</h4>
 <pre class="prettyprint linenums:1"><code>class Blog {
 public:
   // Blog
   static const string BLOG = &quot;Blog&quot;;
 }</code></pre>
-<h4 id="python"><a href="#python">Python</a></h4>
+<h4 id="python">Python</h4>
 <pre class="prettyprint linenums:1"><code>#!/usr/bin/python
 def pages_by_datetime(limit=0, latest_first=True):
     # Articles are pages with a publication date
@@ -351,11 +351,11 @@ def pages_by_datetime(limit=0, latest_first=True):
         return articles[:limit]
     else:
         return articles</code></pre>
-<h4 id="inline-code"><a href="#inline-code">Inline code</a></h4>
+<h4 id="inline-code">Inline code</h4>
 <p>Small code elements like <code>print 'Hello World!'</code> can be put into HTML <code>&lt;code&gt;</code> elements.</p>
-<h2 id="explanations"><a href="#explanations">Explanations</a></h2>
-<h3 id="math-1"><a href="#math-1">Math</a></h3>
-<p>Math is written in <span class="math">\(LaTeX\)</span><sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> is written inside the <a href="http://daringfireball.net/projects/markdown/">Markdown</a><sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup> text using <code>$</code> (once for inline, two for display mode). <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, which is used to convert the <a href="http://daringfireball.net/projects/markdown/">Markdown</a> to HTML, is informed that <span class="math">\(LaTeX\)</span> is to be converted to mathematical notation in the browser using <a href="http://www.mathjax.org/">MathJax</a> javascript by specifing the command line argument <code>--mathjax</code>. <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> then converts <code>$</code> to <code>(</code> or <code>)</code> to start and finish <span class="math">\(LaTeX\)</span> blocks and doesn't parse <a href="http://daringfireball.net/projects/markdown/">Markdown</a> inside these blocks.</p>
+<h2 id="explanations">Explanations</h2>
+<h3 id="math-1">Math</h3>
+<p>Math is written in <span class="math">\(LaTeX\)</span><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> is written inside the <a href="http://daringfireball.net/projects/markdown/">Markdown</a><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> text using <code>$</code> (once for inline, two for display mode). <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, which is used to convert the <a href="http://daringfireball.net/projects/markdown/">Markdown</a> to HTML, is informed that <span class="math">\(LaTeX\)</span> is to be converted to mathematical notation in the browser using <a href="http://www.mathjax.org/">MathJax</a> javascript by specifing the command line argument <code>--mathjax</code>. <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> then converts <code>$</code> to <code>(</code> or <code>)</code> to start and finish <span class="math">\(LaTeX\)</span> blocks and doesn't parse <a href="http://daringfireball.net/projects/markdown/">Markdown</a> inside these blocks.</p>
 <p>To enable <a href="http://www.mathjax.org/">MathJax</a>, you put the following in the <code><head\></code> of your HTML file:</p>
 <pre class="prettyprint linenums:1"><code>&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
   MathJax.Hub.Config({
@@ -384,11 +384,11 @@ Now you can write:
 <p><span class="math">\(LaTeX\)</span> is cool: <span class="math">\[
 p&#39; = p + (1-p)(1-s)\mu
 \]</span></p>
-<p>For more information visit the <a href="http://docs.mathjax.org/en/latest/output.html">documentation</a><sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup>.</p>
-<h3 id="source-code-1"><a href="#source-code-1">Source Code</a></h3>
+<p>For more information visit the <a href="http://docs.mathjax.org/en/latest/output.html">documentation</a><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>.</p>
+<h3 id="source-code-1">Source Code</h3>
 <p>Code is written inside the <a href="http://daringfireball.net/projects/markdown/">Markdown</a> markup language by indenting it with a tab or four space. The <a href="http://daringfireball.net/projects/markdown/">Markdown</a> is converted to HTML with <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, which recognized these indented lines and wraps them with a <code>&lt;pre&gt;</code> element. The CSS class given to the <code>&lt;pre&gt;</code> element is set to <code>prettyprint</code>, which is then highlighted in the browser using <a href="http://google-code-prettify.googlecode.com/">Google code prettifier</a> javascript which automatically identifies the language. The CSS class is actually <code>prettyprint linenum:1</code> which tells the highlighter to number the lines.</p>
 <p>See the <a href="http://johnmacfarlane.net/pandoc/README.html#indented-code-blocks">Pandoc handbook</a> for instructions on the indented code blocks and the code prettifier <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">README</a> for detailed instructions on the highlighting mechanism. It's very easy to use and is the highligher used by <a href="http://code.google.com">Google Code</a> and <a href="http://stackoverflow.com/">stackoverflow.com</a>.</p>
-<p>If you have problems displaying HTML or XML source I suggest trying to replace <code>&lt;</code> with <code>&amp;lt;</code><sup><a href="#fn4" class="footnoteRef" id="fnref4">4</a></sup>.</p>
+<p>If you have problems displaying HTML or XML source I suggest trying to replace <code>&lt;</code> with <code>&amp;lt;</code><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>.</p>
 <p>For a nice example of different highlighting styles you can use (by replacing the default <code>prettify.css</code> file), see <a href="http://demo.stanleyhlng.com/prettify-js/?id=sons-of-obsidian-dark">Stanley Ng's website</a>.</p>
 <div class="footnotes">
 <hr />
@@ -534,7 +534,7 @@ p&#39; = p + (1-p)(1-s)\mu
 				</ul>
 
 				<ul class="quick-links">
-					<li>This page was last modified on 02 March 2014 at 11:46.</li>
+					<li>This page was last modified on 03 April 2014 at 11:55.</li>
 				</ul>
 
 				

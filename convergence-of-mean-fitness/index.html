@@ -333,23 +333,22 @@
 <li><a href="#the-population-mean-fitness">The population mean fitness</a></li>
 <li><a href="#estimation-of-mutation-rates">Estimation of mutation rates</a></li>
 <li><a href="#technical-remarks">Technical remarks</a></li>
-<li><a href="#references">References</a></li>
 </ul>
 <p><a name='TOC'></a></p>
-<h2 id="overview"><a href="#overview">Overview</a></h2>
+<h2 id="overview">Overview</h2>
 <p>In an <a href="/convergence-of-mean-fitness">eariler post</a> I described how the mean fitness of a population at the <em>mutation-selection balance</em> can be analysed. I assumed that the population is <strong>asexual</strong>, that only <strong>deleterious mutations</strong> occur, that there is <strong>no drift or recombination</strong>, and that <strong>selection is constant</strong>.</p>
 <p>In this post I would like to continue with these assumpions. I will show how to find a <strong>simple formula for the mean fitness after an arbitrary number of generations</strong>. The formulation and derivation will follow one of my favorite papers - <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">&quot;Nonequilibrium model for estimating parameters of deleterious mutations&quot;</a> by <span class="citation">Gordo and Dionisio (2005)</span>.</p>
-<h2 id="motivation"><a href="#motivation">Motivation</a></h2>
+<h2 id="motivation">Motivation</h2>
 <p>But first, why are we interested in the mean fitness of a population that is not at the mutation-selection balance?</p>
 <p>The general answer is that most populations are probably <strong>not</strong> at the mutation-selection balance. The mutation-selection balance is a nice idea, but it serves as a reference, as a null hypothesis, not as a general rule. The assumption that selection is constant is not relevant to many populations - selection is probably fluctuating, both in amplitude and direction. This means that at least some of the natural populations we encounter in the wild are not evolving around a mutation-selection balance, but rather evolving towards a mutation-selection balance, never actually reaching one.</p>
 <p>The more specific answer is that even in laboratory conditions which induce a constant selection regime it may take a long time for populations to reach the mutation-selection balance, and this time might be longer than what we intuitively expect (or desire).</p>
 <p>This issue is presented by <span class="citation">Gordo and Dionisio (2005)</span>. They wanted to use traditional models for calculating the mutation rate of bacterial populations in the lab. These models assume that the populations are at a mutation-selection balance, but Gordo and Dionisio showed that in the timeframe they planned for their study their populations will not reach an equilibrium, especially if selection is weak (see Figure 1 in <span class="citation">(Gordo and Dionisio 2005)</span>).</p>
 <p>This is interesting, because we saw in the <a href="/convergence-of-mean-fitness">eariler post</a> that the mean fitness at the mutation-selection balance is <em>e<sup>-U</sup></em>, where <em>U</em> is the mutation rate and is independent of <em>s</em>, the selection coefficient. But Figure 1 in <span class="citation">(Gordo and Dionisio 2005)</span> shows that the mean fitness before the mutation-selection balance <em>is dependent</em> on <em>s</em>, and that <em>s</em> determines the rate of convergence towards the balance.</p>
-<h2 id="model"><a href="#model">Model</a></h2>
+<h2 id="model">Model</h2>
 <p>This follows the model from <span class="citation">(Gordo and Dionisio 2005)</span> but I elaborated and included all the rigouros steps.</p>
-<h3 id="definitions"><a href="#definitions">Definitions</a></h3>
+<h3 id="definitions">Definitions</h3>
 <p>Denote the pmf (probability mass function) of a Poisson distribution with parameter <span class="math">\(\lambda\)</span>: <span class="math">\(\varphi_{\lambda} (x)\)</span> Consider an asexual infinite population evolving in a constant environment. The number of new mutations per individual per generation is Poisson distributed with parameter <em>U</em>, the mutation rate. All mutations are deleterious with a multiplicative effect <em>s</em>, so that an individual with <span class="math">\(i\)</span> mutant allele has a fitness <span class="math">\(\omega_{i}:=(1-s)^{i}\)</span> with selection coefficient <span class="math">\(0&lt;s&lt;1\)</span>. The frequency of individuals with <em>i</em> mutant at generation <em>g</em> is denoted <span class="math">\(f_{i}(g)\)</span> and <span class="math">\(\sum_{i}{f_{i}(g)}=1\)</span>. From the former two statements it follows that the population mean fitness at generation <em>g</em> is <span class="math">\(\bar{\omega }_{g}=\sum_{i}{f_{i}(g)\omega _{i}}\)</span>. Assume that the selection occurs before mutation.</p>
-<h3 id="the-distribution-of-mutant-alleles"><a href="#the-distribution-of-mutant-alleles">The distribution of mutant alleles</a></h3>
+<h3 id="the-distribution-of-mutant-alleles">The distribution of mutant alleles</h3>
 <p>The change in the frequency of individuals with <em>i</em> mutant alleles from generation <em>g</em> to generation <em>g+1</em> is written as:</p>
 <p><span class="math">\[
 f_{i}(g+1)=\sum_{k=0}^{i}{\frac{ \omega _{k} }{ \bar{\omega}_{g} } f_{k}(g) \varphi_{U} (i-k) }
@@ -395,7 +394,7 @@ f_{i}(2) = \frac{U^{i}}{e^{U(1-s)+U}}\cdot \frac{(2-s)^{i}}{i!} = \\
 \]</span></p>
 <p>Similar to the former expansion and because the Poisson process is <em>memoryless</em>, the frequency of individuals with <em>i</em> mutant alleles after mutation at generation 2 will be Poisson distributed with parameter <span class="math">\(U(1-s)+U\)</span>.</p>
 <p>The same argument makes it clear that the distribution of mutant alleles at any generation <em>g</em> is Poisson distributed.</p>
-<h2 id="the-expected-number-of-mutant-alleles"><a href="#the-expected-number-of-mutant-alleles">The expected number of mutant alleles</a></h2>
+<h2 id="the-expected-number-of-mutant-alleles">The expected number of mutant alleles</h2>
 <p>After seeing how the distribution of mutant alleles changes at the first couple of generations, and verifying that this is a Poisson distribution, we can now formulate the recurrence relation for the expected number of mutant alleles - or the parameter of the Poisson distribution, <span class="math">\(\lambda\)</span>:</p>
 <p><span class="math">\[
 \lambda (g+1) = \sum_{k=0}^{\infty }{k\cdot f_{k}(g+1)} = \\
@@ -415,7 +414,7 @@ U + \frac{\lambda(g)(1-s)\cdot e^{\lambda (g)(1-s)}}{e^{\lambda(g)(1-s)}} = \\
 \lambda(g)=\frac{U}{s}(1-(1-s)^{g})\xrightarrow{g\to \infty }\frac{U}{s}
 \]</span></p>
 <p>For a sinlge-locus deterministic model, the expected frequency of the wild-type allele at the mutation-selection balance (assuming that <span class="math">\(s&gt;&gt;U\)</span>) is <span class="math">\(1 - \frac{U}{s}\)</span>, which agrees well with the frequency of mutation-free individuals we can now calculate: <span class="math">\(\phi(0 | \frac{U}{s}) = \frac{\frac{U}{s}^0}{0!} e^{-\frac{U}{s}} = e^{-\frac{U}{s}} = 1-\frac{U}{s} + O(\frac{U}{s}^{2})\)</span>. The last approximation uses the Taylor expansion of the exponential function around 0.</p>
-<h2 id="the-population-mean-fitness"><a href="#the-population-mean-fitness">The population mean fitness</a></h2>
+<h2 id="the-population-mean-fitness">The population mean fitness</h2>
 <p>After <em>g</em> generations the population mean fitness is:</p>
 <p><span class="math">\[
 \bar{\omega}_{g} = \sum_{i=0}^{\infty }{\frac{\lambda(g)^{i}}{i!}e^{-\lambda(g)}(1-s)^{i}} = \\ 
@@ -434,7 +433,7 @@ e^{-\lambda(g)} e^{\lambda(g)(1-s)^2} = \\
 e^{\lambda(g)(1-2s+s^2)-\lambda(g)} = \\
 e^{\lambda(g)(s^2-2s)}
 \]</span></p>
-<h2 id="estimation-of-mutation-rates"><a href="#estimation-of-mutation-rates">Estimation of mutation rates</a></h2>
+<h2 id="estimation-of-mutation-rates">Estimation of mutation rates</h2>
 <p>In mutation-accumulation (MA) experiments, a population is undergoing a sequence of bottlenecks that cause the accumulation of deleterious mutations due to the random sampling effect of <strong>genetic drift</strong>. In these experiments the investigators usually measure the mean fitness of the experimental population thorugh time and use these measurements to estimate <em>s</em> and <em>U</em>.</p>
 <p>Denote the expected mean fitness at bottleneck <em>B</em> by <span class="math">\(\bar{\omega{B}}\)</span>. We start with a mutation-free population, and <span class="math">\(\bar{\omega_{0}} = 1\)</span>. At the first bottleneck, the population is assumed to reach a mutation-selection balance, so the expected mean fitness is now <span class="math">\(\bar{\omega_{1}} = e^{-U}\)</span>. At the next bottleneck, the expected mean fitness is reduced again by the same factor, so it is now <span class="math">\(\bar{\omega_{1}} = e^{-U}e^{-U} = e^{-2U}\)</span>. After <em>B</em> bottlenecks, the mean fitness is <span class="math">\(\bar{\omega_{B}} = e^{-UB}\)</span>. So one can take the log of the measured mean fitness after <em>B</em> bottlenecks, <span class="math">\(-BU\)</span>, and use a linear regression model to estimate <em>U</em>. By using a similar linear regression on the ratio of the second moment of fitness and the square of the expected mean fitness, one can estimate <em>s</em> (see below).</p>
 <p><strong>However, what happens if the population doesn't reach a mutation-selection balance?</strong> In a population of bacteria, for example, the number of generations between bottlenecks may be insufficient for the population to reach a mutation-selection balance (see Figure 1 in <span class="citation">(Gordo and Dionisio 2005)</span>). In this case one must use a the non-equilibrium value of the mean fitness which was derived above - <span class="math">\(\bar{\omega}_{g} = e^{-\frac{U}{s} (1-(1-s)^{g})}\)</span>. This concept is the subject of the paper by <span class="citation">Gordo and Dionisio (2005)</span>, titled: <strong>Nonequilibrium model for estimating parameters of deleterious mutations</strong>. The paper explores a statistical model based on the above calculations. The statistical model is tested with simulations. In a later paper, <span class="citation">(Trindade, Perfeito, and Gordo 2010)</span>, the statistical model was used on results of a mutation-accumulation experiment with <em>E. coli</em>.</p>
@@ -451,11 +450,13 @@ e^{( \lambda s^2-2\lambda s+2 \lambda s)B} = \\
 e^{( \lambda s^2)B}
 \]</span></p>
 <p>So the log of the <em>F-statistic</em> is <span class="math">\(\lambda s^2 B\)</span>, and linear regression can give us <span class="math">\(\lambda s^2\)</span>. Now we can estimate both <em>s</em> and <em>U</em> using the estimation for <span class="math">\(-\lambda s\)</span>, <span class="math">\(\lambda s^2\)</span>, and the relation <span class="math">\(\lambda = \frac{U}{s}(1-(1-s)^g)\)</span>.</p>
-<h2 id="technical-remarks"><a href="#technical-remarks">Technical remarks</a></h2>
+<h2 id="technical-remarks">Technical remarks</h2>
 <p>I originally wrote this post with <a href="http://en.wikipedia.org/wiki/Microsoft_Office_2010">Office 2010</a>. I converted it TeX using <a href="http://docx2tex.codeplex.com/">docx2tex</a> and from <a href="http://en.wikipedia.org/wiki/LaTeX">TeX</a> to <a href="http://daringfireball.net/projects/markdown/">Markdown</a> using <a href="https://github.com/ajtulloch/LaTeX2Markdown">LaTeX2Markdown</a>, although it can also be sone using <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>. Then I proof-read it, and several LaTeX bugs were identified and fixed using an online tool for <a href="http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm">testing MathJax code</a> (<a href="http://www.mathjax.org/">MathJax</a> is a JavaScript library that displays LaTeX in browsers, see how in <a href="/blogging-with-math-and-code">another post</a>).</p>
-<h2 id="references"><a href="#references">References</a></h2>
-<p>Gordo, Isabel, and Francisco Dionisio. 2005. &#8220;Nonequilibrium Model for Estimating Parameters of Deleterious Mutations.&#8221; <em>Physical Review E</em> 71 (3) (mar): 18&#8211;21. doi:10.1103/PhysRevE.71.031907. <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907" title="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">http://link.aps.org/doi/10.1103/PhysRevE.71.031907</a>.</p>
-<p>Trindade, Sandra, Lilia Perfeito, and Isabel Gordo. 2010. &#8220;Rate and Effects of Spontaneous Mutations That Affect Fitness in Mutator Escherichia Coli.&#8221; <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em> 365 (1544) (apr): 1177&#8211;86. doi:10.1098/rstb.2009.0287. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818</a>.</p>
+<div class="references">
+<h2>References</h2>
+<p>Gordo, Isabel, and Francisco Dionisio. 2005. &#8220;Nonequilibrium Model for Estimating Parameters of Deleterious Mutations.&#8221; <em>Physical Review E</em> 71 (3) (March): 18&#8211;21. doi:<a href="http://dx.doi.org/10.1103/PhysRevE.71.031907">10.1103/PhysRevE.71.031907</a>. <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">http://link.aps.org/doi/10.1103/PhysRevE.71.031907</a>.</p>
+<p>Trindade, Sandra, Lilia Perfeito, and Isabel Gordo. 2010. &#8220;Rate and Effects of Spontaneous Mutations That Affect Fitness in Mutator Escherichia Coli.&#8221; <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em> 365 (1544) (April): 1177&#8211;86. doi:<a href="http://dx.doi.org/10.1098/rstb.2009.0287">10.1098/rstb.2009.0287</a>. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818</a>.</p>
+</div>
 	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
 	<script type="text/javascript">
 	$(function() {
@@ -626,7 +627,7 @@ year = {2010}
 				</ul>
 
 				<ul class="quick-links">
-					<li>This page was last modified on 02 March 2014 at 11:46.</li>
+					<li>This page was last modified on 03 April 2014 at 11:55.</li>
 				</ul>
 
 				

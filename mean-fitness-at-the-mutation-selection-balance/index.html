@@ -270,7 +270,7 @@
 	<li class="active"><i class="icon-time"></i> 14 October 2012 at 14:45</li>
 	
 	<li class="active"><span class="divider">/</span>
-	<i class="icon-refresh"></i> 22 October 2012 at 07:56</li>
+	<i class="icon-refresh"></i> 03 April 2014 at 09:28</li>
 	
 	<li><span class="divider">/</span>
 	<i class="icon-star"></i> <a href='http://blog.yoavram.com/mean-fitness-at-the-mutation-selection-balance/'>Permalink</a></li>
@@ -333,16 +333,15 @@
 	
     <ul>
 <li><a href="#overview">Overview</a></li>
-<li><a href="#simple-approximation">Simple approximation</a><ul>
 <li><a href="#single-locus">Single locus</a></li>
-<li><a href="#multiple-locus">Multiple locus</a></li>
+<li><a href="#multiple-locus">Multiple locus</a><ul>
+<li><a href="#extension-of-single-locus-model">Extension of single locus model</a></li>
+<li><a href="#a-separate-multiple-locus-model">A separate multiple locus model</a></li>
 </ul></li>
-<li><a href="#matrix-theory-the-perron-frobenius-theorem">Matrix Theory: the Perron-Frobenius theorem</a></li>
 <li><a href="#summary">Summary</a></li>
-<li><a href="#references">References</a></li>
 </ul>
 <p><a name='TOC'></a></p>
-<h2 id="overview"><a href="#overview">Overview</a></h2>
+<h2 id="overview">Overview</h2>
 <p>The first post on the <a href="http://blog.yoavram.com">Mutation-Selection Blog</a> must be about the <em>mutation-selection balance</em>, right?</p>
 <p>So what is the mutation-selection balance?</p>
 <p>In evolutionary biology, selection acts to remove deleterious mutations from the population, while mutation generates new deleterious mutations. When they cancel each other out, the population is at the <strong>mutation-selection balance</strong>.</p>
@@ -354,10 +353,9 @@
 <p>A classical result by <span class="citation">(Kimura and Maruyama 1966)</span> involves a system in which an infinite population is evolving under <em>selection</em> and <em>mutation</em>. Mutation is unidirectional and deleterious and occurs with a rate <em>U</em>, selection is constant and uniform, the enivronment is constant, and there is no drift, sex, recombination or migration. This is a simplistic model but one that is able to capture the dynamics of some complex systems. The elegant result is that the mean fitness of a population is not dependent on selection strength and is an exponentialy decreasing function of the mutation rate <em>U</em>: <span class="math">\[
 \bar{\omega}^* = e^{-U}
 \]</span></p>
-<h2 id="simple-approximation"><a href="#simple-approximation">Simple approximation</a></h2>
-<h3 id="single-locus"><a href="#single-locus">Single locus</a></h3>
-<p>In this section I roughly follow the route of <span class="citation">(Gillespie 2004)</span>. To reach this formula in a simple way (all you need is some straightforward <em>Calculus</em> and a little bit of <em>Genetics</em>), we start by looking at a single locus<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> with two alleles<sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup>, denoted by <em>A</em> and <em>a</em>, which have fitness of <em>1</em> and <em>1-s</em>, respectively, with <em>s</em> playing the part of the <em>selection coefficient</em> which defines the deleterious multiplicative effect a deleterious mutation has on the fitness of an individual.</p>
-<p>Define <em>p</em> and <em>q</em> to be the frequencies of <em>A</em> and <em>a</em> so that <em>p+q=1</em>. Denote the probability that the wild-type allele <em>A</em> mutates to allele <em>a</em> by <span class="math">\(\mu\)</span> (without back-mutations, that is, <em>a</em> doesn't mutate back to <em>A</em>), and denote the frequency of <em>A</em> after one generation by <em>p'</em><sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup>: <span class="math">\[
+<h2 id="single-locus">Single locus</h2>
+<p>In this section I roughly follow the route of <span class="citation">(Gillespie 2004)</span>. To reach this formula in a simple way (all you need is some straightforward <em>Calculus</em> and a little bit of <em>Genetics</em>), we start by looking at a single locus<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> with two alleles<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>, denoted by <em>A</em> and <em>a</em>, which have fitness of <em>1</em> and <em>1-s</em>, respectively, with <em>s</em> playing the part of the <em>selection coefficient</em> which defines the deleterious multiplicative effect a deleterious mutation has on the fitness of an individual.</p>
+<p>Define <em>p</em> and <em>q</em> to be the frequencies of <em>A</em> and <em>a</em> so that <em>p+q=1</em>. Denote the probability that the wild-type allele <em>A</em> mutates to allele <em>a</em> by <span class="math">\(\mu\)</span> (without back-mutations, that is, <em>a</em> doesn't mutate back to <em>A</em>), and denote the frequency of <em>A</em> after one generation by <em>p'</em><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>: <span class="math">\[
 p&#39; = \frac{p(1-\mu)}{\bar{\omega}}
 \]</span> with the population mean fitness <span class="math">\(\bar{\omega} = p + q(1-s)\)</span>.</p>
 <p>To find the equilibirum value of <em>p</em>, one must subtitute <span class="math">\(p&#39;=p\)</span> and <span class="math">\(q=1-p\)</span>: <span class="math">\[
@@ -375,8 +373,9 @@ p = 1-\frac{\mu}{s}
 1-\frac{\mu}{s} + \frac{\mu}{s} - s \frac{\mu}{s} \Rightarrow \\
 \bar{\omega}^* = 1 - \mu 
 \]</span> This, however, is the mean fitness due to a single locus, not the entire genome.</p>
-<h3 id="multiple-locus"><a href="#multiple-locus">Multiple locus</a></h3>
-<p>Moving on to a multiple locus model with an arbitrary number of loci<sup><a href="#fn4" class="footnoteRef" id="fnref4">4</a></sup>, we define the mutation rate at locus <em>j</em> as <span class="math">\(\mu_j\)</span>, so the mean fitness at the mutation-selection balance in locus <em>j</em> is <span class="math">\(\bar{\omega}^*_j = 1 - \mu_j\)</span>, and because fitness is multiplicative: <span class="math">\[
+<h2 id="multiple-locus">Multiple locus</h2>
+<h3 id="extension-of-single-locus-model">Extension of single locus model</h3>
+<p>Moving on to a multiple locus model with an arbitrary number of loci<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>, we define the mutation rate at locus <em>j</em> as <span class="math">\(\mu_j\)</span>, so the mean fitness at the mutation-selection balance in locus <em>j</em> is <span class="math">\(\bar{\omega}^*_j = 1 - \mu_j\)</span>, and because fitness is multiplicative: <span class="math">\[
 \bar{\omega}^* = \prod_{j}{\bar{\omega}_j^*} = \prod_{j}{1-\mu_j} \Rightarrow \\
 ln{(\bar{\omega}^*)} = \sum_{j}{1-\mu_j} 
 \]</span> This can be approximated, because when <span class="math">\(x\)</span> is small <span class="math">\(ln{(1-x)}\approx -x\)</span>, and <span class="math">\(\mu\)</span> is probably at most <span class="math">\(\approx 10^{-2}\)</span> or even lower: <span class="math">\[
@@ -386,8 +385,8 @@ ln{(\bar{\omega}^*)}  \approx \sum_{j}{-\mu_j} = -U
 \bar{\omega}^* = e^{-U}
 \]</span></p>
 <p>You can find this derivation at the begining of a <a href="http://dx.doi.org/10.6084/m9.figshare.95940">presentation</a> I gave at the <a href="http://biomathsjctau.wordpress.com">BioMath Student Journal Club at Tel-Aviv University</a>.</p>
-<h2 id="matrix-theory-the-perron-frobenius-theorem"><a href="#matrix-theory-the-perron-frobenius-theorem">Matrix Theory: the Perron-Frobenius theorem</a></h2>
-<p>We can produce the same result without approximations using a bit heavier mathematics, but not much heavier - this is still undergraduate <em>Linear Algebra</em>.</p>
+<h3 id="a-separate-multiple-locus-model">A separate multiple locus model</h3>
+<p>We can produce the same result without approximations using a different approach.</p>
 <p>This time we start with the multiple locus model right away. Instead of following allele frequencies, though, we follow the frequency of individuals with <em>i</em> mutant alleles, or <em>i</em> deleterious mutations, which we denote by <em>p<sub>i</sub></em>.</p>
 <p>We assume that the number of mutations per generation is <em>Poisson</em> distributed with the mutation rate as the parameter of the distribution, so that the probability that <em>k</em> mutations will occur in an individual with a mutaiton rate of <em>U</em> is <span class="math">\[
 \varphi_U(k) = \frac{U^k e^U}{k!}
@@ -404,29 +403,27 @@ M = \left(\begin{array}{cccc}
 ...                     &amp; ...                       &amp; ...                       &amp;  ...
 \end{array}\right)
 \]</span> This matrix is called a <a href="http://en.wikipedia.org/wiki/Stochastic_matrix">transition matrix</a> because its entries <span class="math">\(M_{i,j}\)</span> are the transition probabilities from state <em>j</em> to state <em>i</em> - the state is the number of mutant alleles.</p>
-<p>Now if we set <span class="math">\(p^*=p&#39;=p\)</span> we get <span class="math">\(\bar{\omega}^*p^*=Mp^*\)</span>, so if there is <span class="math">\(\bar{\omega}^*\)</span> and <span class="math">\(p^*\)</span> such that <span class="math">\(p^*_i \ge 0 \; \sum_{i}{p^*_i}=1\)</span> that solve this equation, then <span class="math">\(p^*\)</span> is an <strong>eigenvector</strong> of <em>M</em> and <span class="math">\(\bar{\omega}^*\)</span> is an <strong>eigenvalue</strong> of M.</p>
-<p>From the <a href="http://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem">Perron-Frobenius theorem</a> we know that this matrix always has a unique non-negative eigenvector, so <span class="math">\(p^*\)</span> exists and it is unique. Furthermore, from the same theorem we know that <span class="math">\(\bar{\omega}^*\)</span> also exists and that it is the leading (largest positive) eigenvalue of <em>M</em> <span class="citation">(Otto and Day 2007, 709)</span>.</p>
-<p>Since this is a triangular matrix, the eigenvalues are simply the elements on the diagonal<sup><a href="#fn5" class="footnoteRef" id="fnref5">5</a></sup>. Therefore, the largest eigenvalue must be the largest element on the diagonal, which is the element <span class="math">\[
-\bar{\omega}^* = M_{0,0} = 
-\omega_0 \varphi_U(0) = (1-s)^0 \frac{U^0 e^{-U}}{0!} = 
-e^{-U}
+<p>Now if we set <span class="math">\(p^*=p&#39;=p\)</span> we get <span class="math">\(\bar{\omega}^*p^*=Mp^*\)</span>, so that <span class="math">\(\bar{\omega}\)</span> is an eigenvalue of <span class="math">\(M\)</span>. Because <span class="math">\(M\)</span> is a triangular matrix, the eigenvalues are simply the elements on the main diagonal<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>. We can use the first equation to find the value of <span class="math">\(\bar{\omega}\)</span>, assuming <span class="math">\(p^*_0&gt;0\)</span>: <span class="math">\[
+\bar{\omega}^*p^*_0 = \omega_0 \varphi_U(0) p^*_0 \Rightarrow \\\\
+\bar{\omega}^* = \omega_0 \varphi_U(0) = e^{-U}
 \]</span></p>
-<p>Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to derive the eigenvalue so easily, because the matrix would not be triagonal. However, it would still agree with the conditions of the Perron-Frobenius theorem and the mean fitness at the mutation-selection balance would still be the leading eigenvalue of the matrix, and would exist. I've used this fact in my paper <em>The Evolution of Stress-Induced Hypermutation in Asexual Populations</em> <span class="citation">(Ram and Hadany 2012)</span>.</p>
-<h2 id="summary"><a href="#summary">Summary</a></h2>
-<p>We've seen how to derive the mean fitness at the mutation-selection balance <span class="math">\(\bar{\omega} = e^{-U}\)</span> both via a first-order approximation and via a more &quot;hardcore&quot; linear algerba method.</p>
-<p>The nice thing about deriving the mean fitness in the &quot;hardcore&quot; method is that we get some idea of <em>why</em> it is equal to e<sup>-U</sup>. We found that the mean fitness at the mutation-selection balance equals to the leading eigenvalue of the transition matrix, which is the relative probability that individuals from the least loaded class (the class of fittest individuals) survive to the next generation without mutating. By definition the fitness of the least loaded individuals is 1, and we assumed the mutations are <em>Poisson</em> distributed, and therefore we got e<sup>-U</sup>, but if we change these assumptions the general result will still hold:</p>
+<p>Note that if beneficial mutations or back-mutations were allowed in this model, we would not be able to find the population mean fitness so easily, because the matrix would not be triangular. However, in that case we could use the <em>Perron-Frobenius theorem</em> to find that <span class="math">\(\bar{\omega}^*\)</span> is the leading eigenvalue of the <span class="math">\(M\)</span>. I've used this approach in our article <em>The Evolution of Stress-Induced Hypermutation in Asexual Populations</em> <span class="citation">(Ram and Hadany 2012)</span>.</p>
+<h2 id="summary">Summary</h2>
+<p>We've seen how to find the population mean fitness at the mutation-selection balance <span class="math">\(\bar{\omega} = e^{-U}\)</span>.</p>
+<p>The advantage in the multiple locus model method is that we get some intuition on <em>why</em> the population mean fitness is equal to e<sup>-U</sup>. We found that the population mean fitness at the mutation-selection balance equals the probability that the fittest individuals survive to the next generation without mutating. By definition the fitness of the fittest individuals is 1, and we assumed the number of new mutations is <em>Poisson</em> distributed, and therefore we got e<sup>-U</sup>, but if we change these assumptions the general result will still hold:</p>
 <blockquote>
-<p>The mean fitness of an asexual population at the mutation-selection balance, in the absence of beneficial mutations, is the product of the fitness of the least loaded class and the probability that no mutations occur.</p>
+<p>The mean fitness of an asexual population at the mutation-selection balance, in the absence of beneficial mutations, is the product of the fitness of the fittest individuals and the probability that no mutations occur.</p>
 </blockquote>
 <p>What's left?</p>
 <p>The next step - in the next post - will be to derive a formula for the mean fitness at each generation. This is important because we need to understand how <em>rapidly</em> the mean fitness converges towards the equilibrium value. Can we really assume that the evolutionary process has reached the mutation-selection balance in calculations we perform?</p>
 <p>One article that presents an analysis on this subject is <span class="citation">(Gordo and Dionisio 2005)</span>, which shows how to derive the mean fitness of a population at genearation <em>n</em>. This is still a simple asexual population with directional selection and unidirectional deleterious mutations, but it is still very interesting, and I'll try to post a comprehensive explanation on how it can be done.</p>
-<h2 id="references"><a href="#references">References</a></h2>
-<p>Gillespie, John H. 2004. <em>Population Genetics: a Concise Guide</em>. 2nd ed.. Johns Hopkins University Press. <a href="http://www.google.com/books?id=KAcAfiyHpcoC" title="http://www.google.com/books?id=KAcAfiyHpcoC">http://www.google.com/books?id=KAcAfiyHpcoC</a>.</p>
-<p>Gordo, Isabel, and Francisco Dionisio. 2005. &#8220;Nonequilibrium Model for Estimating Parameters of Deleterious Mutations.&#8221; <em>Physical Review E</em> 71 (3) (mar): 18&#8211;21. doi:10.1103/PhysRevE.71.031907. <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907" title="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">http://link.aps.org/doi/10.1103/PhysRevE.71.031907</a>.</p>
-<p>Kimura, Motoo, and Takeo Maruyama. 1966. &#8220;The Mutational Load with Epistatic Gene Interactions in Fitness.&#8221; <em>Genetics</em> 54 (6) (dec): 1337&#8211;51. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299</a>.</p>
-<p>Otto, Sarah P., and Troy Day. 2007. <em>A Biologist&#8217;s Guide to Mathematical Modeling in Ecology and Evolution</em>. Princeton University Press.</p>
-<p>Ram, Yoav, and Lilach Hadany. 2012. &#8220;The Evolution of Stress-induced Hypermutation in Asexual Populations.&#8221; <em>Evolution</em> 66 (7) (jul): 2315&#8211;28. doi:10.1111/j.1558-5646.2012.01576.x. <a href="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x http://www.ncbi.nlm.nih.gov/pubmed/22759304" title="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x http://www.ncbi.nlm.nih.gov/pubmed/22759304">http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x http://www.ncbi.nlm.nih.gov/pubmed/22759304</a>.</p>
+<div class="references">
+<h2>References</h2>
+<p>Gillespie, John H. 2004. <em>Population Genetics: a Concise Guide</em>. 2nd ed. Johns Hopkins University Press. <a href="http://www.google.com/books?id=KAcAfiyHpcoC">http://www.google.com/books?id=KAcAfiyHpcoC</a>.</p>
+<p>Gordo, Isabel, and Francisco Dionisio. 2005. &#8220;Nonequilibrium Model for Estimating Parameters of Deleterious Mutations.&#8221; <em>Physical Review E</em> 71 (3) (March): 18&#8211;21. doi:<a href="http://dx.doi.org/10.1103/PhysRevE.71.031907">10.1103/PhysRevE.71.031907</a>. <a href="http://link.aps.org/doi/10.1103/PhysRevE.71.031907">http://link.aps.org/doi/10.1103/PhysRevE.71.031907</a>.</p>
+<p>Kimura, Motoo, and Takeo Maruyama. 1966. &#8220;The Mutational Load with Epistatic Gene Interactions in Fitness.&#8221; <em>Genetics</em> 54 (6) (December): 1337&#8211;51. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299</a>.</p>
+<p>Ram, Yoav, and Lilach Hadany. 2012. &#8220;The Evolution of Stress-Induced Hypermutation in Asexual Populations.&#8221; <em>Evolution</em> 66 (7) (July): 2315&#8211;28. doi:<a href="http://dx.doi.org/10.1111/j.1558-5646.2012.01576.x">10.1111/j.1558-5646.2012.01576.x</a>. <a href="http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x">http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x</a>.</p>
+</div>
 <div class="footnotes">
 <hr />
 <ol>
@@ -498,15 +495,6 @@ url = {http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299},
 volume = {54},
 year = {1966}
 }
-@book{Otto2007,
-abstract = {Thirty years ago, biologists could get by with a rudimentary grasp of mathematics and modeling. Not so today. In seeking to answer fundamental questions about how biological systems function and change over time, the modern biologist is as likely to rely on sophisticated mathematical and computer-based models as traditional fieldwork. In this book, Sarah Otto and Troy Day provide biology students with the tools necessary to both interpret models and to build their own.The book starts at an elementary level of mathematical modeling, assuming that the reader has had high school mathematics and first-year calculus. Otto and Day then gradually build in depth and complexity, from classic models in ecology and evolution to more intricate class-structured and probabilistic models. The authors provide primers with instructive exercises to introduce readers to the more advanced subjects of linear algebra and probability theory. Through examples, they describe how models have been used to understand such topics as the spread of HIV, chaos, the age structure of a country, speciation, and extinction.Ecologists and evolutionary biologists today need enough mathematical training to be able to assess the power and limits of biological models and to develop theories and models themselves. This innovative book will be an indispensable guide to the world of mathematical models for the next generation of biologists.A how-to guide for developing new mathematical models in biologyProvides step-by-step recipes for constructing and analyzing modelsInteresting biological applicationsExplores classical models in ecology and evolutionQuestions at the end of every chapterPrimers cover important mathematical topicsExercises with answersAppendixes summarize useful rulesLabs and advanced material available},
-author = {Otto, Sarah P. and Day, Troy},
-isbn = {9780691123448},
-pages = {732},
-publisher = {Princeton University Press},
-title = {{A biologist's guide to mathematical modeling in ecology and evolution}},
-year = {2007}
-}
 @article{Ram2012,
 abstract = {Numerous empirical studies show that stress of various kinds induces a state of hypermutation in bacteria via multiple mechanisms, but theoretical treatment of this intriguing phenomenon is lacking. We used deterministic and stochastic models to study the evolution of stress-induced hypermutation in infinite and finite-size populations of bacteria undergoing selection, mutation, and random genetic drift in constant environments and in changing ones. Our results suggest that if beneficial mutations occur, even rarely, then stress-induced hypermutation is advantageous for bacteria at both the individual and the population levels and that it is likely to evolve in populations of bacteria in a wide range of conditions because it is favored by selection. These results imply that mutations are not, as the current view holds, uniformly distributed in populations, but rather that mutations are more common in stressed individuals and populations. Because mutation is the raw material of evolution, these results have a profound impact on broad aspects of evolution and biology.},
 author = {Ram, Yoav and Hadany, Lilach},
@@ -520,7 +508,7 @@ number = {7},
 pages = {2315--28},
 pmid = {22759304},
 title = {{The evolution of stress-induced hypermutation in asexual populations.}},
-url = {http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x http://www.ncbi.nlm.nih.gov/pubmed/22759304},
+url = {http://doi.wiley.com/10.1111/j.1558-5646.2012.01576.x},
 volume = {66},
 year = {2012}
 }
@@ -641,7 +629,7 @@ year = {2004}
 				</ul>
 
 				<ul class="quick-links">
-					<li>This page was last modified on 02 March 2014 at 11:46.</li>
+					<li>This page was last modified on 03 April 2014 at 11:55.</li>
 				</ul>
 
 				

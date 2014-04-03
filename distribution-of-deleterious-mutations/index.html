@@ -322,11 +322,11 @@
     
 <p>If we sample a random individual from an asexual population that had allot of time to adapt to its environment, how many deleterious mutations can we expect it to have? This distribution of deleterious mutations is the starting point of many population genetics models. In an <a href="/mean-fitness-at-the-mutation-selection-balance/">eariler post</a> we've calculated this distribution - not only at the mutation-selection balance, but also on the way towards the balance from a mutation-free population.</p>
 <p>Here, we calculate the distribution of deleterious mutation at the mutation-selection balance by following the derivation of John Haigh in his ultra-classic paper <strong>&quot;The Accumulation of Deleterious Genes in a Population - Muller's Ratchet&quot;</strong> <span class="citation">(Haigh 1978)</span>.</p>
-<p>We focus on a finite asexual population undergoing selection and mutation. All mutations are deleterious with an independent (multiplicative) identical effect on fitness. The number of mutations per individual per generation is Poisson distributed<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup>. and The master equation is:</p>
+<p>We focus on a finite asexual population undergoing selection and mutation. All mutations are deleterious with an independent (multiplicative) identical effect on fitness. The number of mutations per individual per generation is Poisson distributed<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. and The master equation is:</p>
 <p><span class="math">\[
 p_{k}(t) = \sum_{j=0}^{k} (X_{k-j}(t)(1-s)^{k-j} e^{-\lambda} \frac{\lambda^j}{j!})/T_{1}(t)
 \]</span></p>
-<p><span class="math">\(X_i(t)\)</span> is a multinomial random variable representing the <strong>number of individuals with <em>i</em> deleterious mutations at time <em>t</em></strong>, <span class="math">\(p_k(t)\)</span> is the multinomial probability for <span class="math">\(X_k(t+1)\)</span> (or the expected value of <span class="math">\(X_k(t+1)/\sum_{j\ge 0}{X_j(t+1)}\)</span>), <em>s</em> is the <strong>selection coefficient</strong><sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup>, <span class="math">\(\lambda\)</span> is the <strong>mutation rate</strong> (usually denoted on this blog by <span class="math">\(\mu\)</span> or <em>U</em>) in mutations per individual per generation, and <span class="math">\(T_{r}(t)\)</span> is the sum of <em>r</em>-th power of the population fitness at time <em>t</em>:</p>
+<p><span class="math">\(X_i(t)\)</span> is a multinomial random variable representing the <strong>number of individuals with <em>i</em> deleterious mutations at time <em>t</em></strong>, <span class="math">\(p_k(t)\)</span> is the multinomial probability for <span class="math">\(X_k(t+1)\)</span> (or the expected value of <span class="math">\(X_k(t+1)/\sum_{j\ge 0}{X_j(t+1)}\)</span>), <em>s</em> is the <strong>selection coefficient</strong><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>, <span class="math">\(\lambda\)</span> is the <strong>mutation rate</strong> (usually denoted on this blog by <span class="math">\(\mu\)</span> or <em>U</em>) in mutations per individual per generation, and <span class="math">\(T_{r}(t)\)</span> is the sum of <em>r</em>-th power of the population fitness at time <em>t</em>:</p>
 <p><span class="math">\[
 T_{r}(t) = \sum_{i\ge 0} X_{i}(t) (1-s)^{ir}
 \]</span></p>
@@ -369,15 +369,17 @@ f_{0} = e^{-\theta}
 \]</span></p>
 <p>For example, Trindade et al. <span class="citation">(2010)</span> studied a mutator strain of <em>E. coli</em> and found that is has a mutation rate of <span class="math">\(\lambda=0.005\)</span> and selection coefficient <span class="math">\(s=0.03\)</span>. For these values, the frequency of the fittest individuals is roughly 85%.</p>
 <p>The main assumption made here is <span class="math">\(n_0 &gt; 0\)</span> (emphasized above). Of course, in an <em>infinite</em> population this is always true, but in real populations, the frequency of unloaded individuals <span class="math">\(f_0\)</span> can be smaller smaller that <span class="math">\(1/N\)</span> and then we can expect <span class="math">\(n_0=0\)</span>, and the population will have a different distribution. According to Gessler <span class="citation">(1995)</span> the number of deleterious mutations per individual will assume a shifted negative binomial distribution.</p>
-<h2 id="references">References</h2>
-<p>Gessler, Damian D. G. 1995. &#8220;The Constraints of Finite Size in Asexual Populations and the Rate of the Ratchet.&#8221; <em>Genetical Research</em> 66 (03) (apr): 241. doi:10.1017/S0016672300034686. <a href="http://www.journals.cambridge.org/abstract\_S0016672300034686" title="http://www.journals.cambridge.org/abstract\_S0016672300034686">http://www.journals.cambridge.org/abstract\_S0016672300034686</a>.</p>
-<p>Haigh, John. 1978. &#8220;The Accumulation of Deleterious Genes in a Population - Muller&#8217;s Ratchet.&#8221; <em>Theoretical Population Biology</em> 14 (2) (oct): 251&#8211;267. doi:10.1016/0040-5809(78)90027-8. <a href="http://dx.doi.org/10.1016/0040-5809(78)90027-8" title="http://dx.doi.org/10.1016/0040-5809(78)90027-8">http://dx.doi.org/10.1016/0040-5809(78)90027-8</a>.</p>
-<p>Trindade, Sandra, Lilia Perfeito, and Isabel Gordo. 2010. &#8220;Rate and Effects of Spontaneous Mutations That Affect Fitness in Mutator Escherichia Coli.&#8221; <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em> 365 (1544) (apr): 1177&#8211;86. doi:10.1098/rstb.2009.0287. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818</a>.</p>
+<div class="references">
+<h2>References</h2>
+<p>Gessler, Damian D. G. 1995. &#8220;The Constraints of Finite Size in Asexual Populations and the Rate of the Ratchet.&#8221; <em>Genetical Research</em> 66 (03) (April): 241. doi:<a href="http://dx.doi.org/10.1017/S0016672300034686">10.1017/S0016672300034686</a>. <a href="http://www.journals.cambridge.org/abstract\_S0016672300034686">http://www.journals.cambridge.org/abstract\_S0016672300034686</a>.</p>
+<p>Haigh, John. 1978. &#8220;The Accumulation of Deleterious Genes in a Population - Muller&#8217;s Ratchet.&#8221; <em>Theoretical Population Biology</em> 14 (2) (October): 251&#8211;267. doi:<a href="http://dx.doi.org/10.1016/0040-5809(78)90027-8">10.1016/0040-5809(78)90027-8</a>. <a href="http://dx.doi.org/10.1016/0040-5809(78)90027-8">http://dx.doi.org/10.1016/0040-5809(78)90027-8</a>.</p>
+<p>Trindade, Sandra, Lilia Perfeito, and Isabel Gordo. 2010. &#8220;Rate and Effects of Spontaneous Mutations That Affect Fitness in Mutator Escherichia Coli.&#8221; <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em> 365 (1544) (April): 1177&#8211;86. doi:<a href="http://dx.doi.org/10.1098/rstb.2009.0287">10.1098/rstb.2009.0287</a>. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2871818</a>.</p>
+</div>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>This is reasonable because the mutation rate per locus is very low, but there are many loci.<a href="#fnref1">&#8617;</a></p></li>
-<li id="fn2"><p>The effect of deleterious mutations on fitness.<a href="#fnref2">&#8617;</a></p></li>
+<li id="fn1"><p>This is reasonable because the mutation rate per locus is very low, but there are many loci<a href="#fnref1">&#8617;</a></p></li>
+<li id="fn2"><p>The effect of deleterious mutations on fitness<a href="#fnref2">&#8617;</a></p></li>
 </ol>
 </div>
 	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
@@ -568,7 +570,7 @@ year = {1978}
 				</ul>
 
 				<ul class="quick-links">
-					<li>This page was last modified on 02 March 2014 at 11:46.</li>
+					<li>This page was last modified on 03 April 2014 at 11:55.</li>
 				</ul>
 
 				

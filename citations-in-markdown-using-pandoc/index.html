@@ -315,24 +315,23 @@
 <li><a href="#solution-4">Solution 4</a></li>
 <li><a href="#problem-5">Problem 5</a></li>
 <li><a href="#examples">Examples</a></li>
-<li><a href="#references">References</a></li>
 </ul>
 <p><a name='TOC'></a></p>
-<h2 id="overview"><a href="#overview">Overview</a></h2>
+<h2 id="overview">Overview</h2>
 <p><a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> is an amazing tool that can convert one markup language to another. It is very goot at parsing <em>Markdown</em> and it has the ability to parse <a href="http://johnmacfarlane.net/pandoc/README.html#citations">citations in <em>Markdown</em></a>, which is exactly what I was looking for!</p>
 <p>But I had some things to solve first.</p>
-<h2 id="problem-1"><a href="#problem-1">Problem 1</a></h2>
+<h2 id="problem-1">Problem 1</h2>
 <p><em>Pandoc</em> didn't work with the <code>--bibliography</code> option (test using <code>pandoc -s -S --bibliography=references.bib test.md</code>)</p>
-<h2 id="solution-1"><a href="#solution-1">Solution 1</a></h2>
+<h2 id="solution-1">Solution 1</h2>
 <p>Change <em>Pandoc</em> version from <em>1.9.4.2a</em> to <em>1.9.4.2</em> (see <a href="http://johnmacfarlane.net/pandoc/installing.html">Install page</a> - if you don't see the earlier version change from <em>Current downloads</em> to <em>All downloads</em> and hit <em>Search</em>.</p>
-<h2 id="problem-2"><a href="#problem-2">Problem 2</a></h2>
+<h2 id="problem-2">Problem 2</h2>
 <p>I want to run <em>Pandoc</em> from my <em>Python</em> site generator. So I tried <a href="http://pypi.python.org/pypi/pyandoc/">pyandoc</a>.</p>
 <p>Whenever I run the test <em>pyandoc</em>, though, I got an error that &quot;Windows can't find the specified file&quot;. I filed an <a href="https://github.com/kennethreitz/pyandoc/issues/5">issue</a> and then found a solution.</p>
-<h2 id="solution-2"><a href="#solution-2">Solution 2</a></h2>
+<h2 id="solution-2">Solution 2</h2>
 <p>The path to the pandoc executable doesn't <em>really</em> change when setting it from <em>Python</em>, so you got to change it in the original <em>pyandoc</em> file - <code>C:\Python27\Lib\site-packages\pandoc\core.py</code>, and the code change is simply setting the <code>PANDOC_PATH</code> variable to the full path to your <code>pandoc.exe</code>.</p>
-<h2 id="problem-3"><a href="#problem-3">Problem 3</a></h2>
-<p>How to use pyandoc to parse my <em>Markdown</em> files? Well, it looks pretty easy, writing a function that uses <em>pyandoc</em> and setting it at <code>sitebuilder.py</code><sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> for the varialbe <code>FLATPAGES_HTML_RENDERER</code> that controls the renderer of pages. But <em>pyandoc</em> doesn't use <code>--bibliography</code> and <code>--csl</code>!</p>
-<h2 id="solution-3"><a href="#solution-3">Solution 3</a></h2>
+<h2 id="problem-3">Problem 3</h2>
+<p>How to use pyandoc to parse my <em>Markdown</em> files? Well, it looks pretty easy, writing a function that uses <em>pyandoc</em> and setting it at <code>sitebuilder.py</code><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> for the varialbe <code>FLATPAGES_HTML_RENDERER</code> that controls the renderer of pages. But <em>pyandoc</em> doesn't use <code>--bibliography</code> and <code>--csl</code>!</p>
+<h2 id="solution-3">Solution 3</h2>
 <p>I forked <em>pyandoc</em> and added support for the <code>--bibliography</code> and <code>--csl</code> options. The code is on <a href="https://github.com/yoavram/pyandoc">GitHub</a>.</p>
 <p>Also, I've written a new module for the site generator called <em>renderers</em> which has a factory function that creates a <em>Pandoc</em> renderer. The <em>Pandoc</em> renderer uses my modified <em>pyandoc</em> to render <em>Markdown</em> text to <em>HTML</em>, including citations, math and everything.</p>
 <p>This <em>Pandoc</em> renderer can be used as the <code>FLATPAGES_HTML_RENDERER</code> for <a href="http://packages.python.org/Flask-FlatPages/#flask_flatpages">Flask-FlatPages</a> on my <code>sitebuilder.py</code>.</p>
@@ -348,15 +347,15 @@
     $body$
 </pre>
 
-<h2 id="problem-4"><a href="#problem-4">Problem 4</a></h2>
+<h2 id="problem-4">Problem 4</h2>
 <p>How to get a real <em>bib</em> file? I use <a href="http://www.mendeley.com/">Mendeley</a> to manage my references, so do I need to export the <em>bib</em> file from <em>Mendeley</em> each time I add a new document?</p>
-<h2 id="solution-4"><a href="#solution-4">Solution 4</a></h2>
+<h2 id="solution-4">Solution 4</h2>
 <p>No, as it happens, <a href="http://blog.mendeley.com/tipstricks/how-to-series-generate-bibtex-files-for-your-collections-for-use-in-latex-part-3-of-12/">Mendeley can sync to a bib file</a>. This feature was designed for people writing papers with <em>LaTeX</em> but it is useful for me as well. So as long as I use <em>Mendeley</em>, I just need to point the renderer to the <em>bib</em> file I sync to <em>Mendeley</em> and that's it - this is done by giving the renderer factory a suitable argument <code>bib=/path/to/library.bib</code>.</p>
 <p>CSL files are easier - just download the ones you want from <a href="http://www.zotero.org/styles">Zotero Style Repository</a> and place the in the <code>sys.path</code> or in the <code>pandoc/csl</code> folder.</p>
-<h2 id="problem-5"><a href="#problem-5">Problem 5</a></h2>
+<h2 id="problem-5">Problem 5</h2>
 <p>As you can see in the <a href="#examples">examples below</a>, the references are not linked. Also it would be nice to create ciations by specifing a DOI and without a <em>bib</em> file, like it is down using <a href="http://www.carlboettiger.info/2012/05/30/knitcitations.html">knitcitations in R</a>.</p>
 <p>But I'll leave that for another day.</p>
-<h2 id="examples"><a href="#examples">Examples</a></h2>
+<h2 id="examples">Examples</h2>
 <p>A few exmamples of how I write the <em>Markdown</em> and how it looks on the blog:</p>
 <pre class="prettyprint linenums:1"><code>... in a process called *Muller&#39;s Ratchet* [@Muller1964; @Haigh1978].</code></pre>
 <p>... in a process called <em>Muller's Ratchet</em> <span class="citation">(Muller 1964; Haigh 1978)</span>.</p>
@@ -364,15 +363,17 @@
 <p>.. as suggested by Drake <span class="citation">(1991)</span>.</p>
 <pre class="prettyprint linenums:1"><code>My model is based on that by @Hadany2003 who showed...</code></pre>
 <p>My model is based on that by <span class="citation">Hadany and Beker (2003)</span> who showed...</p>
-<h2 id="references"><a href="#references">References</a></h2>
-<p>Drake, John W. 1991. &#8220;A Constant Rate of Spontaneous Mutation in DNA-based Microbes.&#8221; <em>Proceedings of the National Academy of Sciences</em> 88 (16) (aug): 7160&#8211;4. doi:10.1073/pnas.88.16.7160. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253</a>.</p>
-<p>Hadany, Lilach, and Tuvik Beker. 2003. &#8220;On the Evolutionary Advantage of Fitness-associated Recombination.&#8221; <em>Genetics</em> 165 (4) (dec): 2167&#8211;79. <a href="http://www.ncbi.nlm.nih.gov/pubmed/14704195" title="http://www.ncbi.nlm.nih.gov/pubmed/14704195">http://www.ncbi.nlm.nih.gov/pubmed/14704195</a>.</p>
-<p>Haigh, John. 1978. &#8220;The Accumulation of Deleterious Genes in a Population - Muller&#8217;s Ratchet.&#8221; <em>Theoretical Population Biology</em> 14 (2) (oct): 251&#8211;267. doi:10.1016/0040-5809(78)90027-8. <a href="http://dx.doi.org/10.1016/0040-5809(78)90027-8" title="http://dx.doi.org/10.1016/0040-5809(78)90027-8">http://dx.doi.org/10.1016/0040-5809(78)90027-8</a>.</p>
-<p>Muller, Herman J. 1964. &#8220;The Relation of Recombination to Mutational Advance.&#8221; <em>Mutation Research</em> 1 (1) (may): 2&#8211;9. doi:10.1016/0027-5107(64)90047-8. <a href="http://dx.doi.org/10.1016/0027-5107(64)90047-8" title="http://dx.doi.org/10.1016/0027-5107(64)90047-8">http://dx.doi.org/10.1016/0027-5107(64)90047-8</a>.</p>
+<div class="references">
+<h2>References</h2>
+<p>Drake, John W. 1991. &#8220;A Constant Rate of Spontaneous Mutation in DNA-Based Microbes.&#8221; <em>Proceedings of the National Academy of Sciences</em> 88 (16) (August): 7160&#8211;4. doi:<a href="http://dx.doi.org/10.1073/pnas.88.16.7160">10.1073/pnas.88.16.7160</a>. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=52253</a>.</p>
+<p>Hadany, Lilach, and Tuvik Beker. 2003. &#8220;On the Evolutionary Advantage of Fitness-Associated Recombination.&#8221; <em>Genetics</em> 165 (4) (December): 2167&#8211;79. <a href="http://www.ncbi.nlm.nih.gov/pubmed/14704195">http://www.ncbi.nlm.nih.gov/pubmed/14704195</a>.</p>
+<p>Haigh, John. 1978. &#8220;The Accumulation of Deleterious Genes in a Population - Muller&#8217;s Ratchet.&#8221; <em>Theoretical Population Biology</em> 14 (2) (October): 251&#8211;267. doi:<a href="http://dx.doi.org/10.1016/0040-5809(78)90027-8">10.1016/0040-5809(78)90027-8</a>. <a href="http://dx.doi.org/10.1016/0040-5809(78)90027-8">http://dx.doi.org/10.1016/0040-5809(78)90027-8</a>.</p>
+<p>Muller, Herman J. 1964. &#8220;The Relation of Recombination to Mutational Advance.&#8221; <em>Mutation Research</em> 1 (1) (May): 2&#8211;9. doi:<a href="http://dx.doi.org/10.1016/0027-5107(64)90047-8">10.1016/0027-5107(64)90047-8</a>. <a href="http://dx.doi.org/10.1016/0027-5107(64)90047-8">http://dx.doi.org/10.1016/0027-5107(64)90047-8</a>.</p>
+</div>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>The main Python module underlying my <a href="https://github.com/yoavram/yoavram.github.com/tree/source">Python static site generator</a>.<a href="#fnref1">&#8617;</a></p></li>
+<li id="fn1"><p>The main Python module underlying my <a href="https://github.com/yoavram/yoavram.github.com/tree/source">Python static site generator</a><a href="#fnref1">&#8617;</a></p></li>
 </ol>
 </div>
 	<a href="#" id="download_bibtex_btn">Download BibTeX</a>
@@ -579,7 +580,7 @@ year = {1991}
 				</ul>
 
 				<ul class="quick-links">
-					<li>This page was last modified on 02 March 2014 at 11:46.</li>
+					<li>This page was last modified on 03 April 2014 at 11:55.</li>
 				</ul>
 
 				

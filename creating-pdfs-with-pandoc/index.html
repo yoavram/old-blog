@@ -326,31 +326,30 @@
 <li><a href="#creating-epub">Creating EPUB</a></li>
 <li><a href="#creating-pdfs-for-mobile-phones">Creating PDFs for mobile phones</a></li>
 <li><a href="#sample-text-with-math-code-and-citation">Sample text with math, code and citation</a></li>
-<li><a href="#references">References</a></li>
 </ul>
 <p><a name='TOC'></a></p>
-<h2 id="overview"><a href="#overview">Overview</a></h2>
+<h2 id="overview">Overview</h2>
 <p>This post will show how to convert a <a href="http://daringfireball.net/projects/markdown/">Markdown</a> document to PDF, mobile-PDF and EPUB documents using <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>. The guide is not exhastive but rather a walkthrough of my own experiments. The mobile-PDF especially is lacking - it is based on somewhat advanced <span class="math">\(LaTeX\)</span>, and I'm a novice user of that language.</p>
 <p>The source <a href="http://daringfireball.net/projects/markdown/">Markdown</a> file use for this post, <a href="https://gist.github.com/4305736/">creating-pdfs-with-pandoc.md</a>, is available as a gist.</p>
 <p>For more on rendering citations in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> with <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, see an <a href="/citations-in-markdown-using-pandoc/">earlier post</a>.</p>
-<h2 id="simple-pdf-rendering"><a href="#simple-pdf-rendering">Simple PDF rendering</a></h2>
+<h2 id="simple-pdf-rendering">Simple PDF rendering</h2>
 <pre class="prettyprint linenums:1"><code>&gt; pandoc creating-pdfs-with-pandoc.md -o creating-pdfs-with-pandoc.pdf</code></pre>
 <p><a href="https://www.box.com/s/sbsvcg28mnao4clscz5n">See result</a></p>
-<h2 id="with-bibliography"><a href="#with-bibliography">With bibliography</a></h2>
+<h2 id="with-bibliography">With bibliography</h2>
 <pre class="prettyprint linenums:1"><code>&gt; pandoc creating-pdfs-with-pandoc.md -o creating-pdfs-with-pandoc.pdf --bibliography=&lt;path to bibtex file&gt; [--csl=&lt;path to csl file&gt;] [--toc]</code></pre>
 <p>The CSL file is optional, if ommited <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> uses <a href="http://www.chicagomanualofstyle.org/tools_citationguide.html">Chicago-style citations</a>. You can find more information on citation styles at <a href="http://citationstyles.org/">http://citationstyles.org/</a>. If you add the <code>--toc</code> option <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> will add a table of contents.</p>
 <p><a href="https://www.box.com/s/3ct61opmejh76nn374ri">See result</a></p>
-<h2 id="creating-epub"><a href="#creating-epub">Creating EPUB</a></h2>
+<h2 id="creating-epub">Creating EPUB</h2>
 <pre class="prettyprint linenums:1"><code>&gt; pandoc creating-pdfs-with-pandoc.md -o creating-pdfs-with-pandoc.epub --bibliography=&lt;path to bibtex file&gt; [--csl=&lt;path to csl file&gt;] [--toc]</code></pre>
 <p>On Windows 7 you can open EPUB files with <a href="http://calibre-ebook.com">Calibre</a>.</p>
 <p><a href="https://www.box.com/s/vaebc1h0l823yfqh1a3w">See result</a></p>
-<h2 id="creating-pdfs-for-mobile-phones"><a href="#creating-pdfs-for-mobile-phones">Creating PDFs for mobile phones</a></h2>
+<h2 id="creating-pdfs-for-mobile-phones">Creating PDFs for mobile phones</h2>
 <p>This is following the discussion on <a href="http://tex.stackexchange.com/questions/78920/generating-smartphone-readable-pdf">tex.stackexchange</a>, and using a <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> latex template which merges the default template with <a href="http://uweziegenhagen.de/?p=765">this one</a>. Here is <a href="https://gist.github.com/3979276/">the template as a gist</a>. Remember to put the template in Pandoc's template folder (on Windows 7, C:\Program Files (x86)\Pandoc\templates).</p>
 <pre class="prettyprint linenums:1"><code>&gt; pandoc creating-pdfs-with-pandoc.md -o creating-pdfs-with-pandoc.iphone.pdf -s --template=iphone-pandoc-template.latex --bibliography=&lt;path to bibtex file&gt; [--csl=&lt;path to csl file&gt;] [--toc]</code></pre>
 <p>This rendering is <strong>not so good</strong> - pages are split strangely and code segements are cropped. If anyone wants to play around with the <a href="https://gist.github.com/3979276/">template</a>, I'll be happy to post the results.</p>
 <p><a href="https://www.box.com/s/82kjkhck9nf87kfha9b0">See result</a></p>
-<h2 id="sample-text-with-math-code-and-citation"><a href="#sample-text-with-math-code-and-citation">Sample text with math, code and citation</a></h2>
-<p>Here is a reference <span class="citation">(Kimura and Maruyama 1966)</span>, and also a link to my blog <a href="http://blog.yoavram.com">Mutation-Selection Blog</a>. Here's a footnote<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> that you can see on the bottom.</p>
+<h2 id="sample-text-with-math-code-and-citation">Sample text with math, code and citation</h2>
+<p>Here is a reference <span class="citation">(Kimura and Maruyama 1966)</span>, and also a link to my blog <a href="http://blog.yoavram.com">Mutation-Selection Blog</a>. Here's a footnote<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> that you can see on the bottom.</p>
 <p>One of my favorite mathematical expressions is the <a href="http://en.wikipedia.org/wiki/Triangle_inequality">triangle ineuqality</a>:</p>
 <p><span class="math">\[
 \forall{x,y} \; \|x + y\| \leq \|x\| + \|y\|
@@ -359,8 +358,10 @@
 <pre class="prettyprint linenums:1"><code>for x in [p for p in posts if p[&#39;author&#39;] == &#39;yoavram&#39;]:
     print x[&#39;date&#39;]
 print &#39;done&#39;</code></pre>
-<h2 id="references"><a href="#references">References</a></h2>
-<p>Kimura, Motoo, and Takeo Maruyama. 1966. &#8220;The Mutational Load with Epistatic Gene Interactions in Fitness.&#8221; <em>Genetics</em> 54 (6) (dec): 1337&#8211;51. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299" title="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299</a>.</p>
+<div class="references">
+<h2>References</h2>
+<p>Kimura, Motoo, and Takeo Maruyama. 1966. &#8220;The Mutational Load with Epistatic Gene Interactions in Fitness.&#8221; <em>Genetics</em> 54 (6) (December): 1337&#8211;51. <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1211299</a>.</p>
+</div>
 <div class="footnotes">
 <hr />
 <ol>
@@ -516,7 +517,7 @@ year = {1966}
 				</ul>
 
 				<ul class="quick-links">
-					<li>This page was last modified on 02 March 2014 at 11:46.</li>
+					<li>This page was last modified on 03 April 2014 at 11:55.</li>
 				</ul>
 
 				
