@@ -1,0 +1,6 @@
+http://www.wordsinboxes.com/2012/02/migrating-repositories-from-bitbucket.html
+
+http://hg-git.github.com/
+https://gist.github.com/833223
+http://www.mehdi-khalili.com/migrating-from-mercurial-to-git
+https://github.com/schacon/hg-git
